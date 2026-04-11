@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hayvan Bildir - b0wl Community</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f0faf6;
+    color: #1b2b34;
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+nav {
+    position: fixed;
+    width: 100%;
+    background: rgba(0, 62, 52, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 12px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo h2 {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: white;
+}
+
+.logo span {
+    color: #00e5b0;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 5px;
+}
+
+nav ul li a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #00e5b0;
+    background: rgba(255,255,255,0.08);
+}
+
+nav ul li a.active {
+    color: #00e5b0;
+    background: rgba(0,229,176,0.1);
+}
+
+nav ul li a.btn-nav {
+    background: #00e5b0;
+    color: #003e34;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+nav ul li a.btn-nav:hover {
+    background: #00c49a;
+    color: #003e34;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+}
+
+/* PAGE HERO */
+.page-hero {
+    min-height: 40vh;
+    background: linear-gradient(135deg, rgba(0,62,52,0.88), rgba(220,50,50,0.55)),
+    url('https://images.unsplash.com/photo-1437622368342-7a3d73a13368') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 120px 10% 80px;
+}
+
+.page-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.page-hero h1 span {
+    color: #00e5b0;
+}
+
+.page-hero p {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+/* SECTIONS */
+section {
+    padding: 80px 8%;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: #003e34;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.section-header p {
+    color: #5a7d7c;
+    font-size: 1rem;
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.line {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #00e5b0, #0091ea);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* FORM SECTION */
+.form-section {
+    background: white;
+}
+
+.form-container {
+    max-width: 750px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.form-header {
+    background: linear-gradient(135deg, #003e34, #00695c);
+    padding: 35px 40px;
+    color: white;
+    text-align: center;
+}
+
+.form-header .icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+}
+
+.form-header h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+.form-body {
+    padding: 40px;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #003e34;
+    font-size: 0.9rem;
+}
+
+.form-group label span {
+    color: #e53935;
+    margin-left: 3px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border: 2px solid #e0efe8;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    color: #1b2b34;
+    transition: 0.3s;
+    background: #f9fdfc;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #00e5b0;
+    outline: none;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(0,229,176,0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* FILE UPLOAD */
+.file-upload-area {
+    border: 2px dashed #00e5b0;
+    border-radius: 15px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #f0faf6;
+    position: relative;
+}
+
+.file-upload-area:hover {
+    background: #e0f5ed;
+    border-color: #00c49a;
+}
+
+.file-upload-area.drag-over {
+    background: #d0f0e4;
+    border-color: #00a878;
+    transform: scale(1.01);
+}
+
+.file-upload-area .upload-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.file-upload-area h4 {
+    color: #003e34;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.file-upload-area p {
+    color: #5a7d7c;
+    font-size: 0.82rem;
+}
+
+.file-upload-area input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.image-preview {
+    display: none;
+    margin-top: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+    max-height: 250px;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* FORM GRID */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* STATUS SELECTOR */
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+}
+
+.status-option {
+    position: relative;
+}
+
+.status-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.status-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 10px;
+    border: 2px solid #e0efe8;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+    background: #f9fdfc;
+}
+
+.status-label:hover {
+    border-color: #00e5b0;
+    background: #f0faf6;
+}
+
+.status-option input[type="radio"]:checked + .status-label {
+    border-color: #00e5b0;
+    background: #e0f5ed;
+    color: #003e34;
+}
+
+.status-label .status-icon {
+    font-size: 1.8rem;
+}
+
+.status-label span {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #5a7d7c;
+}
+
+.status-option input[type="radio"]:checked + .status-label span {
+    color: #003e34;
+}
+
+/* LOCATION */
+.location-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 20px;
+    background: linear-gradient(135deg, #00e5b0, #0091ea);
+    border: none;
+    border-radius: 12px;
+    color: #003e34;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.location-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.location-status {
+    margin-top: 10px;
+    font-size: 0.82rem;
+    color: #00695c;
+    font-weight: 500;
+    display: none;
+}
+
+/* SUBMIT */
+.submit-btn {
+    width: 100%;
+    padding: 17px;
+    background: linear-gradient(135deg, #00e5b0, #0091ea);
+    border: none;
+    border-radius: 15px;
+    color: #003e34;
+    font-weight: 800;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,229,176,0.35);
+}
+
+.form-note {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: #5a7d7c;
+}
+
+/* SUCCESS MODAL */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: white;
+    border-radius: 25px;
+    padding: 50px 40px;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    animation: modalIn 0.3s ease;
+}
+
+@keyframes modalIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.modal .success-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.modal h3 {
+    font-size: 1.5rem;
+    color: #003e34;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.modal p {
+    color: #5a7d7c;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+.modal-btn {
+    padding: 13px 35px;
+    background: #00e5b0;
+    border: none;
+    border-radius: 50px;
+    color: #003e34;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.modal-btn:hover {
+    background: #00c49a;
+    transform: translateY(-2px);
+}
+
+/* INFO CARDS */
+.info-section {
+    background: #f0faf6;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.info-card {
+    background: white;
+    padding: 30px 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: 0.3s;
+    border-top: 4px solid #00e5b0;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+}
+
+.info-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.info-card h4 {
+    color: #003e34;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.info-card p {
+    color: #5a7d7c;
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+/* EMERGENCY BANNER */
+.emergency-banner {
+    background: linear-gradient(135deg, #c62828, #e53935);
+    color: white;
+    padding: 20px 8%;
+    text-align: center;
+}
+
+.emergency-banner p {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.emergency-banner span {
+    opacity: 0.85;
+    font-weight: 400;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 5px;
+}
+
+/* CTA */
+.cta-section {
+    background: linear-gradient(135deg, #003e34, #0091ea);
+    color: white;
+    text-align: center;
+    padding: 80px 8%;
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.cta-section p {
+    font-size: 1rem;
+    opacity: 0.85;
+    margin-bottom: 35px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    padding: 14px 35px;
+    background: #00e5b0;
+    border: none;
+    color: #003e34;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background: #00c49a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,229,176,0.35);
+}
+
+.btn-outline {
+    padding: 14px 35px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.7);
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-outline:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-3px);
+}
+
+/* FOOTER */
+footer {
+    background: #002420;
+    color: white;
+    padding: 40px 8%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.footer-logo h2 {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #00e5b0;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 20px;
+    text-align: center;
+    font-size: 0.78rem;
+    opacity: 0.4;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(0,62,52,0.98);
+        flex-direction: column;
+        padding: 20px;
+        gap: 5px;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .page-hero h1 {
+        font-size: 2rem;
+    }
+
+    .form-body {
+        padding: 25px 20px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .status-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <a href="index.html" class="logo">
+        <h2>b<span>0</span>wl Community</h2>
+    </a>
+    <ul id="navMenu">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        <li><a href="ozellikler.html">Özellikler</a></li>
+        <li><a href="market.html">Market</a></li>
+        <li><a href="bagis.html">Bağış Yap</a></li>
+        <li><a href="bildir.html" class="btn-nav active">🚨 Hayvan Bildir</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</nav>
+
+<!-- ACİL BANNER -->
+<div class="emergency-banner">
+    <p>🚨 Hayvanın hayatı tehlikede mi?</p>
+    <span>Platformumuzu kullanarak en yakın kuruluşa anında bildirim gönderin.</span>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+    <div>
+        <h1>Hayvan <span>Bildir</span></h1>
+        <p>Yaralı, aç veya tehlike altında bir hayvan mı gördünüz? Fotoğrafını çekin, yapay zekamız türü tanısın ve en yakın kuruluşa otomatik bildirim gönderelim.</p>
+    </div>
+</div>
+
+<!-- BİLGİ KARTLARI -->
+<section class="info-section">
+    <div class="section-header">
+        <h2>Nasıl Çalışır?</h2>
+        <p>30 saniyede bildirim gönderin, biz gerisini halledelim.</p>
+        <div class="line"></div>
+    </div>
+    <div class="info-grid">
+        <div class="info-card">
+            <div class="icon">📸</div>
+            <h4>Fotoğraf Çek ve Yükle</h4>
+            <p>Gördüğünüz hayvanın fotoğrafını çekin ve forma yükleyin. Görüntü kalitesi ne kadar iyi olursa AI o kadar doğru sonuç verir.</p>
+        </div>
+        <div class="info-card">
+            <div class="icon">🤖</div>
+            <h4>AI Analiz Eder</h4>
+            <p>Yapay zeka modelimiz hayvanın türünü, durumunu ve tehlike seviyesini otomatik olarak tespit eder.</p>
+        </div>
+        <div class="info-card">
+            <div class="icon">📍</div>
+            <h4>Konum Belirlenir</h4>
+            <p>GPS konumunuz otomatik algılanır veya manuel olarak girebilirsiniz. En yakın kuruluş bulunur.</p>
+        </div>
+        <div class="info-card">
+            <div class="icon">🚨</div>
+            <h4>Kuruluş Haberdar Edilir</h4>
+            <p>İlgili kuruluşa anında bildirim gönderilir. Sizi süreç hakkında bilgilendiririz.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section">
+    <div class="form-container">
+        <div class="form-header">
+            <div class="icon">🚨</div>
+            <h2>Hayvan Bildir</h2>
+            <p>Formu doldurun, en yakın kuruluşa bildirim gönderelim.</p>
+        </div>
+        <div class="form-body">
+            <form id="reportForm" onsubmit="submitForm(event)">
+
+                <!-- FOTOĞRAF -->
+                <div class="form-group">
+                    <label>Fotoğraf Yükle <span>*</span></label>
+                    <div class="file-upload-area" id="uploadArea">
+                        <span class="upload-icon">📷</span>
+                        <h4>Fotoğrafı buraya sürükleyin</h4>
+                        <p>veya tıklayarak seçin (JPG, PNG, HEIC)</p>
+                        <input type="file" accept="image/*" id="photoInput" onchange="previewImage(event)">
+                    </div>
+                    <div class="image-preview" id="imagePreview">
+                        <img id="previewImg" src="" alt="Önizleme">
+                    </div>
+                </div>
+
+                <!-- DURUM SEÇİCİ -->
+                <div class="form-group">
+                    <label>Hayvanın Durumu <span>*</span></label>
+                    <div class="status-grid">
+                        <div class="status-option">
+                            <input type="radio" name="status" id="s1" value="yarali">
+                            <label class="status-label" for="s1">
+                                <span class="status-icon">🩹</span>
+                                <span>Yaralı</span>
+                            </label>
+                        </div>
+                        <div class="status-option">
+                            <input type="radio" name="status" id="s2" value="ac">
+                            <label class="status-label" for="s2">
+                                <span class="status-icon">🍽️</span>
+                                <span>Aç / Susuz</span>
+                            </label>
+                        </div>
+                        <div class="status-option">
+                            <input type="radio" name="status" id="s3" value="tehlike">
+                            <label class="status-label" for="s3">
+                                <span class="status-icon">⚠️</span>
+                                <span>Tehlikede</span>
+                            </label>
+                        </div>
+                        <div class="status-option">
+                            <input type="radio" name="status" id="s4" value="barinaksiz">
+                            <label class="status-label" for="s4">
+                                <span class="status-icon">🏠</span>
+                                <span>Barınaksız</span>
+                            </label>
+                        </div>
+                        <div class="status-option">
+                            <input type="radio" name="status" id="s5" value="hasta">
+                            <label class="status-label" for="s5">
+                                <span class="status-icon">🤒</span>
+                                <span>Hasta</span>
+                            </label>
+                        </div>
+                        <div class="status-option">
+                            <input type="radio" name="status" id="s6" value="diger">
+                            <label class="status-label" for="s6">
+                                <span class="status-icon">❓</span>
+                                <span>Diğer</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TÜR -->
+                <div class="form-group">
+                    <label>Hayvan Türü</label>
+                    <select>
+                        <option value="">AI otomatik tespit edecek (veya seçin)</option>
+                        <option>Kedi</option>
+                        <option>Köpek</option>
+                        <option>Kuş</option>
+                        <option>Tilki</option>
+                        <option>Kirpi</option>
+                        <option>Yılan</option>
+                        <option>Kaplumbağa</option>
+                        <option>Vahşi Hayvan</option>
+                        <option>Diğer</option>
+                    </select>
+                </div>
+
+                <!-- KONUM -->
+                <div class="form-group">
+                    <label>Konum <span>*</span></label>
+                    <input type="text" id="locationInput" placeholder="Adres veya konum bilgisi girin">
+                    <button type="button" class="location-btn" onclick="getLocation()">
+                        📍 Konumumu Otomatik Al
+                    </button>
+                    <div class="location-status" id="locationStatus">
+                        ✅ Konumunuz alındı!
+                    </div>
+                </div>
+
+                <!-- İSİM VE TELEFON -->
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Adınız Soyadınız</label>
+                        <input type="text" placeholder="Ad Soyad">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefon Numarası</label>
+                        <input type="tel" placeholder="05XX XXX XX XX">
+                    </div>
+                </div>
+
+                <!-- AÇIKLAMA -->
+                <div class="form-group">
+                    <label>Açıklama <span>*</span></label>
+                    <textarea placeholder="Hayvanın durumunu detaylıca açıklayın. Ne zaman gördünüz? Çevresinde ne var? Hareket edebiliyor mu?"></textarea>
+                </div>
+
+                <!-- GÖNDER -->
+                <button type="submit" class="submit-btn">
+                    🚨 Bildirimi Gönder
+                </button>
+                <p class="form-note">
+                    Bildiriminiz alındıktan sonra en yakın kuruluşa iletilecektir.<br>
+                    Ortalama yanıt süresi: <strong>15-30 dakika</strong>
+                </p>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <h2>Başka Nasıl Yardım Edebilirsiniz? 🌍</h2>
+    <p>Hayvan bildirmenin yanı sıra bağış yapabilir veya gönüllü olabilirsiniz.</p>
+    <div class="cta-buttons">
+        <a href="bagis.html" class="btn-primary">💚 Bağış Yap</a>
+        <a href="ozellikler.html" class="btn-outline">🙋 Gönüllü Ol</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <h2>b<span style="color:#00e5b0">0</span>wl Community</h2>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Ana Sayfa</a>
+            <a href="hakkimizda.html">Hakkımızda</a>
+            <a href="ozellikler.html">Özellikler</a>
+            <a href="market.html">Market</a>
+            <a href="bagis.html">Bağış Yap</a>
+            <a href="bildir.html">Hayvan Bildir</a>
+            <a href="iletisim.html">İletişim</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 b0wl Community - Tüm Hakları Saklıdır | Doğanın Sesi Ol 🌍</p>
+    </div>
+</footer>
+
+<!-- BAŞARI MODALI -->
+<div class="modal-overlay" id="successModal">
+    <div class="modal">
+        <div class="success-icon">✅</div>
+        <h3>Bildirim Gönderildi!</h3>
+        <p>Bildiriminiz başarıyla alındı. En yakın vahşi yaşam koruma kuruluşuna iletildi. Ortalama 15-30 dakika içinde müdahale edilecektir. Teşekkür ederiz! 🙏</p>
+        <button class="modal-btn" onclick="closeModal()">Tamam</button>
+    </div>
+</div>
+
+<script>
+
+function toggleMenu() {
+    document.getElementById('navMenu').classList.toggle('active');
+}
+
+function previewImage(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('previewImg').src = e.target.result;
+            document.getElementById('imagePreview').style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            const lat = position.coords.latitude.toFixed(5);
+            const lon = position.coords.longitude.toFixed(5);
+            document.getElementById('locationInput').value = lat + ', ' + lon;
+            document.getElementById('locationStatus').style.display = 'block';
+        }, function() {
+            alert('Konum alınamadı. Lütfen manuel olarak girin.');
+        });
+    } else {
+        alert('Tarayıcınız konum özelliğini desteklemiyor.');
+    }
+}
+
+function submitForm(event) {
+    event.preventDefault();
+    document.getElementById('successModal').classList.add('active');
+}
+
+function closeModal() {
+    document.getElementById('successModal').classList.remove('active');
+    document.getElementById('reportForm').reset();
+    document.getElementById('imagePreview').style.display = 'none';
+    document.getElementById('locationStatus').style.display = 'none';
+}
+
+const uploadArea = document.getElementById('uploadArea');
+
+uploadArea.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    this.classList.add('drag-over');
+});
+
+uploadArea.addEventListener('dragleave', function() {
+    this.classList.remove('drag-over');
+});
+
+uploadArea.addEventListener('drop', function(e) {
+    e.preventDefault();
+    this.classList.remove('drag-over');
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+            document.getElementById('previewImg').src = ev.target.result;
+            document.getElementById('imagePreview').style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+</script>
+
+</body>
+</html>

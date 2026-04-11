@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bağış Yap - b0wl Community</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f0faf6;
+    color: #1b2b34;
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+nav {
+    position: fixed;
+    width: 100%;
+    background: rgba(0, 62, 52, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 12px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo h2 {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: white;
+}
+
+.logo span {
+    color: #00e5b0;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 5px;
+}
+
+nav ul li a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #00e5b0;
+    background: rgba(255,255,255,0.08);
+}
+
+nav ul li a.active {
+    color: #00e5b0;
+    background: rgba(0,229,176,0.1);
+}
+
+nav ul li a.btn-nav {
+    background: #00e5b0;
+    color: #003e34;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+nav ul li a.btn-nav:hover {
+    background: #00c49a;
+    color: #003e34;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+}
+
+/* PAGE HERO */
+.page-hero {
+    min-height: 40vh;
+    background: linear-gradient(135deg, rgba(0,62,52,0.88), rgba(0,145,234,0.65)),
+    url('https://images.unsplash.com/photo-1503919545889-aef636e10ad4') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 120px 10% 80px;
+}
+
+.page-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.page-hero h1 span {
+    color: #00e5b0;
+}
+
+.page-hero p {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+/* SECTIONS */
+section {
+    padding: 80px 8%;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: #003e34;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.section-header p {
+    color: #5a7d7c;
+    font-size: 1rem;
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.line {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #00e5b0, #0091ea);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* TRUST BANNER */
+.trust-banner {
+    background: linear-gradient(135deg, #003e34, #00695c);
+    color: white;
+    padding: 25px 8%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.trust-item .icon {
+    font-size: 1.4rem;
+}
+
+/* DONATE MAIN */
+.donate-main {
+    background: white;
+}
+
+.donate-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* TABS */
+.tabs {
+    display: flex;
+    background: #f0faf6;
+    border-radius: 15px;
+    padding: 6px;
+    margin-bottom: 35px;
+    gap: 5px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 13px 20px;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #5a7d7c;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tab-btn.active {
+    background: white;
+    color: #003e34;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* FUND CARDS */
+.fund-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.fund-card {
+    border: 2px solid #e0efe8;
+    border-radius: 15px;
+    padding: 25px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+    background: #f9fdfc;
+    position: relative;
+}
+
+.fund-card:hover {
+    border-color: #00e5b0;
+    background: #f0faf6;
+    transform: translateY(-3px);
+}
+
+.fund-card.selected {
+    border-color: #00e5b0;
+    background: #e0f5ed;
+}
+
+.fund-card .fund-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.fund-card h4 {
+    color: #003e34;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.fund-card p {
+    color: #5a7d7c;
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+
+.fund-card .selected-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #00e5b0;
+    color: #003e34;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.fund-card.selected .selected-badge {
+    display: flex;
+}
+
+/* AMOUNT */
+.amount-section {
+    margin-bottom: 30px;
+}
+
+.amount-section h3 {
+    color: #003e34;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.amount-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.amount-btn {
+    padding: 13px 10px;
+    background: #f0faf6;
+    border: 2px solid #e0efe8;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #003e34;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.amount-btn:hover {
+    border-color: #00e5b0;
+    background: #f0faf6;
+}
+
+.amount-btn.active {
+    background: #00e5b0;
+    border-color: #00e5b0;
+    color: #003e34;
+}
+
+.custom-amount {
+    position: relative;
+}
+
+.custom-amount span {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #003e34;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.custom-amount input {
+    width: 100%;
+    padding: 13px 16px 13px 35px;
+    border: 2px solid #e0efe8;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-family: 'Poppins', sans-serif;
+    color: #1b2b34;
+    transition: 0.3s;
+    background: #f9fdfc;
+}
+
+.custom-amount input:focus {
+    border-color: #00e5b0;
+    outline: none;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(0,229,176,0.1);
+}
+
+/* DONOR INFO */
+.donor-info {
+    margin-bottom: 25px;
+}
+
+.donor-info h3 {
+    color: #003e34;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #003e34;
+    font-size: 0.85rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0efe8;
+    border-radius: 12px;
+    font-size: 0.88rem;
+    font-family: 'Poppins', sans-serif;
+    color: #1b2b34;
+    transition: 0.3s;
+    background: #f9fdfc;
+}
+
+.form-group input:focus {
+    border-color: #00e5b0;
+    outline: none;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(0,229,176,0.1);
+}
+
+/* ANONYMOUS */
+.anonymous-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+.anonymous-check input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #00e5b0;
+    cursor: pointer;
+}
+
+.anonymous-check span {
+    font-size: 0.88rem;
+    color: #5a7d7c;
+}
+
+/* SUBMIT */
+.donate-submit {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #00e5b0, #0091ea);
+    border: none;
+    border-radius: 15px;
+    color: #003e34;
+    font-weight: 800;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.donate-submit:hover {
+    opacity: 0.9;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,229,176,0.35);
+}
+
+.donate-note {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: #5a7d7c;
+    line-height: 1.6;
+}
+
+/* DOĞRUDAN BAĞIŞ */
+.direct-donate h3 {
+    color: #003e34;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.direct-donate p {
+    color: #5a7d7c;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+.org-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.org-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f0faf6;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #e0efe8;
+    transition: 0.3s;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.org-item:hover {
+    border-color: #00e5b0;
+    background: white;
+}
+
+.org-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.org-icon {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.org-details h4 {
+    color: #003e34;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.org-details p {
+    color: #5a7d7c;
+    font-size: 0.78rem;
+    margin: 0;
+}
+
+.org-btn {
+    padding: 10px 22px;
+    background: #00e5b0;
+    border: none;
+    border-radius: 25px;
+    color: #003e34;
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.org-btn:hover {
+    background: #00c49a;
+    transform: translateY(-2px);
+}
+
+/* BURS */
+.burs-section {
+    background: #f0faf6;
+}
+
+.burs-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.07);
+    text-align: center;
+}
+
+.burs-card .icon {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.burs-card h3 {
+    color: #003e34;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.burs-card p {
+    color: #5a7d7c;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+.burs-features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.burs-feature {
+    background: #f0faf6;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    color: #003e34;
+    font-weight: 600;
+}
+
+.btn-primary {
+    padding: 14px 35px;
+    background: #00e5b0;
+    border: none;
+    color: #003e34;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-primary:hover {
+    background: #00c49a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,229,176,0.35);
+}
+
+/* IMPACT */
+.impact-section {
+    background: linear-gradient(135deg, #003e34, #00695c);
+    color: white;
+}
+
+.impact-section .section-header h2 {
+    color: white;
+}
+
+.impact-section .section-header p {
+    color: rgba(255,255,255,0.7);
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.impact-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 30px 20px;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.impact-card:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-5px);
+}
+
+.impact-card .amount {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #00e5b0;
+    margin-bottom: 10px;
+}
+
+.impact-card .icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.impact-card p {
+    font-size: 0.88rem;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+/* SUCCESS MODAL */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: white;
+    border-radius: 25px;
+    padding: 50px 40px;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    animation: modalIn 0.3s ease;
+}
+
+@keyframes modalIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.modal .success-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.modal h3 {
+    font-size: 1.5rem;
+    color: #003e34;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.modal p {
+    color: #5a7d7c;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+.modal-btn {
+    padding: 13px 35px;
+    background: #00e5b0;
+    border: none;
+    border-radius: 50px;
+    color: #003e34;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.modal-btn:hover {
+    background: #00c49a;
+}
+
+/* CTA */
+.cta-section {
+    background: linear-gradient(135deg, #0091ea, #00695c);
+    color: white;
+    text-align: center;
+    padding: 80px 8%;
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.cta-section p {
+    font-size: 1rem;
+    opacity: 0.85;
+    margin-bottom: 35px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-outline {
+    padding: 14px 35px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.7);
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-outline:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-3px);
+}
+
+/* FOOTER */
+footer {
+    background: #002420;
+    color: white;
+    padding: 40px 8%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.footer-logo h2 {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #00e5b0;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 20px;
+    text-align: center;
+    font-size: 0.78rem;
+    opacity: 0.4;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(0,62,52,0.98);
+        flex-direction: column;
+        padding: 20px;
+        gap: 5px;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .page-hero h1 {
+        font-size: 2rem;
+    }
+
+    .trust-banner {
+        gap: 20px;
+    }
+
+    .amount-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <a href="index.html" class="logo">
+        <h2>b<span>0</span>wl Community</h2>
+    </a>
+    <ul id="navMenu">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        <li><a href="ozellikler.html">Özellikler</a></li>
+        <li><a href="market.html">Market</a></li>
+        <li><a href="bagis.html" class="active">Bağış Yap</a></li>
+        <li><a href="bildir.html" class="btn-nav">🚨 Hayvan Bildir</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+    <div>
+        <h1>Bağış <span>Yap</span></h1>
+        <p>Her kuruşunuz fark yaratır. Bağışlarınız komisyonsuz olarak doğrudan vahşi yaşam koruma fonlarına iletilir.</p>
+    </div>
+</div>
+
+<!-- GÜVEN BANNERI -->
+<div class="trust-banner">
+    <div class="trust-item">
+        <span class="icon">✅</span>
+        <span>%0 Komisyon</span>
+    </div>
+    <div class="trust-item">
+        <span class="icon">🔒</span>
+        <span>Güvenli Ödeme</span>
+    </div>
+    <div class="trust-item">
+        <span class="icon">📊</span>
+        <span>Şeffaf Takip</span>
+    </div>
+    <div class="trust-item">
+        <span class="icon">🌍</span>
+        <span>Global Fonlar</span>
+    </div>
+</div>
+
+<!-- BAĞIŞ ETKİSİ -->
+<section class="impact-section">
+    <div class="section-header">
+        <h2>Bağışınızın Etkisi</h2>
+        <p>Ne kadar bağış yaparsanız ne kadar fark yaratırsınız?</p>
+        <div class="line"></div>
+    </div>
+    <div class="impact-grid">
+        <div class="impact-card">
+            <div class="icon">🍽️</div>
+            <div class="amount">₺50</div>
+            <p>Bir vahşi hayvanın 1 haftalık beslenmesini karşılar.</p>
+        </div>
+        <div class="impact-card">
+            <div class="icon">💊</div>
+            <div class="amount">₺100</div>
+            <p>Yaralı bir hayvanın temel tedavi giderlerini karşılar.</p>
+        </div>
+        <div class="impact-card">
+            <div class="icon">🏠</div>
+            <div class="amount">₺250</div>
+            <p>Bir barınaksız hayvan için geçici barınak oluşturulmasını sağlar.</p>
+        </div>
+        <div class="impact-card">
+            <div class="icon">🌿</div>
+            <div class="amount">₺500</div>
+            <p>Bir ekosistem koruma projesine bir aylık katkı sağlar.</p>
+        </div>
+        <div class="impact-card">
+            <div class="icon">🦁</div>
+            <div class="amount">₺1000</div>
+            <p>Nesli tehlike altındaki bir türün koruma projesine destek olur.</p>
+        </div>
+    </div>
+</section>
+
+<!-- BAĞIŞ FORMU -->
+<section class="donate-main">
+    <div class="section-header">
+        <h2>Bağışını Seç</h2>
+        <p>Dilediğiniz fona, dilediğiniz miktarda bağış yapın.</p>
+        <div class="line"></div>
+    </div>
+    <div class="donate-container">
+
+        <!-- TABS -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('bowl', this)">
+                💚 b0wl Üzerinden Bağış
+            </button>
+            <button class="tab-btn" onclick="switchTab('direct', this)">
+                🌐 Doğrudan Kuruluşa Bağış
+            </button>
+        </div>
+
+        <!-- TAB 1: BOWL ÜZERİNDEN -->
+        <div class="tab-content active" id="tab-bowl">
+
+            <!-- FON SEÇİMİ -->
+            <div style="margin-bottom:30px;">
+                <h3 style="color:#003e34; font-size:1rem; font-weight:700; margin-bottom:15px;">
+                    Bağışınızın Gideceği Fonu Seçin
+                </h3>
+                <div class="fund-grid">
+                    <div class="fund-card selected" onclick="selectFund(this)">
+                        <div class="selected-badge">✓</div>
+                        <div class="fund-icon">🦁</div>
+                        <h4>Genel Vahşi Yaşam Fonu</h4>
+                        <p>En ihtiyaçlı projelere otomatik dağıtılır</p>
+                    </div>
+                    <div class="fund-card" onclick="selectFund(this)">
+                        <div class="selected-badge">✓</div>
+                        <div class="fund-icon">🐘</div>
+                        <h4>Afrika Fil Koruma Fonu</h4>
+                        <p>Afrika'daki fil popülasyonunun korunması</p>
+                    </div>
+                    <div class="fund-card" onclick="selectFund(this)">
+                        <div class="selected-badge">✓</div>
+                        <div class="fund-icon">🌊</div>
+                        <h4>Okyanus Yaşamı Fonu</h4>
+                        <p>Deniz ekosistemlerinin sürdürülebilirliği</p>
+                    </div>
+                    <div class="fund-card" onclick="selectFund(this)">
+                        <div class="selected-badge">✓</div>
+                        <div class="fund-icon">🌲</div>
+                        <h4>Orman Koruma Fonu</h4>
+                        <p>Tropikal yağmur ormanlarının korunması</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MİKTAR SEÇİMİ -->
+            <div class="amount-section">
+                <h3>Bağış Miktarını Seçin</h3>
+                <div class="amount-grid">
+                    <button class="amount-btn" onclick="selectAmount(this)">₺50</button>
+                    <button class="amount-btn" onclick="selectAmount(this)">₺100</button>
+                    <button class="amount-btn active" onclick="selectAmount(this)">₺250</button>
+                    <button class="amount-btn" onclick="selectAmount(this)">₺500</button>
+                    <button class="amount-btn" onclick="selectAmount(this)">₺1000</button>
+                </div>
+                <div class="custom-amount">
+                    <span>₺</span>
+                    <input type="number" placeholder="Farklı bir miktar girin" min="1">
+                </div>
+            </div>
+
+            <!-- BAĞIŞÇI BİLGİLERİ -->
+            <div class="donor-info">
+                <h3>Bağışçı Bilgileri</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Adınız</label>
+                        <input type="text" placeholder="Ad Soyad">
+                    </div>
+                    <div class="form-group">
+                        <label>E-posta</label>
+                        <input type="email" placeholder="ornek@email.com">
+                    </div>
+                </div>
+                <label class="anonymous-check">
+                    <input type="checkbox">
+                    <span>Anonim olarak bağış yapmak istiyorum</span>
+                </label>
+            </div>
+
+            <button class="donate-submit" onclick="submitDonate()">
+                💚 Bağışı Tamamla
+            </button>
+            <p class="donate-note">
+                🔒 Güvenli ödeme altyapısı ile korunmaktadır.<br>
+                Bağışınızın %100'ü seçtiğiniz fona iletilir. Komisyon alınmaz.
+            </p>
+        </div>
+
+        <!-- TAB 2: DOĞRUDAN KURULUŞA -->
+        <div class="tab-content" id="tab-direct">
+            <div class="direct-donate">
+                <h3>Doğrudan Kuruluşa Bağış Yap</h3>
+                <p>Aşağıdaki kuruluşlardan birine doğrudan bağış yapabilirsiniz. b0wl Community herhangi bir komisyon almaz.</p>
+                <div class="org-list">
+                    <div class="org-item">
+                        <div class="org-info">
+                            <div class="org-icon">🐼</div>
+                            <div class="org-details">
+                                <h4>WWF Türkiye</h4>
+                                <p>Doğa ve vahşi yaşam koruma • Küresel ağ</p>
+                            </div>
+                        </div>
+                        <a href="#" class="org-btn">Bağış Yap →</a>
+                    </div>
+                    <div class="org-item">
+                        <div class="org-info">
+                            <div class="org-icon">🦁</div>
+                            <div class="org-details">
+                                <h4>HAYTAP</h4>
+                                <p>Hayvan hakları federasyonu • Türkiye</p>
+                            </div>
+                        </div>
+                        <a href="#" class="org-btn">Bağış Yap →</a>
+                    </div>
+                    <div class="org-item">
+                        <div class="org-info">
+                            <div class="org-icon">🌊</div>
+                            <div class="org-details">
+                                <h4>Deniz Temiz Derneği</h4>
+                                <p>Deniz ekosistemi koruma • Türkiye</p>
+                            </div>
+                        </div>
+                        <a href="#" class="org-btn">Bağış Yap →</a>
+                    </div>
+                    <div class="org-item">
+                        <div class="org-info">
+                            <div class="org-icon">🐘</div>
+                            <div class="org-details">
+                                <h4>Save the Elephants</h4>
+                                <p>Afrika fil koruma • Global</p>
+                            </div>
+                        </div>
+                        <a href="#" class="org-btn">Bağış Yap →</a>
+                    </div>
+                    <div class="org-item">
+                        <div class="org-info">
+                            <div class="org-icon">🌿</div>
+                            <div class="org-details">
+                                <h4>Doğa Derneği</h4>
+                                <p>Türkiye'nin biyolojik çeşitliliği • Türkiye</p>
+                            </div>
+                        </div>
+                        <a href="#" class="org-btn">Bağış Yap →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- BURS BÖLÜMÜ -->
+<section class="burs-section">
+    <div class="section-header">
+        <h2>🎓 Burs Desteği</h2>
+        <p>Biyoloji ve çevre bilimleri öğrencilerine destek olun.</p>
+        <div class="line"></div>
+    </div>
+    <div class="burs-card">
+        <div class="icon">🎓</div>
+        <h3>Gelecek Nesli Destekle</h3>
+        <p>Biyoloji, zooloji, çevre bilimleri ve benzeri alanlarda eğitim alan öğrenciler, vahşi yaşam koruma alanının geleceğini şekillendirecek. Yapacağınız burs bağışı ile bu öğrencilerin hayallerine ortak olun.</p>
+        <div class="burs-features">
+            <div class="burs-feature">🎯 Hedefli Destek</div>
+            <div class="burs-feature">📊 Şeffaf Kullanım</div>
+            <div class="burs-feature">🌱 Uzun Vadeli Etki</div>
+        </div>
+        <a href="#" class="btn-primary">🎓 Burs Bağışı Yap</a>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <h2>Başka Nasıl Destek Olabilirsiniz? 🌍</h2>
+    <p>Bağışın yanı sıra hayvan bildirerek veya gönüllü olarak da katkıda bulunabilirsiniz.</p>
+    <div class="cta-buttons">
+        <a href="bildir.html" class="btn-primary">🚨 Hayvan Bildir</a>
+        <a href="market.html" class="btn-outline">🛒 Markete Git</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <h2>b<span style="color:#00e5b0">0</span>wl Community</h2>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Ana Sayfa</a>
+            <a href="hakkimizda.html">Hakkımızda</a>
+            <a href="ozellikler.html">Özellikler</a>
+            <a href="market.html">Market</a>
+            <a href="bagis.html">Bağış Yap</a>
+            <a href="bildir.html">Hayvan Bildir</a>
+            <a href="iletisim.html">İletişim</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 b0wl Community - Tüm Hakları Saklıdır | Doğanın Sesi Ol 🌍</p>
+    </div>
+</footer>
+
+<!-- BAŞARI MODALI -->
+<div class="modal-overlay" id="successModal">
+    <div class="modal">
+        <div class="success-icon">💚</div>
+        <h3>Bağışınız Alındı!</h3>
+        <p>Bağışınız için teşekkür ederiz! Ödemeniz güvenli şekilde işlendi ve seçtiğiniz fona iletildi. Fark yarattığınız için minnettarız. 🙏</p>
+        <button class="modal-btn" onclick="closeModal()">Harika!</button>
+    </div>
+</div>
+
+<script>
+
+function toggleMenu() {
+    document.getElementById('navMenu').classList.toggle('active');
+}
+
+function switchTab(tab, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+}
+
+function selectFund(card) {
+    document.querySelectorAll('.fund-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+}
+
+function selectAmount(btn) {
+    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
+
+function submitDonate() {
+    document.getElementById('successModal').classList.add('active');
+}
+
+function closeModal() {
+    document.getElementById('successModal').classList.remove('active');
+}
+
+</script>
+
+</body>
+</html>

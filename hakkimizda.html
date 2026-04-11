@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hakkımızda - b0wl Community</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f0faf6;
+    color: #1b2b34;
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+nav {
+    position: fixed;
+    width: 100%;
+    background: rgba(0, 62, 52, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 12px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo h2 {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: white;
+}
+
+.logo span {
+    color: #00e5b0;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 5px;
+}
+
+nav ul li a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #00e5b0;
+    background: rgba(255,255,255,0.08);
+}
+
+nav ul li a.active {
+    color: #00e5b0;
+    background: rgba(0,229,176,0.1);
+}
+
+nav ul li a.btn-nav {
+    background: #00e5b0;
+    color: #003e34;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+nav ul li a.btn-nav:hover {
+    background: #00c49a;
+    color: #003e34;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+}
+
+/* PAGE HERO */
+.page-hero {
+    min-height: 40vh;
+    background: linear-gradient(135deg, rgba(0,62,52,0.85), rgba(0,105,92,0.75)),
+    url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 120px 10% 80px;
+}
+
+.page-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.page-hero h1 span {
+    color: #00e5b0;
+}
+
+.page-hero p {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+/* SECTION */
+section {
+    padding: 80px 8%;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: #003e34;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.section-header p {
+    color: #5a7d7c;
+    font-size: 1rem;
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.line {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #00e5b0, #0091ea);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* MISSION VISION */
+.mv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 60px;
+}
+
+.mv-card {
+    background: white;
+    padding: 40px 35px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.mv-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.mv-card .icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.mv-card h3 {
+    color: #003e34;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.mv-card p {
+    color: #5a7d7c;
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+/* STORY */
+.story-section {
+    background: white;
+}
+
+.story-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.story-text h3 {
+    color: #003e34;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.story-text p {
+    color: #5a7d7c;
+    line-height: 1.9;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+}
+
+.story-text .highlight {
+    background: linear-gradient(135deg, #e8f6f0, #e0f2fe);
+    padding: 20px 25px;
+    border-radius: 12px;
+    border-left: 4px solid #00e5b0;
+    color: #003e34;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 25px;
+}
+
+.story-image {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+
+.story-image img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    display: block;
+}
+
+/* VALUES */
+.values-section {
+    background: linear-gradient(135deg, #003e34, #00695c);
+    color: white;
+}
+
+.values-section .section-header h2 {
+    color: white;
+}
+
+.values-section .section-header p {
+    color: rgba(255,255,255,0.7);
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.value-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 35px 25px;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.value-card:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-5px);
+}
+
+.value-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.value-card h3 {
+    color: #00e5b0;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+.value-card p {
+    font-size: 0.88rem;
+    opacity: 0.8;
+    line-height: 1.7;
+}
+
+/* TEAM */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.team-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.team-avatar {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, #e0f5ed, #b2dfdb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+.team-info {
+    padding: 20px;
+}
+
+.team-info h4 {
+    color: #003e34;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.team-info .role {
+    color: #00695c;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.team-info p {
+    color: #5a7d7c;
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+/* PROBLEM STATS */
+.problem-section {
+    background: #f0faf6;
+}
+
+.problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.problem-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    text-align: center;
+    border-top: 4px solid #00e5b0;
+    transition: 0.3s;
+}
+
+.problem-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.problem-card .stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #003e34;
+    margin-bottom: 8px;
+}
+
+.problem-card .stat-label {
+    color: #5a7d7c;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* CTA */
+.cta-section {
+    background: linear-gradient(135deg, #0091ea, #00695c);
+    color: white;
+    text-align: center;
+    padding: 80px 8%;
+}
+
+.cta-section h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.cta-section p {
+    font-size: 1.05rem;
+    opacity: 0.85;
+    margin-bottom: 35px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    padding: 15px 40px;
+    background: #00e5b0;
+    border: none;
+    color: #003e34;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background: #00c49a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,229,176,0.35);
+}
+
+.btn-outline {
+    padding: 15px 40px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.7);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-outline:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-3px);
+}
+
+/* FOOTER */
+footer {
+    background: #002420;
+    color: white;
+    padding: 40px 8%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.footer-logo h2 {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #00e5b0;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 20px;
+    text-align: center;
+    font-size: 0.78rem;
+    opacity: 0.4;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(0,62,52,0.98);
+        flex-direction: column;
+        padding: 20px;
+        gap: 5px;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .page-hero h1 {
+        font-size: 2rem;
+    }
+
+    .story-content {
+        grid-template-columns: 1fr;
+    }
+
+    .story-image {
+        order: -1;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <a href="index.html" class="logo">
+        <h2>b<span>0</span>wl Community</h2>
+    </a>
+    <ul id="navMenu">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="hakkimizda.html" class="active">Hakkımızda</a></li>
+        <li><a href="ozellikler.html">Özellikler</a></li>
+        <li><a href="market.html">Market</a></li>
+        <li><a href="bagis.html">Bağış Yap</a></li>
+        <li><a href="bildir.html" class="btn-nav">🚨 Hayvan Bildir</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+    <div>
+        <h1>Biz <span>Kimiz?</span></h1>
+        <p>Vahşi yaşamı korumak için teknolojiyi ve insanı bir araya getiren bir topluluk.</p>
+    </div>
+</div>
+
+<!-- MİSYON VİZYON -->
+<section>
+    <div class="section-header">
+        <h2>Misyon ve Vizyon</h2>
+        <p>Neden varız ve nereye gidiyoruz?</p>
+        <div class="line"></div>
+    </div>
+    <div class="mv-grid">
+        <div class="mv-card">
+            <div class="icon">🎯</div>
+            <h3>Misyonumuz</h3>
+            <p>Dünya genelindeki hayvanlar başta olmak üzere türlerin korunmasına ve ekosistemlerin sürdürülebilmesine katkıda bulunmak. Vahşi doğa koruma kuruluşlarını bir araya getirerek daha etkili bir iletişim ağı kurmak.</p>
+        </div>
+        <div class="mv-card">
+            <div class="icon">🔭</div>
+            <h3>Vizyonumuz</h3>
+            <p>21. yüzyılın en büyük sorunlarından biri olan türlerin yok oluşunu önlemek için dünyanın en kapsamlı vahşi yaşam koruma ekosistemini oluşturmak ve her bireyin bu mücadelede aktif rol almasını sağlamak.</p>
+        </div>
+        <div class="mv-card">
+            <div class="icon">💡</div>
+            <h3>Yaklaşımımız</h3>
+            <p>Teknolojiyi sosyal etkiyle buluşturuyoruz. Yapay zeka, şeffaf bağış sistemleri ve güçlü bir topluluk ağı ile vahşi yaşam korumayı herkes için erişilebilir hale getiriyoruz.</p>
+        </div>
+    </div>
+</section>
+
+<!-- HİKAYEMİZ -->
+<section class="story-section">
+    <div class="story-content">
+        <div class="story-text">
+            <h3>Hikayemiz: <br>Neden b0wl Community?</h3>
+            <p>Her gün dünyadan silinen türlerin haberlerini okurken, mevcut çözümlerin ne kadar parçalı ve yetersiz olduğunu fark ettik. Bağış yapmak isteyenler doğru kuruluşu bulamıyor, gönüllü olmak isteyenler nereye başvuracağını bilmiyor, sokakta yaralı bir hayvan gören ise ne yapacağını bilmiyordu.</p>
+            <p>b0wl Community bu boşluğu doldurmak için doğdu. "Bowl" yani kase; tüm canlıların etrafında buluştuğu, paylaştığı, bir arada yaşadığı o ortak alanı simgeliyor. Biz de bu platformu tüm paydaşların bir araya geldiği ortak bir alan olarak tasarladık.</p>
+            <p>Yapay zeka destekli acil bildirim sistemimizden şeffaf bağış altyapımıza, sosyal etki marketimizden kuruluş koordinasyon ağımıza kadar her şey tek bir amaç için: Vahşi yaşamı birlikte korumak.</p>
+            <div class="highlight">
+                "Her canlının bir sesi var. Biz o sesi duyuruyoruz." 🌍
+            </div>
+        </div>
+        <div class="story-image">
+            <img src="https://images.unsplash.com/photo-1474511320723-9a56873571b7" alt="Vahşi Doğa">
+        </div>
+    </div>
+</section>
+
+<!-- PROBLEM İSTATİSTİKLERİ -->
+<section class="problem-section">
+    <div class="section-header">
+        <h2>Neden Acil Hareket Etmeliyiz?</h2>
+        <p>Vahşi yaşamın karşı karşıya olduğu tehditler her geçen gün büyüyor.</p>
+        <div class="line"></div>
+    </div>
+    <div class="problem-grid">
+        <div class="problem-card">
+            <div class="stat-number">40,000+</div>
+            <div class="stat-label">tür yok olma tehlikesi altında (IUCN 2024)</div>
+        </div>
+        <div class="problem-card">
+            <div class="stat-number">150+</div>
+            <div class="stat-label">tür her gün dünyadan siliniyor</div>
+        </div>
+        <div class="problem-card">
+            <div class="stat-number">%68</div>
+            <div class="stat-label">vahşi yaşam popülasyonu 1970'den bu yana azaldı (WWF)</div>
+        </div>
+        <div class="problem-card">
+            <div class="stat-number">$15.2B</div>
+            <div class="stat-label">global çevresel bağış pazarı büyüklüğü</div>
+        </div>
+    </div>
+</section>
+
+<!-- DEĞERLERİMİZ -->
+<section class="values-section">
+    <div class="section-header">
+        <h2>Değerlerimiz</h2>
+        <p>Her kararımızın arkasında bu değerler var.</p>
+        <div class="line"></div>
+    </div>
+    <div class="values-grid">
+        <div class="value-card">
+            <div class="icon">🔍</div>
+            <h3>Şeffaflık</h3>
+            <p>Her bağışın nereye gittiğini, her kararın nasıl alındığını açıkça paylaşırız.</p>
+        </div>
+        <div class="value-card">
+            <div class="icon">🤝</div>
+            <h3>İş Birliği</h3>
+            <p>Tek başına değil, birlikte daha güçlüyüz. Kuruluşları, bireyleri ve teknolojiyi bir araya getiririz.</p>
+        </div>
+        <div class="value-card">
+            <div class="icon">⚡</div>
+            <h3>Hız ve Etki</h3>
+            <p>Vahşi yaşam acil müdahale gerektiriyor. Platformumuz saniyeler içinde harekete geçer.</p>
+        </div>
+        <div class="value-card">
+            <div class="icon">🌱</div>
+            <h3>Sürdürülebilirlik</h3>
+            <p>Hem çevresel hem de iş modeli olarak uzun vadeli düşünür, kalıcı çözümler üretiriz.</p>
+        </div>
+    </div>
+</section>
+
+<!-- EKİP -->
+<section>
+    <div class="section-header">
+        <h2>Ekibimiz</h2>
+        <p>Doğayı seven, teknolojiyi kullanan bir ekip.</p>
+        <div class="line"></div>
+    </div>
+    <div class="team-grid">
+        <div class="team-card">
+            <div class="team-avatar">👤</div>
+            <div class="team-info">
+                <h4>Ahmet Şamil Güneş</h4>
+                <div class="role">Kurucu & CEO</div>
+                <p>Girişimcilik ve vahşi yaşam koruma alanında tutkulu.</p>
+            </div>
+        </div>
+        <div class="team-card">
+            <div class="team-avatar">👤</div>
+            <div class="team-info">
+                <h4>Muhammed Ali GÜNEY</h4>
+                <div class="role">Kurucu & CTO</div>
+                <p>Yapay zeka ve yazılım geliştirme alanında uzman.</p>
+            </div>
+        </div>
+            </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <h2>Doğanın Sesi Ol 🌍</h2>
+    <p>Sen de bu harekete katıl. Hayvan bildir, bağış yap veya gönüllü ol.</p>
+    <div class="cta-buttons">
+        <a href="bildir.html" class="btn-primary">🚨 Hayvan Bildir</a>
+        <a href="bagis.html" class="btn-outline">💚 Bağış Yap</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <h2>b<span style="color:#00e5b0">0</span>wl Community</h2>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Ana Sayfa</a>
+            <a href="hakkimizda.html">Hakkımızda</a>
+            <a href="ozellikler.html">Özellikler</a>
+            <a href="market.html">Market</a>
+            <a href="bagis.html">Bağış Yap</a>
+            <a href="bildir.html">Hayvan Bildir</a>
+            <a href="iletisim.html">İletişim</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 b0wl Community - Tüm Hakları Saklıdır | Doğanın Sesi Ol 🌍</p>
+    </div>
+</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById('navMenu').classList.toggle('active');
+}
+</script>
+
+</body>
+</html>

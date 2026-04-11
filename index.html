@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>b0wl Community - Doğanın Sesi Ol</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f0faf6;
+    color: #1b2b34;
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+nav {
+    position: fixed;
+    width: 100%;
+    background: rgba(0, 62, 52, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 12px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo h2 {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: white;
+}
+
+.logo span {
+    color: #00e5b0;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 5px;
+}
+
+nav ul li a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #00e5b0;
+    background: rgba(255,255,255,0.08);
+}
+
+nav ul li a.active {
+    color: #00e5b0;
+    background: rgba(0,229,176,0.1);
+}
+
+nav ul li a.btn-nav {
+    background: #00e5b0;
+    color: #003e34;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+nav ul li a.btn-nav:hover {
+    background: #00c49a;
+    color: #003e34;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(0,62,52,0.75), rgba(0,105,92,0.55), rgba(0,77,64,0.75)),
+    url('https://images.unsplash.com/photo-1564760055775-d63b17a55c44') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 10%;
+    position: relative;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-content h1 span {
+    color: #00e5b0;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    font-weight: 300;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    padding: 15px 40px;
+    background: #00e5b0;
+    border: none;
+    color: #003e34;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background: #00c49a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,229,176,0.35);
+}
+
+.btn-secondary {
+    padding: 15px 40px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.7);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-3px);
+    border-color: white;
+}
+
+/* SCROLL INDICATOR */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator p {
+    font-size: 0.75rem;
+    margin-bottom: 5px;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* FEATURES PREVIEW */
+.features-preview {
+    padding: 80px 8%;
+    background: white;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: #003e34;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.section-header p {
+    color: #5a7d7c;
+    font-size: 1rem;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.line {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #00e5b0, #0091ea);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.preview-card {
+    padding: 30px;
+    border-radius: 15px;
+    background: #f0faf6;
+    border-left: 4px solid #00e5b0;
+    transition: 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.preview-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    background: white;
+}
+
+.preview-card .icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.preview-card h3 {
+    color: #003e34;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.preview-card p {
+    color: #5a7d7c;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+.center-btn {
+    text-align: center;
+}
+
+/* STATS */
+.stats-section {
+    padding: 80px 8%;
+    background: linear-gradient(135deg, #003e34, #0091ea);
+    color: white;
+    text-align: center;
+}
+
+.stats-section .section-header h2 {
+    color: white;
+}
+
+.stats-section .section-header p {
+    color: rgba(255,255,255,0.7);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+}
+
+.stat h3 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #00e5b0;
+}
+
+.stat p {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-top: 5px;
+}
+
+/* FOOTER */
+footer {
+    background: #002420;
+    color: white;
+    padding: 40px 8%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.footer-logo h2 {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #00e5b0;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 20px;
+    text-align: center;
+    font-size: 0.78rem;
+    opacity: 0.4;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(0,62,52,0.98);
+        flex-direction: column;
+        padding: 20px;
+        gap: 5px;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <a href="index.html" class="logo">
+        <h2>b<span>0</span>wl Community</h2>
+    </a>
+    <ul id="navMenu">
+        <li><a href="index.html" class="active">Ana Sayfa</a></li>
+        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        <li><a href="ozellikler.html">Özellikler</a></li>
+        <li><a href="market.html">Market</a></li>
+        <li><a href="bagis.html">Bağış Yap</a></li>
+        <li><a href="bildir.html" class="btn-nav">🚨 Hayvan Bildir</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Doğanın <span>Sesi</span> Ol</h1>
+        <p>Yapay zeka destekli platformumuz ile vahşi yaşamı birlikte koruyalım. Her canlının bir sesi var, biz o sesi duyuruyoruz.</p>
+        <div class="hero-buttons">
+            <a href="bildir.html" class="btn-primary">🚨 Hayvan Bildir</a>
+            <a href="bagis.html" class="btn-secondary">💚 Bağış Yap</a>
+        </div>
+    </div>
+    <div class="scroll-indicator">
+        <p>Aşağı Kaydır</p>
+        <div>↓</div>
+    </div>
+</section>
+
+<!-- FEATURES PREVIEW -->
+<section class="features-preview">
+    <div class="section-header">
+        <h2>Ne Sunuyoruz?</h2>
+        <p>Vahşi yaşam koruma için ihtiyacınız olan her şey tek platformda.</p>
+        <div class="line"></div>
+    </div>
+    <div class="preview-grid">
+        <a href="bildir.html" class="preview-card">
+            <div class="icon">🤖</div>
+            <h3>AI Acil Bildirim</h3>
+            <p>Yaralı hayvanı fotoğrafla, AI tanısın, en yakın kuruluşa otomatik bildirim gitsin.</p>
+        </a>
+        <a href="bagis.html" class="preview-card">
+            <div class="icon">💰</div>
+            <h3>Şeffaf Bağış</h3>
+            <p>%0 komisyon ile bağışlarınız doğrudan kuruluşlara iletilir. Her kuruşu takip edin.</p>
+        </a>
+        <a href="market.html" class="preview-card">
+            <div class="icon">🛒</div>
+            <h3>Sosyal Etki Marketi</h3>
+            <p>Bağış amaçlı ürün satın alın veya satın. Her satışın bir amacı var.</p>
+        </a>
+        <a href="ozellikler.html" class="preview-card">
+            <div class="icon">🌐</div>
+            <h3>Kuruluş Ağı</h3>
+            <p>Dünya genelindeki koruma kuruluşlarını tek platformda birleştiriyoruz.</p>
+        </a>
+        <a href="ozellikler.html" class="preview-card">
+            <div class="icon">📚</div>
+            <h3>Eğitim Hub</h3>
+            <p>Makaleler, etkinlikler ve burs programları ile bilinçlenin.</p>
+        </a>
+        <a href="ozellikler.html" class="preview-card">
+            <div class="icon">🙋</div>
+            <h3>Gönüllülük</h3>
+            <p>Koruma kamplarına ve projelere gönüllü olun. Başvurun ve takip edin.</p>
+        </a>
+    </div>
+    <div class="center-btn">
+        <a href="ozellikler.html" class="btn-primary">Tüm Özellikleri Gör →</a>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+    <div class="section-header">
+        <h2>12 Aylık Hedeflerimiz</h2>
+        <p>İlk yılda ulaşmayı hedeflediğimiz rakamlar</p>
+        <div class="line"></div>
+    </div>
+    <div class="stats-grid">
+        <div class="stat">
+            <h3>15,000+</h3>
+            <p>Kayıtlı Kullanıcı</p>
+        </div>
+        <div class="stat">
+            <h3>25+</h3>
+            <p>Kuruluş Ortağı</p>
+        </div>
+        <div class="stat">
+            <h3>300+</h3>
+            <p>Tanınan Tür</p>
+        </div>
+        <div class="stat">
+            <h3>3</h3>
+            <p>Pilot Şehir</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <h2>b<span style="color:#00e5b0">0</span>wl Community</h2>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Ana Sayfa</a>
+            <a href="hakkimizda.html">Hakkımızda</a>
+            <a href="ozellikler.html">Özellikler</a>
+            <a href="market.html">Market</a>
+            <a href="bagis.html">Bağış Yap</a>
+            <a href="bildir.html">Hayvan Bildir</a>
+            <a href="iletisim.html">İletişim</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 b0wl Community - Tüm Hakları Saklıdır | Doğanın Sesi Ol 🌍</p>
+    </div>
+</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById('navMenu').classList.toggle('active');
+}
+</script>
+
+</body>
+</html>
