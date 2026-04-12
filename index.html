@@ -5,15 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>b0wl Community - Doğanın Sesi Ol</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<!-- GSAP & ScrollTrigger -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-<!-- AOS -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-
 <style>
 
 * {
@@ -34,7 +30,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ==================== PRELOADER ==================== */
+/* PRELOADER */
 .preloader {
     position: fixed;
     inset: 0;
@@ -93,7 +89,7 @@ body {
     50% { transform: translateY(-15px); }
 }
 
-/* ==================== CUSTOM CURSOR ==================== */
+/* CUSTOM CURSOR */
 .cursor {
     width: 20px;
     height: 20px;
@@ -116,7 +112,7 @@ body {
     z-index: 99998;
 }
 
-/* ==================== NAVBAR ==================== */
+/* NAVBAR */
 nav {
     position: fixed;
     width: 100%;
@@ -167,7 +163,6 @@ nav ul li a {
     padding: 8px 14px;
     border-radius: 8px;
     transition: 0.3s;
-    position: relative;
 }
 
 nav ul li a:hover {
@@ -195,7 +190,7 @@ nav ul li a.btn-nav:hover {
     color: white;
 }
 
-/* ==================== HERO ==================== */
+/* HERO */
 .hero {
     height: 100vh;
     position: relative;
@@ -255,7 +250,6 @@ nav ul li a.btn-nav:hover {
     font-weight: 300;
     max-width: 550px;
     margin: 0 auto 40px;
-    opacity: 0.8;
     line-height: 1.8;
     opacity: 0;
     transform: translateY(30px);
@@ -379,7 +373,7 @@ nav ul li a.btn-nav:hover {
     opacity: 0.5;
 }
 
-/* ==================== OCEAN SECTION ==================== */
+/* OCEAN SECTION */
 .ocean-section {
     position: relative;
     min-height: 100vh;
@@ -407,22 +401,22 @@ nav ul li a.btn-nav:hover {
     animation: rise linear infinite;
 }
 
-.bubble:nth-child(1) { left: 5%; width: 20px; height: 20px; animation-duration: 8s; animation-delay: 0s; }
-.bubble:nth-child(2) { left: 15%; width: 35px; height: 35px; animation-duration: 12s; animation-delay: 1s; }
-.bubble:nth-child(3) { left: 30%; width: 15px; height: 15px; animation-duration: 7s; animation-delay: 2s; }
-.bubble:nth-child(4) { left: 45%; width: 25px; height: 25px; animation-duration: 10s; animation-delay: 0.5s; }
-.bubble:nth-child(5) { left: 60%; width: 40px; height: 40px; animation-duration: 14s; animation-delay: 3s; }
-.bubble:nth-child(6) { left: 75%; width: 18px; height: 18px; animation-duration: 9s; animation-delay: 1.5s; }
-.bubble:nth-child(7) { left: 85%; width: 30px; height: 30px; animation-duration: 11s; animation-delay: 2.5s; }
-.bubble:nth-child(8) { left: 50%; width: 12px; height: 12px; animation-duration: 6s; animation-delay: 4s; }
-.bubble:nth-child(9) { left: 25%; width: 22px; height: 22px; animation-duration: 13s; animation-delay: 0.8s; }
+.bubble:nth-child(1)  { left: 5%;  width: 20px; height: 20px; animation-duration: 8s;  animation-delay: 0s;   }
+.bubble:nth-child(2)  { left: 15%; width: 35px; height: 35px; animation-duration: 12s; animation-delay: 1s;   }
+.bubble:nth-child(3)  { left: 30%; width: 15px; height: 15px; animation-duration: 7s;  animation-delay: 2s;   }
+.bubble:nth-child(4)  { left: 45%; width: 25px; height: 25px; animation-duration: 10s; animation-delay: 0.5s; }
+.bubble:nth-child(5)  { left: 60%; width: 40px; height: 40px; animation-duration: 14s; animation-delay: 3s;   }
+.bubble:nth-child(6)  { left: 75%; width: 18px; height: 18px; animation-duration: 9s;  animation-delay: 1.5s; }
+.bubble:nth-child(7)  { left: 85%; width: 30px; height: 30px; animation-duration: 11s; animation-delay: 2.5s; }
+.bubble:nth-child(8)  { left: 50%; width: 12px; height: 12px; animation-duration: 6s;  animation-delay: 4s;   }
+.bubble:nth-child(9)  { left: 25%; width: 22px; height: 22px; animation-duration: 13s; animation-delay: 0.8s; }
 .bubble:nth-child(10) { left: 90%; width: 28px; height: 28px; animation-duration: 10s; animation-delay: 3.5s; }
 
 @keyframes rise {
-    0% { bottom: -50px; opacity: 0; transform: translateX(0) scale(0.5); }
-    10% { opacity: 0.6; }
-    90% { opacity: 0.2; }
-    100% { bottom: 110%; opacity: 0; transform: translateX(80px) scale(1); }
+    0%   { bottom: -50px; opacity: 0;   transform: translateX(0)   scale(0.5); }
+    10%  {                opacity: 0.6;                                         }
+    90%  {                opacity: 0.2;                                         }
+    100% { bottom: 110%;  opacity: 0;   transform: translateX(80px) scale(1);  }
 }
 
 .whale-container {
@@ -433,16 +427,18 @@ nav ul li a.btn-nav:hover {
     pointer-events: none;
 }
 
+/* ===================== YENİ BALINA CSS ===================== */
 .whale {
     position: absolute;
-    width: 350px;
-    height: 350px;
-    left: -400px;
+    width: 400px;
+    height: 240px;
+    left: -450px;
     top: 50%;
     transform: translateY(-50%);
-    filter: drop-shadow(0 0 60px rgba(0,229,176,0.25));
+    filter: drop-shadow(0 0 30px rgba(0,229,176,0.4));
     transition: none;
 }
+/* ========================================================== */
 
 .ocean-content {
     position: relative;
@@ -479,10 +475,6 @@ nav ul li a.btn-nav:hover {
     flex-wrap: wrap;
 }
 
-.ocean-stat {
-    text-align: center;
-}
-
 .ocean-stat h3 {
     font-size: 2.5rem;
     font-weight: 900;
@@ -498,7 +490,7 @@ nav ul li a.btn-nav:hover {
     margin: 0;
 }
 
-/* ==================== FEATURES ==================== */
+/* FEATURES */
 .features-section {
     background: linear-gradient(180deg, #0a3d62 0%, #0d2137 50%, #020c1b 100%);
     padding: 100px 8%;
@@ -619,7 +611,7 @@ nav ul li a.btn-nav:hover {
     transform: translateX(0);
 }
 
-/* ==================== STATS ==================== */
+/* STATS */
 .stats-section {
     padding: 100px 8%;
     background: #020c1b;
@@ -653,7 +645,7 @@ nav ul li a.btn-nav:hover {
     font-size: 0.9rem;
 }
 
-/* ==================== CTA ==================== */
+/* CTA */
 .cta-section {
     padding: 120px 8%;
     background: linear-gradient(180deg, #020c1b, #0a1628);
@@ -707,7 +699,7 @@ nav ul li a.btn-nav:hover {
     flex-wrap: wrap;
 }
 
-/* ==================== FOOTER ==================== */
+/* FOOTER */
 footer {
     background: #010a15;
     padding: 50px 8%;
@@ -753,21 +745,7 @@ footer {
     color: rgba(255,255,255,0.25);
 }
 
-/* ==================== WAVE ==================== */
-.wave-divider {
-    position: relative;
-    height: 80px;
-    overflow: hidden;
-}
-
-.wave-divider svg {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 80px;
-}
-
-/* ==================== RESPONSIVE ==================== */
+/* RESPONSIVE */
 @media(max-width: 768px) {
     nav ul {
         display: none;
@@ -799,7 +777,8 @@ footer {
     }
 
     .whale {
-        font-size: 4rem;
+        width: 200px;
+        height: 120px;
     }
 
     .cursor, .cursor-dot {
@@ -872,17 +851,62 @@ footer {
         <div class="bubble"></div>
         <div class="bubble"></div>
     </div>
+
     <div class="whale-container">
-    <lottie-player
-    id="whale"
-    class="whale"
-    src="https://assets10.lottiefiles.com/packages/lf20_vykpwt0a.json"
-    background="transparent"
-    speed="1"
-    loop
-    autoplay>
-    </lottie-player>
+
+        <!-- ===================== YENİ BALINA SVG ===================== -->
+        <div class="whale" id="whale">
+            <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <radialGradient id="whaleGrad" cx="40%" cy="40%">
+                        <stop offset="0%" stop-color="#00e5b0" stop-opacity="0.9"/>
+                        <stop offset="100%" stop-color="#0057a8" stop-opacity="0.7"/>
+                    </radialGradient>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <!-- GÖVDE -->
+                <ellipse cx="90" cy="60" rx="75" ry="32"
+                    fill="url(#whaleGrad)" filter="url(#glow)" opacity="0.95"/>
+                <!-- KAFA -->
+                <ellipse cx="30" cy="58" rx="28" ry="22"
+                    fill="url(#whaleGrad)" filter="url(#glow)"/>
+                <!-- KUYRUK -->
+                <path d="M155 60 Q175 40 190 28 Q185 55 190 72 Q175 62 155 60Z"
+                    fill="url(#whaleGrad)" opacity="0.85"/>
+                <!-- ALT YÜZGECİ -->
+                <path d="M80 88 Q90 110 110 105 Q95 90 80 88Z"
+                    fill="url(#whaleGrad)" opacity="0.7"/>
+                <!-- GÖZ -->
+                <circle cx="22" cy="52" r="4" fill="white" opacity="0.9"/>
+                <circle cx="23" cy="52" r="2" fill="#020c1b"/>
+                <!-- VÜCUT ANIMASYONU (yüzme hareketi) -->
+                <animateTransform attributeName="transform" type="translate"
+                    values="0,0; 0,-4; 0,0; 0,4; 0,0"
+                    dur="4s" repeatCount="indefinite"/>
+                <!-- SU PÜSKÜRME -->
+                <path d="M18 38 Q20 20 22 10 M22 38 Q26 18 28 5 M26 38 Q29 22 34 12"
+                    stroke="rgba(0,229,176,0.6)" stroke-width="2" fill="none"
+                    stroke-linecap="round">
+                    <animate attributeName="opacity"
+                        values="0;0;1;1;0" dur="4s" repeatCount="indefinite"/>
+                    <animate attributeName="d"
+                        values="M18 38 Q20 20 22 10 M22 38 Q26 18 28 5 M26 38 Q29 22 34 12;
+                                M18 35 Q18 15 18 5 M22 35 Q24 15 26 2 M26 35 Q28 18 30 8;
+                                M18 38 Q20 20 22 10 M22 38 Q26 18 28 5 M26 38 Q29 22 34 12"
+                        dur="4s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+        <!-- ============================================================ -->
+
     </div>
+
     <div class="ocean-content" data-aos="fade-up" data-aos-duration="1000">
         <h2>Dünya Vahşi Yaşamı <span>Tehlike Altında</span></h2>
         <p>Her gün yüzlerce tür yok oluyor, ekosistemler çöküyor ve doğanın dengesi bozuluyor. Ama birlikte harekete geçersek fark yaratabiliriz.</p>
@@ -1011,7 +1035,6 @@ footer {
     </div>
 </footer>
 
-<!-- JAVASCRIPT -->
 <script>
 
 // PRELOADER
@@ -1021,16 +1044,12 @@ window.addEventListener('load', () => {
     }, 2000);
 });
 
-// AOS INIT
-AOS.init({
-    once: true,
-    easing: 'ease-out-cubic'
-});
+// AOS
+AOS.init({ once: true, easing: 'ease-out-cubic' });
 
 // NAVBAR SCROLL
 window.addEventListener('scroll', () => {
-    const nav = document.getElementById('navbar');
-    nav.classList.toggle('scrolled', window.scrollY > 50);
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
 });
 
 // HAMBURGER
@@ -1049,21 +1068,20 @@ document.addEventListener('mousemove', e => {
 });
 
 // HERO ANIMATIONS
-gsap.to('#heroTitle', { opacity: 1, y: 0, duration: 1.2, delay: 2.2, ease: 'power3.out' });
-gsap.to('#heroDesc', { opacity: 1, y: 0, duration: 1.2, delay: 2.5, ease: 'power3.out' });
-gsap.to('#heroButtons', { opacity: 1, y: 0, duration: 1.2, delay: 2.8, ease: 'power3.out' });
-gsap.to('#scrollIndicator', { opacity: 1, duration: 1, delay: 3.5, ease: 'power2.out' });
+gsap.to('#heroTitle',    { opacity: 1, y: 0, duration: 1.2, delay: 2.2, ease: 'power3.out' });
+gsap.to('#heroDesc',     { opacity: 1, y: 0, duration: 1.2, delay: 2.5, ease: 'power3.out' });
+gsap.to('#heroButtons',  { opacity: 1, y: 0, duration: 1.2, delay: 2.8, ease: 'power3.out' });
+gsap.to('#scrollIndicator', { opacity: 1, duration: 1, delay: 3.5 });
 
 // WHALE SCROLL ANIMATION
 gsap.registerPlugin(ScrollTrigger);
 gsap.to('#whale', {
-    x: window.innerWidth + 200,
-    rotation: 5,
+    x: window.innerWidth + 500,
     scrollTrigger: {
         trigger: '#oceanSection',
         start: 'top bottom',
         end: 'bottom top',
-        scrub: 1
+        scrub: 1.5
     }
 });
 
@@ -1074,8 +1092,7 @@ const counterObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             const counter = entry.target;
             const target = parseInt(counter.getAttribute('data-target'));
-            const duration = 2000;
-            const increment = target / (duration / 16);
+            const increment = target / (2000 / 16);
             let current = 0;
             const timer = setInterval(() => {
                 current += increment;
@@ -1091,9 +1108,8 @@ const counterObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.5 });
 
-counters.forEach(counter => counterObserver.observe(counter));
+counters.forEach(c => counterObserver.observe(c));
 
 </script>
-
 </body>
 </html>
