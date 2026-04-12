@@ -4,7 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>b0wl Community - Doğanın Sesi Ol</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- GSAP & ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 <style>
 
 * {
@@ -12,41 +21,132 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
 }
 
-body {
-    background: #f0faf6;
-    color: #1b2b34;
+html {
+    scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
-/* NAVBAR */
+body {
+    background: #020c1b;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ==================== PRELOADER ==================== */
+.preloader {
+    position: fixed;
+    inset: 0;
+    background: #020c1b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    flex-direction: column;
+    gap: 20px;
+    transition: opacity 0.8s, visibility 0.8s;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-icon {
+    font-size: 4rem;
+    animation: float 2s ease-in-out infinite;
+}
+
+.preloader-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #00e5b0;
+    letter-spacing: 3px;
+}
+
+.preloader-bar {
+    width: 200px;
+    height: 3px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.preloader-bar::after {
+    content: '';
+    display: block;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, #00e5b0, #0091ea);
+    border-radius: 3px;
+    animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(350%); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* ==================== CUSTOM CURSOR ==================== */
+.cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #00e5b0;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 99998;
+    transition: transform 0.15s, opacity 0.15s;
+    mix-blend-mode: difference;
+}
+
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: #00e5b0;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 99998;
+}
+
+/* ==================== NAVBAR ==================== */
 nav {
     position: fixed;
     width: 100%;
-    background: rgba(0, 62, 52, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 12px 8%;
+    padding: 15px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
     z-index: 1000;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    transition: 0.5s;
+}
+
+nav.scrolled {
+    background: rgba(2, 12, 27, 0.92);
+    backdrop-filter: blur(20px);
+    padding: 10px 8%;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.3);
 }
 
 .logo {
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 10px;
-    text-decoration: none;
 }
 
 .logo h2 {
-    font-weight: 700;
+    font-weight: 800;
     font-size: 1.4rem;
     color: white;
+    letter-spacing: 1px;
 }
 
 .logo span {
@@ -60,36 +160,32 @@ nav ul {
 }
 
 nav ul li a {
-    color: rgba(255,255,255,0.85);
+    color: rgba(255,255,255,0.7);
     text-decoration: none;
     font-weight: 500;
     font-size: 0.85rem;
-    padding: 8px 12px;
+    padding: 8px 14px;
     border-radius: 8px;
     transition: 0.3s;
+    position: relative;
 }
 
 nav ul li a:hover {
     color: #00e5b0;
-    background: rgba(255,255,255,0.08);
-}
-
-nav ul li a.active {
-    color: #00e5b0;
-    background: rgba(0,229,176,0.1);
 }
 
 nav ul li a.btn-nav {
     background: #00e5b0;
-    color: #003e34;
+    color: #020c1b;
     font-weight: 700;
-    padding: 8px 16px;
-    border-radius: 20px;
+    border-radius: 25px;
+    padding: 8px 18px;
 }
 
 nav ul li a.btn-nav:hover {
     background: #00c49a;
-    color: #003e34;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0,229,176,0.3);
 }
 
 .hamburger {
@@ -99,40 +195,70 @@ nav ul li a.btn-nav:hover {
     color: white;
 }
 
-/* HERO */
+/* ==================== HERO ==================== */
 .hero {
     height: 100vh;
-    background: linear-gradient(135deg, rgba(0,62,52,0.75), rgba(0,105,92,0.55), rgba(0,77,64,0.75)),
-    url('https://images.unsplash.com/photo-1564760055775-d63b17a55c44') center/cover no-repeat;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white;
-    padding: 0 10%;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+        rgba(2,12,27,0.4) 0%,
+        rgba(2,12,27,0.2) 40%,
+        rgba(2,12,27,0.6) 80%,
+        rgba(2,12,27,1) 100%
+    );
+    z-index: 1;
+}
+
+.hero-content {
     position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
 }
 
 .hero-content h1 {
-    font-size: 4rem;
-    font-weight: 800;
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1.1;
     margin-bottom: 20px;
-    line-height: 1.2;
+    opacity: 0;
+    transform: translateY(40px);
 }
 
 .hero-content h1 span {
-    color: #00e5b0;
+    background: linear-gradient(135deg, #00e5b0, #0091ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
+    font-size: 1.15rem;
     font-weight: 300;
-    max-width: 650px;
-    margin-left: auto;
-    margin-right: auto;
-    opacity: 0.9;
+    max-width: 550px;
+    margin: 0 auto 40px;
+    opacity: 0.8;
     line-height: 1.8;
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 .hero-buttons {
@@ -140,32 +266,56 @@ nav ul li a.btn-nav:hover {
     gap: 15px;
     justify-content: center;
     flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(30px);
 }
 
-.btn-primary {
-    padding: 15px 40px;
-    background: #00e5b0;
+.btn-glow {
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #00e5b0, #0091ea);
     border: none;
-    color: #003e34;
-    font-weight: 700;
+    color: #020c1b;
+    font-weight: 800;
     font-size: 1rem;
     border-radius: 50px;
     cursor: pointer;
     transition: 0.3s;
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
 }
 
-.btn-primary:hover {
-    background: #00c49a;
+.btn-glow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.6s;
+}
+
+.btn-glow:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-glow:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,229,176,0.35);
+    box-shadow: 0 10px 40px rgba(0,229,176,0.4);
 }
 
-.btn-secondary {
-    padding: 15px 40px;
-    background: transparent;
-    border: 2px solid rgba(255,255,255,0.7);
+.btn-glass {
+    padding: 16px 40px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
     color: white;
     font-weight: 600;
     font-size: 1rem;
@@ -173,154 +323,394 @@ nav ul li a.btn-nav:hover {
     cursor: pointer;
     transition: 0.3s;
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.btn-secondary:hover {
+.btn-glass:hover {
     background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.4);
     transform: translateY(-3px);
-    border-color: white;
 }
 
 /* SCROLL INDICATOR */
 .scroll-indicator {
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
-    color: rgba(255,255,255,0.6);
+    z-index: 2;
     text-align: center;
-    animation: bounce 2s infinite;
+    opacity: 0;
+}
+
+.scroll-mouse {
+    width: 26px;
+    height: 42px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 15px;
+    margin: 0 auto 10px;
+    position: relative;
+}
+
+.scroll-mouse::after {
+    content: '';
+    width: 4px;
+    height: 8px;
+    background: #00e5b0;
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollAnim 2s ease-in-out infinite;
+}
+
+@keyframes scrollAnim {
+    0%, 100% { top: 8px; opacity: 1; }
+    50% { top: 22px; opacity: 0.2; }
 }
 
 .scroll-indicator p {
-    font-size: 0.75rem;
-    margin-bottom: 5px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    opacity: 0.5;
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-10px); }
+/* ==================== OCEAN SECTION ==================== */
+.ocean-section {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #020c1b 0%, #0a1628 30%, #0d2137 60%, #0a3d62 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 8%;
 }
 
-/* FEATURES PREVIEW */
-.features-preview {
-    padding: 80px 8%;
-    background: white;
+.bubbles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(0,229,176,0.15), rgba(0,145,234,0.05));
+    border: 1px solid rgba(0,229,176,0.08);
+    animation: rise linear infinite;
+}
+
+.bubble:nth-child(1) { left: 5%; width: 20px; height: 20px; animation-duration: 8s; animation-delay: 0s; }
+.bubble:nth-child(2) { left: 15%; width: 35px; height: 35px; animation-duration: 12s; animation-delay: 1s; }
+.bubble:nth-child(3) { left: 30%; width: 15px; height: 15px; animation-duration: 7s; animation-delay: 2s; }
+.bubble:nth-child(4) { left: 45%; width: 25px; height: 25px; animation-duration: 10s; animation-delay: 0.5s; }
+.bubble:nth-child(5) { left: 60%; width: 40px; height: 40px; animation-duration: 14s; animation-delay: 3s; }
+.bubble:nth-child(6) { left: 75%; width: 18px; height: 18px; animation-duration: 9s; animation-delay: 1.5s; }
+.bubble:nth-child(7) { left: 85%; width: 30px; height: 30px; animation-duration: 11s; animation-delay: 2.5s; }
+.bubble:nth-child(8) { left: 50%; width: 12px; height: 12px; animation-duration: 6s; animation-delay: 4s; }
+.bubble:nth-child(9) { left: 25%; width: 22px; height: 22px; animation-duration: 13s; animation-delay: 0.8s; }
+.bubble:nth-child(10) { left: 90%; width: 28px; height: 28px; animation-duration: 10s; animation-delay: 3.5s; }
+
+@keyframes rise {
+    0% { bottom: -50px; opacity: 0; transform: translateX(0) scale(0.5); }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.2; }
+    100% { bottom: 110%; opacity: 0; transform: translateX(80px) scale(1); }
+}
+
+.whale-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.whale {
+    position: absolute;
+    font-size: 8rem;
+    left: -200px;
+    top: 50%;
+    transform: translateY(-50%);
+    filter: drop-shadow(0 0 40px rgba(0,229,176,0.3));
+    transition: none;
+}
+
+.ocean-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 700px;
+}
+
+.ocean-content h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.ocean-content h2 span {
+    background: linear-gradient(135deg, #00e5b0, #0091ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ocean-content p {
+    font-size: 1.05rem;
+    opacity: 0.7;
+    line-height: 1.9;
+    margin-bottom: 40px;
+}
+
+.ocean-stats {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.ocean-stat {
+    text-align: center;
+}
+
+.ocean-stat h3 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #00e5b0, #0091ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ocean-stat p {
+    font-size: 0.85rem;
+    opacity: 0.6;
+    margin: 0;
+}
+
+/* ==================== FEATURES ==================== */
+.features-section {
+    background: linear-gradient(180deg, #0a3d62 0%, #0d2137 50%, #020c1b 100%);
+    padding: 100px 8%;
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 70px;
 }
 
 .section-header h2 {
-    font-size: 2rem;
-    color: #003e34;
-    margin-bottom: 12px;
-    font-weight: 700;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.section-header h2 span {
+    background: linear-gradient(135deg, #00e5b0, #0091ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .section-header p {
-    color: #5a7d7c;
+    color: rgba(255,255,255,0.5);
     font-size: 1rem;
-    max-width: 550px;
+    max-width: 500px;
     margin: 0 auto;
 }
 
-.line {
+.glow-line {
     width: 60px;
     height: 4px;
     background: linear-gradient(90deg, #00e5b0, #0091ea);
-    margin: 15px auto 0;
+    margin: 20px auto 0;
     border-radius: 2px;
+    box-shadow: 0 0 15px rgba(0,229,176,0.5);
 }
 
-.preview-grid {
+.features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    margin-bottom: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
 }
 
-.preview-card {
-    padding: 30px;
-    border-radius: 15px;
-    background: #f0faf6;
-    border-left: 4px solid #00e5b0;
-    transition: 0.3s;
+.feature-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 40px 30px;
+    border-radius: 20px;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
     cursor: pointer;
     text-decoration: none;
-    color: inherit;
+    color: white;
     display: block;
 }
 
-.preview-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-    background: white;
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,229,176,0.05), rgba(0,145,234,0.05));
+    opacity: 0;
+    transition: 0.4s;
 }
 
-.preview-card .icon {
-    font-size: 2rem;
+.feature-card:hover {
+    border-color: rgba(0,229,176,0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0,229,176,0.1);
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+}
+
+.feature-card .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.feature-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
     margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
 }
 
-.preview-card h3 {
-    color: #003e34;
-    margin-bottom: 8px;
-    font-size: 1rem;
+.feature-card p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
 }
 
-.preview-card p {
-    color: #5a7d7c;
-    font-size: 0.85rem;
-    line-height: 1.6;
+.feature-card .card-arrow {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    color: #00e5b0;
+    font-size: 1.2rem;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: 0.3s;
 }
 
-.center-btn {
-    text-align: center;
+.feature-card:hover .card-arrow {
+    opacity: 1;
+    transform: translateX(0);
 }
 
-/* STATS */
+/* ==================== STATS ==================== */
 .stats-section {
-    padding: 80px 8%;
-    background: linear-gradient(135deg, #003e34, #0091ea);
-    color: white;
+    padding: 100px 8%;
+    background: #020c1b;
     text-align: center;
-}
-
-.stats-section .section-header h2 {
-    color: white;
-}
-
-.stats-section .section-header p {
-    color: rgba(255,255,255,0.7);
 }
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.stat h3 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    color: #00e5b0;
+.stat-card {
+    padding: 30px;
 }
 
-.stat p {
+.stat-card h3 {
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #00e5b0, #0091ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
+.stat-card p {
+    color: rgba(255,255,255,0.5);
     font-size: 0.9rem;
-    opacity: 0.85;
-    margin-top: 5px;
 }
 
-/* FOOTER */
+/* ==================== CTA ==================== */
+.cta-section {
+    padding: 120px 8%;
+    background: linear-gradient(180deg, #020c1b, #0a1628);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,229,176,0.08), transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-content h2 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.cta-content h2 span {
+    background: linear-gradient(135deg, #00e5b0, #0091ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.cta-content p {
+    color: rgba(255,255,255,0.6);
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ==================== FOOTER ==================== */
 footer {
-    background: #002420;
-    color: white;
-    padding: 40px 8%;
+    background: #010a15;
+    padding: 50px 8%;
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 .footer-content {
@@ -329,7 +719,7 @@ footer {
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 .footer-logo h2 {
@@ -344,7 +734,7 @@ footer {
 }
 
 .footer-links a {
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,0.35);
     text-decoration: none;
     font-size: 0.85rem;
     transition: 0.3s;
@@ -355,14 +745,28 @@ footer {
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 25px;
     text-align: center;
     font-size: 0.78rem;
-    opacity: 0.4;
+    color: rgba(255,255,255,0.25);
 }
 
-/* RESPONSIVE */
+/* ==================== WAVE ==================== */
+.wave-divider {
+    position: relative;
+    height: 80px;
+    overflow: hidden;
+}
+
+.wave-divider svg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+}
+
+/* ==================== RESPONSIVE ==================== */
 @media(max-width: 768px) {
     nav ul {
         display: none;
@@ -370,7 +774,8 @@ footer {
         top: 60px;
         left: 0;
         width: 100%;
-        background: rgba(0,62,52,0.98);
+        background: rgba(2,12,27,0.98);
+        backdrop-filter: blur(20px);
         flex-direction: column;
         padding: 20px;
         gap: 5px;
@@ -388,8 +793,16 @@ footer {
         font-size: 2.5rem;
     }
 
-    .hero-content p {
-        font-size: 1rem;
+    .ocean-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .whale {
+        font-size: 4rem;
+    }
+
+    .cursor, .cursor-dot {
+        display: none;
     }
 }
 
@@ -397,13 +810,24 @@ footer {
 </head>
 <body>
 
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
+    <div class="preloader-icon">🐋</div>
+    <div class="preloader-text">b0wl Community</div>
+    <div class="preloader-bar"></div>
+</div>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
 <!-- NAVBAR -->
-<nav>
+<nav id="navbar">
     <a href="index.html" class="logo">
         <h2>b<span>0</span>wl Community</h2>
     </a>
     <ul id="navMenu">
-        <li><a href="index.html" class="active">Ana Sayfa</a></li>
+        <li><a href="index.html">Ana Sayfa</a></li>
         <li><a href="hakkimizda.html">Hakkımızda</a></li>
         <li><a href="ozellikler.html">Özellikler</a></li>
         <li><a href="market.html">Market</a></li>
@@ -415,87 +839,144 @@ footer {
 
 <!-- HERO -->
 <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+        <source src="https://cdn.pixabay.com/video/2024/02/23/201643-916324614_large.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
     <div class="hero-content">
-        <h1>Doğanın <span>Sesi</span> Ol</h1>
-        <p>Yapay zeka destekli platformumuz ile vahşi yaşamı birlikte koruyalım. Her canlının bir sesi var, biz o sesi duyuruyoruz.</p>
-        <div class="hero-buttons">
-            <a href="bildir.html" class="btn-primary">🚨 Hayvan Bildir</a>
-            <a href="bagis.html" class="btn-secondary">💚 Bağış Yap</a>
+        <h1 id="heroTitle">Doğanın <span>Sesi</span> Ol</h1>
+        <p id="heroDesc">Yapay zeka destekli platformumuz ile vahşi yaşamı birlikte koruyalım. Her canlının bir sesi var, biz o sesi duyuruyoruz.</p>
+        <div class="hero-buttons" id="heroButtons">
+            <a href="bildir.html" class="btn-glow">🚨 Hayvan Bildir</a>
+            <a href="bagis.html" class="btn-glass">💚 Bağış Yap</a>
         </div>
     </div>
-    <div class="scroll-indicator">
+    <div class="scroll-indicator" id="scrollIndicator">
+        <div class="scroll-mouse"></div>
         <p>Aşağı Kaydır</p>
-        <div>↓</div>
     </div>
 </section>
 
-<!-- FEATURES PREVIEW -->
-<section class="features-preview">
-    <div class="section-header">
-        <h2>Ne Sunuyoruz?</h2>
-        <p>Vahşi yaşam koruma için ihtiyacınız olan her şey tek platformda.</p>
-        <div class="line"></div>
+<!-- OCEAN SECTION -->
+<section class="ocean-section" id="oceanSection">
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
     </div>
-    <div class="preview-grid">
-        <a href="bildir.html" class="preview-card">
-            <div class="icon">🤖</div>
+    <div class="whale-container">
+        <div class="whale" id="whale">🐋</div>
+    </div>
+    <div class="ocean-content" data-aos="fade-up" data-aos-duration="1000">
+        <h2>Dünya Vahşi Yaşamı <span>Tehlike Altında</span></h2>
+        <p>Her gün yüzlerce tür yok oluyor, ekosistemler çöküyor ve doğanın dengesi bozuluyor. Ama birlikte harekete geçersek fark yaratabiliriz.</p>
+        <div class="ocean-stats">
+            <div class="ocean-stat" data-aos="zoom-in" data-aos-delay="200">
+                <h3 class="counter" data-target="40000">0</h3>
+                <p>Tehlike Altındaki Tür</p>
+            </div>
+            <div class="ocean-stat" data-aos="zoom-in" data-aos-delay="400">
+                <h3 class="counter" data-target="150">0</h3>
+                <p>Günlük Yok Olan Tür</p>
+            </div>
+            <div class="ocean-stat" data-aos="zoom-in" data-aos-delay="600">
+                <h3>%68</h3>
+                <p>Popülasyon Azalması</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+    <div class="section-header" data-aos="fade-up">
+        <h2>Ne <span>Sunuyoruz?</span></h2>
+        <p>Vahşi yaşam koruma için ihtiyacınız olan her şey tek platformda.</p>
+        <div class="glow-line"></div>
+    </div>
+    <div class="features-grid">
+        <a href="bildir.html" class="feature-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="card-icon">🤖</div>
             <h3>AI Acil Bildirim</h3>
             <p>Yaralı hayvanı fotoğrafla, AI tanısın, en yakın kuruluşa otomatik bildirim gitsin.</p>
+            <div class="card-arrow">→</div>
         </a>
-        <a href="bagis.html" class="preview-card">
-            <div class="icon">💰</div>
+        <a href="bagis.html" class="feature-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="card-icon">💰</div>
             <h3>Şeffaf Bağış</h3>
             <p>%0 komisyon ile bağışlarınız doğrudan kuruluşlara iletilir. Her kuruşu takip edin.</p>
+            <div class="card-arrow">→</div>
         </a>
-        <a href="market.html" class="preview-card">
-            <div class="icon">🛒</div>
+        <a href="market.html" class="feature-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="card-icon">🛒</div>
             <h3>Sosyal Etki Marketi</h3>
             <p>Bağış amaçlı ürün satın alın veya satın. Her satışın bir amacı var.</p>
+            <div class="card-arrow">→</div>
         </a>
-        <a href="ozellikler.html" class="preview-card">
-            <div class="icon">🌐</div>
+        <a href="ozellikler.html" class="feature-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="card-icon">🌐</div>
             <h3>Kuruluş Ağı</h3>
             <p>Dünya genelindeki koruma kuruluşlarını tek platformda birleştiriyoruz.</p>
+            <div class="card-arrow">→</div>
         </a>
-        <a href="ozellikler.html" class="preview-card">
-            <div class="icon">📚</div>
+        <a href="ozellikler.html" class="feature-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="card-icon">📚</div>
             <h3>Eğitim Hub</h3>
             <p>Makaleler, etkinlikler ve burs programları ile bilinçlenin.</p>
+            <div class="card-arrow">→</div>
         </a>
-        <a href="ozellikler.html" class="preview-card">
-            <div class="icon">🙋</div>
+        <a href="ozellikler.html" class="feature-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="card-icon">🙋</div>
             <h3>Gönüllülük</h3>
             <p>Koruma kamplarına ve projelere gönüllü olun. Başvurun ve takip edin.</p>
+            <div class="card-arrow">→</div>
         </a>
-    </div>
-    <div class="center-btn">
-        <a href="ozellikler.html" class="btn-primary">Tüm Özellikleri Gör →</a>
     </div>
 </section>
 
 <!-- STATS -->
 <section class="stats-section">
-    <div class="section-header">
-        <h2>12 Aylık Hedeflerimiz</h2>
-        <p>İlk yılda ulaşmayı hedeflediğimiz rakamlar</p>
-        <div class="line"></div>
+    <div class="section-header" data-aos="fade-up">
+        <h2>12 Aylık <span>Hedeflerimiz</span></h2>
+        <p>İlk yılda ulaşmayı hedeflediğimiz rakamlar.</p>
+        <div class="glow-line"></div>
     </div>
     <div class="stats-grid">
-        <div class="stat">
-            <h3>15,000+</h3>
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="counter" data-target="15000">0</h3>
             <p>Kayıtlı Kullanıcı</p>
         </div>
-        <div class="stat">
-            <h3>25+</h3>
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="counter" data-target="25">0</h3>
             <p>Kuruluş Ortağı</p>
         </div>
-        <div class="stat">
-            <h3>300+</h3>
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+            <h3 class="counter" data-target="300">0</h3>
             <p>Tanınan Tür</p>
         </div>
-        <div class="stat">
-            <h3>3</h3>
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+            <h3 class="counter" data-target="3">0</h3>
             <p>Pilot Şehir</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="cta-glow"></div>
+    <div class="cta-content" data-aos="fade-up">
+        <h2>Doğanın <span>Sesi</span> Ol 🌍</h2>
+        <p>Sen de bu harekete katıl. Hayvan bildir, bağış yap veya gönüllü ol.</p>
+        <div class="cta-buttons">
+            <a href="bildir.html" class="btn-glow">🚨 Hayvan Bildir</a>
+            <a href="bagis.html" class="btn-glass">💚 Bağış Yap</a>
         </div>
     </div>
 </section>
@@ -521,10 +1002,88 @@ footer {
     </div>
 </footer>
 
+<!-- JAVASCRIPT -->
 <script>
+
+// PRELOADER
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.getElementById('preloader').classList.add('hidden');
+    }, 2000);
+});
+
+// AOS INIT
+AOS.init({
+    once: true,
+    easing: 'ease-out-cubic'
+});
+
+// NAVBAR SCROLL
+window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// HAMBURGER
 function toggleMenu() {
     document.getElementById('navMenu').classList.toggle('active');
 }
+
+// CUSTOM CURSOR
+const cursor = document.getElementById('cursor');
+const cursorDot = document.getElementById('cursorDot');
+document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX - 10 + 'px';
+    cursor.style.top = e.clientY - 10 + 'px';
+    cursorDot.style.left = e.clientX - 3 + 'px';
+    cursorDot.style.top = e.clientY - 3 + 'px';
+});
+
+// HERO ANIMATIONS
+gsap.to('#heroTitle', { opacity: 1, y: 0, duration: 1.2, delay: 2.2, ease: 'power3.out' });
+gsap.to('#heroDesc', { opacity: 1, y: 0, duration: 1.2, delay: 2.5, ease: 'power3.out' });
+gsap.to('#heroButtons', { opacity: 1, y: 0, duration: 1.2, delay: 2.8, ease: 'power3.out' });
+gsap.to('#scrollIndicator', { opacity: 1, duration: 1, delay: 3.5, ease: 'power2.out' });
+
+// WHALE SCROLL ANIMATION
+gsap.registerPlugin(ScrollTrigger);
+gsap.to('#whale', {
+    x: window.innerWidth + 200,
+    rotation: 5,
+    scrollTrigger: {
+        trigger: '#oceanSection',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1
+    }
+});
+
+// COUNTER ANIMATION
+const counters = document.querySelectorAll('.counter');
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const counter = entry.target;
+            const target = parseInt(counter.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    counter.textContent = target.toLocaleString() + '+';
+                    clearInterval(timer);
+                } else {
+                    counter.textContent = Math.floor(current).toLocaleString();
+                }
+            }, 16);
+            counterObserver.unobserve(counter);
+        }
+    });
+}, { threshold: 0.5 });
+
+counters.forEach(counter => counterObserver.observe(counter));
+
 </script>
 
 </body>
