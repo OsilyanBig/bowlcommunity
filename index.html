@@ -12,7 +12,7 @@
 
 <!-- AOS -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 <style>
 
@@ -435,11 +435,12 @@ nav ul li a.btn-nav:hover {
 
 .whale {
     position: absolute;
-    font-size: 8rem;
-    left: -200px;
+    width: 350px;
+    height: 350px;
+    left: -400px;
     top: 50%;
     transform: translateY(-50%);
-    filter: drop-shadow(0 0 40px rgba(0,229,176,0.3));
+    filter: drop-shadow(0 0 60px rgba(0,229,176,0.25));
     transition: none;
 }
 
@@ -872,7 +873,15 @@ footer {
         <div class="bubble"></div>
     </div>
     <div class="whale-container">
-        <div class="whale" id="whale">🐋</div>
+        <lottie-player
+    id="whale"
+    class="whale"
+    src="https://assets10.lottiefiles.com/packages/lf20_vykpwt0a.json"
+    background="transparent"
+    speed="1"
+    loop
+    autoplay>
+</lottie-player>
     </div>
     <div class="ocean-content" data-aos="fade-up" data-aos-duration="1000">
         <h2>Dünya Vahşi Yaşamı <span>Tehlike Altında</span></h2>
