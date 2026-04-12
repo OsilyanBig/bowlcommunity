@@ -4,7 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>İletişim - b0wl Community</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <style>
 
 * {
@@ -14,258 +18,283 @@
     font-family: 'Poppins', sans-serif;
 }
 
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
 body {
-    background: #f0faf6;
-    color: #1b2b34;
+    background: #020c1b;
+    color: white;
     overflow-x: hidden;
+}
+
+/* CURSOR */
+.cursor {
+    width: 20px; height: 20px;
+    border: 2px solid #00e5b0;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 99998;
+    mix-blend-mode: difference;
+    transition: transform 0.15s;
+}
+.cursor-dot {
+    width: 6px; height: 6px;
+    background: #00e5b0;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 99998;
 }
 
 /* NAVBAR */
 nav {
     position: fixed;
     width: 100%;
-    background: rgba(0, 62, 52, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 12px 8%;
+    padding: 15px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
     z-index: 1000;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    background: rgba(2,12,27,0.92);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 5px 30px rgba(0,0,0,0.3);
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-}
-
-.logo h2 {
-    font-weight: 700;
-    font-size: 1.4rem;
-    color: white;
-}
-
-.logo span {
-    color: #00e5b0;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 5px;
-}
-
+.logo { text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.logo h2 { font-weight: 800; font-size: 1.4rem; color: white; letter-spacing: 1px; }
+.logo span { color: #00e5b0; }
+nav ul { display: flex; list-style: none; gap: 5px; }
 nav ul li a {
-    color: rgba(255,255,255,0.85);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.85rem;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: 0.3s;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none; font-weight: 500;
+    font-size: 0.85rem; padding: 8px 14px;
+    border-radius: 8px; transition: 0.3s;
 }
-
-nav ul li a:hover {
-    color: #00e5b0;
-    background: rgba(255,255,255,0.08);
-}
-
-nav ul li a.active {
-    color: #00e5b0;
-    background: rgba(0,229,176,0.1);
-}
-
+nav ul li a:hover { color: #00e5b0; }
+nav ul li a.active { color: #00e5b0; background: rgba(0,229,176,0.08); }
 nav ul li a.btn-nav {
-    background: #00e5b0;
-    color: #003e34;
-    font-weight: 700;
-    padding: 8px 16px;
-    border-radius: 20px;
+    background: #00e5b0; color: #020c1b;
+    font-weight: 700; border-radius: 25px; padding: 8px 18px;
 }
-
-nav ul li a.btn-nav:hover {
-    background: #00c49a;
-    color: #003e34;
-}
-
-.hamburger {
-    display: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: white;
-}
+nav ul li a.btn-nav:hover { background: #00c49a; transform: translateY(-2px); }
+.hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: white; }
 
 /* PAGE HERO */
 .page-hero {
-    min-height: 40vh;
-    background: linear-gradient(135deg, rgba(0,62,52,0.88), rgba(0,145,234,0.6)),
+    min-height: 55vh;
+    background: linear-gradient(180deg, rgba(2,12,27,0.85), rgba(0,40,60,0.45)),
     url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a') center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white;
     padding: 120px 10% 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 120px;
+    background: linear-gradient(0deg, #020c1b, transparent);
 }
 
 .page-hero h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 15px;
+    font-size: 3.5rem; font-weight: 900;
+    margin-bottom: 15px; line-height: 1.2;
+    position: relative; z-index: 1;
 }
-
 .page-hero h1 span {
-    color: #00e5b0;
+    background: linear-gradient(135deg, #00e5b0, #0091ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
-
 .page-hero p {
-    font-size: 1.1rem;
-    opacity: 0.85;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.7;
-    font-weight: 300;
+    font-size: 1.1rem; opacity: 0.75;
+    max-width: 600px; margin: 0 auto;
+    line-height: 1.7; font-weight: 300;
+    position: relative; z-index: 1;
 }
 
 /* SECTIONS */
 section {
-    padding: 80px 8%;
+    padding: 100px 8%;
+    position: relative;
+    overflow: hidden;
 }
 
-.section-header {
-    text-align: center;
-    margin-bottom: 55px;
+.section-header { text-align: center; margin-bottom: 65px; }
+.section-header h2 { font-size: 2.3rem; font-weight: 800; margin-bottom: 15px; }
+.section-header h2 span {
+    background: linear-gradient(135deg, #00e5b0, #0091ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
-
-.section-header h2 {
-    font-size: 2rem;
-    color: #003e34;
-    margin-bottom: 12px;
-    font-weight: 700;
-}
-
 .section-header p {
-    color: #5a7d7c;
-    font-size: 1rem;
-    max-width: 550px;
-    margin: 0 auto;
-    line-height: 1.7;
+    color: rgba(255,255,255,0.5);
+    font-size: 1rem; max-width: 550px;
+    margin: 0 auto; line-height: 1.7;
 }
-
-.line {
-    width: 60px;
-    height: 4px;
+.glow-line {
+    width: 60px; height: 4px;
     background: linear-gradient(90deg, #00e5b0, #0091ea);
-    margin: 15px auto 0;
-    border-radius: 2px;
+    margin: 20px auto 0; border-radius: 2px;
+    box-shadow: 0 0 15px rgba(0,229,176,0.5);
 }
 
-/* CONTACT MAIN */
+/* ==================== BALIK ANIMASYONU (AKVARYUM) ==================== */
+.aquarium-section {
+    background: linear-gradient(180deg, #020c1b, #03101f);
+    position: relative;
+}
+
+.aquarium-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+        rgba(0,30,60,0.3),
+        rgba(0,50,100,0.2),
+        rgba(0,30,60,0.3)
+    );
+    pointer-events: none;
+}
+
+.swimming-fish {
+    position: absolute;
+    pointer-events: none;
+    animation: fishSwim ease-in-out infinite;
+}
+
+@keyframes fishSwim {
+    0%   { transform: translateX(-120px) translateY(0) scaleX(1); }
+    48%  { transform: translateX(calc(100vw + 50px)) translateY(-30px) scaleX(1); }
+    50%  { transform: translateX(calc(100vw + 50px)) translateY(-30px) scaleX(-1); }
+    98%  { transform: translateX(-120px) translateY(0) scaleX(-1); }
+    100% { transform: translateX(-120px) translateY(0) scaleX(1); }
+}
+
+/* SEAWEED */
+.seaweed-container {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 120px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.seaweed {
+    position: absolute;
+    bottom: 0;
+    transform-origin: bottom center;
+}
+
+/* ========================================================= */
+
+/* CONTACT GRID */
 .contact-main {
-    background: white;
+    background: linear-gradient(180deg, #03101f, #020c1b);
 }
 
-.contact-grid {
+.contact-layout {
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
+    grid-template-columns: 1fr 1.5fr;
     gap: 50px;
     align-items: start;
 }
 
-/* CONTACT INFO */
-.contact-info h3 {
-    color: #003e34;
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 10px;
+/* INFO SIDE */
+.contact-info-side h3 {
+    font-size: 1.4rem; font-weight: 800;
+    margin-bottom: 12px;
 }
-
-.contact-info p {
-    color: #5a7d7c;
-    font-size: 0.9rem;
-    line-height: 1.8;
+.contact-info-side h3 span {
+    background: linear-gradient(135deg, #00e5b0, #0091ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.contact-info-side > p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.9rem; line-height: 1.8;
     margin-bottom: 35px;
 }
 
 .contact-cards {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
     margin-bottom: 35px;
 }
 
 .contact-card {
     display: flex;
     align-items: center;
-    gap: 18px;
-    background: #f0faf6;
-    padding: 18px 20px;
-    border-radius: 14px;
-    transition: 0.3s;
-    border: 2px solid transparent;
+    gap: 16px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 16px 18px;
+    border-radius: 16px;
     text-decoration: none;
-    color: inherit;
+    color: white;
+    transition: 0.3s;
 }
 
 .contact-card:hover {
-    border-color: #00e5b0;
-    background: white;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-    transform: translateX(5px);
+    border-color: rgba(0,229,176,0.25);
+    background: rgba(0,229,176,0.03);
+    transform: translateX(6px);
 }
 
-.contact-card .card-icon {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, #00e5b0, #0091ea);
+.contact-card-icon {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, rgba(0,229,176,0.12), rgba(0,145,234,0.12));
+    border: 1px solid rgba(0,229,176,0.2);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     flex-shrink: 0;
 }
 
-.contact-card .card-text h4 {
-    color: #003e34;
-    font-size: 0.88rem;
-    font-weight: 700;
-    margin-bottom: 3px;
+.contact-card-text h4 {
+    font-size: 0.82rem; font-weight: 700;
+    margin-bottom: 2px;
+    color: rgba(255,255,255,0.8);
 }
-
-.contact-card .card-text p {
-    color: #5a7d7c;
-    font-size: 0.82rem;
-    margin: 0;
-    line-height: 1.4;
+.contact-card-text p {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.4);
 }
 
 /* SOCIAL */
-.social-title {
-    color: #003e34;
-    font-size: 0.95rem;
-    font-weight: 700;
+.social-heading {
+    font-size: 0.85rem; font-weight: 700;
+    color: rgba(255,255,255,0.6);
     margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.social-links {
+.social-row {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
 }
 
 .social-btn {
-    padding: 10px 20px;
-    background: #f0faf6;
-    border: 2px solid #e0efe8;
+    padding: 10px 18px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 25px;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 600;
-    color: #003e34;
+    color: rgba(255,255,255,0.6);
     cursor: pointer;
     transition: 0.3s;
     text-decoration: none;
@@ -275,42 +304,54 @@ section {
 }
 
 .social-btn:hover {
-    border-color: #00e5b0;
-    background: white;
+    border-color: rgba(0,229,176,0.3);
+    color: #00e5b0;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.06);
 }
 
-/* CONTACT FORM */
+/* FORM SIDE */
 .contact-form-card {
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.07);
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 24px;
     overflow: hidden;
 }
 
-.form-header {
-    background: linear-gradient(135deg, #003e34, #00695c);
-    padding: 25px 30px;
-    color: white;
+.form-top {
+    background: linear-gradient(135deg, rgba(0,62,52,0.7), rgba(0,50,100,0.7));
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
 }
 
-.form-header h3 {
-    font-size: 1.2rem;
-    font-weight: 700;
+.form-top::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(0,229,176,0.05), transparent 60%);
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.form-top h3 {
+    font-size: 1.2rem; font-weight: 800;
     margin-bottom: 5px;
+    position: relative; z-index: 1;
+}
+.form-top p {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.82rem;
+    position: relative; z-index: 1;
 }
 
-.form-header p {
-    font-size: 0.85rem;
-    opacity: 0.8;
-}
+.form-body { padding: 30px 32px; }
 
-.form-body {
-    padding: 30px;
-}
-
-/* TOPIC SELECTOR */
+/* TOPIC GRID */
 .topic-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -318,486 +359,440 @@ section {
     margin-bottom: 20px;
 }
 
-.topic-option {
-    position: relative;
-}
-
-.topic-option input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
+.topic-opt input[type="radio"] { display: none; }
 
 .topic-label {
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 11px 14px;
-    border: 2px solid #e0efe8;
-    border-radius: 10px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
     cursor: pointer;
     transition: 0.3s;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 600;
-    color: #5a7d7c;
-    background: #f9fdfc;
+    color: rgba(255,255,255,0.5);
 }
 
 .topic-label:hover {
-    border-color: #00e5b0;
-    color: #003e34;
+    border-color: rgba(0,229,176,0.25);
+    color: rgba(255,255,255,0.8);
 }
 
-.topic-option input[type="radio"]:checked + .topic-label {
-    border-color: #00e5b0;
-    background: #e0f5ed;
-    color: #003e34;
+.topic-opt input:checked + .topic-label {
+    border-color: rgba(0,229,176,0.45);
+    background: rgba(0,229,176,0.06);
+    color: #00e5b0;
 }
 
-.form-group {
-    margin-bottom: 18px;
-}
-
+/* FORM ELEMENTS */
+.form-group { margin-bottom: 16px; }
 .form-group label {
-    display: block;
-    margin-bottom: 8px;
+    display: block; margin-bottom: 8px;
     font-weight: 600;
-    color: #003e34;
-    font-size: 0.85rem;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.82rem;
 }
-
-.form-group label span {
-    color: #e53935;
-    margin-left: 3px;
-}
+.form-group label .req { color: #ff6b6b; margin-left: 3px; }
 
 .form-group input,
-.form-group textarea,
-.form-group select {
+.form-group textarea {
     width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #e0efe8;
+    padding: 13px 16px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 12px;
     font-size: 0.88rem;
     font-family: 'Poppins', sans-serif;
-    color: #1b2b34;
+    color: white;
     transition: 0.3s;
-    background: #f9fdfc;
 }
+
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,0.2); }
 
 .form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-    border-color: #00e5b0;
+.form-group textarea:focus {
+    border-color: rgba(0,229,176,0.4);
     outline: none;
-    background: white;
-    box-shadow: 0 0 0 4px rgba(0,229,176,0.1);
+    box-shadow: 0 0 0 4px rgba(0,229,176,0.05);
 }
 
-.form-group textarea {
-    resize: vertical;
-    min-height: 130px;
-}
+.form-group textarea { resize: vertical; min-height: 120px; }
 
-.form-grid {
+.form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    gap: 14px;
 }
 
 .submit-btn {
     width: 100%;
-    padding: 15px;
+    padding: 16px;
     background: linear-gradient(135deg, #00e5b0, #0091ea);
-    border: none;
-    border-radius: 12px;
-    color: #003e34;
-    font-weight: 800;
-    font-size: 1rem;
-    cursor: pointer;
+    border: none; border-radius: 14px;
+    color: #020c1b; font-weight: 800;
+    font-size: 1rem; cursor: pointer;
     transition: 0.3s;
     font-family: 'Poppins', sans-serif;
     margin-top: 5px;
+    position: relative; overflow: hidden;
 }
 
-.submit-btn:hover {
-    opacity: 0.9;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0,229,176,0.35);
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.6s;
 }
+
+.submit-btn:hover::before { width: 400px; height: 400px; }
+.submit-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 35px rgba(0,229,176,0.35); }
 
 /* PARTNERSHIP */
 .partnership-section {
-    background: #f0faf6;
+    background: linear-gradient(180deg, #020c1b, #051525);
 }
 
-.partnership-grid {
+/* KARTAL ANİMASYONU */
+.eagle-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.eagle-left {
+    position: absolute;
+    left: -250px;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.eagle-right {
+    position: absolute;
+    right: -250px;
+    top: 40%;
+    transform: translateY(-50%) scaleX(-1);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.partner-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
+    position: relative;
+    z-index: 1;
 }
 
-.partnership-card {
-    background: white;
-    padding: 30px 25px;
-    border-radius: 18px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+.partner-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 30px 22px;
+    border-radius: 20px;
     text-align: center;
-    transition: 0.3s;
-    border-top: 4px solid #00e5b0;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
 }
 
-.partnership-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+.partner-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, #00e5b0, #0091ea);
+    transform: scaleX(0);
+    transition: 0.4s;
 }
 
-.partnership-card .icon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
+.partner-card:hover {
+    border-color: rgba(0,229,176,0.2);
+    transform: translateY(-6px);
+    box-shadow: 0 15px 40px rgba(0,229,176,0.06);
 }
 
-.partnership-card h4 {
-    color: #003e34;
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 10px;
+.partner-card:hover::after { transform: scaleX(1); }
+
+.partner-card .p-icon { font-size: 2.5rem; margin-bottom: 15px; }
+.partner-card h4 {
+    color: #00e5b0; font-size: 1rem;
+    font-weight: 700; margin-bottom: 10px;
+}
+.partner-card p {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.82rem; line-height: 1.7;
+    margin-bottom: 18px;
 }
 
-.partnership-card p {
-    color: #5a7d7c;
-    font-size: 0.85rem;
-    line-height: 1.7;
-    margin-bottom: 20px;
-}
-
-.btn-sm {
-    padding: 10px 22px;
-    background: #00e5b0;
-    border: none;
+.p-btn {
+    padding: 9px 22px;
+    background: rgba(0,229,176,0.08);
+    border: 1px solid rgba(0,229,176,0.2);
     border-radius: 25px;
-    color: #003e34;
-    font-weight: 700;
-    font-size: 0.82rem;
-    cursor: pointer;
-    transition: 0.3s;
+    color: #00e5b0;
+    font-weight: 700; font-size: 0.78rem;
+    cursor: pointer; transition: 0.3s;
     font-family: 'Poppins', sans-serif;
     text-decoration: none;
     display: inline-block;
 }
 
-.btn-sm:hover {
-    background: #00c49a;
+.p-btn:hover {
+    background: rgba(0,229,176,0.15);
     transform: translateY(-2px);
 }
 
 /* FAQ */
 .faq-section {
-    background: white;
+    background: linear-gradient(180deg, #051525, #020c1b);
 }
 
 .faq-list {
-    max-width: 750px;
+    max-width: 760px;
     margin: 0 auto;
 }
 
 .faq-item {
-    border: 2px solid #e0efe8;
-    border-radius: 14px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
     margin-bottom: 12px;
     overflow: hidden;
     transition: 0.3s;
 }
 
 .faq-item.open {
-    border-color: #00e5b0;
-    box-shadow: 0 5px 20px rgba(0,229,176,0.1);
+    border-color: rgba(0,229,176,0.2);
+    box-shadow: 0 5px 25px rgba(0,229,176,0.06);
 }
 
-.faq-question {
+.faq-q {
     padding: 20px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    background: #f9fdfc;
     transition: 0.3s;
 }
 
-.faq-item.open .faq-question {
-    background: #e0f5ed;
+.faq-item.open .faq-q {
+    background: rgba(0,229,176,0.04);
 }
 
-.faq-question h4 {
-    color: #003e34;
-    font-size: 0.95rem;
-    font-weight: 600;
-    line-height: 1.4;
+.faq-q h4 {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.92rem; font-weight: 600;
+    line-height: 1.4; flex: 1;
 }
 
 .faq-arrow {
-    color: #00695c;
-    font-size: 1rem;
-    transition: 0.3s;
-    flex-shrink: 0;
+    color: rgba(0,229,176,0.6);
+    font-size: 0.9rem;
+    transition: 0.3s; flex-shrink: 0;
     margin-left: 15px;
+    width: 28px; height: 28px;
+    background: rgba(0,229,176,0.06);
+    border: 1px solid rgba(0,229,176,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.faq-item.open .faq-arrow {
-    transform: rotate(180deg);
-}
+.faq-item.open .faq-arrow { transform: rotate(180deg); background: rgba(0,229,176,0.12); }
 
-.faq-answer {
+.faq-ans {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
 }
 
-.faq-item.open .faq-answer {
-    max-height: 300px;
+.faq-item.open .faq-ans { max-height: 300px; }
+
+.faq-ans p {
+    padding: 18px 25px 22px;
+    color: rgba(255,255,255,0.45);
+    font-size: 0.85rem; line-height: 1.8;
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
 
-.faq-answer p {
-    padding: 20px 25px;
-    color: #5a7d7c;
-    font-size: 0.88rem;
-    line-height: 1.8;
-    border-top: 1px solid #e0efe8;
-}
-
-/* SUCCESS MODAL */
+/* MODAL */
 .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
-    padding: 20px;
+    z-index: 9999; padding: 20px;
 }
-
-.modal-overlay.active {
-    display: flex;
-}
+.modal-overlay.active { display: flex; }
 
 .modal {
-    background: white;
-    border-radius: 25px;
-    padding: 50px 40px;
-    max-width: 420px;
-    width: 100%;
+    background: linear-gradient(135deg, #0a1628, #051a08);
+    border: 1px solid rgba(0,229,176,0.2);
+    border-radius: 28px;
+    padding: 55px 45px;
+    max-width: 420px; width: 100%;
     text-align: center;
-    animation: modalIn 0.3s ease;
+    animation: modalIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
 }
 
 @keyframes modalIn {
-    from { transform: scale(0.85); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
+    from { transform: scale(0.7) translateY(30px); opacity: 0; }
+    to   { transform: scale(1) translateY(0); opacity: 1; }
 }
 
-.modal .success-icon {
-    font-size: 4rem;
-    margin-bottom: 20px;
+.modal-icon {
+    width: 80px; height: 80px;
+    background: rgba(0,229,176,0.1);
+    border: 2px solid rgba(0,229,176,0.4);
+    border-radius: 50%;
+    display: flex; align-items: center;
+    justify-content: center; font-size: 2.2rem;
+    margin: 0 auto 25px;
+    box-shadow: 0 0 30px rgba(0,229,176,0.2);
 }
 
-.modal h3 {
-    font-size: 1.4rem;
-    color: #003e34;
-    margin-bottom: 12px;
-    font-weight: 700;
-}
-
+.modal h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 12px; }
 .modal p {
-    color: #5a7d7c;
-    line-height: 1.7;
-    margin-bottom: 25px;
-    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7; margin-bottom: 28px;
+    font-size: 0.88rem;
 }
 
 .modal-btn {
-    padding: 13px 35px;
-    background: #00e5b0;
-    border: none;
-    border-radius: 50px;
-    color: #003e34;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
+    padding: 13px 40px;
+    background: linear-gradient(135deg, #00e5b0, #0091ea);
+    border: none; border-radius: 50px;
+    color: #020c1b; font-weight: 800;
+    font-size: 0.95rem; cursor: pointer;
     transition: 0.3s;
     font-family: 'Poppins', sans-serif;
 }
-
-.modal-btn:hover {
-    background: #00c49a;
-}
+.modal-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,229,176,0.3); }
 
 /* CTA */
 .cta-section {
-    background: linear-gradient(135deg, #003e34, #0091ea);
-    color: white;
+    padding: 100px 8%;
+    background: linear-gradient(180deg, #020c1b, #0a1628);
     text-align: center;
-    padding: 80px 8%;
+    position: relative; overflow: hidden;
 }
 
-.cta-section h2 {
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 15px;
+.cta-glow {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,229,176,0.06), transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.cta-section p {
-    font-size: 1rem;
-    opacity: 0.85;
-    margin-bottom: 35px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+.cta-content { position: relative; z-index: 1; }
+.cta-content h2 { font-size: 2.3rem; font-weight: 900; margin-bottom: 20px; }
+.cta-content h2 span {
+    background: linear-gradient(135deg, #00e5b0, #0091ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.cta-content p {
+    color: rgba(255,255,255,0.55);
+    font-size: 1rem; max-width: 500px;
+    margin: 0 auto 35px; line-height: 1.8;
 }
 
-.cta-buttons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+.cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
 
-.btn-primary {
+.btn-glow {
     padding: 14px 35px;
-    background: #00e5b0;
-    border: none;
-    color: #003e34;
-    font-weight: 700;
-    font-size: 0.95rem;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: 0.3s;
-    text-decoration: none;
-    display: inline-block;
-    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #00e5b0, #0091ea);
+    border: none; color: #020c1b;
+    font-weight: 800; font-size: 0.95rem;
+    border-radius: 50px; cursor: pointer;
+    transition: 0.3s; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
 }
+.btn-glow:hover { transform: translateY(-3px); box-shadow: 0 10px 35px rgba(0,229,176,0.35); }
 
-.btn-primary:hover {
-    background: #00c49a;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,229,176,0.35);
-}
-
-.btn-outline {
+.btn-glass {
     padding: 14px 35px;
-    background: transparent;
-    border: 2px solid rgba(255,255,255,0.7);
-    color: white;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: 0.3s;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: white; font-weight: 600;
+    font-size: 0.95rem; border-radius: 50px;
+    cursor: pointer; transition: 0.3s;
     text-decoration: none;
-    display: inline-block;
-    font-family: 'Poppins', sans-serif;
+    display: inline-flex; align-items: center; gap: 8px;
 }
-
-.btn-outline:hover {
-    background: rgba(255,255,255,0.15);
-    transform: translateY(-3px);
-}
+.btn-glass:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
 
 /* FOOTER */
 footer {
-    background: #002420;
-    color: white;
-    padding: 40px 8%;
+    background: #010a15;
+    padding: 50px 8%;
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
-
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 25px;
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap;
+    gap: 20px; margin-bottom: 30px;
 }
-
-.footer-logo h2 {
-    font-size: 1.2rem;
-    color: white;
-}
-
-.footer-links {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
+.footer-logo h2 { font-size: 1.2rem; color: white; }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
 .footer-links a {
-    color: rgba(255,255,255,0.55);
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: 0.3s;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none; font-size: 0.85rem; transition: 0.3s;
 }
-
-.footer-links a:hover {
-    color: #00e5b0;
-}
-
+.footer-links a:hover { color: #00e5b0; }
 .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding-top: 20px;
-    text-align: center;
-    font-size: 0.78rem;
-    opacity: 0.4;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 25px; text-align: center;
+    font-size: 0.78rem; color: rgba(255,255,255,0.2);
 }
 
 /* RESPONSIVE */
 @media(max-width: 768px) {
     nav ul {
-        display: none;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: rgba(0,62,52,0.98);
-        flex-direction: column;
-        padding: 20px;
-        gap: 5px;
+        display: none; position: absolute;
+        top: 60px; left: 0; width: 100%;
+        background: rgba(2,12,27,0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column; padding: 20px; gap: 5px;
     }
-
-    nav ul.active {
-        display: flex;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    .page-hero h1 {
-        font-size: 2rem;
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .topic-grid {
-        grid-template-columns: 1fr;
-    }
+    nav ul.active { display: flex; }
+    .hamburger { display: block; }
+    .page-hero h1 { font-size: 2.2rem; }
+    .contact-layout { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .topic-grid { grid-template-columns: 1fr; }
+    .eagle-left, .eagle-right { display: none; }
+    .cursor, .cursor-dot { display: none; }
 }
 
 </style>
 </head>
 <body>
 
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
 <!-- NAVBAR -->
 <nav>
-    <a href="index.html" class="logo">
-        <h2>b<span>0</span>wl Community</h2>
-    </a>
+    <a href="index.html" class="logo"><h2>b<span>0</span>wl Community</h2></a>
     <ul id="navMenu">
         <li><a href="index.html">Ana Sayfa</a></li>
         <li><a href="hakkimizda.html">Hakkımızda</a></li>
@@ -811,56 +806,174 @@ footer {
 
 <!-- PAGE HERO -->
 <div class="page-hero">
-    <div>
+    <div data-aos="fade-up" data-aos-duration="1000">
         <h1>Bize <span>Ulaşın</span></h1>
         <p>Sorularınız, iş birliği teklifleriniz veya geri bildirimleriniz için buradayız. Birlikte daha güçlüyüz.</p>
     </div>
 </div>
 
+<!-- AKVARYUM BÖLÜMÜ -->
+<section class="aquarium-section" id="aquariumSection">
+    <div class="aquarium-bg"></div>
+
+    <!-- YÜZEN BALIKLAR -->
+    <div class="swimming-fish" style="top:20%; animation-duration:16s; animation-delay:0s;">
+        <svg width="80" height="50" viewBox="0 0 80 50">
+            <defs>
+                <linearGradient id="sf1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#00e5b0" stop-opacity="0.8"/>
+                    <stop offset="100%" stop-color="#0091ea" stop-opacity="0.5"/>
+                </linearGradient>
+                <filter id="sfGlow1"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <!-- KUYRUK -->
+            <path d="M68 25 Q80 8 77 25 Q80 42 68 25Z" fill="url(#sf1)" opacity="0.8">
+                <animateTransform attributeName="transform" type="rotate" values="0 74 25;15 74 25;0 74 25;-15 74 25;0 74 25" dur="0.8s" repeatCount="indefinite"/>
+            </path>
+            <!-- GÖVDE -->
+            <ellipse cx="38" cy="25" rx="33" ry="18" fill="url(#sf1)" filter="url(#sfGlow1)"/>
+            <!-- KAFA -->
+            <ellipse cx="14" cy="24" rx="14" ry="12" fill="url(#sf1)"/>
+            <!-- ÜSTYÜZGEÇ -->
+            <path d="M30 10 Q38 2 48 8 Q42 12 30 10Z" fill="url(#sf1)" opacity="0.7"/>
+            <!-- ALTYÜZGEÇ -->
+            <path d="M32 40 Q40 50 52 46 Q44 38 32 40Z" fill="url(#sf1)" opacity="0.65"/>
+            <!-- GÖZ -->
+            <circle cx="10" cy="21" r="5" fill="white" opacity="0.95"/>
+            <circle cx="11" cy="21" r="3" fill="#001a2e"/>
+            <circle cx="12" cy="20" r="1.2" fill="white"/>
+            <!-- PULA DESENİ -->
+            <path d="M25 18 Q30 15 35 18 Q30 21 25 18Z" fill="rgba(255,255,255,0.1)"/>
+            <path d="M38 15 Q43 12 48 15 Q43 18 38 15Z" fill="rgba(255,255,255,0.1)"/>
+            <path d="M28 28 Q33 25 38 28 Q33 31 28 28Z" fill="rgba(255,255,255,0.08)"/>
+        </svg>
+    </div>
+
+    <div class="swimming-fish" style="top:65%; animation-duration:22s; animation-delay:7s;">
+        <svg width="55" height="35" viewBox="0 0 55 35">
+            <defs>
+                <linearGradient id="sf2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#0091ea" stop-opacity="0.75"/>
+                    <stop offset="100%" stop-color="#00e5b0" stop-opacity="0.45"/>
+                </linearGradient>
+            </defs>
+            <path d="M47 17 Q55 6 52 17 Q55 28 47 17Z" fill="url(#sf2)" opacity="0.8">
+                <animateTransform attributeName="transform" type="rotate" values="0 51 17;12 51 17;0 51 17;-12 51 17;0 51 17" dur="0.9s" repeatCount="indefinite"/>
+            </path>
+            <ellipse cx="26" cy="17" rx="23" ry="13" fill="url(#sf2)"/>
+            <ellipse cx="10" cy="17" rx="10" ry="9" fill="url(#sf2)"/>
+            <path d="M20 7 Q26 2 32 6 Q28 9 20 7Z" fill="url(#sf2)" opacity="0.65"/>
+            <path d="M22 28 Q28 34 36 31 Q30 26 22 28Z" fill="url(#sf2)" opacity="0.6"/>
+            <circle cx="7" cy="15" r="3.5" fill="white" opacity="0.9"/>
+            <circle cx="8" cy="15" r="2" fill="#001a2e"/>
+            <circle cx="9" cy="14" r="0.8" fill="white"/>
+        </svg>
+    </div>
+
+    <div class="swimming-fish" style="top:42%; animation-duration:19s; animation-delay:12s;">
+        <svg width="65" height="42" viewBox="0 0 65 42">
+            <defs>
+                <linearGradient id="sf3" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#00c49a" stop-opacity="0.8"/>
+                    <stop offset="100%" stop-color="#004d80" stop-opacity="0.5"/>
+                </linearGradient>
+            </defs>
+            <path d="M55 21 Q65 7 62 21 Q65 35 55 21Z" fill="url(#sf3)" opacity="0.8">
+                <animateTransform attributeName="transform" type="rotate" values="0 60 21;14 60 21;0 60 21;-14 60 21;0 60 21" dur="0.75s" repeatCount="indefinite"/>
+            </path>
+            <ellipse cx="31" cy="21" rx="27" ry="16" fill="url(#sf3)"/>
+            <ellipse cx="12" cy="20" rx="12" ry="10" fill="url(#sf3)"/>
+            <path d="M24 8 Q31 2 40 7 Q34 11 24 8Z" fill="url(#sf3)" opacity="0.7"/>
+            <path d="M26 34 Q33 41 44 38 Q36 32 26 34Z" fill="url(#sf3)" opacity="0.65"/>
+            <circle cx="8" cy="17" r="4.5" fill="white" opacity="0.9"/>
+            <circle cx="9" cy="17" r="2.8" fill="#001a2e"/>
+            <circle cx="10" cy="16" r="1.1" fill="white"/>
+        </svg>
+    </div>
+
+    <!-- DENİZ OTLARI -->
+    <div class="seaweed-container">
+        <div class="seaweed" style="left:5%">
+            <svg width="20" height="100" viewBox="0 0 20 100">
+                <path d="M10 100 Q0 80 10 65 Q20 50 10 35 Q0 20 10 5" stroke="rgba(0,229,176,0.25)" stroke-width="3" fill="none" stroke-linecap="round">
+                    <animateTransform attributeName="transform" type="rotate" values="0 10 100;5 10 100;0 10 100;-5 10 100;0 10 100" dur="3s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+        <div class="seaweed" style="left:12%">
+            <svg width="20" height="130" viewBox="0 0 20 130">
+                <path d="M10 130 Q20 105 10 85 Q0 65 10 45 Q20 25 10 5" stroke="rgba(0,145,234,0.2)" stroke-width="3" fill="none" stroke-linecap="round">
+                    <animateTransform attributeName="transform" type="rotate" values="0 10 130;-6 10 130;0 10 130;6 10 130;0 10 130" dur="3.5s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+        <div class="seaweed" style="left:80%">
+            <svg width="20" height="110" viewBox="0 0 20 110">
+                <path d="M10 110 Q0 88 10 70 Q20 52 10 34 Q0 16 10 2" stroke="rgba(0,229,176,0.22)" stroke-width="3" fill="none" stroke-linecap="round">
+                    <animateTransform attributeName="transform" type="rotate" values="0 10 110;7 10 110;0 10 110;-7 10 110;0 10 110" dur="2.8s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+        <div class="seaweed" style="left:90%">
+            <svg width="20" height="90" viewBox="0 0 20 90">
+                <path d="M10 90 Q20 72 10 55 Q0 38 10 22 Q20 8 10 0" stroke="rgba(0,145,234,0.18)" stroke-width="2.5" fill="none" stroke-linecap="round">
+                    <animateTransform attributeName="transform" type="rotate" values="0 10 90;-5 10 90;0 10 90;5 10 90;0 10 90" dur="3.2s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+    </div>
+
+    <div class="section-header" data-aos="fade-up" style="position:relative; z-index:1;">
+        <h2>Hızlı <span>İletişim</span></h2>
+        <p>Mesajlarınıza en geç 24 saat içinde yanıt veriyoruz.</p>
+        <div class="glow-line"></div>
+    </div>
+</section>
+
 <!-- CONTACT MAIN -->
 <section class="contact-main">
-    <div class="contact-grid">
+    <div class="contact-layout">
 
-        <!-- SOL: BİLGİLER -->
-        <div class="contact-info">
-            <h3>Merhaba! 👋</h3>
+        <!-- SOL -->
+        <div class="contact-info-side" data-aos="fade-right" data-aos-duration="1000">
+            <h3>Merhaba <span>👋</span></h3>
             <p>b0wl Community ekibi olarak her mesajınızı özenle okuyoruz. Genel sorularınız için iletişim formunu kullanabilir, iş birliği teklifleri için doğrudan e-posta gönderebilirsiniz.</p>
 
             <div class="contact-cards">
                 <a href="mailto:info@bowlcommunity.com" class="contact-card">
-                    <div class="card-icon">📧</div>
-                    <div class="card-text">
+                    <div class="contact-card-icon">📧</div>
+                    <div class="contact-card-text">
                         <h4>Genel İletişim</h4>
                         <p>info@bowlcommunity.com</p>
                     </div>
                 </a>
                 <a href="mailto:partners@bowlcommunity.com" class="contact-card">
-                    <div class="card-icon">🤝</div>
-                    <div class="card-text">
+                    <div class="contact-card-icon">🤝</div>
+                    <div class="contact-card-text">
                         <h4>Ortaklık ve İş Birliği</h4>
                         <p>partners@bowlcommunity.com</p>
                     </div>
                 </a>
                 <a href="mailto:market@bowlcommunity.com" class="contact-card">
-                    <div class="card-icon">🛒</div>
-                    <div class="card-text">
+                    <div class="contact-card-icon">🛒</div>
+                    <div class="contact-card-text">
                         <h4>Market ve Satıcı Başvurusu</h4>
                         <p>market@bowlcommunity.com</p>
                     </div>
                 </a>
                 <a href="mailto:support@bowlcommunity.com" class="contact-card">
-                    <div class="card-icon">💬</div>
-                    <div class="card-text">
+                    <div class="contact-card-icon">💬</div>
+                    <div class="contact-card-text">
                         <h4>Destek</h4>
                         <p>support@bowlcommunity.com</p>
                     </div>
                 </a>
             </div>
 
-            <div class="social-title">Sosyal Medya</div>
-            <div class="social-links">
+            <div class="social-heading">Sosyal Medya</div>
+            <div class="social-row">
                 <a href="#" class="social-btn">📸 Instagram</a>
-                <a href="#" class="social-btn">🐦 Twitter / X</a>
+                <a href="#" class="social-btn">🐦 X (Twitter)</a>
                 <a href="#" class="social-btn">▶️ YouTube</a>
                 <a href="#" class="social-btn">💼 LinkedIn</a>
                 <a href="#" class="social-btn">🎵 TikTok</a>
@@ -868,59 +981,56 @@ footer {
         </div>
 
         <!-- SAĞ: FORM -->
-        <div class="contact-form-card">
-            <div class="form-header">
+        <div class="contact-form-card" data-aos="fade-left" data-aos-duration="1000">
+            <div class="form-top">
                 <h3>✉️ Mesaj Gönder</h3>
                 <p>En geç 24 saat içinde yanıt veriyoruz.</p>
             </div>
             <div class="form-body">
                 <form id="contactForm" onsubmit="submitForm(event)">
 
-                    <!-- KONU SEÇİCİ -->
-                    <div class="form-group">
-                        <label>Konu Seçin <span>*</span></label>
+                    <div class="form-group" style="margin-bottom:16px;">
+                        <label>Konu Seçin <span class="req">*</span></label>
                         <div class="topic-grid">
-                            <div class="topic-option">
+                            <div class="topic-opt">
                                 <input type="radio" name="topic" id="t1" value="genel" checked>
                                 <label class="topic-label" for="t1">💬 Genel Soru</label>
                             </div>
-                            <div class="topic-option">
+                            <div class="topic-opt">
                                 <input type="radio" name="topic" id="t2" value="ortaklik">
                                 <label class="topic-label" for="t2">🤝 Ortaklık Teklifi</label>
                             </div>
-                            <div class="topic-option">
+                            <div class="topic-opt">
                                 <input type="radio" name="topic" id="t3" value="satici">
                                 <label class="topic-label" for="t3">🛒 Satıcı Başvurusu</label>
                             </div>
-                            <div class="topic-option">
+                            <div class="topic-opt">
                                 <input type="radio" name="topic" id="t4" value="gonullu">
                                 <label class="topic-label" for="t4">🙋 Gönüllülük</label>
                             </div>
-                            <div class="topic-option">
-                                <input type="radio" name="topic" id="t5" value="bagin">
+                            <div class="topic-opt">
+                                <input type="radio" name="topic" id="t5" value="bagis">
                                 <label class="topic-label" for="t5">💚 Bağış Sorusu</label>
                             </div>
-                            <div class="topic-option">
+                            <div class="topic-opt">
                                 <input type="radio" name="topic" id="t6" value="basin">
                                 <label class="topic-label" for="t6">📰 Basın & Medya</label>
                             </div>
                         </div>
                     </div>
 
-                    <!-- AD SOYAD ve E-POSTA -->
-                    <div class="form-grid">
+                    <div class="form-row">
                         <div class="form-group">
-                            <label>Adınız Soyadınız <span>*</span></label>
+                            <label>Adınız Soyadınız <span class="req">*</span></label>
                             <input type="text" placeholder="Ad Soyad" required>
                         </div>
                         <div class="form-group">
-                            <label>E-posta <span>*</span></label>
+                            <label>E-posta <span class="req">*</span></label>
                             <input type="email" placeholder="ornek@email.com" required>
                         </div>
                     </div>
 
-                    <!-- TELEFON ve KURUM -->
-                    <div class="form-grid">
+                    <div class="form-row">
                         <div class="form-group">
                             <label>Telefon</label>
                             <input type="tel" placeholder="05XX XXX XX XX">
@@ -931,136 +1041,218 @@ footer {
                         </div>
                     </div>
 
-                    <!-- MESAJ -->
                     <div class="form-group">
-                        <label>Mesajınız <span>*</span></label>
-                        <textarea placeholder="Mesajınızı buraya yazın. Ne kadar detaylı olursa o kadar hızlı yardımcı olabiliriz." required></textarea>
+                        <label>Mesajınız <span class="req">*</span></label>
+                        <textarea placeholder="Mesajınızı buraya yazın..." required></textarea>
                     </div>
 
-                    <button type="submit" class="submit-btn">
-                        ✉️ Mesajı Gönder
-                    </button>
-
+                    <button type="submit" class="submit-btn">✉️ Mesajı Gönder</button>
                 </form>
             </div>
         </div>
-
     </div>
 </section>
 
 <!-- ORTAKLIK -->
-<section class="partnership-section">
-    <div class="section-header">
-        <h2>Nasıl İş Birliği Yapabiliriz?</h2>
-        <p>Farklı paydaşlarla farklı iş birliği modelleri sunuyoruz.</p>
-        <div class="line"></div>
+<section class="partnership-section eagle-container" id="eagleSection">
+
+    <!-- SOL KARTAL -->
+    <div class="eagle-left" id="eagleLeft">
+        <svg width="220" height="180" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="eagleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00e5b0" stop-opacity="0.85"/>
+                    <stop offset="100%" stop-color="#0057a8" stop-opacity="0.65"/>
+                </linearGradient>
+                <filter id="eagleGlow">
+                    <feGaussianBlur stdDeviation="5" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+            </defs>
+            <!-- GÖVDE -->
+            <ellipse cx="110" cy="110" rx="45" ry="32" fill="url(#eagleGrad)" filter="url(#eagleGlow)" opacity="0.9"/>
+            <!-- SOL KANAT (açık) -->
+            <path d="M70 100 Q30 60 5 45 Q20 75 40 90 Q55 100 70 100Z" fill="url(#eagleGrad)" opacity="0.85" filter="url(#eagleGlow)">
+                <animateTransform attributeName="transform" type="rotate" values="0 70 100;-8 70 100;0 70 100" dur="2s" repeatCount="indefinite"/>
+            </path>
+            <path d="M70 100 Q25 80 2 75 Q15 90 35 95 Q55 100 70 100Z" fill="url(#eagleGrad)" opacity="0.7">
+                <animateTransform attributeName="transform" type="rotate" values="0 70 100;-6 70 100;0 70 100" dur="2s" repeatCount="indefinite"/>
+            </path>
+            <!-- SAĞ KANAT (açık) -->
+            <path d="M150 100 Q190 60 215 45 Q200 75 180 90 Q165 100 150 100Z" fill="url(#eagleGrad)" opacity="0.85" filter="url(#eagleGlow)">
+                <animateTransform attributeName="transform" type="rotate" values="0 150 100;8 150 100;0 150 100" dur="2s" repeatCount="indefinite"/>
+            </path>
+            <path d="M150 100 Q195 80 218 75 Q205 90 185 95 Q165 100 150 100Z" fill="url(#eagleGrad)" opacity="0.7">
+                <animateTransform attributeName="transform" type="rotate" values="0 150 100;6 150 100;0 150 100" dur="2s" repeatCount="indefinite"/>
+            </path>
+            <!-- KUYRUK -->
+            <path d="M90 138 Q110 160 130 138 Q120 145 110 148 Q100 145 90 138Z" fill="url(#eagleGrad)" opacity="0.8"/>
+            <!-- BOYUN -->
+            <ellipse cx="110" cy="85" rx="18" ry="20" fill="url(#eagleGrad)" opacity="0.95"/>
+            <!-- KAFA -->
+            <ellipse cx="110" cy="65" rx="20" ry="18" fill="url(#eagleGrad)" filter="url(#eagleGlow)"/>
+            <!-- GÖZ -->
+            <circle cx="103" cy="62" r="5" fill="white" opacity="0.95"/>
+            <circle cx="104" cy="62" r="3" fill="#001a2e"/>
+            <circle cx="105" cy="61" r="1.2" fill="white"/>
+            <!-- GAGA -->
+            <path d="M95 68 Q88 72 90 76 Q95 72 100 70Z" fill="rgba(255,220,0,0.5)"/>
+            <!-- PENÇE SOL -->
+            <path d="M80 138 Q72 150 68 158 M80 138 Q78 152 74 162 M80 138 Q85 150 82 160" stroke="url(#eagleGrad)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- PENÇE SAĞ -->
+            <path d="M140 138 Q148 150 152 158 M140 138 Q142 152 146 162 M140 138 Q135 150 138 160" stroke="url(#eagleGrad)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
     </div>
-    <div class="partnership-grid">
-        <div class="partnership-card">
-            <div class="icon">🏢</div>
+
+    <!-- SAĞ KARTAL -->
+    <div class="eagle-right" id="eagleRight">
+        <svg width="220" height="180" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="eagleGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#0091ea" stop-opacity="0.85"/>
+                    <stop offset="100%" stop-color="#004d30" stop-opacity="0.65"/>
+                </linearGradient>
+                <filter id="eagleGlow2">
+                    <feGaussianBlur stdDeviation="5" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+            </defs>
+            <ellipse cx="110" cy="110" rx="45" ry="32" fill="url(#eagleGrad2)" filter="url(#eagleGlow2)" opacity="0.9"/>
+            <path d="M70 100 Q30 60 5 45 Q20 75 40 90 Q55 100 70 100Z" fill="url(#eagleGrad2)" opacity="0.85" filter="url(#eagleGlow2)">
+                <animateTransform attributeName="transform" type="rotate" values="0 70 100;-8 70 100;0 70 100" dur="2.2s" repeatCount="indefinite"/>
+            </path>
+            <path d="M70 100 Q25 80 2 75 Q15 90 35 95 Q55 100 70 100Z" fill="url(#eagleGrad2)" opacity="0.7">
+                <animateTransform attributeName="transform" type="rotate" values="0 70 100;-6 70 100;0 70 100" dur="2.2s" repeatCount="indefinite"/>
+            </path>
+            <path d="M150 100 Q190 60 215 45 Q200 75 180 90 Q165 100 150 100Z" fill="url(#eagleGrad2)" opacity="0.85" filter="url(#eagleGlow2)">
+                <animateTransform attributeName="transform" type="rotate" values="0 150 100;8 150 100;0 150 100" dur="2.2s" repeatCount="indefinite"/>
+            </path>
+            <path d="M150 100 Q195 80 218 75 Q205 90 185 95 Q165 100 150 100Z" fill="url(#eagleGrad2)" opacity="0.7">
+                <animateTransform attributeName="transform" type="rotate" values="0 150 100;6 150 100;0 150 100" dur="2.2s" repeatCount="indefinite"/>
+            </path>
+            <path d="M90 138 Q110 160 130 138 Q120 145 110 148 Q100 145 90 138Z" fill="url(#eagleGrad2)" opacity="0.8"/>
+            <ellipse cx="110" cy="85" rx="18" ry="20" fill="url(#eagleGrad2)" opacity="0.95"/>
+            <ellipse cx="110" cy="65" rx="20" ry="18" fill="url(#eagleGrad2)" filter="url(#eagleGlow2)"/>
+            <circle cx="103" cy="62" r="5" fill="white" opacity="0.95"/>
+            <circle cx="104" cy="62" r="3" fill="#001a2e"/>
+            <circle cx="105" cy="61" r="1.2" fill="white"/>
+            <path d="M95 68 Q88 72 90 76 Q95 72 100 70Z" fill="rgba(255,220,0,0.5)"/>
+            <path d="M80 138 Q72 150 68 158 M80 138 Q78 152 74 162 M80 138 Q85 150 82 160" stroke="url(#eagleGrad2)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M140 138 Q148 150 152 158 M140 138 Q142 152 146 162 M140 138 Q135 150 138 160" stroke="url(#eagleGrad2)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+    <div class="section-header" data-aos="fade-up" style="position:relative; z-index:1;">
+        <h2>Nasıl İş Birliği <span>Yapabiliriz?</span></h2>
+        <p>Farklı paydaşlarla farklı iş birliği modelleri sunuyoruz.</p>
+        <div class="glow-line"></div>
+    </div>
+    <div class="partner-grid">
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="p-icon">🏢</div>
             <h4>Kuruluş Ortaklığı</h4>
-            <p>Vahşi yaşam koruma vakfı veya derneğiyseniz platformumuza kuruluş olarak katılın. Bağış alın, gönüllü yönetin, toplulukla iletişim kurun.</p>
-            <a href="mailto:partners@bowlcommunity.com" class="btn-sm">Başvur →</a>
+            <p>Vahşi yaşam koruma vakfı veya derneğiyseniz platformumuza katılın. Bağış alın, gönüllü yönetin.</p>
+            <a href="mailto:partners@bowlcommunity.com" class="p-btn">Başvur →</a>
         </div>
-        <div class="partnership-card">
-            <div class="icon">🏬</div>
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="p-icon">🏬</div>
             <h4>Kurumsal Sponsorluk</h4>
-            <p>Şirketinizin sosyal sorumluluk projelerini b0wl Community üzerinden yürütün. Görünürlük ve etki raporları ile fark yaratın.</p>
-            <a href="mailto:partners@bowlcommunity.com" class="btn-sm">Teklif Al →</a>
+            <p>Şirketinizin sosyal sorumluluk projelerini b0wl Community üzerinden yürütün.</p>
+            <a href="mailto:partners@bowlcommunity.com" class="p-btn">Teklif Al →</a>
         </div>
-        <div class="partnership-card">
-            <div class="icon">🛒</div>
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="p-icon">🛒</div>
             <h4>Satıcı Ortaklığı</h4>
-            <p>Ürünlerinizi sosyal etki marketimizde satın. Bağış ispatı ile güvenilir bir satış kanalına kavuşun.</p>
-            <a href="mailto:market@bowlcommunity.com" class="btn-sm">Başvur →</a>
+            <p>Ürünlerinizi sosyal etki marketimizde satın. Bağış ispatı ile güvenilir satış kanalı edinin.</p>
+            <a href="mailto:market@bowlcommunity.com" class="p-btn">Başvur →</a>
         </div>
-        <div class="partnership-card">
-            <div class="icon">🎓</div>
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="p-icon">🎓</div>
             <h4>Akademik İş Birliği</h4>
-            <p>Biyoloji ve çevre bilimleri alanında araştırma yapıyorsanız platformumuzda içerik paylaşın, öğrencilere ulaşın.</p>
-            <a href="mailto:info@bowlcommunity.com" class="btn-sm">İletişime Geç →</a>
+            <p>Araştırma yapıyorsanız platformumuzda içerik paylaşın, öğrencilere ulaşın.</p>
+            <a href="mailto:info@bowlcommunity.com" class="p-btn">İletişime Geç →</a>
         </div>
-        <div class="partnership-card">
-            <div class="icon">📰</div>
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="p-icon">📰</div>
             <h4>Basın ve Medya</h4>
-            <p>Haberleriniz, röportajlarınız ve içerikleriniz için basın ekibimizle iletişime geçin. Basın kiti için talep oluşturun.</p>
-            <a href="mailto:info@bowlcommunity.com" class="btn-sm">Basın Kiti →</a>
+            <p>Röportajlarınız ve haberleriniz için basın ekibimizle iletişime geçin.</p>
+            <a href="mailto:info@bowlcommunity.com" class="p-btn">Basın Kiti →</a>
         </div>
-        <div class="partnership-card">
-            <div class="icon">🙋</div>
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="p-icon">🙋</div>
             <h4>Gönüllü Ol</h4>
-            <p>b0wl Community'nin büyümesine katkıda bulunmak ister misiniz? Ekibimize gönüllü olarak katılın.</p>
-            <a href="mailto:info@bowlcommunity.com" class="btn-sm">Başvur →</a>
+            <p>b0wl Community'nin büyümesine gönüllü olarak katkıda bulunmak ister misiniz?</p>
+            <a href="mailto:info@bowlcommunity.com" class="p-btn">Başvur →</a>
         </div>
     </div>
 </section>
 
 <!-- SSS -->
 <section class="faq-section">
-    <div class="section-header">
-        <h2>Sık Sorulan Sorular</h2>
+    <div class="section-header" data-aos="fade-up">
+        <h2>Sık Sorulan <span>Sorular</span></h2>
         <p>En çok merak edilen soruların cevapları burada.</p>
-        <div class="line"></div>
+        <div class="glow-line"></div>
     </div>
     <div class="faq-list">
 
-        <div class="faq-item" onclick="toggleFaq(this)">
-            <div class="faq-question">
+        <div class="faq-item" onclick="toggleFaq(this)" data-aos="fade-up" data-aos-delay="100">
+            <div class="faq-q">
                 <h4>Bağışlarımın nereye gittiğini nasıl takip edebilirim?</h4>
-                <span class="faq-arrow">▼</span>
+                <div class="faq-arrow">▼</div>
             </div>
-            <div class="faq-answer">
-                <p>b0wl Community'de yaptığınız tüm bağışlar gerçek zamanlı olarak takip edilebilir. Hesabınıza giriş yaptığınızda bağış geçmişinizi, bağışlarınızın hangi kuruluşa iletildiğini ve kuruluşun bu bağışı nasıl kullandığını detaylı olarak görebilirsiniz. Şeffaflık ilkemiz gereği hiçbir bağış gizlenemez.</p>
+            <div class="faq-ans">
+                <p>b0wl Community'de yaptığınız tüm bağışlar gerçek zamanlı olarak takip edilebilir. Hesabınıza giriş yaptığınızda bağış geçmişinizi, bağışlarınızın hangi kuruluşa iletildiğini ve kuruluşun bu bağışı nasıl kullandığını detaylı olarak görebilirsiniz.</p>
             </div>
         </div>
 
-        <div class="faq-item" onclick="toggleFaq(this)">
-            <div class="faq-question">
+        <div class="faq-item" onclick="toggleFaq(this)" data-aos="fade-up" data-aos-delay="150">
+            <div class="faq-q">
                 <h4>Hayvan bildirimi yaptıktan sonra ne olur?</h4>
-                <span class="faq-arrow">▼</span>
+                <div class="faq-arrow">▼</div>
             </div>
-            <div class="faq-answer">
-                <p>Bildiriminiz yapay zeka sistemimiz tarafından analiz edilir, hayvanın türü ve durumu tespit edilir. GPS konumunuz üzerinden en yakın vahşi yaşam koruma kuruluşu bulunur ve otomatik bildirim gönderilir. Ortalama 15-30 dakika içinde kuruluş size geri dönüş yapar. Sürecin her adımını platform üzerinden takip edebilirsiniz.</p>
+            <div class="faq-ans">
+                <p>Bildiriminiz yapay zeka sistemimiz tarafından analiz edilir, hayvanın türü ve durumu tespit edilir. GPS konumunuz üzerinden en yakın vahşi yaşam koruma kuruluşu bulunur ve otomatik bildirim gönderilir. Ortalama 15-30 dakika içinde kuruluş size geri dönüş yapar.</p>
             </div>
         </div>
 
-        <div class="faq-item" onclick="toggleFaq(this)">
-            <div class="faq-question">
+        <div class="faq-item" onclick="toggleFaq(this)" data-aos="fade-up" data-aos-delay="200">
+            <div class="faq-q">
                 <h4>Market'te satıcı olmak için ne gerekiyor?</h4>
-                <span class="faq-arrow">▼</span>
+                <div class="faq-arrow">▼</div>
             </div>
-            <div class="faq-answer">
-                <p>Satıcı olmak için market@bowlcommunity.com adresine başvurmanız yeterlidir. Başvurunuzda hangi ürünleri satmayı planladığınızı ve gelirin hangi vahşi yaşam koruma kuruluşuna bağışlanacağını belirtmeniz gerekmektedir. Bağış ispat belgesi sunmanız zorunludur. Onaylandıktan sonra ürünlerinizi platformda listeleyebilirsiniz. Satışlardan %10 platform komisyonu alınır.</p>
+            <div class="faq-ans">
+                <p>Satıcı olmak için market@bowlcommunity.com adresine başvurmanız yeterlidir. Hangi ürünleri satmayı planladığınızı ve gelirin hangi vahşi yaşam koruma kuruluşuna bağışlanacağını belirtmeniz gerekmektedir. Bağış ispat belgesi zorunludur. Satışlardan %10 platform komisyonu alınır.</p>
             </div>
         </div>
 
-        <div class="faq-item" onclick="toggleFaq(this)">
-            <div class="faq-question">
+        <div class="faq-item" onclick="toggleFaq(this)" data-aos="fade-up" data-aos-delay="250">
+            <div class="faq-q">
                 <h4>Kuruluşumuzu platforma nasıl ekleriz?</h4>
-                <span class="faq-arrow">▼</span>
+                <div class="faq-arrow">▼</div>
             </div>
-            <div class="faq-answer">
-                <p>Vahşi yaşam koruma alanında faaliyet gösteren tüm kuruluşlar partners@bowlcommunity.com adresine başvurabilir. Başvurunuzda kuruluşunuzu, faaliyet alanlarınızı ve iletişim bilgilerinizi paylaşmanız yeterlidir. Ekibimiz başvurunuzu inceleyerek en geç 5 iş günü içinde size geri dönüş yapar.</p>
+            <div class="faq-ans">
+                <p>Vahşi yaşam koruma alanında faaliyet gösteren tüm kuruluşlar partners@bowlcommunity.com adresine başvurabilir. Kuruluşunuzu, faaliyet alanlarınızı ve iletişim bilgilerinizi paylaşmanız yeterlidir. En geç 5 iş günü içinde geri dönüş yapılır.</p>
             </div>
         </div>
 
-        <div class="faq-item" onclick="toggleFaq(this)">
-            <div class="faq-question">
+        <div class="faq-item" onclick="toggleFaq(this)" data-aos="fade-up" data-aos-delay="300">
+            <div class="faq-q">
                 <h4>Platform ücretsiz mi?</h4>
-                <span class="faq-arrow">▼</span>
+                <div class="faq-arrow">▼</div>
             </div>
-            <div class="faq-answer">
-                <p>Evet, b0wl Community bireysel kullanıcılar için tamamen ücretsizdir. Hayvan bildirme, bağış yapma ve eğitim içeriklerine erişim ücretsizdir. Bağışlarda hiçbir komisyon alınmaz. Yalnızca market üzerinden yapılan satışlarda %10 platform komisyonu uygulanır ve bu gelir platformun sürdürülebilirliği için kullanılır.</p>
+            <div class="faq-ans">
+                <p>Evet, b0wl Community bireysel kullanıcılar için tamamen ücretsizdir. Hayvan bildirme, bağış yapma ve eğitim içeriklerine erişim ücretsizdir. Yalnızca market üzerinden yapılan satışlarda %10 platform komisyonu uygulanır.</p>
             </div>
         </div>
 
-        <div class="faq-item" onclick="toggleFaq(this)">
-            <div class="faq-question">
+        <div class="faq-item" onclick="toggleFaq(this)" data-aos="fade-up" data-aos-delay="350">
+            <div class="faq-q">
                 <h4>Burs başvurusu nasıl yapılır?</h4>
-                <span class="faq-arrow">▼</span>
+                <div class="faq-arrow">▼</div>
             </div>
-            <div class="faq-answer">
-                <p>Biyoloji, zooloji, çevre bilimleri ve benzeri alanlarda eğitim gören öğrenciler burs başvurusu yapabilir. Bağış sayfasındaki Burs Bölümü üzerinden başvuru formuna ulaşabilirsiniz. Burs miktarı ve koşulları bağışçılar tarafından belirlenmekte olup her dönem yeni burs imkanları eklenmektedir.</p>
+            <div class="faq-ans">
+                <p>Biyoloji, zooloji, çevre bilimleri ve benzeri alanlarda eğitim gören öğrenciler burs başvurusu yapabilir. Bağış sayfasındaki Burs Bölümü üzerinden başvuru formuna ulaşabilirsiniz. Burs miktarı ve koşulları bağışçılar tarafından belirlenmektedir.</p>
             </div>
         </div>
 
@@ -1069,20 +1261,21 @@ footer {
 
 <!-- CTA -->
 <section class="cta-section">
-    <h2>Harekete Geçmeye Hazır mısınız? 🌍</h2>
-    <p>Hayvan bildir, bağış yap veya marketten alışveriş yap. Her adım fark yaratır.</p>
-    <div class="cta-buttons">
-        <a href="bildir.html" class="btn-primary">🚨 Hayvan Bildir</a>
-        <a href="bagis.html" class="btn-outline">💚 Bağış Yap</a>
+    <div class="cta-glow"></div>
+    <div class="cta-content" data-aos="fade-up">
+        <h2>Harekete Geçmeye <span>Hazır</span> mısınız? 🌍</h2>
+        <p>Hayvan bildir, bağış yap veya marketten alışveriş yap. Her adım fark yaratır.</p>
+        <div class="cta-buttons">
+            <a href="bildir.html" class="btn-glow">🚨 Hayvan Bildir</a>
+            <a href="bagis.html" class="btn-glass">💚 Bağış Yap</a>
+        </div>
     </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
     <div class="footer-content">
-        <div class="footer-logo">
-            <h2>b<span style="color:#00e5b0">0</span>wl Community</h2>
-        </div>
+        <div class="footer-logo"><h2>b<span style="color:#00e5b0">0</span>wl Community</h2></div>
         <div class="footer-links">
             <a href="index.html">Ana Sayfa</a>
             <a href="hakkimizda.html">Hakkımızda</a>
@@ -1098,10 +1291,10 @@ footer {
     </div>
 </footer>
 
-<!-- BAŞARI MODALI -->
+<!-- MODAL -->
 <div class="modal-overlay" id="successModal">
     <div class="modal">
-        <div class="success-icon">✉️</div>
+        <div class="modal-icon">✉️</div>
         <h3>Mesajınız Alındı!</h3>
         <p>Mesajınız için teşekkür ederiz! Ekibimiz en geç 24 saat içinde size geri dönüş yapacaktır. 🙏</p>
         <button class="modal-btn" onclick="closeModal()">Tamam</button>
@@ -1110,16 +1303,74 @@ footer {
 
 <script>
 
+// AOS
+AOS.init({ once: true, easing: 'ease-out-cubic' });
+
+// HAMBURGER
 function toggleMenu() {
     document.getElementById('navMenu').classList.toggle('active');
 }
 
+// CURSOR
+const cursor = document.getElementById('cursor');
+const cursorDot = document.getElementById('cursorDot');
+document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX - 10 + 'px';
+    cursor.style.top = e.clientY - 10 + 'px';
+    cursorDot.style.left = e.clientX - 3 + 'px';
+    cursorDot.style.top = e.clientY - 3 + 'px';
+});
+
+// GSAP
+gsap.registerPlugin(ScrollTrigger);
+
+// KARTAL ANİMASYONLARI
+gsap.to('#eagleLeft', {
+    x: 150,
+    scrollTrigger: {
+        trigger: '#eagleSection',
+        start: 'top 75%',
+        end: 'top 15%',
+        scrub: 1.5
+    }
+});
+
+gsap.to('#eagleRight', {
+    x: -150,
+    scrollTrigger: {
+        trigger: '#eagleSection',
+        start: 'top 75%',
+        end: 'top 15%',
+        scrub: 1.5
+    }
+});
+
+// KARTAL SÜZÜLME
+gsap.to('#eagleLeft', {
+    y: '-=10',
+    duration: 3,
+    yoyo: true,
+    repeat: -1,
+    ease: 'sine.inOut'
+});
+
+gsap.to('#eagleRight', {
+    y: '-=10',
+    duration: 3.5,
+    yoyo: true,
+    repeat: -1,
+    ease: 'sine.inOut',
+    delay: 0.8
+});
+
+// FAQ
 function toggleFaq(item) {
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
 }
 
+// FORM SUBMIT
 function submitForm(event) {
     event.preventDefault();
     document.getElementById('successModal').classList.add('active');
@@ -1131,6 +1382,5 @@ function closeModal() {
 }
 
 </script>
-
 </body>
 </html>
