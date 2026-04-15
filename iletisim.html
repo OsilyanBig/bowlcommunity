@@ -10,11 +10,16 @@
 :root {
     --green: #00e5b0;
     --green-dark: #00b389;
-    --black: #0a0a0a;
-    --dark: #111111;
-    --dark2: #1a1a1a;
-    --gray: #2a2a2a;
-    --light-gray: #888888;
+    --forest: #1a3a2a;
+    --forest-dark: #0f2318;
+    --amber: #d4a853;
+    --amber-light: #e8c47a;
+    --black: #080c09;
+    --dark: #0f1a12;
+    --dark2: #162012;
+    --dark3: #1e2d1e;
+    --light-gray: #7a8f7e;
+    --off-white: #e8ede9;
     --white: #ffffff;
 }
 
@@ -26,8 +31,9 @@ body { background: var(--black); color: var(--white); font-family: 'Inter', sans
 nav {
     position: fixed; top: 0; left: 0;
     width: 100%; z-index: 1000;
-    background: var(--black);
-    border-bottom: 1px solid #222;
+    background: rgba(8,12,9,0.96);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
 }
 
 .nav-inner {
@@ -39,22 +45,24 @@ nav {
 
 .nav-logo {
     text-decoration: none;
-    display: flex; align-items: center; gap: 12px;
+    display: flex; align-items: center; gap: 14px;
 }
 
 .nav-logo-mark {
-    width: 36px; height: 36px;
-    background: var(--green); border-radius: 4px;
+    width: 38px; height: 38px;
+    background: var(--forest);
+    border: 1px solid rgba(0,229,176,0.3);
+    border-radius: 3px;
     display: flex; align-items: center; justify-content: center;
-    font-weight: 900; font-size: 0.85rem;
-    color: var(--black); letter-spacing: -1px;
+    font-weight: 900; font-size: 0.82rem;
+    color: var(--green);
     font-family: 'Libre Baskerville', serif;
 }
 
 .nav-logo-text {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1rem; color: var(--white);
-    font-weight: 700; letter-spacing: 0.5px;
+    font-size: 1rem; color: var(--off-white);
+    font-weight: 700; letter-spacing: 0.3px;
 }
 
 .nav-links {
@@ -63,32 +71,31 @@ nav {
 }
 
 .nav-links li a {
-    display: block; padding: 0 18px;
+    display: block; padding: 0 16px;
     height: 64px; line-height: 64px;
-    color: rgba(255,255,255,0.65);
+    color: rgba(232,237,233,0.5);
     text-decoration: none; font-size: 0.82rem;
-    font-weight: 500; letter-spacing: 0.3px;
-    transition: 0.2s;
+    font-weight: 500; transition: 0.2s;
     border-bottom: 2px solid transparent;
 }
 
-.nav-links li a:hover { color: var(--white); border-bottom-color: var(--green); }
-.nav-links li a.active { color: var(--green); border-bottom-color: var(--green); }
+.nav-links li a:hover { color: var(--off-white); border-bottom-color: var(--amber); }
+.nav-links li a.active { color: var(--off-white); border-bottom-color: var(--green); }
 
 .nav-cta {
-    background: var(--green) !important;
-    color: var(--black) !important;
+    background: var(--forest) !important;
+    border: 1px solid rgba(0,229,176,0.25) !important;
+    color: var(--green) !important;
     font-weight: 700 !important;
-    padding: 0 22px !important;
-    height: 38px !important;
-    line-height: 38px !important;
-    border-radius: 2px !important;
+    padding: 0 20px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+    border-radius: 3px !important;
     border-bottom: none !important;
-    margin-left: 10px;
-    align-self: center;
+    margin-left: 12px; align-self: center;
 }
 
-.nav-cta:hover { background: var(--green-dark) !important; border-bottom: none !important; }
+.nav-cta:hover { background: var(--forest-dark) !important; border-color: rgba(0,229,176,0.5) !important; }
 
 .hamburger {
     display: none; background: none; border: none;
@@ -96,556 +103,489 @@ nav {
     gap: 5px; padding: 5px;
 }
 
-.hamburger span { display: block; width: 24px; height: 2px; background: var(--white); }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--off-white); }
 
 /* PAGE HERO */
 .page-hero {
     padding-top: 64px;
-    background: var(--dark);
-    border-bottom: 1px solid #222;
+    background: var(--forest-dark);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    position: relative; overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 40%; height: 100%;
+    background: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=800') center/cover no-repeat;
+    opacity: 0.08; filter: saturate(0.2);
 }
 
 .page-hero-inner {
     max-width: 1400px; margin: 0 auto;
-    padding: 90px 40px 80px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
+    padding: 90px 40px 85px;
+    position: relative; z-index: 1;
 }
 
-.page-label {
-    font-size: 0.7rem; font-weight: 700;
+.page-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+}
+
+.eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 22px;
+}
+
+.eyebrow-line { width: 24px; height: 1px; background: var(--amber); }
+
+.eyebrow span {
+    font-size: 0.68rem; font-weight: 700;
     letter-spacing: 3px; text-transform: uppercase;
-    color: var(--green); margin-bottom: 20px;
-    display: block;
+    color: var(--amber);
 }
 
 .page-hero-text h1 {
     font-family: 'Libre Baskerville', serif;
-    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700; line-height: 1.1;
     letter-spacing: -0.5px; margin-bottom: 25px;
+    color: var(--off-white);
 }
 
-.page-hero-text h1 em {
-    font-style: italic; color: var(--green);
-}
+.page-hero-text h1 em { font-style: italic; color: var(--green); }
 
 .page-hero-text p {
     color: var(--light-gray); font-size: 1rem;
     line-height: 1.8; font-weight: 300;
 }
 
-.hero-contact-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border: 1px solid #222;
+.hero-contact-list {
+    display: flex; flex-direction: column; gap: 0;
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
-.hero-contact-card {
-    padding: 28px 30px;
-    border-bottom: 1px solid #222;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    text-decoration: none;
-    color: var(--white);
-    transition: 0.2s;
-    background: var(--dark);
+.hero-contact-item {
+    padding: 24px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: center; gap: 18px;
+    text-decoration: none; color: var(--white);
+    transition: 0.2s; background: rgba(255,255,255,0.01);
 }
 
-.hero-contact-card:last-child { border-bottom: none; }
+.hero-contact-item:last-child { border-bottom: none; }
 
-.hero-contact-card:hover {
-    background: #1a1a1a;
-    padding-left: 38px;
+.hero-contact-item:hover {
+    background: rgba(255,255,255,0.04);
+    padding-left: 36px;
 }
 
 .hero-contact-icon {
-    width: 44px; height: 44px;
-    background: rgba(0,229,176,0.08);
-    border: 1px solid rgba(0,229,176,0.2);
+    width: 42px; height: 42px;
+    background: var(--forest);
+    border: 1px solid rgba(0,229,176,0.15);
     border-radius: 2px;
-    display: flex; align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
 }
 
 .hero-contact-text h4 {
-    font-size: 0.78rem; font-weight: 700;
-    letter-spacing: 1px; text-transform: uppercase;
-    color: rgba(255,255,255,0.4); margin-bottom: 4px;
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(232,237,233,0.3); margin-bottom: 4px;
 }
 
 .hero-contact-text p {
-    font-size: 0.92rem; color: var(--white);
-    font-weight: 400;
+    font-size: 0.9rem; color: var(--off-white); font-weight: 400;
 }
 
-/* DIVIDER */
-hr { border: none; border-top: 1px solid #222; margin: 0; }
-
-/* SECTIONS */
-.section {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 100px 40px;
-}
-
-.section-label {
-    font-size: 0.7rem; font-weight: 700;
-    letter-spacing: 3px; text-transform: uppercase;
-    color: var(--green); margin-bottom: 16px;
-    display: block;
-}
-
-.section-title {
-    font-family: 'Libre Baskerville', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700; line-height: 1.2;
-    margin-bottom: 20px; letter-spacing: -0.3px;
-}
-
-.section-title em { font-style: italic; color: var(--green); }
+/* HR */
+hr { border: none; border-top: 1px solid rgba(255,255,255,0.05); }
 
 /* CONTACT MAIN */
 .contact-section {
     background: var(--black);
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-.contact-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.6fr;
-    gap: 80px;
-    align-items: start;
+.contact-inner {
+    max-width: 1400px; margin: 0 auto;
+    padding: 100px 40px;
+    display: grid; grid-template-columns: 1fr 1.7fr;
+    gap: 80px; align-items: start;
 }
 
-/* TOPIC TABS */
-.topic-tabs {
-    display: flex;
-    gap: 0;
-    margin-bottom: 30px;
-    border: 1px solid #222;
-    overflow: hidden;
-    border-radius: 2px;
+.contact-sidebar h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.4rem; font-weight: 700;
+    margin-bottom: 12px; color: var(--off-white);
+    line-height: 1.3;
 }
 
-.topic-tab {
-    flex: 1;
-    padding: 12px 8px;
+.contact-sidebar h3 em { font-style: italic; color: var(--green); }
+
+.contact-sidebar > p {
+    color: var(--light-gray); font-size: 0.88rem;
+    line-height: 1.8; font-weight: 300; margin-bottom: 38px;
+}
+
+.contact-meta {
+    display: flex; flex-direction: column; gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-bottom: 38px;
+}
+
+.contact-meta-item {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; justify-content: space-between;
+    align-items: center;
+}
+
+.contact-meta-item h4 {
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(232,237,233,0.3);
+}
+
+.contact-meta-item p {
+    font-size: 0.85rem; color: var(--off-white); font-weight: 400;
+}
+
+.social-label {
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(232,237,233,0.25); margin-bottom: 12px;
+}
+
+.social-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.social-btn {
+    padding: 9px 16px;
     background: transparent;
-    border: none;
-    border-right: 1px solid #222;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    color: rgba(255,255,255,0.35);
-    cursor: pointer;
-    transition: 0.2s;
-    text-align: center;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 2px; font-size: 0.73rem;
+    font-weight: 600; color: rgba(232,237,233,0.4);
+    cursor: pointer; transition: 0.2s;
+    text-decoration: none;
 }
 
-.topic-tab:last-child { border-right: none; }
-
-.topic-tab:hover { color: rgba(255,255,255,0.7); background: #1a1a1a; }
-
-.topic-tab.active {
-    background: var(--green);
-    color: var(--black);
-}
+.social-btn:hover { border-color: rgba(0,229,176,0.25); color: var(--green); }
 
 /* FORM */
-.contact-form-card {
+.contact-form-wrap {
     background: var(--dark);
-    border: 1px solid #222;
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
 .form-header {
-    padding: 30px 35px;
-    border-bottom: 1px solid #222;
-    display: flex;
-    justify-content: space-between;
+    padding: 28px 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; justify-content: space-between;
     align-items: center;
 }
 
 .form-header h3 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.1rem; font-weight: 700;
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--off-white);
 }
 
-.form-header p {
-    font-size: 0.78rem; color: var(--light-gray);
-    font-weight: 300;
+.form-header p { font-size: 0.75rem; color: var(--light-gray); font-weight: 300; }
+
+.form-body { padding: 32px; }
+
+.topic-bar {
+    display: flex; gap: 0; margin-bottom: 28px;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 2px; overflow: hidden;
 }
 
-.form-body { padding: 35px; }
+.topic-btn {
+    flex: 1; padding: 11px 6px;
+    background: transparent; border: none;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.3px;
+    color: rgba(232,237,233,0.3);
+    cursor: pointer; transition: 0.2s; text-align: center;
+}
+
+.topic-btn:last-child { border-right: none; }
+.topic-btn:hover { color: rgba(232,237,233,0.7); background: rgba(255,255,255,0.03); }
+.topic-btn.active { background: var(--forest); color: var(--green); }
 
 .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 14px; margin-bottom: 14px;
 }
 
-.form-group { margin-bottom: 16px; }
+.form-group { margin-bottom: 14px; }
 
 .form-group label {
     display: block; margin-bottom: 8px;
-    font-size: 0.72rem; font-weight: 700;
-    letter-spacing: 1px; text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(232,237,233,0.3);
 }
 
 .form-group input,
 .form-group textarea {
-    width: 100%;
-    padding: 14px 16px;
+    width: 100%; padding: 13px 15px;
     background: var(--black);
-    border: 1px solid #2a2a2a;
-    border-radius: 2px;
-    font-size: 0.88rem;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 2px; font-size: 0.87rem;
     font-family: 'Inter', sans-serif;
-    color: var(--white);
-    transition: 0.2s;
+    color: var(--off-white); transition: 0.2s;
 }
 
 .form-group input::placeholder,
-.form-group textarea::placeholder { color: #444; }
+.form-group textarea::placeholder { color: rgba(232,237,233,0.18); }
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: var(--green);
-    outline: none;
-    background: #0d0d0d;
+    border-color: rgba(0,229,176,0.35);
+    outline: none; background: #0c150e;
 }
 
-.form-group textarea { resize: vertical; min-height: 140px; }
+.form-group textarea { resize: vertical; min-height: 135px; }
 
 .form-submit {
-    width: 100%;
-    padding: 16px;
-    background: var(--green);
-    border: none; border-radius: 2px;
+    width: 100%; padding: 15px;
+    background: var(--green); border: none; border-radius: 2px;
     color: var(--black); font-weight: 700;
-    font-size: 0.88rem; letter-spacing: 0.5px;
+    font-size: 0.87rem; letter-spacing: 0.5px;
     cursor: pointer; transition: 0.2s;
-    font-family: 'Inter', sans-serif;
-    margin-top: 8px;
+    font-family: 'Inter', sans-serif; margin-top: 6px;
 }
 
 .form-submit:hover { background: var(--green-dark); }
 
-/* INFO SIDE */
-.contact-info h3 {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 1.4rem; font-weight: 700;
-    margin-bottom: 12px; line-height: 1.3;
-}
-
-.contact-info h3 em { font-style: italic; color: var(--green); }
-
-.contact-info > p {
-    color: var(--light-gray); font-size: 0.9rem;
-    line-height: 1.8; font-weight: 300;
-    margin-bottom: 40px;
-}
-
-.contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border-top: 1px solid #1a1a1a;
-    margin-bottom: 40px;
-}
-
-.contact-link-item {
-    padding: 20px 0;
-    border-bottom: 1px solid #1a1a1a;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-decoration: none;
-    color: var(--white);
-    transition: 0.2s;
-}
-
-.contact-link-item:hover { padding-left: 8px; }
-.contact-link-item:hover .contact-link-arrow { color: var(--green); }
-
-.contact-link-left h4 {
-    font-size: 0.78rem; font-weight: 700;
-    letter-spacing: 1px; text-transform: uppercase;
-    color: rgba(255,255,255,0.4); margin-bottom: 4px;
-}
-
-.contact-link-left p {
-    font-size: 0.88rem; color: var(--white);
-    font-weight: 400;
-}
-
-.contact-link-arrow {
-    font-size: 1rem;
-    color: rgba(255,255,255,0.2);
-    transition: 0.2s;
-}
-
-.social-heading {
-    font-size: 0.68rem; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 14px;
-}
-
-.social-list {
-    display: flex; gap: 8px; flex-wrap: wrap;
-}
-
-.social-btn {
-    padding: 10px 18px;
-    background: transparent;
-    border: 1px solid #2a2a2a;
-    border-radius: 2px;
-    font-size: 0.75rem; font-weight: 600;
-    color: rgba(255,255,255,0.5);
-    cursor: pointer; transition: 0.2s;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.social-btn:hover {
-    border-color: var(--green);
-    color: var(--green);
-}
-
 /* PARTNERSHIP */
 .partnership-section {
     background: var(--dark);
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.partnership-header {
+    max-width: 1400px; margin: 0 auto;
+    padding: 90px 40px 55px;
+}
+
+.partnership-header .eyebrow { margin-bottom: 18px; }
+
+.partnership-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700; color: var(--off-white);
+    line-height: 1.2; letter-spacing: -0.3px;
+    max-width: 600px; margin-bottom: 14px;
+}
+
+.partnership-header h2 em { font-style: italic; color: var(--green); }
+
+.partnership-header p {
+    color: var(--light-gray); font-size: 0.9rem;
+    line-height: 1.75; max-width: 520px; font-weight: 300;
 }
 
 .partnership-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: #222;
-    margin-top: 60px;
+    max-width: 1400px; margin: 0 auto;
+    padding: 0 40px 90px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: rgba(255,255,255,0.04);
 }
 
 .partnership-card {
-    background: var(--dark);
-    padding: 45px 35px;
-    transition: 0.3s;
-    position: relative;
-    overflow: hidden;
+    background: var(--dark); padding: 42px 35px;
+    transition: 0.3s; position: relative; overflow: hidden;
 }
 
-.partnership-card::before {
+.partnership-card::after {
     content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px; height: 0;
-    background: var(--green);
+    position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: linear-gradient(90deg, var(--green), var(--amber));
     transition: 0.4s;
 }
 
-.partnership-card:hover::before { height: 100%; }
-.partnership-card:hover { background: #1a1a1a; }
+.partnership-card:hover::after { width: 100%; }
+.partnership-card:hover { background: var(--dark2); }
 
 .partnership-card .p-num {
     font-family: 'Libre Baskerville', serif;
     font-size: 2rem; font-weight: 700;
-    color: #1e1e1e; margin-bottom: 20px;
+    color: rgba(255,255,255,0.04); margin-bottom: 18px;
     display: block; transition: 0.3s;
 }
 
-.partnership-card:hover .p-num { color: var(--green); opacity: 0.25; }
+.partnership-card:hover .p-num { color: rgba(212,168,83,0.12); }
 
 .partnership-card h3 {
     font-family: 'Libre Baskerville', serif;
     font-size: 1.05rem; font-weight: 700;
     margin-bottom: 12px; line-height: 1.3;
+    color: var(--off-white);
 }
 
 .partnership-card p {
-    font-size: 0.83rem; color: var(--light-gray);
-    line-height: 1.75; font-weight: 300;
-    margin-bottom: 20px;
+    font-size: 0.82rem; color: var(--light-gray);
+    line-height: 1.75; font-weight: 300; margin-bottom: 20px;
 }
 
 .p-link {
-    font-size: 0.72rem; font-weight: 700;
+    font-size: 0.7rem; font-weight: 700;
     letter-spacing: 1px; text-transform: uppercase;
-    color: var(--green); text-decoration: none;
+    color: var(--amber); text-decoration: none;
     transition: 0.2s; display: inline-flex;
     align-items: center; gap: 6px;
 }
 
-.p-link:hover { gap: 12px; }
+.p-link:hover { color: var(--amber-light); gap: 12px; }
 
 /* FAQ */
 .faq-section {
     background: var(--black);
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-.faq-layout {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 80px;
-    align-items: start;
+.faq-inner {
+    max-width: 1400px; margin: 0 auto;
+    padding: 100px 40px;
+    display: grid; grid-template-columns: 1fr 2fr;
+    gap: 90px; align-items: start;
 }
 
 .faq-sidebar {
-    position: sticky;
-    top: 100px;
+    position: sticky; top: 90px;
 }
+
+.faq-sidebar .eyebrow { margin-bottom: 18px; }
 
 .faq-sidebar h2 {
     font-family: 'Libre Baskerville', serif;
     font-size: 2rem; font-weight: 700;
-    line-height: 1.2; margin-bottom: 20px;
+    line-height: 1.2; margin-bottom: 18px;
+    color: var(--off-white);
 }
 
-.faq-sidebar h2 em { font-style: italic; color: var(--green); }
+.faq-sidebar h2 em { font-style: italic; color: var(--amber); }
 
 .faq-sidebar p {
-    color: var(--light-gray); font-size: 0.88rem;
-    line-height: 1.75; font-weight: 300;
-    margin-bottom: 30px;
+    color: var(--light-gray); font-size: 0.87rem;
+    line-height: 1.75; font-weight: 300; margin-bottom: 28px;
 }
 
 .faq-sidebar a {
-    font-size: 0.78rem; font-weight: 700;
+    font-size: 0.72rem; font-weight: 700;
     letter-spacing: 1px; text-transform: uppercase;
     color: var(--green); text-decoration: none;
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: 0.2s;
+    display: inline-flex; align-items: center;
+    gap: 8px; transition: 0.2s;
 }
 
 .faq-sidebar a:hover { gap: 14px; }
 
 .faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border-top: 1px solid #1a1a1a;
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 .faq-item {
-    border-bottom: 1px solid #1a1a1a;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
     overflow: hidden;
 }
 
 .faq-question {
-    padding: 24px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    gap: 20px;
-    transition: 0.2s;
+    padding: 22px 0;
+    display: flex; justify-content: space-between;
+    align-items: center; cursor: pointer;
+    gap: 20px; transition: 0.2s;
 }
 
-.faq-question:hover { padding-left: 8px; }
+.faq-question:hover { padding-left: 6px; }
 
 .faq-question h4 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1rem; font-weight: 700;
-    line-height: 1.4; color: var(--white);
-    flex: 1;
+    font-size: 0.97rem; font-weight: 700;
+    line-height: 1.4; color: var(--off-white); flex: 1;
 }
 
 .faq-toggle {
-    width: 28px; height: 28px;
-    border: 1px solid #2a2a2a;
+    width: 26px; height: 26px;
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 2px;
-    display: flex; align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    color: rgba(255,255,255,0.3);
-    transition: 0.3s;
-    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; color: rgba(232,237,233,0.25);
+    transition: 0.3s; flex-shrink: 0;
 }
 
 .faq-item.open .faq-toggle {
-    background: var(--green);
-    border-color: var(--green);
-    color: var(--black);
+    background: var(--forest);
+    border-color: rgba(0,229,176,0.3);
+    color: var(--green);
     transform: rotate(45deg);
 }
 
 .faq-answer {
-    max-height: 0;
-    overflow: hidden;
+    max-height: 0; overflow: hidden;
     transition: max-height 0.4s ease;
 }
 
 .faq-item.open .faq-answer { max-height: 300px; }
 
 .faq-answer p {
-    padding: 0 0 24px;
-    color: var(--light-gray);
-    font-size: 0.88rem; line-height: 1.85;
-    font-weight: 300;
+    padding: 0 0 22px;
+    color: var(--light-gray); font-size: 0.87rem;
+    line-height: 1.85; font-weight: 300;
 }
 
-/* MAP STRIP */
-.map-strip {
-    background: var(--dark);
-    border-bottom: 1px solid #222;
-    padding: 60px 40px;
+/* INFO STRIP */
+.info-strip {
+    background: var(--forest-dark);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 55px 40px;
 }
 
-.map-strip-inner {
+.info-strip-inner {
     max-width: 1400px; margin: 0 auto;
     display: flex; align-items: center;
     justify-content: space-between;
     gap: 40px; flex-wrap: wrap;
 }
 
-.map-strip-text h3 {
+.info-strip-text h3 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.5rem; font-weight: 700;
-    margin-bottom: 8px;
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--off-white); margin-bottom: 6px;
 }
 
-.map-strip-text p {
-    color: var(--light-gray);
-    font-size: 0.88rem; font-weight: 300;
+.info-strip-text p {
+    color: var(--light-gray); font-size: 0.85rem; font-weight: 300;
 }
 
-.map-strip-details {
-    display: flex; gap: 50px; flex-wrap: wrap;
-}
+.info-strip-details { display: flex; gap: 50px; flex-wrap: wrap; }
 
-.map-detail h4 {
-    font-size: 0.68rem; font-weight: 700;
+.info-detail h4 {
+    font-size: 0.62rem; font-weight: 700;
     letter-spacing: 2px; text-transform: uppercase;
-    color: rgba(255,255,255,0.35); margin-bottom: 6px;
+    color: rgba(232,237,233,0.25); margin-bottom: 6px;
 }
 
-.map-detail p {
-    font-size: 0.9rem; font-weight: 400;
-    color: var(--white);
+.info-detail p { font-size: 0.88rem; color: var(--off-white); }
+
+.info-detail a {
+    font-size: 0.88rem; color: var(--green);
+    text-decoration: none; transition: 0.2s;
 }
 
-.map-detail a {
-    color: var(--green); text-decoration: none;
-    font-size: 0.9rem; font-weight: 400;
-    transition: 0.2s;
-}
-
-.map-detail a:hover { color: var(--green-dark); }
+.info-detail a:hover { color: var(--green-dark); }
 
 /* CTA BAND */
 .cta-band {
-    background: var(--green);
-    padding: 80px 40px;
+    background: var(--forest); padding: 90px 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .cta-band-inner {
@@ -655,131 +595,132 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
     gap: 40px; flex-wrap: wrap;
 }
 
+.cta-band-text .eyebrow { margin-bottom: 18px; }
+
 .cta-band h2 {
     font-family: 'Libre Baskerville', serif;
     font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 700; color: var(--black);
-    line-height: 1.2; max-width: 600px;
+    font-weight: 700; color: var(--off-white);
+    line-height: 1.2; max-width: 550px;
 }
 
-.cta-band-actions { display: flex; gap: 16px; flex-wrap: wrap; flex-shrink: 0; }
+.cta-band h2 em { font-style: italic; color: var(--green); }
+.cta-band-actions { display: flex; gap: 14px; flex-wrap: wrap; flex-shrink: 0; }
 
-.btn-dark {
-    background: var(--black); color: var(--white);
-    padding: 16px 32px; font-weight: 700;
-    font-size: 0.85rem; letter-spacing: 0.5px;
-    text-decoration: none; border-radius: 2px;
-    transition: 0.2s; display: inline-block;
-    border: 2px solid var(--black);
+.btn-green {
+    background: var(--green); color: var(--black);
+    padding: 15px 30px; font-weight: 700;
+    font-size: 0.85rem; text-decoration: none;
+    border-radius: 3px; transition: 0.2s; display: inline-block;
 }
 
-.btn-dark:hover { background: #222; }
+.btn-green:hover { background: var(--green-dark); }
 
-.btn-outline-dark {
-    background: transparent; color: var(--black);
-    padding: 16px 32px; font-weight: 700;
-    font-size: 0.85rem; letter-spacing: 0.5px;
-    text-decoration: none; border-radius: 2px;
-    transition: 0.2s; display: inline-block;
-    border: 2px solid var(--black);
+.btn-amber {
+    background: var(--amber); color: var(--black);
+    padding: 15px 30px; font-weight: 700;
+    font-size: 0.85rem; text-decoration: none;
+    border-radius: 3px; transition: 0.2s; display: inline-block;
 }
 
-.btn-outline-dark:hover { background: rgba(0,0,0,0.08); }
+.btn-amber:hover { background: var(--amber-light); }
 
-/* SUCCESS TOAST */
+/* TOAST */
 .toast {
-    position: fixed;
-    bottom: 30px; right: 30px;
+    position: fixed; bottom: 28px; right: 28px;
     background: var(--dark);
-    border: 1px solid var(--green);
-    border-radius: 2px;
-    padding: 18px 25px;
+    border: 1px solid rgba(0,229,176,0.25);
+    border-radius: 2px; padding: 16px 22px;
     display: flex; align-items: center; gap: 14px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-    transform: translateY(100px);
-    opacity: 0;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    transform: translateY(100px); opacity: 0;
     transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 9999;
-    max-width: 380px;
+    z-index: 9999; max-width: 340px;
 }
 
 .toast.show { transform: translateY(0); opacity: 1; }
 
 .toast-icon {
-    width: 36px; height: 36px;
-    background: rgba(0,229,176,0.1);
-    border: 1px solid rgba(0,229,176,0.3);
+    width: 32px; height: 32px;
+    background: rgba(0,229,176,0.08);
+    border: 1px solid rgba(0,229,176,0.2);
     border-radius: 2px;
     display: flex; align-items: center;
-    justify-content: center;
-    font-size: 1rem; flex-shrink: 0;
+    justify-content: center; font-size: 0.9rem; flex-shrink: 0;
 }
 
-.toast-text h4 {
-    font-size: 0.88rem; font-weight: 700;
-    margin-bottom: 3px;
-}
-
-.toast-text p {
-    font-size: 0.78rem; color: var(--light-gray);
-    font-weight: 300;
-}
+.toast-text h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 2px; color: var(--off-white); }
+.toast-text p { font-size: 0.75rem; color: var(--light-gray); font-weight: 300; }
 
 /* FOOTER */
-.footer { background: var(--dark); border-top: 1px solid #222; }
+.footer { background: var(--forest-dark); border-top: 1px solid rgba(255,255,255,0.05); }
 
 .footer-top {
     max-width: 1400px; margin: 0 auto;
     padding: 70px 40px 50px;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 50px;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px;
 }
 
-.footer-brand h3 {
+.footer-brand-mark {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 18px;
+}
+
+.footer-brand-icon {
+    width: 34px; height: 34px;
+    background: var(--forest);
+    border: 1px solid rgba(0,229,176,0.2);
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.75rem;
+    color: var(--green);
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.2rem; font-weight: 700; margin-bottom: 14px;
+}
+
+.footer-brand-mark h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1rem; font-weight: 700; color: var(--off-white);
 }
 
 .footer-brand p {
-    color: var(--light-gray); font-size: 0.85rem;
-    line-height: 1.75; max-width: 280px; font-weight: 300;
+    color: var(--light-gray); font-size: 0.82rem;
+    line-height: 1.75; max-width: 270px; font-weight: 300;
 }
 
 .footer-col h4 {
-    font-size: 0.72rem; font-weight: 700;
+    font-size: 0.68rem; font-weight: 700;
     letter-spacing: 2px; text-transform: uppercase;
-    color: rgba(255,255,255,0.4); margin-bottom: 18px;
+    color: rgba(232,237,233,0.25); margin-bottom: 18px;
 }
 
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 
 .footer-col ul li a {
     color: var(--light-gray); text-decoration: none;
-    font-size: 0.85rem; transition: 0.2s; font-weight: 300;
+    font-size: 0.83rem; transition: 0.2s; font-weight: 300;
 }
 
 .footer-col ul li a:hover { color: var(--green); }
 
 .footer-bottom-bar {
     max-width: 1400px; margin: 0 auto;
-    padding: 22px 40px; border-top: 1px solid #222;
+    padding: 20px 40px;
+    border-top: 1px solid rgba(255,255,255,0.04);
     display: flex; justify-content: space-between;
     align-items: center; gap: 20px; flex-wrap: wrap;
 }
 
-.footer-bottom-bar p { color: #444; font-size: 0.78rem; }
-.footer-bottom-bar span { color: var(--green); }
+.footer-bottom-bar p { color: rgba(255,255,255,0.2); font-size: 0.75rem; }
+.footer-bottom-bar span { color: var(--amber); }
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-    .page-hero-inner { grid-template-columns: 1fr; }
-    .contact-layout { grid-template-columns: 1fr; }
+    .page-hero-grid { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; }
     .partnership-grid { grid-template-columns: repeat(2, 1fr); }
-    .faq-layout { grid-template-columns: 1fr; }
+    .faq-inner { grid-template-columns: 1fr; }
     .faq-sidebar { position: static; }
     .footer-top { grid-template-columns: 1fr 1fr; }
-    .map-strip-inner { flex-direction: column; align-items: flex-start; }
+    .info-strip-inner { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 768px) {
@@ -789,18 +730,18 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
         display: flex; flex-direction: column;
         position: absolute; top: 64px; left: 0;
         width: 100%; background: var(--black);
-        border-bottom: 1px solid #222; padding: 20px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        padding: 20px 0;
     }
     .nav-links.open li a {
-        height: auto; line-height: 1; padding: 14px 30px;
-        border-bottom: none; border-left: 3px solid transparent;
+        height: auto; line-height: 1; padding: 14px 28px;
+        border-bottom: none; border-left: 2px solid transparent;
     }
     .nav-links.open li a:hover { border-left-color: var(--green); }
     .form-row { grid-template-columns: 1fr; }
     .partnership-grid { grid-template-columns: 1fr; }
+    .topic-bar { flex-wrap: wrap; }
     .footer-top { grid-template-columns: 1fr; }
-    .section { padding: 70px 24px; }
-    .topic-tabs { flex-wrap: wrap; }
 }
 
 </style>
@@ -819,7 +760,7 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
             <li><a href="hakkimizda.html">Hakkımızda</a></li>
             <li><a href="ozellikler.html">Özellikler</a></li>
             <li><a href="iletisim.html" class="active">İletişim</a></li>
-            <li><a href="bildir.html" class="nav-cta">Hayvan Bildir</a></li>
+            <li><a href="yakinda.html?page=bildir" class="nav-cta">Hayvan Bildir</a></li>
         </ul>
         <button class="hamburger" onclick="toggleNav()">
             <span></span><span></span><span></span>
@@ -830,40 +771,45 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
 <!-- PAGE HERO -->
 <div class="page-hero">
     <div class="page-hero-inner">
-        <div class="page-hero-text">
-            <span class="page-label">İletişim</span>
-            <h1>Birlikte<br><em>Daha Güçlüyüz.</em><br>Hadi Konuşalım.</h1>
-            <p>Sorularınız, iş birliği teklifleriniz veya geri bildirimleriniz için buradayız. Her mesajınıza en geç 24 saat içinde yanıt veriyoruz.</p>
-        </div>
-        <div class="hero-contact-cards">
-            <a href="mailto:info@bowlcommunity.com" class="hero-contact-card">
-                <div class="hero-contact-icon">📧</div>
-                <div class="hero-contact-text">
-                    <h4>Genel İletişim</h4>
-                    <p>info@bowlcommunity.com</p>
+        <div class="page-hero-grid">
+            <div class="page-hero-text">
+                <div class="eyebrow">
+                    <div class="eyebrow-line"></div>
+                    <span>İletişim</span>
                 </div>
-            </a>
-            <a href="mailto:partners@bowlcommunity.com" class="hero-contact-card">
-                <div class="hero-contact-icon">🤝</div>
-                <div class="hero-contact-text">
-                    <h4>Ortaklık ve İş Birliği</h4>
-                    <p>partners@bowlcommunity.com</p>
-                </div>
-            </a>
-            <a href="mailto:market@bowlcommunity.com" class="hero-contact-card">
-                <div class="hero-contact-icon">🛒</div>
-                <div class="hero-contact-text">
-                    <h4>Market ve Satıcı Başvurusu</h4>
-                    <p>market@bowlcommunity.com</p>
-                </div>
-            </a>
-            <a href="mailto:support@bowlcommunity.com" class="hero-contact-card">
-                <div class="hero-contact-icon">💬</div>
-                <div class="hero-contact-text">
-                    <h4>Teknik Destek</h4>
-                    <p>support@bowlcommunity.com</p>
-                </div>
-            </a>
+                <h1>Birlikte<br><em>Daha Güçlüyüz.</em><br>Konuşalım.</h1>
+                <p>Her mesajınıza en geç 24 saat içinde yanıt veriyoruz. İş birliği, ortaklık veya genel sorular için buradayız.</p>
+            </div>
+            <div class="hero-contact-list">
+                <a href="mailto:info@bowlcommunity.com" class="hero-contact-item">
+                    <div class="hero-contact-icon">📧</div>
+                    <div class="hero-contact-text">
+                        <h4>Genel İletişim</h4>
+                        <p>info@bowlcommunity.com</p>
+                    </div>
+                </a>
+                <a href="mailto:partners@bowlcommunity.com" class="hero-contact-item">
+                    <div class="hero-contact-icon">🤝</div>
+                    <div class="hero-contact-text">
+                        <h4>Ortaklık</h4>
+                        <p>partners@bowlcommunity.com</p>
+                    </div>
+                </a>
+                <a href="mailto:market@bowlcommunity.com" class="hero-contact-item">
+                    <div class="hero-contact-icon">🛒</div>
+                    <div class="hero-contact-text">
+                        <h4>Market ve Satıcı</h4>
+                        <p>market@bowlcommunity.com</p>
+                    </div>
+                </a>
+                <a href="mailto:support@bowlcommunity.com" class="hero-contact-item">
+                    <div class="hero-contact-icon">💬</div>
+                    <div class="hero-contact-text">
+                        <h4>Teknik Destek</h4>
+                        <p>support@bowlcommunity.com</p>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 </div>
@@ -872,266 +818,229 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
 
 <!-- CONTACT MAIN -->
 <div class="contact-section">
-    <div class="section">
-        <div class="contact-layout">
-
-            <!-- INFO -->
-            <div class="contact-info">
-                <span class="section-label">Mesaj Gönderin</span>
-                <h3>Size En Hızlı<br>Şekilde <em>Dönelim</em></h3>
-                <p>Formdan konu seçerek mesajınızı ilgili ekibe doğrudan iletebilirsiniz. Yanıt süremiz ortalama 4-8 saattir.</p>
-
-                <div class="contact-links">
-                    <div class="contact-link-item">
-                        <div class="contact-link-left">
-                            <h4>Yanıt Süresi</h4>
-                            <p>Ortalama 4–8 saat</p>
-                        </div>
-                        <span class="contact-link-arrow">→</span>
-                    </div>
-                    <div class="contact-link-item">
-                        <div class="contact-link-left">
-                            <h4>Çalışma Saatleri</h4>
-                            <p>Hafta içi 09:00 — 18:00</p>
-                        </div>
-                        <span class="contact-link-arrow">→</span>
-                    </div>
-                    <div class="contact-link-item">
-                        <div class="contact-link-left">
-                            <h4>Acil Hayvan Bildirimi</h4>
-                            <p>7/24 aktif sistem</p>
-                        </div>
-                        <span class="contact-link-arrow">→</span>
-                    </div>
-                    <div class="contact-link-item">
-                        <div class="contact-link-left">
-                            <h4>Basın ve Medya</h4>
-                            <p>info@bowlcommunity.com</p>
-                        </div>
-                        <span class="contact-link-arrow">→</span>
-                    </div>
+    <div class="contact-inner">
+        <div class="contact-sidebar">
+            <div class="eyebrow">
+                <div class="eyebrow-line"></div>
+                <span>Mesaj Gönderin</span>
+            </div>
+            <h3>Size Hızlıca<br><em>Dönelim</em></h3>
+            <p>Konuyu seçin, formdan mesajınızı gönderin. İlgili ekibimiz doğrudan size ulaşacak.</p>
+            <div class="contact-meta">
+                <div class="contact-meta-item">
+                    <h4>Yanıt Süresi</h4>
+                    <p>4–8 saat</p>
                 </div>
-
-                <div class="social-heading">Sosyal Medya</div>
-                <div class="social-list">
-                    <a href="#" class="social-btn">Instagram</a>
-                    <a href="#" class="social-btn">X / Twitter</a>
-                    <a href="#" class="social-btn">LinkedIn</a>
-                    <a href="#" class="social-btn">YouTube</a>
-                    <a href="#" class="social-btn">TikTok</a>
+                <div class="contact-meta-item">
+                    <h4>Çalışma Saatleri</h4>
+                    <p>Hft içi 09:00–18:00</p>
+                </div>
+                <div class="contact-meta-item">
+                    <h4>Acil Bildirim</h4>
+                    <p>7/24 aktif</p>
+                </div>
+                <div class="contact-meta-item">
+                    <h4>Teknofest 2026</h4>
+                    <p>Başvuru aşamasında</p>
                 </div>
             </div>
-
-            <!-- FORM -->
-            <div class="contact-form-card">
-                <div class="form-header">
-                    <h3>Mesaj Gönder</h3>
-                    <p>Tüm alanlar zorunludur.</p>
-                </div>
-                <div class="form-body">
-
-                    <!-- TOPIC TABS -->
-                    <div class="topic-tabs">
-                        <button class="topic-tab active" onclick="selectTopic(this)">Genel</button>
-                        <button class="topic-tab" onclick="selectTopic(this)">Ortaklık</button>
-                        <button class="topic-tab" onclick="selectTopic(this)">Satıcı</button>
-                        <button class="topic-tab" onclick="selectTopic(this)">Gönüllülük</button>
-                        <button class="topic-tab" onclick="selectTopic(this)">Basın</button>
-                    </div>
-
-                    <form id="contactForm" onsubmit="submitForm(event)">
-                        <div class="form-row">
-                            <div class="form-group" style="margin-bottom:0;">
-                                <label>Ad Soyad</label>
-                                <input type="text" placeholder="Ad Soyad" required>
-                            </div>
-                            <div class="form-group" style="margin-bottom:0;">
-                                <label>E-posta</label>
-                                <input type="email" placeholder="ornek@email.com" required>
-                            </div>
-                        </div>
-                        <div class="form-row" style="margin-top:16px;">
-                            <div class="form-group" style="margin-bottom:0;">
-                                <label>Telefon</label>
-                                <input type="tel" placeholder="05XX XXX XX XX">
-                            </div>
-                            <div class="form-group" style="margin-bottom:0;">
-                                <label>Kurum / Şirket</label>
-                                <input type="text" placeholder="İsteğe bağlı">
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin-top:16px;">
-                            <label>Mesaj</label>
-                            <textarea placeholder="Mesajınızı buraya yazın. Ne kadar detaylı olursa o kadar hızlı yardımcı olabiliriz." required></textarea>
-                        </div>
-                        <button type="submit" class="form-submit">Mesajı Gönder →</button>
-                    </form>
-                </div>
+            <div class="social-label">Sosyal Medya</div>
+            <div class="social-row">
+                <a href="#" class="social-btn">Instagram</a>
+                <a href="#" class="social-btn">X / Twitter</a>
+                <a href="#" class="social-btn">LinkedIn</a>
+                <a href="#" class="social-btn">YouTube</a>
+                <a href="#" class="social-btn">TikTok</a>
             </div>
+        </div>
 
+        <div class="contact-form-wrap">
+            <div class="form-header">
+                <h3>Mesaj Gönder</h3>
+                <p>Tüm alanlar zorunludur.</p>
+            </div>
+            <div class="form-body">
+                <div class="topic-bar">
+                    <button class="topic-btn active" onclick="selectTopic(this)">Genel</button>
+                    <button class="topic-btn" onclick="selectTopic(this)">Ortaklık</button>
+                    <button class="topic-btn" onclick="selectTopic(this)">Satıcı</button>
+                    <button class="topic-btn" onclick="selectTopic(this)">Gönüllü</button>
+                    <button class="topic-btn" onclick="selectTopic(this)">Basın</button>
+                </div>
+                <form id="contactForm" onsubmit="submitForm(event)">
+                    <div class="form-row">
+                        <div class="form-group" style="margin-bottom:0">
+                            <label>Ad Soyad</label>
+                            <input type="text" placeholder="Ad Soyad" required>
+                        </div>
+                        <div class="form-group" style="margin-bottom:0">
+                            <label>E-posta</label>
+                            <input type="email" placeholder="ornek@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-top:14px;">
+                        <div class="form-group" style="margin-bottom:0">
+                            <label>Telefon</label>
+                            <input type="tel" placeholder="05XX XXX XX XX">
+                        </div>
+                        <div class="form-group" style="margin-bottom:0">
+                            <label>Kurum / Şirket</label>
+                            <input type="text" placeholder="İsteğe bağlı">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:14px;">
+                        <label>Mesaj</label>
+                        <textarea placeholder="Mesajınızı buraya yazın." required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Mesajı Gönder →</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 
 <!-- PARTNERSHIP -->
 <div class="partnership-section">
-    <div class="section" style="padding-bottom:0;">
-        <span class="section-label">İş Birliği Modelleri</span>
-        <h2 class="section-title">Nasıl <em>Birlikte</em><br>Çalışabiliriz?</h2>
-        <p style="color:var(--light-gray); font-size:0.92rem; line-height:1.8; font-weight:300; max-width:560px; margin-top:16px;">Her paydaş için farklı iş birliği modelleri sunuyoruz. Size en uygun olanı seçin.</p>
+    <div class="partnership-header">
+        <div class="eyebrow">
+            <div class="eyebrow-line"></div>
+            <span>İş Birliği Modelleri</span>
+        </div>
+        <h2>Nasıl <em>Birlikte</em><br>Çalışabiliriz?</h2>
+        <p>Her paydaş tipi için farklı iş birliği modelleri sunuyoruz. Size en uygun olanı seçin ve iletişime geçin.</p>
     </div>
-    <div style="max-width:1400px; margin:0 auto; padding:0 40px 80px;">
-        <div class="partnership-grid">
-            <div class="partnership-card">
-                <span class="p-num">01</span>
-                <h3>Kuruluş Ortaklığı</h3>
-                <p>Vahşi yaşam koruma vakfı veya derneğiyseniz platformumuza katılın. Bağış alın, gönüllü yönetin, toplulukla iletişim kurun.</p>
-                <a href="mailto:partners@bowlcommunity.com" class="p-link">Başvur →</a>
-            </div>
-            <div class="partnership-card">
-                <span class="p-num">02</span>
-                <h3>Kurumsal Sponsorluk</h3>
-                <p>Şirketinizin sosyal sorumluluk projelerini b0wl Community üzerinden yürütün. Ölçülebilir etki ve görünürlük kazanın.</p>
-                <a href="mailto:partners@bowlcommunity.com" class="p-link">Teklif Al →</a>
-            </div>
-            <div class="partnership-card">
-                <span class="p-num">03</span>
-                <h3>Satıcı Ortaklığı</h3>
-                <p>Ürünlerinizi sosyal etki marketimizde satın. Bağış ispatı zorunluluğu ile güvenilir ve şeffaf bir satış kanalı edinin.</p>
-                <a href="mailto:market@bowlcommunity.com" class="p-link">Başvur →</a>
-            </div>
-            <div class="partnership-card">
-                <span class="p-num">04</span>
-                <h3>Akademik İş Birliği</h3>
-                <p>Biyoloji, zooloji veya çevre bilimleri alanında araştırma yapıyorsanız içerik paylaşın ve öğrencilere ulaşın.</p>
-                <a href="mailto:info@bowlcommunity.com" class="p-link">İletişime Geç →</a>
-            </div>
-            <div class="partnership-card">
-                <span class="p-num">05</span>
-                <h3>Basın ve Medya</h3>
-                <p>Röportaj, haber veya basın kiti talepleriniz için medya ekibimizle doğrudan iletişime geçin.</p>
-                <a href="mailto:info@bowlcommunity.com" class="p-link">Basın Kiti →</a>
-            </div>
-            <div class="partnership-card">
-                <span class="p-num">06</span>
-                <h3>Gönüllü Ol</h3>
-                <p>b0wl Community'nin büyümesine katkıda bulunmak ister misiniz? Yazılım, tasarım, içerik veya operasyon alanlarında gönüllü olun.</p>
-                <a href="mailto:info@bowlcommunity.com" class="p-link">Başvur →</a>
-            </div>
+    <div class="partnership-grid">
+        <div class="partnership-card">
+            <span class="p-num">01</span>
+            <h3>Kuruluş Ortaklığı</h3>
+            <p>Vahşi yaşam koruma alanında faaliyet gösteren vakıf veya dernekler platformumuza katılabilir. Bağış alın, gönüllü yönetin, ağa dahil olun.</p>
+            <a href="mailto:partners@bowlcommunity.com" class="p-link">Başvur →</a>
+        </div>
+        <div class="partnership-card">
+            <span class="p-num">02</span>
+            <h3>Kurumsal Sponsorluk</h3>
+            <p>Şirketinizin sosyal sorumluluk projelerini b0wl üzerinden yürütün. Ölçülebilir etki ve görünürlük kazanın.</p>
+            <a href="mailto:partners@bowlcommunity.com" class="p-link">Teklif Al →</a>
+        </div>
+        <div class="partnership-card">
+            <span class="p-num">03</span>
+            <h3>Satıcı Ortaklığı</h3>
+            <p>Ürünlerinizi sosyal etki marketinde satın. Bağış ispat zorunluluğu ile şeffaf ve güvenilir bir kanal edinin.</p>
+            <a href="mailto:market@bowlcommunity.com" class="p-link">Başvur →</a>
+        </div>
+        <div class="partnership-card">
+            <span class="p-num">04</span>
+            <h3>Akademik İş Birliği</h3>
+            <p>Biyoloji veya çevre bilimleri alanında araştırma yapıyorsanız içerik paylaşın, öğrencilere ulaşın.</p>
+            <a href="mailto:info@bowlcommunity.com" class="p-link">İletişime Geç →</a>
+        </div>
+        <div class="partnership-card">
+            <span class="p-num">05</span>
+            <h3>Basın ve Medya</h3>
+            <p>Röportaj, haber veya basın kiti talepleriniz için medya ekibimizle doğrudan iletişime geçin.</p>
+            <a href="mailto:info@bowlcommunity.com" class="p-link">Basın Kiti →</a>
+        </div>
+        <div class="partnership-card">
+            <span class="p-num">06</span>
+            <h3>Gönüllü Ol</h3>
+            <p>Yazılım, tasarım, içerik veya operasyon alanlarında b0wl Community'nin büyümesine katkı sağlayın.</p>
+            <a href="mailto:info@bowlcommunity.com" class="p-link">Başvur →</a>
         </div>
     </div>
 </div>
 
 <!-- FAQ -->
 <div class="faq-section">
-    <div class="section">
-        <div class="faq-layout">
-
-            <div class="faq-sidebar">
-                <span class="section-label">SSS</span>
-                <h2>Sık Sorulan<br><em>Sorular</em></h2>
-                <p>En çok merak edilen sorular ve yanıtları. Aradığınızı bulamazsanız bize yazın.</p>
-                <a href="mailto:info@bowlcommunity.com">Soru Sor →</a>
+    <div class="faq-inner">
+        <div class="faq-sidebar">
+            <div class="eyebrow">
+                <div class="eyebrow-line"></div>
+                <span>SSS</span>
             </div>
-
-            <div class="faq-list">
-
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <h4>Bağışlarımın nereye gittiğini nasıl takip edebilirim?</h4>
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>b0wl Community'de yaptığınız tüm bağışlar gerçek zamanlı olarak takip edilebilir. Hesabınıza giriş yaptığınızda bağış geçmişinizi, bağışlarınızın hangi kuruluşa iletildiğini ve kuruluşun bu bağışı nasıl kullandığını detaylı olarak görebilirsiniz. Şeffaflık ilkemiz gereği hiçbir bağış gizlenemez.</p>
-                    </div>
+            <h2>Sık Sorulan<br><em>Sorular</em></h2>
+            <p>En çok merak edilen sorular ve yanıtları. Aradığınızı bulamazsanız bize yazın.</p>
+            <a href="mailto:info@bowlcommunity.com">Soru Sor →</a>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <h4>Bağışlarımın nereye gittiğini nasıl takip edebilirim?</h4>
+                    <div class="faq-toggle">+</div>
                 </div>
-
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <h4>Hayvan bildirimi yaptıktan sonra ne olur?</h4>
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Bildiriminiz yapay zeka sistemimiz tarafından analiz edilir, hayvanın türü ve durumu tespit edilir. GPS konumunuz üzerinden en yakın vahşi yaşam koruma kuruluşu bulunur ve otomatik bildirim gönderilir. Ortalama 15-30 dakika içinde kuruluş size geri dönüş yapar. Sürecin her adımını platform üzerinden takip edebilirsiniz.</p>
-                    </div>
+                <div class="faq-answer">
+                    <p>b0wl Community'de yaptığınız tüm bağışlar gerçek zamanlı olarak takip edilebilir. Hesabınızdan bağış geçmişinizi, hangi kuruluşa iletildiğini ve nasıl kullanıldığını detaylı görebilirsiniz. Şeffaflık ilkemiz gereği hiçbir bağış gizlenemez.</p>
                 </div>
-
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <h4>Market'te satıcı olmak için ne gerekiyor?</h4>
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Satıcı olmak için market@bowlcommunity.com adresine başvurmanız yeterlidir. Hangi ürünleri satmayı planladığınızı ve gelirin hangi vahşi yaşam koruma kuruluşuna bağışlanacağını belirtmeniz gerekmektedir. Bağış ispat belgesi zorunludur. Onaylandıktan sonra ürünlerinizi platformda listeleyebilirsiniz. Satışlardan %10 platform komisyonu alınır.</p>
-                    </div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <h4>Hayvan bildirimi yaptıktan sonra ne olur?</h4>
+                    <div class="faq-toggle">+</div>
                 </div>
-
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <h4>Kuruluşumuzu platforma nasıl ekleriz?</h4>
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Vahşi yaşam koruma alanında faaliyet gösteren tüm kuruluşlar partners@bowlcommunity.com adresine başvurabilir. Kuruluşunuzu, faaliyet alanlarınızı ve iletişim bilgilerinizi paylaşmanız yeterlidir. Ekibimiz başvurunuzu inceleyerek en geç 5 iş günü içinde size geri dönüş yapar.</p>
-                    </div>
+                <div class="faq-answer">
+                    <p>Bildiriminiz yapay zeka sistemimiz tarafından analiz edilir, hayvanın türü ve durumu tespit edilir. GPS konumunuz üzerinden en yakın koruma kuruluşu bulunur ve otomatik bildirim gönderilir. Ortalama 15-30 dakika içinde müdahale başlar ve sizi bilgilendiririz.</p>
                 </div>
-
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <h4>Platform bireysel kullanıcılar için ücretsiz mi?</h4>
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Evet, b0wl Community bireysel kullanıcılar için tamamen ücretsizdir. Hayvan bildirme, bağış yapma ve eğitim içeriklerine erişim ücretsizdir. Bağışlarda hiçbir komisyon alınmaz. Yalnızca market üzerinden yapılan satışlarda %10 platform komisyonu uygulanır ve bu gelir platformun sürdürülebilirliği için kullanılır.</p>
-                    </div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <h4>Market'te satıcı olmak için ne gerekiyor?</h4>
+                    <div class="faq-toggle">+</div>
                 </div>
-
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <h4>Burs başvurusu nasıl yapılır?</h4>
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Biyoloji, zooloji, çevre bilimleri ve benzeri alanlarda eğitim gören öğrenciler burs başvurusu yapabilir. Bağış sayfasındaki Burs Bölümü üzerinden başvuru formuna ulaşabilirsiniz. Burs miktarı ve koşulları bağışçılar tarafından belirlenmekte olup her dönem yeni burs imkânları eklenmektedir.</p>
-                    </div>
+                <div class="faq-answer">
+                    <p>market@bowlcommunity.com adresine başvurmanız yeterlidir. Hangi ürünleri satmayı planladığınızı ve gelirin hangi vahşi yaşam koruma kuruluşuna bağışlanacağını belirtmeniz gerekir. Bağış ispat belgesi zorunludur. Satışlardan %10 platform komisyonu alınır.</p>
                 </div>
-
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <h4>TEKNOFEST Girişim Programı kapsamında mısınız?</h4>
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Evet, b0wl Community TEKNOFEST 2026 Girişim Programı Ön Kuluçka aşamasına başvurmuş bir girişimdir. T3 Girişim Merkezi desteği ile platformumuzu geliştirmeye devam ediyoruz. Daha fazla bilgi için iletişime geçebilirsiniz.</p>
-                    </div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <h4>Kuruluşumuzu platforma nasıl ekleriz?</h4>
+                    <div class="faq-toggle">+</div>
                 </div>
-
+                <div class="faq-answer">
+                    <p>partners@bowlcommunity.com adresine başvurabilirsiniz. Kuruluşunuzu, faaliyet alanlarınızı ve iletişim bilgilerinizi paylaşmanız yeterlidir. En geç 5 iş günü içinde geri dönüş yapılır.</p>
+                </div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <h4>Platform bireysel kullanıcılar için ücretsiz mi?</h4>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <p>Evet, b0wl Community bireysel kullanıcılar için tamamen ücretsizdir. Hayvan bildirme, bağış yapma ve eğitim içeriklerine erişim ücretsizdir. Bağışlarda hiçbir komisyon alınmaz. Yalnızca market satışlarında %10 komisyon uygulanır.</p>
+                </div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <h4>TEKNOFEST Girişim Programı kapsamında mısınız?</h4>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <p>Evet, b0wl Community TEKNOFEST 2026 Girişim Programı Ön Kuluçka aşamasına başvurmuş bir girişimdir. T3 Girişim Merkezi desteği ile platformumuzu geliştirmeye devam ediyoruz.</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- MAP STRIP -->
-<div class="map-strip">
-    <div class="map-strip-inner">
-        <div class="map-strip-text">
+<!-- INFO STRIP -->
+<div class="info-strip">
+    <div class="info-strip-inner">
+        <div class="info-strip-text">
             <h3>Türkiye'den Dünyaya</h3>
             <p>İstanbul merkezli, küresel vizyonlu bir girişim.</p>
         </div>
-        <div class="map-strip-details">
-            <div class="map-detail">
+        <div class="info-strip-details">
+            <div class="info-detail">
                 <h4>Merkez</h4>
                 <p>İstanbul, Türkiye</p>
             </div>
-            <div class="map-detail">
+            <div class="info-detail">
                 <h4>Genel İletişim</h4>
                 <a href="mailto:info@bowlcommunity.com">info@bowlcommunity.com</a>
             </div>
-            <div class="map-detail">
+            <div class="info-detail">
                 <h4>Ortaklık</h4>
                 <a href="mailto:partners@bowlcommunity.com">partners@bowlcommunity.com</a>
             </div>
-            <div class="map-detail">
+            <div class="info-detail">
                 <h4>Web</h4>
                 <a href="#">bowlcommunity.com</a>
             </div>
@@ -1142,10 +1051,16 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
 <!-- CTA BAND -->
 <div class="cta-band">
     <div class="cta-band-inner">
-        <h2>Doğanın Sesine Kulak Ver. Harekete Geç.</h2>
+        <div class="cta-band-text">
+            <div class="eyebrow">
+                <div class="eyebrow-line"></div>
+                <span>Harekete Geç</span>
+            </div>
+            <h2>Doğanın Sesine<br>Kulak Ver.<br><em>Katıl.</em></h2>
+        </div>
         <div class="cta-band-actions">
-            <a href="ozellikler.html" class="btn-dark">Platformu Keşfet</a>
-            <a href="hakkimizda.html" class="btn-outline-dark">Hakkımızda</a>
+            <a href="ozellikler.html" class="btn-green">Platformu Keşfet</a>
+            <a href="hakkimizda.html" class="btn-amber">Hakkımızda</a>
         </div>
     </div>
 </div>
@@ -1154,16 +1069,19 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
 <footer class="footer">
     <div class="footer-top">
         <div class="footer-brand">
-            <h3>b0wl Community</h3>
-            <p>Vahşi yaşamı korumak için teknolojiyi ve topluluk gücünü birleştiren küresel platform. Doğanın sesi olmak için buradayız.</p>
+            <div class="footer-brand-mark">
+                <div class="footer-brand-icon">b0</div>
+                <h3>b0wl Community</h3>
+            </div>
+            <p>Vahşi yaşamı korumak için kuruluşları, bireyleri ve teknolojiyi bir araya getiren küresel koordinasyon platformu.</p>
         </div>
         <div class="footer-col">
             <h4>Platform</h4>
             <ul>
                 <li><a href="ozellikler.html">Özellikler</a></li>
-                <li><a href="#">Hayvan Bildir — Yakında</a></li>
-                <li><a href="#">Bağış Yap — Yakında</a></li>
-                <li><a href="#">Market — Yakında</a></li>
+                <li><a href="yakinda.html?page=bildir">Hayvan Bildir</a></li>
+                <li><a href="yakinda.html?page=bagis">Bağış Yap</a></li>
+                <li><a href="yakinda.html?page=market">Market</a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -1201,13 +1119,12 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
 </div>
 
 <script>
-
 function toggleNav() {
     document.getElementById('navLinks').classList.toggle('open');
 }
 
 function selectTopic(btn) {
-    document.querySelectorAll('.topic-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.topic-btn').forEach(t => t.classList.remove('active'));
     btn.classList.add('active');
 }
 
@@ -1223,11 +1140,10 @@ function submitForm(e) {
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 4000);
     e.target.reset();
-    document.querySelectorAll('.topic-tab').forEach((t, i) => {
+    document.querySelectorAll('.topic-btn').forEach((t, i) => {
         t.classList.toggle('active', i === 0);
     });
 }
-
 </script>
 
 </body>
