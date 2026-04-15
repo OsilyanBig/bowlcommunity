@@ -10,11 +10,16 @@
 :root {
     --green: #00e5b0;
     --green-dark: #00b389;
-    --black: #0a0a0a;
-    --dark: #111111;
-    --dark2: #1a1a1a;
-    --gray: #2a2a2a;
-    --light-gray: #888888;
+    --forest: #1a3a2a;
+    --forest-dark: #0f2318;
+    --amber: #d4a853;
+    --amber-light: #e8c47a;
+    --black: #080c09;
+    --dark: #0f1a12;
+    --dark2: #162012;
+    --dark3: #1e2d1e;
+    --light-gray: #7a8f7e;
+    --off-white: #e8ede9;
     --white: #ffffff;
 }
 
@@ -26,8 +31,9 @@ body { background: var(--black); color: var(--white); font-family: 'Inter', sans
 nav {
     position: fixed; top: 0; left: 0;
     width: 100%; z-index: 1000;
-    background: var(--black);
-    border-bottom: 1px solid #222;
+    background: rgba(8,12,9,0.96);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
 }
 
 .nav-inner {
@@ -39,22 +45,24 @@ nav {
 
 .nav-logo {
     text-decoration: none;
-    display: flex; align-items: center; gap: 12px;
+    display: flex; align-items: center; gap: 14px;
 }
 
 .nav-logo-mark {
-    width: 36px; height: 36px;
-    background: var(--green); border-radius: 4px;
+    width: 38px; height: 38px;
+    background: var(--forest);
+    border: 1px solid rgba(0,229,176,0.3);
+    border-radius: 3px;
     display: flex; align-items: center; justify-content: center;
-    font-weight: 900; font-size: 0.85rem;
-    color: var(--black); letter-spacing: -1px;
+    font-weight: 900; font-size: 0.82rem;
+    color: var(--green);
     font-family: 'Libre Baskerville', serif;
 }
 
 .nav-logo-text {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1rem; color: var(--white);
-    font-weight: 700; letter-spacing: 0.5px;
+    font-size: 1rem; color: var(--off-white);
+    font-weight: 700; letter-spacing: 0.3px;
 }
 
 .nav-links {
@@ -63,32 +71,31 @@ nav {
 }
 
 .nav-links li a {
-    display: block; padding: 0 18px;
+    display: block; padding: 0 16px;
     height: 64px; line-height: 64px;
-    color: rgba(255,255,255,0.65);
+    color: rgba(232,237,233,0.5);
     text-decoration: none; font-size: 0.82rem;
-    font-weight: 500; letter-spacing: 0.3px;
-    transition: 0.2s;
+    font-weight: 500; transition: 0.2s;
     border-bottom: 2px solid transparent;
 }
 
-.nav-links li a:hover { color: var(--white); border-bottom-color: var(--green); }
-.nav-links li a.active { color: var(--green); border-bottom-color: var(--green); }
+.nav-links li a:hover { color: var(--off-white); border-bottom-color: var(--amber); }
+.nav-links li a.active { color: var(--off-white); border-bottom-color: var(--green); }
 
 .nav-cta {
-    background: var(--green) !important;
-    color: var(--black) !important;
+    background: var(--forest) !important;
+    border: 1px solid rgba(0,229,176,0.25) !important;
+    color: var(--green) !important;
     font-weight: 700 !important;
-    padding: 0 22px !important;
-    height: 38px !important;
-    line-height: 38px !important;
-    border-radius: 2px !important;
+    padding: 0 20px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+    border-radius: 3px !important;
     border-bottom: none !important;
-    margin-left: 10px;
-    align-self: center;
+    margin-left: 12px; align-self: center;
 }
 
-.nav-cta:hover { background: var(--green-dark) !important; border-bottom: none !important; }
+.nav-cta:hover { background: var(--forest-dark) !important; border-color: rgba(0,229,176,0.5) !important; }
 
 .hamburger {
     display: none; background: none; border: none;
@@ -96,131 +103,136 @@ nav {
     gap: 5px; padding: 5px;
 }
 
-.hamburger span { display: block; width: 24px; height: 2px; background: var(--white); }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--off-white); }
 
 /* PAGE HERO */
 .page-hero {
     padding-top: 64px;
-    background: var(--dark);
-    border-bottom: 1px solid #222;
+    background: var(--forest-dark);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    position: relative; overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 45%; height: 100%;
+    background: url('https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=800') center/cover no-repeat;
+    opacity: 0.1; filter: saturate(0.2);
 }
 
 .page-hero-inner {
     max-width: 1400px; margin: 0 auto;
-    padding: 90px 40px 80px;
+    padding: 90px 40px 85px;
+    position: relative; z-index: 1;
+    max-width: 820px;
 }
 
-.page-label {
-    font-size: 0.7rem; font-weight: 700;
+.eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 22px;
+}
+
+.eyebrow-line { width: 24px; height: 1px; background: var(--amber); }
+
+.eyebrow span {
+    font-size: 0.68rem; font-weight: 700;
     letter-spacing: 3px; text-transform: uppercase;
-    color: var(--green); margin-bottom: 20px;
-    display: block;
+    color: var(--amber);
 }
 
-.page-hero-inner h1 {
+.page-hero h1 {
     font-family: 'Libre Baskerville', serif;
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 700; line-height: 1.1;
     letter-spacing: -0.5px; margin-bottom: 28px;
-    max-width: 800px;
+    color: var(--off-white);
 }
 
-.page-hero-inner h1 em {
-    font-style: italic;
-    color: var(--green);
-}
+.page-hero h1 em { font-style: italic; color: var(--green); }
 
-.page-hero-inner p {
+.page-hero p {
     color: var(--light-gray); font-size: 1.05rem;
-    line-height: 1.8; font-weight: 300;
-    max-width: 560px;
+    line-height: 1.8; font-weight: 300; max-width: 540px;
 }
 
-/* DIVIDER */
-hr { border: none; border-top: 1px solid #222; margin: 0; }
+/* HR */
+hr { border: none; border-top: 1px solid rgba(255,255,255,0.05); }
 
-/* SECTIONS */
-.section {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 100px 40px;
-}
-
-.section-label {
-    font-size: 0.7rem; font-weight: 700;
-    letter-spacing: 3px; text-transform: uppercase;
-    color: var(--green); margin-bottom: 16px;
-    display: block;
-}
-
-.section-title {
-    font-family: 'Libre Baskerville', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700; line-height: 1.2;
-    margin-bottom: 20px; letter-spacing: -0.3px;
-}
-
-.section-title em { font-style: italic; color: var(--green); }
-
-/* FEATURE OVERVIEW */
+/* OVERVIEW */
 .overview-section {
     background: var(--black);
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.overview-header {
+    max-width: 1400px; margin: 0 auto;
+    padding: 90px 40px 55px;
+    display: flex; justify-content: space-between;
+    align-items: flex-end; gap: 50px; flex-wrap: wrap;
+}
+
+.overview-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700; color: var(--off-white);
+    line-height: 1.2; letter-spacing: -0.3px;
+}
+
+.overview-header h2 em { font-style: italic; color: var(--green); }
+
+.overview-header p {
+    color: var(--light-gray); font-size: 0.9rem;
+    line-height: 1.75; max-width: 380px; font-weight: 300;
 }
 
 .overview-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: #222;
-    margin-top: 60px;
+    max-width: 1400px; margin: 0 auto;
+    padding: 0 40px 90px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: rgba(255,255,255,0.04);
 }
 
 .overview-card {
-    background: var(--black);
-    padding: 45px 35px;
-    transition: 0.3s;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
+    background: var(--black); padding: 42px 35px;
+    transition: 0.3s; position: relative; overflow: hidden;
 }
 
-.overview-card::before {
+.overview-card::after {
     content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 0; height: 3px;
-    background: var(--green);
+    position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: linear-gradient(90deg, var(--green), var(--amber));
     transition: 0.4s;
 }
 
-.overview-card:hover::before { width: 100%; }
+.overview-card:hover::after { width: 100%; }
 .overview-card:hover { background: var(--dark); }
 
 .overview-num {
     font-family: 'Libre Baskerville', serif;
     font-size: 2.5rem; font-weight: 700;
-    color: #1e1e1e; line-height: 1;
-    margin-bottom: 20px;
-    transition: 0.3s;
+    color: rgba(255,255,255,0.04); line-height: 1;
+    margin-bottom: 20px; transition: 0.3s;
 }
 
-.overview-card:hover .overview-num { color: var(--green); opacity: 0.25; }
+.overview-card:hover .overview-num { color: rgba(212,168,83,0.12); }
 
 .overview-card h3 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.1rem; font-weight: 700;
+    font-size: 1.08rem; font-weight: 700;
     margin-bottom: 12px; line-height: 1.3;
+    color: var(--off-white);
 }
 
 .overview-card p {
-    font-size: 0.85rem; color: var(--light-gray);
+    font-size: 0.83rem; color: var(--light-gray);
     line-height: 1.75; font-weight: 300;
 }
 
 /* FEATURE DETAIL */
 .feature-detail {
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .feature-detail:nth-child(odd) { background: var(--black); }
@@ -229,23 +241,21 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
 .feature-detail-inner {
     max-width: 1400px; margin: 0 auto;
     padding: 100px 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 100px;
-    align-items: center;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 100px; align-items: center;
 }
 
 .feature-detail-inner.reverse { direction: rtl; }
 .feature-detail-inner.reverse > * { direction: ltr; }
 
 .feature-tag {
-    display: inline-block;
+    display: inline-flex; align-items: center; gap: 8px;
     font-size: 0.68rem; font-weight: 700;
     letter-spacing: 2px; text-transform: uppercase;
-    color: var(--green);
-    border: 1px solid rgba(0,229,176,0.3);
-    padding: 5px 14px; border-radius: 2px;
-    margin-bottom: 20px;
+    color: var(--amber);
+    border: 1px solid rgba(212,168,83,0.25);
+    padding: 6px 14px; border-radius: 2px;
+    margin-bottom: 22px;
 }
 
 .feature-detail-text h2 {
@@ -253,153 +263,116 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
     font-size: clamp(1.8rem, 3.5vw, 2.8rem);
     font-weight: 700; line-height: 1.2;
     margin-bottom: 22px; letter-spacing: -0.3px;
+    color: var(--off-white);
 }
 
-.feature-detail-text h2 em {
-    font-style: italic; color: var(--green);
-}
+.feature-detail-text h2 em { font-style: italic; color: var(--green); }
 
 .feature-detail-text > p {
-    color: var(--light-gray); font-size: 0.95rem;
-    line-height: 1.85; font-weight: 300;
-    margin-bottom: 35px;
+    color: var(--light-gray); font-size: 0.92rem;
+    line-height: 1.85; font-weight: 300; margin-bottom: 35px;
 }
 
 .feature-checklist {
-    list-style: none;
-    display: flex; flex-direction: column;
-    gap: 0; margin-bottom: 40px;
+    list-style: none; display: flex;
+    flex-direction: column; gap: 0; margin-bottom: 38px;
 }
 
 .feature-checklist li {
     display: flex; align-items: flex-start;
-    gap: 16px; padding: 16px 0;
-    border-bottom: 1px solid #1a1a1a;
-    font-size: 0.88rem;
-    color: rgba(255,255,255,0.75);
-    font-weight: 400;
-    transition: 0.2s;
+    gap: 16px; padding: 15px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 0.87rem;
+    color: rgba(232,237,233,0.7);
+    font-weight: 400; transition: 0.2s;
 }
 
-.feature-checklist li:hover { padding-left: 6px; color: var(--white); }
+.feature-checklist li:hover { color: var(--off-white); padding-left: 4px; }
 .feature-checklist li:last-child { border-bottom: none; }
 
 .check-mark {
     width: 20px; height: 20px;
-    background: rgba(0,229,176,0.1);
-    border: 1px solid rgba(0,229,176,0.3);
+    background: rgba(0,229,176,0.08);
+    border: 1px solid rgba(0,229,176,0.2);
     border-radius: 2px;
-    display: flex; align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 0.65rem; color: var(--green);
-    margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 0.6rem;
+    color: var(--green); margin-top: 1px;
 }
 
 .btn-primary {
     background: var(--green); color: var(--black);
-    padding: 16px 36px; font-weight: 700;
-    font-size: 0.88rem; letter-spacing: 0.5px;
-    text-decoration: none; border-radius: 2px;
+    padding: 14px 32px; font-weight: 700;
+    font-size: 0.85rem; letter-spacing: 0.5px;
+    text-decoration: none; border-radius: 3px;
     transition: 0.2s; display: inline-block;
-    border: 2px solid var(--green);
 }
 
-.btn-primary:hover { background: var(--green-dark); border-color: var(--green-dark); }
+.btn-primary:hover { background: var(--green-dark); }
 
-/* FEATURE VISUAL */
-.feature-visual {
-    position: relative;
+/* VISUAL CARDS */
+.visual-card {
+    background: var(--forest-dark);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 40px;
 }
 
-.feature-img {
-    width: 100%; height: 480px;
-    overflow: hidden; position: relative;
-}
-
-.feature-img img {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-    filter: brightness(0.65) saturate(0.8);
-    transition: 0.6s;
-}
-
-.feature-img:hover img { filter: brightness(0.75) saturate(0.9); }
-
-.feature-img-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(0,229,176,0.08), transparent 60%);
-}
-
-/* STEPS VISUAL */
-.steps-visual {
-    background: var(--dark);
-    border: 1px solid #222;
-    padding: 45px;
-}
-
-.steps-visual h3 {
+.visual-card-title {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1rem; font-weight: 700;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #222;
+    font-size: 0.92rem; font-weight: 700;
+    color: var(--off-white); margin-bottom: 8px;
 }
 
+.visual-card-sub {
+    font-size: 0.75rem; color: var(--light-gray);
+    font-weight: 300; margin-bottom: 28px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* STEPS */
 .step-row {
-    display: flex; gap: 20px;
-    padding: 20px 0;
-    border-bottom: 1px solid #1a1a1a;
-    align-items: center;
-    transition: 0.2s;
+    display: flex; gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    align-items: flex-start; transition: 0.2s;
 }
 
-.step-row:hover { padding-left: 8px; }
+.step-row:hover { padding-left: 6px; }
 .step-row:last-child { border-bottom: none; }
 
 .step-circle {
-    width: 36px; height: 36px;
-    background: rgba(0,229,176,0.1);
-    border: 1px solid rgba(0,229,176,0.3);
+    width: 34px; height: 34px;
+    background: var(--forest);
+    border: 1px solid rgba(0,229,176,0.15);
     border-radius: 50%;
-    display: flex; align-items: center;
-    justify-content: center;
-    font-size: 0.75rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem; font-weight: 700;
     color: var(--green); flex-shrink: 0;
     font-family: 'Libre Baskerville', serif;
+    margin-top: 1px;
 }
 
 .step-row h4 {
-    font-size: 0.88rem; font-weight: 600;
-    margin-bottom: 3px;
+    font-size: 0.87rem; font-weight: 600;
+    margin-bottom: 3px; color: var(--off-white);
 }
 
 .step-row p {
-    font-size: 0.78rem; color: var(--light-gray);
-    font-weight: 300; line-height: 1.4;
+    font-size: 0.77rem; color: var(--light-gray);
+    font-weight: 300; line-height: 1.5;
 }
 
-/* NETWORK VISUAL */
-.network-visual {
-    background: var(--dark);
-    border: 1px solid #222;
-    padding: 45px;
-    min-height: 480px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0;
-}
-
+/* NETWORK ROWS */
 .network-row {
     display: flex; align-items: center;
     justify-content: space-between;
-    padding: 18px 0;
-    border-bottom: 1px solid #1a1a1a;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
     transition: 0.2s;
 }
 
-.network-row:hover { padding-left: 8px; }
+.network-row:hover { padding-left: 6px; }
 .network-row:last-child { border-bottom: none; }
 
 .network-org {
@@ -407,222 +380,218 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
 }
 
 .network-icon {
-    width: 38px; height: 38px;
-    background: #1a1a1a;
-    border: 1px solid #2a2a2a;
+    width: 36px; height: 36px;
+    background: var(--forest);
+    border: 1px solid rgba(255,255,255,0.05);
     border-radius: 2px;
     display: flex; align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
+    justify-content: center; font-size: 1rem;
 }
 
-.network-org h4 { font-size: 0.85rem; font-weight: 600; margin-bottom: 2px; }
-.network-org p { font-size: 0.72rem; color: var(--light-gray); font-weight: 300; }
+.network-org h4 {
+    font-size: 0.83rem; font-weight: 600;
+    margin-bottom: 2px; color: var(--off-white);
+}
 
-.network-status {
-    font-size: 0.68rem; font-weight: 700;
+.network-org p {
+    font-size: 0.72rem; color: var(--light-gray);
+    font-weight: 300; margin: 0;
+}
+
+.network-badge {
+    font-size: 0.62rem; font-weight: 700;
     letter-spacing: 1px; text-transform: uppercase;
     color: var(--green);
-    background: rgba(0,229,176,0.08);
-    border: 1px solid rgba(0,229,176,0.2);
-    padding: 4px 10px; border-radius: 2px;
+    background: rgba(0,229,176,0.06);
+    border: 1px solid rgba(0,229,176,0.15);
+    padding: 3px 10px; border-radius: 2px;
 }
 
-/* DONATE VISUAL */
-.donate-visual {
-    background: var(--dark);
-    border: 1px solid #222;
-    padding: 45px;
+.network-badge.soon {
+    color: var(--light-gray);
+    background: rgba(255,255,255,0.02);
+    border-color: rgba(255,255,255,0.06);
 }
 
-.donate-visual h3 {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 1rem; margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #222;
-}
-
-.fund-row {
-    padding: 18px 0;
-    border-bottom: 1px solid #1a1a1a;
-}
-
+/* FUND BARS */
+.fund-row { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
 .fund-row:last-child { border-bottom: none; }
 
 .fund-row-top {
     display: flex; justify-content: space-between;
-    margin-bottom: 10px;
-    font-size: 0.82rem;
+    margin-bottom: 9px; font-size: 0.8rem;
 }
 
-.fund-row-top span:first-child { color: rgba(255,255,255,0.7); font-weight: 500; }
-.fund-row-top span:last-child { color: var(--green); font-weight: 700; }
+.fund-row-top span:first-child { color: rgba(232,237,233,0.65); font-weight: 500; }
+.fund-row-top span:last-child { color: var(--amber); font-weight: 700; }
 
-.fund-bar {
-    height: 3px; background: #222; overflow: hidden;
-}
+.fund-bar { height: 2px; background: rgba(255,255,255,0.06); overflow: hidden; }
 
 .fund-bar-fill {
-    height: 100%; background: var(--green);
+    height: 100%;
+    background: linear-gradient(90deg, var(--green), var(--amber));
     width: 0; transition: width 1.5s ease;
 }
 
-/* MARKET PREVIEW */
-.market-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: #222;
+/* MARKET GRID */
+.market-preview {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: rgba(255,255,255,0.04);
 }
 
 .market-item {
-    background: var(--dark);
-    padding: 30px 25px;
+    background: var(--forest-dark); padding: 28px 24px;
     transition: 0.3s;
 }
 
-.market-item:hover { background: #1a1a1a; }
+.market-item:hover { background: var(--forest); }
 
 .market-item-icon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    display: block;
+    font-size: 2.2rem; display: block; margin-bottom: 14px;
 }
 
 .market-item h4 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 0.95rem; font-weight: 700;
-    margin-bottom: 6px;
+    font-size: 0.92rem; font-weight: 700;
+    margin-bottom: 5px; color: var(--off-white);
 }
 
 .market-item p {
-    font-size: 0.78rem; color: var(--light-gray);
-    font-weight: 300; margin-bottom: 14px;
+    font-size: 0.75rem; color: var(--light-gray);
+    font-weight: 300; margin-bottom: 12px;
 }
 
 .market-item-price {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.2rem; font-weight: 700;
-    color: var(--green);
+    font-size: 1.1rem; font-weight: 700; color: var(--amber);
 }
 
-.market-badge {
-    font-size: 0.65rem; font-weight: 700;
-    letter-spacing: 1px; text-transform: uppercase;
-    color: var(--green);
-    border: 1px solid rgba(0,229,176,0.2);
-    padding: 3px 8px; border-radius: 2px;
-    margin-left: 10px;
-    vertical-align: middle;
-}
-
-/* COMPARISON TABLE */
+/* COMPARE */
 .compare-section {
-    background: var(--dark);
-    border-top: 1px solid #222;
-    border-bottom: 1px solid #222;
+    background: var(--forest-dark);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.compare-inner {
+    max-width: 1400px; margin: 0 auto;
+    padding: 100px 40px;
+}
+
+.compare-inner .eyebrow { margin-bottom: 22px; }
+
+.compare-inner h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700; color: var(--off-white);
+    line-height: 1.2; letter-spacing: -0.3px;
+    margin-bottom: 14px;
+}
+
+.compare-inner h2 em { font-style: italic; color: var(--amber); }
+
+.compare-inner > p {
+    color: var(--light-gray); font-size: 0.9rem;
+    font-weight: 300; line-height: 1.7;
+    max-width: 520px; margin-bottom: 50px;
 }
 
 .compare-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 50px;
+    width: 100%; border-collapse: collapse;
 }
 
 .compare-table th {
-    padding: 20px 25px;
-    text-align: left;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    border-bottom: 2px solid #222;
+    padding: 18px 22px; text-align: left;
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(232,237,233,0.3);
+    border-bottom: 2px solid rgba(255,255,255,0.05);
 }
 
-.compare-table th:first-child { width: 30%; }
+.compare-table th:first-child { width: 28%; }
 
-.compare-table th.highlight {
+.compare-table th.hl {
     color: var(--green);
     border-bottom-color: var(--green);
 }
 
 .compare-table td {
-    padding: 18px 25px;
-    font-size: 0.85rem;
-    border-bottom: 1px solid #1a1a1a;
-    font-weight: 300;
-    color: rgba(255,255,255,0.65);
+    padding: 16px 22px; font-size: 0.83rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-weight: 300; color: rgba(232,237,233,0.55);
     vertical-align: middle;
 }
 
-.compare-table td:first-child {
-    font-weight: 500;
-    color: var(--white);
+.compare-table td:first-child { font-weight: 500; color: var(--off-white); }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:hover td { background: rgba(255,255,255,0.015); }
+
+.compare-table td.hl-col {
+    background: rgba(0,229,176,0.03);
+    border-left: 1px solid rgba(0,229,176,0.08);
+    border-right: 1px solid rgba(0,229,176,0.08);
 }
 
-.compare-table tr:last-child td { border-bottom: none; }
-
-.compare-table tr:hover td { background: rgba(255,255,255,0.02); }
-
-.check-yes { color: var(--green); font-weight: 700; font-size: 1rem; }
-.check-no { color: #333; font-size: 1rem; }
-.check-partial { color: #555; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px; }
-
-.compare-table td.highlight-col {
-    background: rgba(0,229,176,0.03);
-    border-left: 1px solid rgba(0,229,176,0.1);
-    border-right: 1px solid rgba(0,229,176,0.1);
+.yes { color: var(--green); font-weight: 700; font-size: 1rem; }
+.no  { color: rgba(255,255,255,0.12); font-size: 1rem; }
+.partial {
+    color: rgba(212,168,83,0.6); font-size: 0.7rem;
+    font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
 }
 
 /* COMING SOON */
-.coming-banner {
+.coming-section {
     background: var(--dark2);
-    border-top: 1px solid #222;
-    border-bottom: 1px solid #222;
-    padding: 50px 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-.coming-banner-inner {
+.coming-inner {
     max-width: 1400px; margin: 0 auto;
+    padding: 65px 40px;
     display: flex; align-items: center;
     justify-content: space-between;
     gap: 30px; flex-wrap: wrap;
 }
 
-.coming-banner h3 {
+.coming-text h3 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.4rem; font-weight: 700;
-    margin-bottom: 6px;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--off-white); margin-bottom: 6px;
 }
 
-.coming-banner p { color: var(--light-gray); font-size: 0.88rem; }
+.coming-text p { color: var(--light-gray); font-size: 0.85rem; font-weight: 300; }
 
-.coming-tags { display: flex; gap: 12px; flex-wrap: wrap; }
+.coming-tags { display: flex; gap: 10px; flex-wrap: wrap; }
 
 .coming-tag {
-    padding: 10px 22px; border: 1px solid #333;
-    border-radius: 2px; font-size: 0.78rem;
-    font-weight: 600; color: rgba(255,255,255,0.5);
-    letter-spacing: 0.5px;
-    display: flex; align-items: center; gap: 8px;
+    padding: 11px 22px;
+    border: 1px solid rgba(255,255,255,0.07);
+    font-size: 0.78rem; font-weight: 600;
+    color: rgba(255,255,255,0.3);
+    display: flex; align-items: center; gap: 9px;
+    border-radius: 2px; text-decoration: none;
+    transition: 0.2s;
+}
+
+.coming-tag:hover {
+    border-color: rgba(0,229,176,0.2);
+    color: rgba(232,237,233,0.6);
 }
 
 .tag-dot {
-    width: 6px; height: 6px;
+    width: 5px; height: 5px;
     border-radius: 50%; background: var(--green);
     animation: pulse 2s ease-in-out infinite;
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.8); }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
 }
 
 /* CTA BAND */
 .cta-band {
-    background: var(--green);
-    padding: 80px 40px;
+    background: var(--forest); padding: 90px 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .cta-band-inner {
@@ -632,83 +601,95 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
     gap: 40px; flex-wrap: wrap;
 }
 
+.cta-band-text .eyebrow { margin-bottom: 18px; }
+
 .cta-band h2 {
     font-family: 'Libre Baskerville', serif;
     font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 700; color: var(--black);
-    line-height: 1.2; max-width: 600px;
+    font-weight: 700; color: var(--off-white);
+    line-height: 1.2; max-width: 550px;
 }
 
-.cta-band-actions { display: flex; gap: 16px; flex-wrap: wrap; flex-shrink: 0; }
+.cta-band h2 em { font-style: italic; color: var(--green); }
+.cta-band-actions { display: flex; gap: 14px; flex-wrap: wrap; flex-shrink: 0; }
 
-.btn-dark {
-    background: var(--black); color: var(--white);
-    padding: 16px 32px; font-weight: 700;
-    font-size: 0.85rem; letter-spacing: 0.5px;
-    text-decoration: none; border-radius: 2px;
-    transition: 0.2s; display: inline-block;
-    border: 2px solid var(--black);
+.btn-green {
+    background: var(--green); color: var(--black);
+    padding: 15px 30px; font-weight: 700;
+    font-size: 0.85rem; text-decoration: none;
+    border-radius: 3px; transition: 0.2s; display: inline-block;
 }
 
-.btn-dark:hover { background: #222; }
+.btn-green:hover { background: var(--green-dark); }
 
-.btn-outline-dark {
-    background: transparent; color: var(--black);
-    padding: 16px 32px; font-weight: 700;
-    font-size: 0.85rem; letter-spacing: 0.5px;
-    text-decoration: none; border-radius: 2px;
-    transition: 0.2s; display: inline-block;
-    border: 2px solid var(--black);
+.btn-amber {
+    background: var(--amber); color: var(--black);
+    padding: 15px 30px; font-weight: 700;
+    font-size: 0.85rem; text-decoration: none;
+    border-radius: 3px; transition: 0.2s; display: inline-block;
 }
 
-.btn-outline-dark:hover { background: rgba(0,0,0,0.08); }
+.btn-amber:hover { background: var(--amber-light); }
 
 /* FOOTER */
-.footer { background: var(--dark); border-top: 1px solid #222; }
+.footer { background: var(--forest-dark); border-top: 1px solid rgba(255,255,255,0.05); }
 
 .footer-top {
     max-width: 1400px; margin: 0 auto;
     padding: 70px 40px 50px;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 50px;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px;
 }
 
-.footer-brand h3 {
+.footer-brand-mark {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 18px;
+}
+
+.footer-brand-icon {
+    width: 34px; height: 34px;
+    background: var(--forest);
+    border: 1px solid rgba(0,229,176,0.2);
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.75rem;
+    color: var(--green);
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.2rem; font-weight: 700;
-    margin-bottom: 14px;
+}
+
+.footer-brand-mark h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1rem; font-weight: 700; color: var(--off-white);
 }
 
 .footer-brand p {
-    color: var(--light-gray); font-size: 0.85rem;
-    line-height: 1.75; max-width: 280px; font-weight: 300;
+    color: var(--light-gray); font-size: 0.82rem;
+    line-height: 1.75; max-width: 270px; font-weight: 300;
 }
 
 .footer-col h4 {
-    font-size: 0.72rem; font-weight: 700;
+    font-size: 0.68rem; font-weight: 700;
     letter-spacing: 2px; text-transform: uppercase;
-    color: rgba(255,255,255,0.4); margin-bottom: 18px;
+    color: rgba(232,237,233,0.25); margin-bottom: 18px;
 }
 
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 
 .footer-col ul li a {
     color: var(--light-gray); text-decoration: none;
-    font-size: 0.85rem; transition: 0.2s; font-weight: 300;
+    font-size: 0.83rem; transition: 0.2s; font-weight: 300;
 }
 
 .footer-col ul li a:hover { color: var(--green); }
 
 .footer-bottom-bar {
     max-width: 1400px; margin: 0 auto;
-    padding: 22px 40px; border-top: 1px solid #222;
+    padding: 20px 40px;
+    border-top: 1px solid rgba(255,255,255,0.04);
     display: flex; justify-content: space-between;
     align-items: center; gap: 20px; flex-wrap: wrap;
 }
 
-.footer-bottom-bar p { color: #444; font-size: 0.78rem; }
-.footer-bottom-bar span { color: var(--green); }
+.footer-bottom-bar p { color: rgba(255,255,255,0.2); font-size: 0.75rem; }
+.footer-bottom-bar span { color: var(--amber); }
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
@@ -725,20 +706,20 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
         display: flex; flex-direction: column;
         position: absolute; top: 64px; left: 0;
         width: 100%; background: var(--black);
-        border-bottom: 1px solid #222; padding: 20px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        padding: 20px 0;
     }
     .nav-links.open li a {
-        height: auto; line-height: 1; padding: 14px 30px;
-        border-bottom: none; border-left: 3px solid transparent;
+        height: auto; line-height: 1; padding: 14px 28px;
+        border-bottom: none; border-left: 2px solid transparent;
     }
     .nav-links.open li a:hover { border-left-color: var(--green); }
     .overview-grid { grid-template-columns: 1fr; }
-    .market-grid { grid-template-columns: 1fr; }
-    .compare-table { font-size: 0.75rem; }
-    .compare-table th, .compare-table td { padding: 14px 14px; }
+    .market-preview { grid-template-columns: 1fr; }
+    .compare-table { font-size: 0.72rem; }
+    .compare-table th, .compare-table td { padding: 12px 12px; }
     .footer-top { grid-template-columns: 1fr; }
-    .section { padding: 70px 24px; }
-    .coming-banner-inner { flex-direction: column; align-items: flex-start; }
+    .coming-inner { flex-direction: column; align-items: flex-start; }
 }
 
 </style>
@@ -757,7 +738,7 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
             <li><a href="hakkimizda.html">Hakkımızda</a></li>
             <li><a href="ozellikler.html" class="active">Özellikler</a></li>
             <li><a href="iletisim.html">İletişim</a></li>
-            <li><a href="bildir.html" class="nav-cta">Hayvan Bildir</a></li>
+            <li><a href="yakinda.html?page=bildir" class="nav-cta">Hayvan Bildir</a></li>
         </ul>
         <button class="hamburger" onclick="toggleNav()">
             <span></span><span></span><span></span>
@@ -768,8 +749,11 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
 <!-- PAGE HERO -->
 <div class="page-hero">
     <div class="page-hero-inner">
-        <span class="page-label">Platform Özellikleri</span>
-        <h1>Vahşi Yaşam Koruma İçin<br><em>İhtiyacınız Olan</em><br>Her Şey</h1>
+        <div class="eyebrow">
+            <div class="eyebrow-line"></div>
+            <span>Platform Özellikleri</span>
+        </div>
+        <h1>Vahşi Yaşam Koruma İçin<br><em>İhtiyacınız</em> Olan<br>Her Şey</h1>
         <p>Yapay zeka, şeffaf bağış sistemi, küresel kuruluş ağı ve daha fazlası. Tek platformda, tek misyon için.</p>
     </div>
 </div>
@@ -778,101 +762,89 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
 
 <!-- OVERVIEW -->
 <div class="overview-section">
-    <div class="section" style="padding-bottom:0;">
-        <span class="section-label">Genel Bakış</span>
-        <h2 class="section-title">Altı Temel <em>Modül</em></h2>
+    <div class="overview-header">
+        <div>
+            <div class="eyebrow">
+                <div class="eyebrow-line"></div>
+                <span>Genel Bakış</span>
+            </div>
+            <h2>Altı Temel <em>Modül</em></h2>
+        </div>
+        <p>Her modül vahşi yaşam koruma ekosisteminin farklı bir ihtiyacına yanıt verecek şekilde tasarlandı.</p>
     </div>
-    <div style="max-width:1400px; margin:0 auto; padding:0 40px 80px;">
-        <div class="overview-grid">
-            <div class="overview-card">
-                <div class="overview-num">01</div>
-                <h3>AI Destekli Acil Bildirim</h3>
-                <p>Fotoğraf çekin, yapay zekamız türü tanısın ve en yakın kuruluşa otomatik bildirim gitsin. 30 saniye içinde.</p>
-            </div>
-            <div class="overview-card">
-                <div class="overview-num">02</div>
-                <h3>Şeffaf Bağış Sistemi</h3>
-                <p>%0 komisyon. Bağışlarınız doğrudan kuruluşa. Her kuruşun nereye gittiğini gerçek zamanlı takip edin.</p>
-            </div>
-            <div class="overview-card">
-                <div class="overview-num">03</div>
-                <h3>Sosyal Etki Marketi</h3>
-                <p>Her satışın geliri vahşi yaşam korumaya. Bağış amaçlı ürün satın alın veya kendi ürününüzü listeleyin.</p>
-            </div>
-            <div class="overview-card">
-                <div class="overview-num">04</div>
-                <h3>Küresel Kuruluş Ağı</h3>
-                <p>Dünya genelindeki koruma kuruluşları tek platformda. Koordinasyon, kaynak paylaşımı, iş birliği.</p>
-            </div>
-            <div class="overview-card">
-                <div class="overview-num">05</div>
-                <h3>Eğitim ve Bilinçlendirme</h3>
-                <p>Makaleler, araştırmalar, etkinlik kayıtları ve burs programları ile vahşi yaşam bilincini yaygınlaştırın.</p>
-            </div>
-            <div class="overview-card">
-                <div class="overview-num">06</div>
-                <h3>Gönüllülük Programları</h3>
-                <p>Binlerce kuruluşun programına tek yerden başvurun. Alan ve lokasyon bazlı eşleştirme ile doğru projeye ulaşın.</p>
-            </div>
+    <div class="overview-grid">
+        <div class="overview-card">
+            <div class="overview-num">01</div>
+            <h3>Acil Hayvan Bildirimi</h3>
+            <p>Tehlikede hayvan gördüğünüzde fotoğraf çekin. Sistem türü tanır, konumu belirler ve en yakın kuruluşa ulaşır.</p>
+        </div>
+        <div class="overview-card">
+            <div class="overview-num">02</div>
+            <h3>Şeffaf Bağış Altyapısı</h3>
+            <p>%0 komisyon. Her bağış doğrudan ilgili fona. Paranızın nereye gittiğini gerçek zamanlı görün.</p>
+        </div>
+        <div class="overview-card">
+            <div class="overview-num">03</div>
+            <h3>Sosyal Etki Marketi</h3>
+            <p>Her satışın geliri vahşi yaşam fonlarına. Satıcılar bağış ispatı sunmak zorundadır.</p>
+        </div>
+        <div class="overview-card">
+            <div class="overview-num">04</div>
+            <h3>Küresel Kuruluş Ağı</h3>
+            <p>Dünyanın dört bir yanındaki koruma kuruluşları tek platformda. Koordinasyon güçlendiğinde etki katlanır.</p>
+        </div>
+        <div class="overview-card">
+            <div class="overview-num">05</div>
+            <h3>Eğitim ve Araştırma</h3>
+            <p>Makaleler, etkinlikler, kamp kayıtları ve burs programları. Bilgi ile bilinç oluşturuyoruz.</p>
+        </div>
+        <div class="overview-card">
+            <div class="overview-num">06</div>
+            <h3>Gönüllülük Programları</h3>
+            <p>Binlerce kuruluşun projesine tek yerden başvurun. Alan ve konum bazlı eşleştirme.</p>
         </div>
     </div>
 </div>
 
-<!-- FEATURE 1: AI BİLDİRİM -->
+<!-- FEATURE 1: BİLDİRİM -->
 <div class="feature-detail">
     <div class="feature-detail-inner">
         <div class="feature-detail-text">
-            <span class="feature-tag">⭐ Öne Çıkan Özellik</span>
-            <h2>AI Destekli<br><em>Acil Bildirim</em><br>Sistemi</h2>
-            <p>Sokakta yaralı, aç veya tehlike altında bir hayvan gördüğünüzde ne yaparsınız? Fotoğrafını çekin ve b0wl'a yükleyin. Gerisini biz halledelim.</p>
+            <span class="feature-tag">⭐ Öne Çıkan</span>
+            <h2>Acil Hayvan<br><em>Bildirim</em><br>Sistemi</h2>
+            <p>Sokakta yaralı, aç veya tehlikede bir hayvan gördüğünüzde ne yaparsınız? Artık cevap çok net: Fotoğraf çekin ve b0wl'a yükleyin.</p>
             <ul class="feature-checklist">
                 <li><span class="check-mark">✓</span> 300+ türü %90+ doğrulukla tanıyan AI modeli</li>
-                <li><span class="check-mark">✓</span> Hayvanın durumunu otomatik değerlendirir (yaralı, aç, sağlıklı)</li>
+                <li><span class="check-mark">✓</span> Hayvanın durumunu otomatik değerlendirir</li>
                 <li><span class="check-mark">✓</span> GPS ile en yakın kuruluşa otomatik bildirim</li>
-                <li><span class="check-mark">✓</span> IUCN Kırmızı Liste entegrasyonu ile tehlike tespiti</li>
+                <li><span class="check-mark">✓</span> IUCN Kırmızı Liste entegrasyonu</li>
                 <li><span class="check-mark">✓</span> Bildirimin takibi ve sonuç bildirimi</li>
-                <li><span class="check-mark">✓</span> 7/24 aktif, ortalama 30 saniye yanıt süresi</li>
+                <li><span class="check-mark">✓</span> 7/24 aktif — ortalama 30sn yanıt</li>
             </ul>
-            <a href="iletisim.html" class="btn-primary">Yakında Aktif</a>
+            <a href="yakinda.html?page=bildir" class="btn-primary">Yakında Aktif</a>
         </div>
-        <div class="feature-visual">
-            <div class="steps-visual">
-                <h3>Nasıl Çalışır?</h3>
-                <div class="step-row">
-                    <div class="step-circle">01</div>
-                    <div>
-                        <h4>Fotoğraf Çek ve Yükle</h4>
-                        <p>Gördüğünüz hayvanın fotoğrafını çekin ve platforma yükleyin.</p>
-                    </div>
-                </div>
-                <div class="step-row">
-                    <div class="step-circle">02</div>
-                    <div>
-                        <h4>AI Analiz Eder</h4>
-                        <p>Yapay zeka türü, durumu ve tehlike seviyesini saniyeler içinde tespit eder.</p>
-                    </div>
-                </div>
-                <div class="step-row">
-                    <div class="step-circle">03</div>
-                    <div>
-                        <h4>Konum Belirlenir</h4>
-                        <p>GPS konumunuz ile en yakın vahşi yaşam koruma kuruluşu bulunur.</p>
-                    </div>
-                </div>
-                <div class="step-row">
-                    <div class="step-circle">04</div>
-                    <div>
-                        <h4>Bildirim Gönderilir</h4>
-                        <p>Kuruluşa otomatik bildirim gider, ortalama 15 dakikada müdahale başlar.</p>
-                    </div>
-                </div>
-                <div class="step-row">
-                    <div class="step-circle">05</div>
-                    <div>
-                        <h4>Sizi Bilgilendiririz</h4>
-                        <p>Müdahalenin sonucunu takip edebilir, durumu öğrenebilirsiniz.</p>
-                    </div>
-                </div>
+        <div class="visual-card">
+            <div class="visual-card-title">Nasıl Çalışır?</div>
+            <div class="visual-card-sub">5 adımda acil bildirim süreci</div>
+            <div class="step-row">
+                <div class="step-circle">01</div>
+                <div><h4>Fotoğraf Çek ve Yükle</h4><p>Hayvanın net bir fotoğrafını çekin ve platforma yükleyin.</p></div>
+            </div>
+            <div class="step-row">
+                <div class="step-circle">02</div>
+                <div><h4>AI Analiz Eder</h4><p>Yapay zeka türü, durumu ve tehlike seviyesini tespit eder.</p></div>
+            </div>
+            <div class="step-row">
+                <div class="step-circle">03</div>
+                <div><h4>Konum Belirlenir</h4><p>GPS ile en yakın vahşi yaşam koruma kuruluşu bulunur.</p></div>
+            </div>
+            <div class="step-row">
+                <div class="step-circle">04</div>
+                <div><h4>Kuruluşa Bildirim Gider</h4><p>Otomatik bildirim ile müdahale süreci başlar.</p></div>
+            </div>
+            <div class="step-row">
+                <div class="step-circle">05</div>
+                <div><h4>Sonucu Takip Edin</h4><p>Müdahalenin sonucunu platform üzerinden öğrenin.</p></div>
             </div>
         </div>
     </div>
@@ -884,154 +856,109 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
         <div class="feature-detail-text">
             <span class="feature-tag">💚 Bağış Sistemi</span>
             <h2>Şeffaf ve<br><em>Komisyonsuz</em><br>Bağış</h2>
-            <p>Bağışçıların en büyük endişesi, paranın gerçekten amacına ulaşıp ulaşmadığını bilememektir. b0wl Community'de bu endişeye yer yok.</p>
+            <p>Bağışçıların en büyük sorunu paranın gerçekten amacına ulaşıp ulaşmadığını bilememesidir. b0wl Community'de bu sorun yok.</p>
             <ul class="feature-checklist">
-                <li><span class="check-mark">✓</span> %0 komisyon — tüm bağış kuruluşa gider</li>
-                <li><span class="check-mark">✓</span> Gerçek zamanlı bağış takibi ve raporlama</li>
+                <li><span class="check-mark">✓</span> %0 komisyon — tüm bağış fona gider</li>
+                <li><span class="check-mark">✓</span> Gerçek zamanlı bağış takibi</li>
                 <li><span class="check-mark">✓</span> Dilediğiniz kuruluşa doğrudan aktarım</li>
-                <li><span class="check-mark">✓</span> Otomatik bağış dağıtımı seçeneği</li>
-                <li><span class="check-mark">✓</span> Biyoloji ve çevre bilimleri burs programı</li>
+                <li><span class="check-mark">✓</span> Otomatik dağıtım seçeneği</li>
+                <li><span class="check-mark">✓</span> Burs programı desteği</li>
                 <li><span class="check-mark">✓</span> Dijital bağış sertifikası</li>
             </ul>
-            <a href="iletisim.html" class="btn-primary">Yakında Aktif</a>
+            <a href="yakinda.html?page=bagis" class="btn-primary">Yakında Aktif</a>
         </div>
-        <div class="feature-visual">
-            <div class="donate-visual" id="donateVisual">
-                <h3>Bağışların Ulaşma Oranı</h3>
-                <div class="fund-row">
-                    <div class="fund-row-top">
-                        <span>Afrika Fil Koruma Fonu</span>
-                        <span>%100</span>
-                    </div>
-                    <div class="fund-bar">
-                        <div class="fund-bar-fill" data-width="100"></div>
-                    </div>
-                </div>
-                <div class="fund-row">
-                    <div class="fund-row-top">
-                        <span>Okyanus Yaşamı Fonu</span>
-                        <span>%100</span>
-                    </div>
-                    <div class="fund-bar">
-                        <div class="fund-bar-fill" data-width="100"></div>
-                    </div>
-                </div>
-                <div class="fund-row">
-                    <div class="fund-row-top">
-                        <span>Orman Koruma Fonu</span>
-                        <span>%100</span>
-                    </div>
-                    <div class="fund-bar">
-                        <div class="fund-bar-fill" data-width="100"></div>
-                    </div>
-                </div>
-                <div class="fund-row">
-                    <div class="fund-row-top">
-                        <span>Kaplan Koruma Fonu</span>
-                        <span>%100</span>
-                    </div>
-                    <div class="fund-bar">
-                        <div class="fund-bar-fill" data-width="100"></div>
-                    </div>
-                </div>
-                <div class="fund-row">
-                    <div class="fund-row-top">
-                        <span>Genel Vahşi Yaşam Fonu</span>
-                        <span>%100</span>
-                    </div>
-                    <div class="fund-bar">
-                        <div class="fund-bar-fill" data-width="100"></div>
-                    </div>
-                </div>
-                <div style="margin-top:30px; padding-top:25px; border-top:1px solid #222;">
-                    <p style="font-size:0.75rem; color:var(--light-gray); margin-bottom:6px; text-transform:uppercase; letter-spacing:1px; font-weight:600;">Platform Komisyonu</p>
-                    <p style="font-family:'Libre Baskerville',serif; font-size:2.5rem; font-weight:700; color:var(--green);">%0</p>
-                    <p style="font-size:0.78rem; color:var(--light-gray); margin-top:6px; font-weight:300;">Hiçbir kesinti yapılmaz.</p>
-                </div>
+        <div class="visual-card" id="donateVisual">
+            <div class="visual-card-title">Bağışların Ulaşma Oranı</div>
+            <div class="visual-card-sub">Hiçbir kesintiyle, doğrudan fona</div>
+            <div class="fund-row">
+                <div class="fund-row-top"><span>Afrika Fil Koruma Fonu</span><span>%100</span></div>
+                <div class="fund-bar"><div class="fund-bar-fill" data-width="100"></div></div>
+            </div>
+            <div class="fund-row">
+                <div class="fund-row-top"><span>Okyanus Yaşamı Fonu</span><span>%100</span></div>
+                <div class="fund-bar"><div class="fund-bar-fill" data-width="100"></div></div>
+            </div>
+            <div class="fund-row">
+                <div class="fund-row-top"><span>Orman Koruma Fonu</span><span>%100</span></div>
+                <div class="fund-bar"><div class="fund-bar-fill" data-width="100"></div></div>
+            </div>
+            <div class="fund-row">
+                <div class="fund-row-top"><span>Kaplan Koruma Fonu</span><span>%100</span></div>
+                <div class="fund-bar"><div class="fund-bar-fill" data-width="100"></div></div>
+            </div>
+            <div class="fund-row">
+                <div class="fund-row-top"><span>Genel Vahşi Yaşam Fonu</span><span>%100</span></div>
+                <div class="fund-bar"><div class="fund-bar-fill" data-width="100"></div></div>
+            </div>
+            <div style="margin-top:28px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.05);">
+                <p style="font-size:0.68rem; color:var(--light-gray); text-transform:uppercase; letter-spacing:1.5px; font-weight:600; margin-bottom:6px;">Platform Komisyonu</p>
+                <p style="font-family:'Libre Baskerville',serif; font-size:2.2rem; font-weight:700; color:var(--green);">%0</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- FEATURE 3: KURULUŞ AĞI -->
+<!-- FEATURE 3: KURULUŞ -->
 <div class="feature-detail">
     <div class="feature-detail-inner">
         <div class="feature-detail-text">
             <span class="feature-tag">🌐 Kuruluş Ağı</span>
             <h2>Küresel<br><em>Koordinasyon</em><br>Ağı</h2>
-            <p>Dünya genelindeki vahşi yaşam koruma kuruluşlarını tek platformda buluşturuyoruz. Koordinasyon güçlenirse etki katlanır.</p>
+            <p>Dünyanın dört bir yanındaki vahşi yaşam koruma kuruluşları tek platformda buluşuyor. Koordinasyon güçlenince etki katlanır.</p>
             <ul class="feature-checklist">
                 <li><span class="check-mark">✓</span> Kuruluş profilleri ve proje sayfaları</li>
                 <li><span class="check-mark">✓</span> Kuruluşlar arası doğrudan iletişim</li>
                 <li><span class="check-mark">✓</span> Kaynak ve bağış koordinasyonu</li>
                 <li><span class="check-mark">✓</span> Gönüllü eşleştirme sistemi</li>
-                <li><span class="check-mark">✓</span> Şeffaf etki ve performans raporları</li>
+                <li><span class="check-mark">✓</span> Şeffaf etki raporları</li>
                 <li><span class="check-mark">✓</span> İlk 12 ayda 25+ kuruluş hedefi</li>
             </ul>
             <a href="iletisim.html" class="btn-primary">Kuruluş Başvurusu</a>
         </div>
-        <div class="feature-visual">
-            <div class="network-visual">
-                <div class="network-row">
-                    <div class="network-org">
-                        <div class="network-icon">🐼</div>
-                        <div>
-                            <h4>WWF Türkiye</h4>
-                            <p>Doğa ve vahşi yaşam koruma • Global</p>
-                        </div>
-                    </div>
-                    <span class="network-status">Aktif</span>
+        <div class="visual-card">
+            <div class="visual-card-title">Kuruluş Ağı</div>
+            <div class="visual-card-sub">Görüşmeler ve ortaklık süreçleri devam ediyor</div>
+            <div class="network-row">
+                <div class="network-org">
+                    <div class="network-icon">🐼</div>
+                    <div><h4>WWF Türkiye</h4><p>Doğa ve vahşi yaşam koruma</p></div>
                 </div>
-                <div class="network-row">
-                    <div class="network-org">
-                        <div class="network-icon">🦁</div>
-                        <div>
-                            <h4>HAYTAP</h4>
-                            <p>Hayvan hakları • Türkiye</p>
-                        </div>
-                    </div>
-                    <span class="network-status">Aktif</span>
+                <span class="network-badge">Hedef</span>
+            </div>
+            <div class="network-row">
+                <div class="network-org">
+                    <div class="network-icon">🦁</div>
+                    <div><h4>HAYTAP</h4><p>Hayvan hakları federasyonu</p></div>
                 </div>
-                <div class="network-row">
-                    <div class="network-org">
-                        <div class="network-icon">🌊</div>
-                        <div>
-                            <h4>Deniz Temiz Derneği</h4>
-                            <p>Okyanus koruma • Türkiye</p>
-                        </div>
-                    </div>
-                    <span class="network-status">Aktif</span>
+                <span class="network-badge">Hedef</span>
+            </div>
+            <div class="network-row">
+                <div class="network-org">
+                    <div class="network-icon">🌊</div>
+                    <div><h4>Deniz Temiz Derneği</h4><p>Okyanus koruma</p></div>
                 </div>
-                <div class="network-row">
-                    <div class="network-org">
-                        <div class="network-icon">🐘</div>
-                        <div>
-                            <h4>Save the Elephants</h4>
-                            <p>Afrika fil koruma • Global</p>
-                        </div>
-                    </div>
-                    <span class="network-status">Aktif</span>
+                <span class="network-badge">Hedef</span>
+            </div>
+            <div class="network-row">
+                <div class="network-org">
+                    <div class="network-icon">🐘</div>
+                    <div><h4>Save the Elephants</h4><p>Afrika fil koruma</p></div>
                 </div>
-                <div class="network-row">
-                    <div class="network-org">
-                        <div class="network-icon">🌿</div>
-                        <div>
-                            <h4>Doğa Derneği</h4>
-                            <p>Biyolojik çeşitlilik • Türkiye</p>
-                        </div>
-                    </div>
-                    <span class="network-status">Aktif</span>
+                <span class="network-badge">Hedef</span>
+            </div>
+            <div class="network-row">
+                <div class="network-org">
+                    <div class="network-icon">🌿</div>
+                    <div><h4>Doğa Derneği</h4><p>Biyolojik çeşitlilik</p></div>
                 </div>
-                <div class="network-row">
-                    <div class="network-org">
-                        <div class="network-icon">➕</div>
-                        <div>
-                            <h4>20+ Kuruluş Daha</h4>
-                            <p>Görüşmeler devam ediyor</p>
-                        </div>
-                    </div>
-                    <span class="network-status" style="color:var(--light-gray); background:rgba(255,255,255,0.04); border-color:#333;">Yakında</span>
+                <span class="network-badge">Hedef</span>
+            </div>
+            <div class="network-row">
+                <div class="network-org">
+                    <div class="network-icon">➕</div>
+                    <div><h4>20+ Kuruluş Daha</h4><p>Görüşmeler sürüyor</p></div>
                 </div>
+                <span class="network-badge soon">Yakında</span>
             </div>
         </div>
     </div>
@@ -1041,57 +968,59 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
 <div class="feature-detail">
     <div class="feature-detail-inner reverse">
         <div class="feature-detail-text">
-            <span class="feature-tag">🛒 Sosyal Market</span>
+            <span class="feature-tag">🛒 Market</span>
             <h2>Alışveriş ile<br><em>Fark</em><br>Yarat</h2>
-            <p>Her satın aldığınız ürünün geliri vahşi yaşam koruma fonlarına aktarılır. Satıcılar bağış ispatı sunmak zorundadır — şeffaflık her adımda korunur.</p>
+            <p>Her satın aldığınız ürünün geliri vahşi yaşam koruma fonlarına aktarılır. Satıcılar bağış ispatı sunmak zorunda — şeffaflık standarttır.</p>
             <ul class="feature-checklist">
-                <li><span class="check-mark">✓</span> Bağış amaçlı ürün satışı ve alışverişi</li>
+                <li><span class="check-mark">✓</span> Bağış amaçlı ürün satışı</li>
                 <li><span class="check-mark">✓</span> Satıcılardan bağış ispat zorunluluğu</li>
-                <li><span class="check-mark">✓</span> %10 platform komisyonu ile sürdürülebilirlik</li>
+                <li><span class="check-mark">✓</span> %10 platform komisyonu</li>
                 <li><span class="check-mark">✓</span> Güvenli ödeme altyapısı</li>
-                <li><span class="check-mark">✓</span> Kargo takip sistemi</li>
-                <li><span class="check-mark">✓</span> b0wl koleksiyonu — vahşi yaşam temalı tişörtler</li>
+                <li><span class="check-mark">✓</span> b0wl koleksiyonu — vahşi yaşam temalı ürünler</li>
             </ul>
-            <a href="iletisim.html" class="btn-primary">Yakında Aktif</a>
+            <a href="yakinda.html?page=market" class="btn-primary">Yakında Aktif</a>
         </div>
-        <div class="feature-visual">
-            <div class="market-grid">
+        <div class="visual-card" style="padding:0; overflow:hidden; border:none;">
+            <div class="market-preview">
                 <div class="market-item">
                     <span class="market-item-icon">🐘</span>
                     <h4>Fil Temalı Tişört</h4>
                     <p>Geliri Afrika Fil Koruma Fonuna</p>
-                    <span class="market-item-price">₺249 <span class="market-badge">b0wl</span></span>
+                    <span class="market-item-price">₺249</span>
                 </div>
                 <div class="market-item">
                     <span class="market-item-icon">🐅</span>
                     <h4>Kaplan Temalı Tişört</h4>
                     <p>Geliri Kaplan Koruma Fonuna</p>
-                    <span class="market-item-price">₺249 <span class="market-badge">b0wl</span></span>
+                    <span class="market-item-price">₺249</span>
                 </div>
                 <div class="market-item">
                     <span class="market-item-icon">🐻‍❄️</span>
                     <h4>Kutup Ayısı Tişört</h4>
                     <p>Geliri İklim Koruma Fonuna</p>
-                    <span class="market-item-price">₺249 <span class="market-badge">b0wl</span></span>
+                    <span class="market-item-price">₺249</span>
                 </div>
                 <div class="market-item">
                     <span class="market-item-icon">🐢</span>
                     <h4>Kaplumbağa Tişört</h4>
                     <p>Geliri Okyanus Koruma Fonuna</p>
-                    <span class="market-item-price">₺249 <span class="market-badge">b0wl</span></span>
+                    <span class="market-item-price">₺249</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- COMPARISON TABLE -->
+<!-- COMPARE -->
 <div class="compare-section">
-    <div class="section">
-        <span class="section-label">Rekabet Analizi</span>
-        <h2 class="section-title">Neden <em>b0wl?</em></h2>
-        <p style="color:var(--light-gray); font-size:0.95rem; line-height:1.8; font-weight:300; max-width:560px; margin-top:16px;">Mevcut platformlara kıyasla b0wl Community'nin sunduğu kapsamı inceleyin.</p>
-        <div style="overflow-x:auto; margin-top:50px;">
+    <div class="compare-inner">
+        <div class="eyebrow">
+            <div class="eyebrow-line"></div>
+            <span>Rekabet Analizi</span>
+        </div>
+        <h2>Neden <em>b0wl?</em></h2>
+        <p>Mevcut platformlarla karşılaştırıldığında b0wl Community'nin sunduğu kapsam.</p>
+        <div style="overflow-x:auto;">
             <table class="compare-table">
                 <thead>
                     <tr>
@@ -1099,65 +1028,65 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
                         <th>WWF</th>
                         <th>iNaturalist</th>
                         <th>GoFundMe</th>
-                        <th class="highlight">b0wl Community</th>
+                        <th class="hl">b0wl Community</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>AI Tür Tanıma</td>
-                        <td><span class="check-no">—</span></td>
-                        <td><span class="check-partial">Kısmi</span></td>
-                        <td><span class="check-no">—</span></td>
-                        <td class="highlight-col"><span class="check-yes">✓</span></td>
+                        <td><span class="no">—</span></td>
+                        <td><span class="partial">Kısmi</span></td>
+                        <td><span class="no">—</span></td>
+                        <td class="hl-col"><span class="yes">✓</span></td>
                     </tr>
                     <tr>
                         <td>Acil Bildirim Sistemi</td>
-                        <td><span class="check-no">—</span></td>
-                        <td><span class="check-no">—</span></td>
-                        <td><span class="check-no">—</span></td>
-                        <td class="highlight-col"><span class="check-yes">✓</span></td>
+                        <td><span class="no">—</span></td>
+                        <td><span class="no">—</span></td>
+                        <td><span class="no">—</span></td>
+                        <td class="hl-col"><span class="yes">✓</span></td>
                     </tr>
                     <tr>
                         <td>Şeffaf Bağış (%0 Komisyon)</td>
-                        <td><span class="check-no">—</span></td>
-                        <td><span class="check-no">—</span></td>
-                        <td><span class="check-partial">Kısmi</span></td>
-                        <td class="highlight-col"><span class="check-yes">✓</span></td>
+                        <td><span class="no">—</span></td>
+                        <td><span class="no">—</span></td>
+                        <td><span class="partial">Kısmi</span></td>
+                        <td class="hl-col"><span class="yes">✓</span></td>
                     </tr>
                     <tr>
                         <td>Kuruluş Koordinasyon Ağı</td>
-                        <td><span class="check-no">—</span></td>
-                        <td><span class="check-no">—</span></td>
-                        <td><span class="check-no">—</span></td>
-                        <td class="highlight-col"><span class="check-yes">✓</span></td>
+                        <td><span class="no">—</span></td>
+                        <td><span class="no">—</span></td>
+                        <td><span class="no">—</span></td>
+                        <td class="hl-col"><span class="yes">✓</span></td>
                     </tr>
                     <tr>
                         <td>Sosyal Etki Marketi</td>
-                        <td><span class="check-partial">Kısmi</span></td>
-                        <td><span class="check-no">—</span></td>
-                        <td><span class="check-no">—</span></td>
-                        <td class="highlight-col"><span class="check-yes">✓</span></td>
+                        <td><span class="partial">Kısmi</span></td>
+                        <td><span class="no">—</span></td>
+                        <td><span class="no">—</span></td>
+                        <td class="hl-col"><span class="yes">✓</span></td>
                     </tr>
                     <tr>
                         <td>Eğitim ve İçerik Platformu</td>
-                        <td><span class="check-partial">Kısmi</span></td>
-                        <td><span class="check-yes">✓</span></td>
-                        <td><span class="check-no">—</span></td>
-                        <td class="highlight-col"><span class="check-yes">✓</span></td>
+                        <td><span class="partial">Kısmi</span></td>
+                        <td><span class="yes">✓</span></td>
+                        <td><span class="no">—</span></td>
+                        <td class="hl-col"><span class="yes">✓</span></td>
                     </tr>
                     <tr>
                         <td>Gönüllülük Yönetimi</td>
-                        <td><span class="check-partial">Kısmi</span></td>
-                        <td><span class="check-no">—</span></td>
-                        <td><span class="check-no">—</span></td>
-                        <td class="highlight-col"><span class="check-yes">✓</span></td>
+                        <td><span class="partial">Kısmi</span></td>
+                        <td><span class="no">—</span></td>
+                        <td><span class="no">—</span></td>
+                        <td class="hl-col"><span class="yes">✓</span></td>
                     </tr>
                     <tr>
                         <td>IUCN Kırmızı Liste Entegrasyonu</td>
-                        <td><span class="check-no">—</span></td>
-                        <td><span class="check-partial">Kısmi</span></td>
-                        <td><span class="check-no">—</span></td>
-                        <td class="highlight-col"><span class="check-yes">✓</span></td>
+                        <td><span class="no">—</span></td>
+                        <td><span class="partial">Kısmi</span></td>
+                        <td><span class="no">—</span></td>
+                        <td class="hl-col"><span class="yes">✓</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -1166,25 +1095,22 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
 </div>
 
 <!-- COMING SOON -->
-<div class="coming-banner">
-    <div class="coming-banner-inner">
-        <div>
-            <h3>Çok Yakında Geliyor</h3>
-            <p>Platformumuzun bu bölümleri üzerinde aktif olarak çalışıyoruz.</p>
+<div class="coming-section">
+    <div class="coming-inner">
+        <div class="coming-text">
+            <h3>Çok Yakında</h3>
+            <p>Aşağıdaki modüller geliştirme aşamasında.</p>
         </div>
         <div class="coming-tags">
-            <div class="coming-tag">
-                <span class="tag-dot"></span>
-                Hayvan Bildir
-            </div>
-            <div class="coming-tag">
-                <span class="tag-dot"></span>
-                Bağış Yap
-            </div>
-            <div class="coming-tag">
-                <span class="tag-dot"></span>
-                Market
-            </div>
+            <a href="yakinda.html?page=bildir" class="coming-tag">
+                <span class="tag-dot"></span> Hayvan Bildir
+            </a>
+            <a href="yakinda.html?page=bagis" class="coming-tag">
+                <span class="tag-dot"></span> Bağış Yap
+            </a>
+            <a href="yakinda.html?page=market" class="coming-tag">
+                <span class="tag-dot"></span> Market
+            </a>
         </div>
     </div>
 </div>
@@ -1192,10 +1118,16 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
 <!-- CTA BAND -->
 <div class="cta-band">
     <div class="cta-band-inner">
-        <h2>Platformu Denemeye Hazır Mısınız?</h2>
+        <div class="cta-band-text">
+            <div class="eyebrow">
+                <div class="eyebrow-line"></div>
+                <span>Harekete Geç</span>
+            </div>
+            <h2>Platformu Denemeye<br><em>Hazır</em> Mısınız?</h2>
+        </div>
         <div class="cta-band-actions">
-            <a href="iletisim.html" class="btn-dark">İletişime Geç</a>
-            <a href="hakkimizda.html" class="btn-outline-dark">Hakkımızda</a>
+            <a href="iletisim.html" class="btn-green">İletişime Geç</a>
+            <a href="hakkimizda.html" class="btn-amber">Hakkımızda</a>
         </div>
     </div>
 </div>
@@ -1204,16 +1136,19 @@ hr { border: none; border-top: 1px solid #222; margin: 0; }
 <footer class="footer">
     <div class="footer-top">
         <div class="footer-brand">
-            <h3>b0wl Community</h3>
-            <p>Vahşi yaşamı korumak için teknolojiyi ve topluluk gücünü birleştiren küresel platform.</p>
+            <div class="footer-brand-mark">
+                <div class="footer-brand-icon">b0</div>
+                <h3>b0wl Community</h3>
+            </div>
+            <p>Vahşi yaşamı korumak için kuruluşları, bireyleri ve teknolojiyi bir araya getiren küresel koordinasyon platformu.</p>
         </div>
         <div class="footer-col">
             <h4>Platform</h4>
             <ul>
                 <li><a href="ozellikler.html">Özellikler</a></li>
-                <li><a href="#">Hayvan Bildir — Yakında</a></li>
-                <li><a href="#">Bağış Yap — Yakında</a></li>
-                <li><a href="#">Market — Yakında</a></li>
+                <li><a href="yakinda.html?page=bildir">Hayvan Bildir</a></li>
+                <li><a href="yakinda.html?page=bagis">Bağış Yap</a></li>
+                <li><a href="yakinda.html?page=market">Market</a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -1246,7 +1181,6 @@ function toggleNav() {
     document.getElementById('navLinks').classList.toggle('open');
 }
 
-// Bağış barları animasyonu
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1257,8 +1191,8 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.3 });
 
-const donateVisual = document.getElementById('donateVisual');
-if (donateVisual) observer.observe(donateVisual);
+const dv = document.getElementById('donateVisual');
+if (dv) observer.observe(dv);
 </script>
 
 </body>
