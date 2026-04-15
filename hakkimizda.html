@@ -10,11 +10,16 @@
 :root {
     --green: #00e5b0;
     --green-dark: #00b389;
-    --black: #0a0a0a;
-    --dark: #111111;
-    --dark2: #1a1a1a;
-    --gray: #2a2a2a;
-    --light-gray: #888888;
+    --forest: #1a3a2a;
+    --forest-dark: #0f2318;
+    --amber: #d4a853;
+    --amber-light: #e8c47a;
+    --black: #080c09;
+    --dark: #0f1a12;
+    --dark2: #162012;
+    --dark3: #1e2d1e;
+    --light-gray: #7a8f7e;
+    --off-white: #e8ede9;
     --white: #ffffff;
 }
 
@@ -26,8 +31,9 @@ body { background: var(--black); color: var(--white); font-family: 'Inter', sans
 nav {
     position: fixed; top: 0; left: 0;
     width: 100%; z-index: 1000;
-    background: var(--black);
-    border-bottom: 1px solid #222;
+    background: rgba(8,12,9,0.96);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
 }
 
 .nav-inner {
@@ -39,23 +45,24 @@ nav {
 
 .nav-logo {
     text-decoration: none;
-    display: flex; align-items: center; gap: 12px;
+    display: flex; align-items: center; gap: 14px;
 }
 
 .nav-logo-mark {
-    width: 36px; height: 36px;
-    background: var(--green); border-radius: 4px;
-    display: flex; align-items: center;
-    justify-content: center;
-    font-weight: 900; font-size: 0.85rem;
-    color: var(--black); letter-spacing: -1px;
+    width: 38px; height: 38px;
+    background: var(--forest);
+    border: 1px solid rgba(0,229,176,0.3);
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.82rem;
+    color: var(--green);
     font-family: 'Libre Baskerville', serif;
 }
 
 .nav-logo-text {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1rem; color: var(--white);
-    font-weight: 700; letter-spacing: 0.5px;
+    font-size: 1rem; color: var(--off-white);
+    font-weight: 700; letter-spacing: 0.3px;
 }
 
 .nav-links {
@@ -64,32 +71,31 @@ nav {
 }
 
 .nav-links li a {
-    display: block; padding: 0 18px;
+    display: block; padding: 0 16px;
     height: 64px; line-height: 64px;
-    color: rgba(255,255,255,0.65);
+    color: rgba(232,237,233,0.5);
     text-decoration: none; font-size: 0.82rem;
-    font-weight: 500; letter-spacing: 0.3px;
-    transition: 0.2s;
+    font-weight: 500; transition: 0.2s;
     border-bottom: 2px solid transparent;
 }
 
-.nav-links li a:hover { color: var(--white); border-bottom-color: var(--green); }
-.nav-links li a.active { color: var(--green); border-bottom-color: var(--green); }
+.nav-links li a:hover { color: var(--off-white); border-bottom-color: var(--amber); }
+.nav-links li a.active { color: var(--off-white); border-bottom-color: var(--green); }
 
 .nav-cta {
-    background: var(--green) !important;
-    color: var(--black) !important;
+    background: var(--forest) !important;
+    border: 1px solid rgba(0,229,176,0.25) !important;
+    color: var(--green) !important;
     font-weight: 700 !important;
-    padding: 0 22px !important;
-    height: 38px !important;
-    line-height: 38px !important;
-    border-radius: 2px !important;
+    padding: 0 20px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+    border-radius: 3px !important;
     border-bottom: none !important;
-    margin-left: 10px;
-    align-self: center;
+    margin-left: 12px; align-self: center;
 }
 
-.nav-cta:hover { background: var(--green-dark) !important; border-bottom: none !important; }
+.nav-cta:hover { background: var(--forest-dark) !important; border-color: rgba(0,229,176,0.5) !important; }
 
 .hamburger {
     display: none; background: none; border: none;
@@ -97,201 +103,182 @@ nav {
     gap: 5px; padding: 5px;
 }
 
-.hamburger span { display: block; width: 24px; height: 2px; background: var(--white); }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--off-white); }
 
 /* PAGE HERO */
 .page-hero {
     padding-top: 64px;
-    background: var(--dark);
-    border-bottom: 1px solid #222;
+    background: var(--forest-dark);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
     position: relative;
     overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%; height: 100%;
+    background: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900') center/cover no-repeat;
+    opacity: 0.12;
+    filter: saturate(0.3);
 }
 
 .page-hero-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 90px 40px 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: end;
+    max-width: 1400px; margin: 0 auto;
+    padding: 90px 40px 85px;
+    position: relative; z-index: 1;
+    max-width: 820px;
 }
 
-.page-hero-text {
-    padding-bottom: 70px;
+.eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 22px;
 }
 
-.page-label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--green);
-    margin-bottom: 20px;
-    display: block;
+.eyebrow-line { width: 24px; height: 1px; background: var(--amber); }
+
+.eyebrow span {
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--amber);
 }
 
-.page-hero-text h1 {
+.page-hero h1 {
     font-family: 'Libre Baskerville', serif;
     font-size: clamp(2.5rem, 5vw, 4.5rem);
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.5px;
-    margin-bottom: 28px;
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.5px; margin-bottom: 28px;
+    color: var(--off-white);
 }
 
-.page-hero-text h1 em {
-    font-style: italic;
-    color: var(--green);
-}
+.page-hero h1 em { font-style: italic; color: var(--green); }
 
-.page-hero-text p {
-    color: var(--light-gray);
-    font-size: 1.05rem;
-    line-height: 1.8;
-    font-weight: 300;
-    max-width: 460px;
-}
-
-.page-hero-img {
-    height: 500px;
-    overflow: hidden;
-    position: relative;
-}
-
-.page-hero-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: brightness(0.7) saturate(0.8);
-}
-
-.page-hero-img::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 100%; height: 40%;
-    background: linear-gradient(0deg, var(--dark), transparent);
+.page-hero p {
+    color: var(--light-gray); font-size: 1.05rem;
+    line-height: 1.8; font-weight: 300;
+    max-width: 540px;
 }
 
 /* DIVIDER */
-.divider {
-    border: none;
-    border-top: 1px solid #222;
-    margin: 0;
-}
-
-/* SECTIONS */
-.section {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 100px 40px;
-}
-
-.section-label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--green);
-    margin-bottom: 16px;
-    display: block;
-}
-
-.section-title {
-    font-family: 'Libre Baskerville', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    letter-spacing: -0.3px;
-}
-
-.section-title em {
-    font-style: italic;
-    color: var(--green);
-}
+hr { border: none; border-top: 1px solid rgba(255,255,255,0.05); }
 
 /* STORY */
 .story-section {
     background: var(--black);
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-.story-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
+.story-inner {
+    max-width: 1400px; margin: 0 auto;
+    padding: 100px 40px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 90px; align-items: start;
 }
+
+.story-text .eyebrow { margin-bottom: 22px; }
+
+.story-text h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700; line-height: 1.2;
+    margin-bottom: 30px; color: var(--off-white);
+    letter-spacing: -0.3px;
+}
+
+.story-text h2 em { font-style: italic; color: var(--green); }
 
 .story-text p {
-    color: var(--light-gray);
-    font-size: 0.95rem;
-    line-height: 1.9;
-    font-weight: 300;
-    margin-bottom: 22px;
-}
-
-.story-text p:last-child { margin-bottom: 0; }
-
-.story-text strong {
-    color: var(--white);
-    font-weight: 600;
+    color: var(--light-gray); font-size: 0.92rem;
+    line-height: 1.9; font-weight: 300;
+    margin-bottom: 20px;
 }
 
 .story-pull {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.5rem;
-    font-style: italic;
-    line-height: 1.5;
-    color: var(--white);
-    padding-left: 28px;
-    border-left: 3px solid var(--green);
+    font-size: 1.25rem; font-style: italic;
+    line-height: 1.55; color: var(--off-white);
+    padding: 28px 30px;
+    border-left: 2px solid var(--amber);
+    background: var(--dark);
     margin: 35px 0;
 }
 
-.story-img {
+.story-right { padding-top: 10px; }
+
+.story-img-stack {
     position: relative;
+    margin-bottom: 30px;
+}
+
+.story-img-main {
+    width: 100%; height: 420px;
     overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
-.story-img img {
-    width: 100%;
-    height: 580px;
-    object-fit: cover;
-    display: block;
-    filter: brightness(0.75) saturate(0.85);
+.story-img-main img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    filter: brightness(0.55) saturate(0.6);
 }
 
-.story-img-caption {
+.story-img-sub {
     position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 20px 25px;
-    background: linear-gradient(0deg, rgba(0,0,0,0.85), transparent);
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.5);
-    font-style: italic;
+    bottom: -20px; right: -20px;
+    width: 160px; height: 120px;
+    overflow: hidden;
+    border: 3px solid var(--black);
+}
+
+.story-img-sub img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    filter: brightness(0.6) saturate(0.6);
+}
+
+.story-facts {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.05);
+    margin-top: 40px;
+}
+
+.story-fact {
+    background: var(--dark); padding: 25px 22px;
+    transition: 0.2s;
+}
+
+.story-fact:hover { background: var(--dark2); }
+
+.story-fact-num {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--amber); display: block;
+    line-height: 1; margin-bottom: 6px;
+}
+
+.story-fact p {
+    font-size: 0.72rem; color: var(--light-gray);
+    text-transform: uppercase; letter-spacing: 1px;
+    font-weight: 600; margin: 0;
 }
 
 /* STATS */
 .stats-section {
-    background: var(--green);
+    background: var(--forest);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .stats-inner {
-    max-width: 1400px;
-    margin: 0 auto;
+    max-width: 1400px; margin: 0 auto;
     padding: 0 40px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: grid; grid-template-columns: repeat(4, 1fr);
 }
 
 .stats-item {
-    padding: 60px 0;
-    border-right: 1px solid rgba(0,0,0,0.15);
+    padding: 55px 0;
+    border-right: 1px solid rgba(255,255,255,0.07);
     text-align: center;
 }
 
@@ -299,315 +286,348 @@ nav {
 
 .stats-num {
     font-family: 'Libre Baskerville', serif;
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--black);
-    display: block;
-    line-height: 1;
-    margin-bottom: 10px;
+    font-size: 2.8rem; font-weight: 700;
+    color: var(--amber); display: block;
+    line-height: 1; margin-bottom: 10px;
 }
 
 .stats-lbl {
-    font-size: 0.78rem;
-    color: rgba(0,0,0,0.6);
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    font-size: 0.72rem; color: rgba(232,237,233,0.45);
+    letter-spacing: 1.5px; text-transform: uppercase;
     font-weight: 600;
 }
 
 /* VALUES */
 .values-section {
     background: var(--dark);
-    border-top: 1px solid #222;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .values-header {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 80px 40px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 40px;
-    flex-wrap: wrap;
+    max-width: 1400px; margin: 0 auto;
+    padding: 90px 40px 55px;
+    display: flex; justify-content: space-between;
+    align-items: flex-end; gap: 50px; flex-wrap: wrap;
 }
 
-.values-desc {
-    color: var(--light-gray);
-    font-size: 0.95rem;
-    line-height: 1.75;
-    max-width: 460px;
-    font-weight: 300;
+.values-header .eyebrow { margin-bottom: 18px; }
+
+.values-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700; color: var(--off-white);
+    line-height: 1.2; letter-spacing: -0.3px;
+}
+
+.values-header h2 em { font-style: italic; color: var(--green); }
+
+.values-header-right p {
+    color: var(--light-gray); font-size: 0.9rem;
+    line-height: 1.75; max-width: 400px; font-weight: 300;
 }
 
 .values-grid {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 40px 80px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: #222;
+    max-width: 1400px; margin: 0 auto;
+    padding: 0 40px 90px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: rgba(255,255,255,0.04);
 }
 
 .value-card {
-    background: var(--dark);
-    padding: 45px 35px;
-    transition: 0.3s;
-    position: relative;
-    overflow: hidden;
+    background: var(--dark); padding: 42px 32px;
+    transition: 0.3s; position: relative; overflow: hidden;
 }
 
 .value-card::after {
     content: '';
     position: absolute;
     bottom: 0; left: 0;
-    width: 0; height: 3px;
-    background: var(--green);
+    width: 0; height: 2px;
+    background: linear-gradient(90deg, var(--green), var(--amber));
     transition: 0.4s;
 }
 
 .value-card:hover::after { width: 100%; }
-.value-card:hover { background: #1a1a1a; }
+.value-card:hover { background: var(--dark2); }
 
-.value-icon {
-    font-size: 1.8rem;
-    margin-bottom: 22px;
-    display: block;
+.value-icon-wrap {
+    width: 46px; height: 46px;
+    background: var(--forest);
+    border: 1px solid rgba(0,229,176,0.15);
+    display: flex; align-items: center;
+    justify-content: center;
+    font-size: 1.25rem; margin-bottom: 22px;
+    border-radius: 2px;
 }
 
 .value-card h3 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 12px;
+    font-size: 1.05rem; font-weight: 700;
+    margin-bottom: 12px; color: var(--off-white);
     line-height: 1.3;
 }
 
 .value-card p {
-    font-size: 0.85rem;
-    color: var(--light-gray);
-    line-height: 1.75;
-    font-weight: 300;
+    font-size: 0.83rem; color: var(--light-gray);
+    line-height: 1.75; font-weight: 300;
 }
 
 /* PROBLEM */
 .problem-section {
     background: var(--black);
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .problem-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
+    max-width: 1400px; margin: 0 auto;
+    padding: 100px 40px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 90px; align-items: center;
 }
 
-.problem-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-}
+.problem-text .eyebrow { margin-bottom: 22px; }
 
-.problem-item {
-    padding: 28px 0;
-    border-bottom: 1px solid #1a1a1a;
-    display: flex;
-    gap: 24px;
-    align-items: flex-start;
-    transition: 0.2s;
-}
-
-.problem-item:hover { padding-left: 8px; }
-.problem-item:first-child { padding-top: 0; }
-.problem-item:last-child { border-bottom: none; padding-bottom: 0; }
-
-.problem-num {
+.problem-text h2 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--green);
-    flex-shrink: 0;
-    padding-top: 3px;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700; line-height: 1.2;
+    margin-bottom: 22px; color: var(--off-white);
+    letter-spacing: -0.3px;
 }
 
-.problem-item h4 {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 6px;
-}
+.problem-text h2 em { font-style: italic; color: var(--amber); }
 
-.problem-item p {
-    font-size: 0.85rem;
-    color: var(--light-gray);
-    line-height: 1.65;
-    font-weight: 300;
+.problem-text > p {
+    color: var(--light-gray); font-size: 0.92rem;
+    line-height: 1.85; font-weight: 300;
 }
 
 .problem-visual {
     background: var(--dark);
-    border: 1px solid #222;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 40px;
 }
 
-.problem-visual h3 {
+.problem-visual-title {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 5px;
+    font-size: 0.95rem; font-weight: 700;
+    color: var(--off-white); margin-bottom: 8px;
 }
 
-.problem-visual p {
-    color: var(--light-gray);
-    font-size: 0.85rem;
-    line-height: 1.65;
-    font-weight: 300;
+.problem-visual-sub {
+    font-size: 0.78rem; color: var(--light-gray);
+    font-weight: 300; margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-.progress-item { margin-bottom: 20px; }
+.progress-item { margin-bottom: 22px; }
+.progress-item:last-child { margin-bottom: 0; }
 
-.progress-label {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    font-size: 0.78rem;
+.progress-top {
+    display: flex; justify-content: space-between;
+    margin-bottom: 9px; font-size: 0.8rem;
 }
 
-.progress-label span:first-child { color: rgba(255,255,255,0.7); font-weight: 500; }
-.progress-label span:last-child { color: var(--green); font-weight: 700; }
+.progress-top span:first-child { color: rgba(232,237,233,0.65); font-weight: 500; }
+.progress-top span:last-child { color: var(--amber); font-weight: 700; }
 
 .progress-track {
-    height: 3px;
-    background: #222;
-    position: relative;
+    height: 2px; background: rgba(255,255,255,0.06);
     overflow: hidden;
 }
 
 .progress-fill {
     height: 100%;
-    background: var(--green);
-    position: absolute;
-    top: 0; left: 0;
-    width: 0;
-    transition: width 1.5s ease;
+    background: linear-gradient(90deg, var(--green), var(--amber));
+    width: 0; transition: width 1.5s ease;
+}
+
+.visual-footer {
+    margin-top: 30px; padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.visual-footer p {
+    font-size: 0.72rem; color: var(--light-gray);
+    text-transform: uppercase; letter-spacing: 1.5px;
+    font-weight: 600; margin-bottom: 6px;
+}
+
+.visual-footer strong {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--green);
 }
 
 /* TEAM */
 .team-section {
-    background: var(--dark);
-    border-bottom: 1px solid #222;
+    background: var(--forest-dark);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
+.team-header {
+    max-width: 1400px; margin: 0 auto;
+    padding: 90px 40px 55px;
+}
+
+.team-header .eyebrow { margin-bottom: 18px; }
+
+.team-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700; color: var(--off-white);
+    line-height: 1.2; letter-spacing: -0.3px;
+    max-width: 500px;
+}
+
+.team-header h2 em { font-style: italic; color: var(--green); }
+
 .team-grid {
+    max-width: 1400px; margin: 0 auto;
+    padding: 0 40px 90px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1px;
-    background: #222;
-    margin-top: 60px;
+    background: rgba(255,255,255,0.04);
 }
 
 .team-card {
-    background: var(--dark);
-    padding: 40px 35px;
+    background: var(--forest-dark);
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0;
     transition: 0.3s;
-}
-
-.team-card:hover { background: #1a1a1a; }
-
-.team-avatar {
-    width: 70px; height: 70px;
-    background: #222;
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    margin-bottom: 22px;
     overflow: hidden;
 }
 
-.team-card h3 {
+.team-card:hover { background: #112018; }
+
+.team-avatar-block {
+    background: var(--forest);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 35px 20px;
+    border-right: 1px solid rgba(255,255,255,0.04);
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-avatar-block::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green), var(--amber));
+}
+
+.team-avatar-initials {
+    width: 68px; height: 68px;
+    background: var(--forest-dark);
+    border: 1px solid rgba(0,229,176,0.2);
+    border-radius: 2px;
+    display: flex; align-items: center;
+    justify-content: center;
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin-bottom: 5px;
-}
-
-.team-role {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+    font-size: 1.4rem; font-weight: 700;
     color: var(--green);
-    margin-bottom: 14px;
-    display: block;
+    letter-spacing: -1px;
 }
 
-.team-card p {
-    font-size: 0.83rem;
-    color: var(--light-gray);
-    line-height: 1.7;
-    font-weight: 300;
+.team-avatar-role {
+    font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--amber); text-align: center;
+    line-height: 1.4;
+}
+
+.team-info {
+    padding: 35px 32px;
+    display: flex; flex-direction: column;
+    justify-content: center;
+}
+
+.team-info h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--off-white); margin-bottom: 5px;
+    letter-spacing: 0.2px;
+}
+
+.team-info .team-title {
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--green); margin-bottom: 16px;
+}
+
+.team-info p {
+    font-size: 0.83rem; color: var(--light-gray);
+    line-height: 1.75; font-weight: 300;
+}
+
+.team-info .team-tags {
+    display: flex; gap: 8px;
+    flex-wrap: wrap; margin-top: 18px;
+}
+
+.team-tag {
+    font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(232,237,233,0.4);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 4px 10px; border-radius: 2px;
 }
 
 /* CTA BAND */
 .cta-band {
-    background: var(--green);
-    padding: 80px 40px;
+    background: var(--forest);
+    padding: 90px 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .cta-band-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
+    max-width: 1400px; margin: 0 auto;
+    display: flex; align-items: center;
     justify-content: space-between;
-    gap: 40px;
-    flex-wrap: wrap;
+    gap: 40px; flex-wrap: wrap;
 }
+
+.cta-band-text .eyebrow { margin-bottom: 18px; }
 
 .cta-band h2 {
     font-family: 'Libre Baskerville', serif;
     font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 700;
-    color: var(--black);
-    line-height: 1.2;
-    max-width: 600px;
+    font-weight: 700; color: var(--off-white);
+    line-height: 1.2; max-width: 550px;
 }
 
-.cta-band-actions { display: flex; gap: 16px; flex-wrap: wrap; flex-shrink: 0; }
+.cta-band h2 em { font-style: italic; color: var(--green); }
 
-.btn-dark {
-    background: var(--black); color: var(--white);
-    padding: 16px 32px; font-weight: 700;
-    font-size: 0.85rem; letter-spacing: 0.5px;
-    text-decoration: none; border-radius: 2px;
-    transition: 0.2s; display: inline-block;
-    border: 2px solid var(--black);
+.cta-band-actions { display: flex; gap: 14px; flex-wrap: wrap; flex-shrink: 0; }
+
+.btn-green {
+    background: var(--green); color: var(--black);
+    padding: 15px 30px; font-weight: 700;
+    font-size: 0.85rem; text-decoration: none;
+    border-radius: 3px; transition: 0.2s;
+    display: inline-block;
 }
 
-.btn-dark:hover { background: #222; }
+.btn-green:hover { background: var(--green-dark); }
 
-.btn-outline-dark {
-    background: transparent; color: var(--black);
-    padding: 16px 32px; font-weight: 700;
-    font-size: 0.85rem; letter-spacing: 0.5px;
-    text-decoration: none; border-radius: 2px;
-    transition: 0.2s; display: inline-block;
-    border: 2px solid var(--black);
+.btn-amber {
+    background: var(--amber); color: var(--black);
+    padding: 15px 30px; font-weight: 700;
+    font-size: 0.85rem; text-decoration: none;
+    border-radius: 3px; transition: 0.2s;
+    display: inline-block;
 }
 
-.btn-outline-dark:hover { background: rgba(0,0,0,0.08); }
+.btn-amber:hover { background: var(--amber-light); }
 
 /* FOOTER */
-.footer { background: var(--dark); border-top: 1px solid #222; }
+.footer { background: var(--forest-dark); border-top: 1px solid rgba(255,255,255,0.05); }
 
 .footer-top {
     max-width: 1400px; margin: 0 auto;
@@ -617,51 +637,66 @@ nav {
     gap: 50px;
 }
 
-.footer-brand h3 {
+.footer-brand-mark {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 18px;
+}
+
+.footer-brand-icon {
+    width: 34px; height: 34px;
+    background: var(--forest);
+    border: 1px solid rgba(0,229,176,0.2);
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.75rem;
+    color: var(--green);
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.2rem; font-weight: 700;
-    margin-bottom: 14px;
+}
+
+.footer-brand-mark h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1rem; font-weight: 700; color: var(--off-white);
 }
 
 .footer-brand p {
-    color: var(--light-gray); font-size: 0.85rem;
-    line-height: 1.75; max-width: 280px; font-weight: 300;
+    color: var(--light-gray); font-size: 0.82rem;
+    line-height: 1.75; max-width: 270px; font-weight: 300;
 }
 
 .footer-col h4 {
-    font-size: 0.72rem; font-weight: 700;
+    font-size: 0.68rem; font-weight: 700;
     letter-spacing: 2px; text-transform: uppercase;
-    color: rgba(255,255,255,0.4); margin-bottom: 18px;
+    color: rgba(232,237,233,0.25); margin-bottom: 18px;
 }
 
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 
 .footer-col ul li a {
     color: var(--light-gray); text-decoration: none;
-    font-size: 0.85rem; transition: 0.2s; font-weight: 300;
+    font-size: 0.83rem; transition: 0.2s; font-weight: 300;
 }
 
 .footer-col ul li a:hover { color: var(--green); }
 
 .footer-bottom-bar {
     max-width: 1400px; margin: 0 auto;
-    padding: 22px 40px;
-    border-top: 1px solid #222;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px; flex-wrap: wrap;
+    padding: 20px 40px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    display: flex; justify-content: space-between;
+    align-items: center; gap: 20px; flex-wrap: wrap;
 }
 
-.footer-bottom-bar p { color: #444; font-size: 0.78rem; }
-.footer-bottom-bar span { color: var(--green); }
+.footer-bottom-bar p { color: rgba(255,255,255,0.2); font-size: 0.75rem; }
+.footer-bottom-bar span { color: var(--amber); }
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
     .values-grid { grid-template-columns: repeat(2, 1fr); }
-    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .story-inner { grid-template-columns: 1fr; }
+    .problem-inner { grid-template-columns: 1fr; }
     .stats-inner { grid-template-columns: repeat(2, 1fr); }
     .footer-top { grid-template-columns: 1fr 1fr; }
+    .team-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
@@ -671,25 +706,18 @@ nav {
         display: flex; flex-direction: column;
         position: absolute; top: 64px; left: 0;
         width: 100%; background: var(--black);
-        border-bottom: 1px solid #222;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
         padding: 20px 0;
     }
     .nav-links.open li a {
-        height: auto; line-height: 1;
-        padding: 14px 30px;
-        border-bottom: none;
-        border-left: 3px solid transparent;
+        height: auto; line-height: 1; padding: 14px 28px;
+        border-bottom: none; border-left: 2px solid transparent;
     }
     .nav-links.open li a:hover { border-left-color: var(--green); }
-    .page-hero-inner { grid-template-columns: 1fr; }
-    .page-hero-img { height: 300px; }
-    .story-grid { grid-template-columns: 1fr; }
-    .problem-inner { grid-template-columns: 1fr; }
     .values-grid { grid-template-columns: 1fr; }
-    .team-grid { grid-template-columns: 1fr; }
-    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .team-card { grid-template-columns: 1fr; }
+    .team-avatar-block { flex-direction: row; padding: 25px 30px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.04); }
     .footer-top { grid-template-columns: 1fr; }
-    .section { padding: 70px 24px; }
 }
 
 </style>
@@ -708,7 +736,7 @@ nav {
             <li><a href="hakkimizda.html" class="active">Hakkımızda</a></li>
             <li><a href="ozellikler.html">Özellikler</a></li>
             <li><a href="iletisim.html">İletişim</a></li>
-            <li><a href="bildir.html" class="nav-cta">Hayvan Bildir</a></li>
+            <li><a href="yakinda.html?page=bildir" class="nav-cta">Hayvan Bildir</a></li>
         </ul>
         <button class="hamburger" onclick="toggleNav()">
             <span></span><span></span><span></span>
@@ -719,39 +747,63 @@ nav {
 <!-- PAGE HERO -->
 <div class="page-hero">
     <div class="page-hero-inner">
-        <div class="page-hero-text">
-            <span class="page-label">Hakkımızda</span>
-            <h1>Vahşi Yaşamı<br>Korumak İçin<br><em>Bir Hareket</em></h1>
-            <p>b0wl Community, teknoloji ve topluluk gücünü birleştirerek vahşi yaşam korumayı herkes için erişilebilir kılan bir platformdur.</p>
+        <div class="eyebrow">
+            <div class="eyebrow-line"></div>
+            <span>Hakkımızda</span>
         </div>
-        <div class="page-hero-img">
-            <img src="https://images.unsplash.com/photo-1474511320723-9a56873571b7?w=900" alt="Vahşi Doğa">
-            <div class="page-hero-img::after"></div>
-        </div>
+        <h1>Vahşi Yaşam İçin<br>Bir <em>Ekosistem</em><br>İnşa Ediyoruz</h1>
+        <p>b0wl Community, dağınık koruma çabalarını tek bir koordinasyon platformunda birleştiren, teknoloji destekli bir girişimdir.</p>
     </div>
 </div>
 
-<hr class="divider">
+<hr>
 
-<!-- HİKAYE -->
+<!-- STORY -->
 <div class="story-section">
-    <div class="section">
-        <div class="story-grid">
-            <div class="story-text">
-                <span class="section-label">Hikayemiz</span>
-                <h2 class="section-title">Neden <em>b0wl</em><br>Community?</h2>
-                <p>Her gün dünyadan silinen türlerin haberlerini okurken, mevcut çözümlerin ne kadar <strong>parçalı ve yetersiz</strong> olduğunu fark ettik.</p>
-                <p>Bağış yapmak isteyenler doğru kuruluşu bulamıyor. Gönüllü olmak isteyenler nereye başvuracağını bilmiyor. Sokakta yaralı bir hayvan gören ise ne yapacağını bilmiyordu.</p>
-
-                <div class="story-pull">
-                    "Bowl" yani kase; tüm canlıların etrafında buluştuğu, paylaştığı ortak alanı simgeliyor.
-                </div>
-
-                <p>b0wl Community bu boşluğu doldurmak için doğdu. Yapay zeka destekli acil bildirim sistemimizden şeffaf bağış altyapımıza, sosyal etki marketimizden kuruluş koordinasyon ağımıza kadar her şey tek bir amaç için inşa edildi: <strong>Vahşi yaşamı birlikte korumak.</strong></p>
+    <div class="story-inner">
+        <div class="story-text">
+            <div class="eyebrow">
+                <div class="eyebrow-line"></div>
+                <span>Hikayemiz</span>
             </div>
-            <div class="story-img">
-                <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=800" alt="Vahşi Yaşam">
-                <div class="story-img-caption">Dünya genelinde 40.000'den fazla tür yok olma tehlikesi altında.</div>
+            <h2>Parçalı Bir<br>Yapıdan <em>Doğdu</em></h2>
+            <p>Vahşi yaşam koruma ekosistemi bugün ciddi bir koordinasyon sorunuyla karşı karşıya. Bağış yapmak isteyenler doğru kuruluşu bulamıyor. Gönüllü olmak isteyenler nereye başvuracağını bilmiyor. Tehlikede hayvan gören bireylerin başvurabileceği etkili bir mekanizma yok.</p>
+
+            <div class="story-pull">
+                "Bowl" — kase. Tüm canlıların etrafında buluştuğu, paylaştığı ortak alan.
+            </div>
+
+            <p>Bu isim bir tesadüf değil. Platformumuz tüm paydaşları — kuruluşları, bireyleri, araştırmacıları ve destekçileri — tek bir ortak alanda buluşturmak için tasarlandı.</p>
+            <p>Yapay zeka destekli bildirim sistemimiz, şeffaf bağış altyapımız, sosyal etki marketimiz ve küresel kuruluş ağımız tek bir misyon etrafında inşa edildi: <strong style="color:var(--off-white)">Vahşi yaşamı birlikte korumak.</strong></p>
+        </div>
+
+        <div class="story-right">
+            <div class="story-img-stack">
+                <div class="story-img-main">
+                    <img src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=800" alt="Vahşi Yaşam">
+                </div>
+                <div class="story-img-sub">
+                    <img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=400" alt="Doğa">
+                </div>
+            </div>
+
+            <div class="story-facts">
+                <div class="story-fact">
+                    <span class="story-fact-num">6</span>
+                    <p>Platform Modülü</p>
+                </div>
+                <div class="story-fact">
+                    <span class="story-fact-num">25+</span>
+                    <p>Hedef Kuruluş</p>
+                </div>
+                <div class="story-fact">
+                    <span class="story-fact-num">$75K</span>
+                    <p>Pre-Seed Hedef</p>
+                </div>
+                <div class="story-fact">
+                    <span class="story-fact-num">2026</span>
+                    <p>MVP Lansman</p>
+                </div>
             </div>
         </div>
     </div>
@@ -779,163 +831,154 @@ nav {
     </div>
 </div>
 
-<!-- PROBLEM -->
-<div class="problem-section">
-    <div class="section">
-        <div class="problem-inner">
-            <div>
-                <span class="section-label">Çözdüğümüz Problem</span>
-                <h2 class="section-title">Neden <em>Acil</em><br>Harekete Geçmeliyiz?</h2>
-                <p style="color:var(--light-gray); font-size:0.92rem; line-height:1.8; font-weight:300; margin-top:20px; max-width:420px;">Vahşi yaşam korumasındaki temel sorunları tespit ettik ve her birine sistematik çözümler ürettik.</p>
-
-                <ul class="problem-list" style="margin-top:45px;">
-                    <li class="problem-item">
-                        <span class="problem-num">01</span>
-                        <div>
-                            <h4>Koordinasyon Eksikliği</h4>
-                            <p>Kuruluşlar birbirinden bağımsız çalışıyor, kaynaklar verimsiz dağıtılıyor, bilgi paylaşımı yetersiz kalıyor.</p>
-                        </div>
-                    </li>
-                    <li class="problem-item">
-                        <span class="problem-num">02</span>
-                        <div>
-                            <h4>Müdahale Mekanizması Yok</h4>
-                            <p>Tehlikede hayvan gören bireyler ne yapacağını bilmiyor. Etkili bir bildirim ve yönlendirme sistemi bulunmuyor.</p>
-                        </div>
-                    </li>
-                    <li class="problem-item">
-                        <span class="problem-num">03</span>
-                        <div>
-                            <h4>Şeffaflık Sorunu</h4>
-                            <p>Bağışların nereye gittiği takip edilemiyor. Güven eksikliği bireyleri bağış yapmaktan caydırıyor.</p>
-                        </div>
-                    </li>
-                    <li class="problem-item">
-                        <span class="problem-num">04</span>
-                        <div>
-                            <h4>Erişim Sorunu</h4>
-                            <p>Gönüllü olmak isteyenler doğru kuruluşu bulamıyor. Mevcut platformlar dağınık ve kullanışsız.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="problem-visual">
-                <div>
-                    <h3>12 Aylık Hedeflerimiz</h3>
-                    <p>İlk yılda ulaşmayı planladığımız metrikler.</p>
-                </div>
-
-                <div>
-                    <div class="progress-item">
-                        <div class="progress-label">
-                            <span>Kayıtlı Kullanıcı</span>
-                            <span>15.000</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" data-width="75"></div>
-                        </div>
-                    </div>
-                    <div class="progress-item">
-                        <div class="progress-label">
-                            <span>Kuruluş Ortağı</span>
-                            <span>25+</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" data-width="55"></div>
-                        </div>
-                    </div>
-                    <div class="progress-item">
-                        <div class="progress-label">
-                            <span>Tanınan Tür</span>
-                            <span>300+</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" data-width="85"></div>
-                        </div>
-                    </div>
-                    <div class="progress-item">
-                        <div class="progress-label">
-                            <span>AI Doğruluk Oranı</span>
-                            <span>%90+</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" data-width="90"></div>
-                        </div>
-                    </div>
-                    <div class="progress-item">
-                        <div class="progress-label">
-                            <span>Pilot Şehir</span>
-                            <span>3</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" data-width="40"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="padding-top:10px; border-top:1px solid #222;">
-                    <p style="font-size:0.78rem; color:var(--light-gray);">Tohum öncesi yatırım talebi</p>
-                    <p style="font-family:'Libre Baskerville',serif; font-size:1.8rem; font-weight:700; color:var(--green); margin-top:6px;">$50K — $75K</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- VALUES -->
 <div class="values-section">
     <div class="values-header">
         <div>
-            <span class="section-label">Değerlerimiz</span>
-            <h2 class="section-title">Her Kararın<br>Arkasında <em>Bunlar</em> Var</h2>
+            <div class="eyebrow">
+                <div class="eyebrow-line"></div>
+                <span>Değerlerimiz</span>
+            </div>
+            <h2>Her Kararın<br>Arkasında <em>Bunlar</em> Var</h2>
         </div>
-        <p class="values-desc">b0wl Community olarak her ürün kararı, her iş birliği ve her teknik seçim bu değerler etrafında şekilleniyor.</p>
+        <div class="values-header-right">
+            <p>b0wl Community olarak her ürün kararı, her iş birliği ve her teknik seçim bu değerler etrafında şekilleniyor.</p>
+        </div>
     </div>
     <div class="values-grid">
         <div class="value-card">
-            <span class="value-icon">🔍</span>
+            <div class="value-icon-wrap">🔍</div>
             <h3>Şeffaflık</h3>
-            <p>Her bağışın nereye gittiğini, her kararın nasıl alındığını açıkça paylaşırız. Hesap verebilirlik temel ilkemizdir.</p>
+            <p>Her bağışın nereye gittiğini, her kararın nasıl alındığını açıkça paylaşırız. Hesap verebilirlik standartımızdır.</p>
         </div>
         <div class="value-card">
-            <span class="value-icon">🤝</span>
+            <div class="value-icon-wrap">🤝</div>
             <h3>İş Birliği</h3>
-            <p>Tek başına değil, birlikte daha güçlüyüz. Kuruluşları, bireyleri ve teknolojiyi bir araya getiririz.</p>
+            <p>Birlikte daha güçlüyüz. Kuruluşları, bireyleri ve teknolojiyi bir araya getirerek etkiyi katlarız.</p>
         </div>
         <div class="value-card">
-            <span class="value-icon">⚡</span>
+            <div class="value-icon-wrap">⚡</div>
             <h3>Hız ve Etki</h3>
-            <p>Vahşi yaşam acil müdahale gerektiriyor. Platformumuz saniyeler içinde harekete geçebilir olarak tasarlandı.</p>
+            <p>Vahşi yaşam acil müdahale gerektiriyor. Sistemimiz hızlı hareket edecek şekilde tasarlandı.</p>
         </div>
         <div class="value-card">
-            <span class="value-icon">🌱</span>
+            <div class="value-icon-wrap">🌱</div>
             <h3>Sürdürülebilirlik</h3>
-            <p>Hem çevresel hem iş modeli olarak uzun vadeli düşünür, kalıcı ve ölçeklenebilir çözümler üretiriz.</p>
+            <p>Hem çevresel hem iş modeli olarak uzun vadeli düşünür, kalıcı çözümler üretiriz.</p>
+        </div>
+    </div>
+</div>
+
+<!-- PROBLEM -->
+<div class="problem-section">
+    <div class="problem-inner">
+        <div class="problem-text">
+            <div class="eyebrow">
+                <div class="eyebrow-line"></div>
+                <span>12 Aylık Hedefler</span>
+            </div>
+            <h2>İlk Yılda<br>Nereye <em>Ulaşmak</em><br>İstiyoruz?</h2>
+            <p>Tohum öncesi yatırım turumuzla birlikte MVP'yi tamamlayacak, ilk kuruluş ortaklıklarını kuracak ve ölçeklenmeye hazır hale geleceğiz.</p>
+        </div>
+        <div class="problem-visual" id="progressVisual">
+            <div class="problem-visual-title">Hedef Metrikler</div>
+            <div class="problem-visual-sub">İlk 12 ay sonunda ulaşmayı planladığımız rakamlar</div>
+
+            <div class="progress-item">
+                <div class="progress-top">
+                    <span>Kayıtlı Kullanıcı</span><span>15.000</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" data-width="75"></div>
+                </div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-top">
+                    <span>Kuruluş Ortağı</span><span>25+</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" data-width="55"></div>
+                </div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-top">
+                    <span>AI Tür Tanıma</span><span>300+ tür</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" data-width="85"></div>
+                </div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-top">
+                    <span>AI Doğruluk Oranı</span><span>%90+</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" data-width="90"></div>
+                </div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-top">
+                    <span>Pilot Şehir</span><span>3</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" data-width="40"></div>
+                </div>
+            </div>
+
+            <div class="visual-footer">
+                <p>Pre-Seed Yatırım Hedefi</p>
+                <strong>$50K — $75K</strong>
+            </div>
         </div>
     </div>
 </div>
 
 <!-- TEAM -->
 <div class="team-section">
-    <div class="section" style="padding-bottom:0;">
-        <span class="section-label">Ekibimiz</span>
-        <h2 class="section-title">Doğayı Seven,<br><em>Teknolojiyi</em> Kullanan</h2>
+    <div class="team-header">
+        <div class="eyebrow">
+            <div class="eyebrow-line"></div>
+            <span>Ekibimiz</span>
+        </div>
+        <h2>Doğayı Seven,<br><em>Teknolojiyi</em> Kullanan</h2>
     </div>
-    <div style="max-width:1400px; margin:0 auto; padding:0 40px 80px;">
+    <div style="max-width:1400px; margin:0 auto; padding:0 40px 90px;">
         <div class="team-grid">
+
             <div class="team-card">
-                <div class="team-avatar">👤</div>
-                <h3>Ahmet Şamil GÜNEŞ</h3>
-                <span class="team-role">Kurucu & CEO</span>
-                <p>Girişimcilik ve vahşi yaşam koruma alanında tutkulu. Platformun vizyonunu ve stratejisini yönetiyor.</p>
+                <div class="team-avatar-block">
+                    <div class="team-avatar-initials">AŞ</div>
+                    <div class="team-avatar-role">Kurucu<br>& CEO</div>
+                </div>
+                <div class="team-info">
+                    <h3>Ahmet Şamil Güneş</h3>
+                    <span class="team-title">Co-Founder & CEO</span>
+                    <p>Girişimcilik ve vahşi yaşam koruma alanında tutkulu. Platformun vizyonunu, stratejisini ve iş geliştirme süreçlerini yönetiyor.</p>
+                    <div class="team-tags">
+                        <span class="team-tag">Strateji</span>
+                        <span class="team-tag">İş Geliştirme</span>
+                        <span class="team-tag">Girişimcilik</span>
+                    </div>
+                </div>
             </div>
+
             <div class="team-card">
-                <div class="team-avatar">👤</div>
-                <h3>Muhammed Ali GÜNEY</h3>
-                <span class="team-role">Kurucu & CTO</span>
-                <p>Yapay zeka ve yazılım geliştirme alanında uzman. AI sistemini ve teknik altyapıyı tasarlıyor.</p>
+                <div class="team-avatar-block">
+                    <div class="team-avatar-initials">MA</div>
+                    <div class="team-avatar-role">Kurucu<br>& CTO</div>
+                </div>
+                <div class="team-info">
+                    <h3>Muhammed Ali Güney</h3>
+                    <span class="team-title">Co-Founder & CTO</span>
+                    <p>Yapay zeka ve yazılım geliştirme alanında uzman. AI sistemini, teknik altyapıyı ve platform mimarisini tasarlıyor.</p>
+                    <div class="team-tags">
+                        <span class="team-tag">Yapay Zeka</span>
+                        <span class="team-tag">Yazılım</span>
+                        <span class="team-tag">Mimari</span>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -943,10 +986,16 @@ nav {
 <!-- CTA BAND -->
 <div class="cta-band">
     <div class="cta-band-inner">
-        <h2>Bu Harekete Katılmak İster Misiniz?</h2>
+        <div class="cta-band-text">
+            <div class="eyebrow">
+                <div class="eyebrow-line"></div>
+                <span>Harekete Geç</span>
+            </div>
+            <h2>Bu Harekete<br><em>Katılmak</em> İster<br>Misiniz?</h2>
+        </div>
         <div class="cta-band-actions">
-            <a href="iletisim.html" class="btn-dark">İletişime Geç</a>
-            <a href="ozellikler.html" class="btn-outline-dark">Özellikleri Gör</a>
+            <a href="iletisim.html" class="btn-green">İletişime Geç</a>
+            <a href="ozellikler.html" class="btn-amber">Özellikleri Gör</a>
         </div>
     </div>
 </div>
@@ -955,16 +1004,19 @@ nav {
 <footer class="footer">
     <div class="footer-top">
         <div class="footer-brand">
-            <h3>b0wl Community</h3>
-            <p>Vahşi yaşamı korumak için teknolojiyi ve topluluk gücünü birleştiren küresel platform.</p>
+            <div class="footer-brand-mark">
+                <div class="footer-brand-icon">b0</div>
+                <h3>b0wl Community</h3>
+            </div>
+            <p>Vahşi yaşamı korumak için kuruluşları, bireyleri ve teknolojiyi bir araya getiren küresel koordinasyon platformu.</p>
         </div>
         <div class="footer-col">
             <h4>Platform</h4>
             <ul>
                 <li><a href="ozellikler.html">Özellikler</a></li>
-                <li><a href="#">Hayvan Bildir — Yakında</a></li>
-                <li><a href="#">Bağış Yap — Yakında</a></li>
-                <li><a href="#">Market — Yakında</a></li>
+                <li><a href="yakinda.html?page=bildir">Hayvan Bildir</a></li>
+                <li><a href="yakinda.html?page=bagis">Bağış Yap</a></li>
+                <li><a href="yakinda.html?page=market">Market</a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -997,7 +1049,6 @@ function toggleNav() {
     document.getElementById('navLinks').classList.toggle('open');
 }
 
-// Progress bar animasyonu
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1008,7 +1059,8 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.3 });
 
-document.querySelectorAll('.problem-visual').forEach(el => observer.observe(el));
+const pv = document.getElementById('progressVisual');
+if (pv) observer.observe(pv);
 </script>
 
 </body>
