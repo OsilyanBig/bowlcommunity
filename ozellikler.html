@@ -3,721 +3,766 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Özellikler - b0wl Community</title>
+<title>Özellikler — b0wl Community</title>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 
 :root {
-    --green: #00e5b0;
-    --green-dark: #00b389;
-    --forest: #1a3a2a;
-    --forest-dark: #0f2318;
-    --amber: #d4a853;
-    --amber-light: #e8c47a;
-    --black: #080c09;
-    --dark: #0f1a12;
-    --dark2: #162012;
-    --dark3: #1e2d1e;
-    --light-gray: #7a8f7e;
-    --off-white: #e8ede9;
-    --white: #ffffff;
+    --emerald: #2E6B57;
+    --emerald-dark: #1F4D3D;
+    --emerald-light: #3A8A6E;
+    --bronze: #A67C52;
+    --bronze-light: #C49B6F;
+    --black: #0B0F0D;
+    --dark: #132019;
+    --dark2: #1A2A20;
+    --dark3: #223228;
+    --text: #EAE7E1;
+    --text-dim: #A8ACA6;
+    --text-muted: #6B7269;
+    --border: rgba(234,231,225,0.06);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; overflow-x: hidden; }
-body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
 
 /* NAVBAR */
 nav {
-    position: fixed; top: 0; left: 0;
-    width: 100%; z-index: 1000;
-    background: rgba(8,12,9,0.96);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    backdrop-filter: blur(12px);
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(11,15,13,0.97);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(14px);
 }
 
 .nav-inner {
-    max-width: 1400px; margin: 0 auto;
-    padding: 0 40px; height: 64px;
-    display: flex; align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    height: 62px;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
 .nav-logo {
     text-decoration: none;
-    display: flex; align-items: center; gap: 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
 }
 
 .nav-logo-mark {
-    width: 38px; height: 38px;
-    background: var(--forest);
-    border: 1px solid rgba(0,229,176,0.3);
+    width: 36px;
+    height: 36px;
+    background: var(--emerald-dark);
+    border: 1px solid rgba(46,107,87,0.5);
     border-radius: 3px;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 900; font-size: 0.82rem;
-    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 0.78rem;
+    color: var(--emerald-light);
     font-family: 'Libre Baskerville', serif;
+    letter-spacing: -0.5px;
 }
 
 .nav-logo-text {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1rem; color: var(--off-white);
-    font-weight: 700; letter-spacing: 0.3px;
+    font-size: 0.95rem;
+    color: var(--text);
+    font-weight: 700;
+    letter-spacing: 0.2px;
 }
 
 .nav-links {
-    display: flex; align-items: center;
-    list-style: none; gap: 0;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 0;
 }
 
 .nav-links li a {
-    display: block; padding: 0 16px;
-    height: 64px; line-height: 64px;
-    color: rgba(232,237,233,0.5);
-    text-decoration: none; font-size: 0.82rem;
-    font-weight: 500; transition: 0.2s;
+    display: block;
+    padding: 0 16px;
+    height: 62px;
+    line-height: 62px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: 0.2s;
     border-bottom: 2px solid transparent;
+    letter-spacing: 0.2px;
 }
 
-.nav-links li a:hover { color: var(--off-white); border-bottom-color: var(--amber); }
-.nav-links li a.active { color: var(--off-white); border-bottom-color: var(--green); }
+.nav-links li a:hover {
+    color: var(--text);
+    border-bottom-color: var(--bronze);
+}
+
+.nav-links li a.active {
+    color: var(--text);
+    border-bottom-color: var(--emerald);
+}
 
 .nav-cta {
-    background: var(--forest) !important;
-    border: 1px solid rgba(0,229,176,0.25) !important;
-    color: var(--green) !important;
+    background: var(--emerald-dark) !important;
+    border: 1px solid rgba(46,107,87,0.4) !important;
+    color: var(--emerald-light) !important;
     font-weight: 700 !important;
-    padding: 0 20px !important;
-    height: 36px !important;
-    line-height: 36px !important;
+    padding: 0 18px !important;
+    height: 34px !important;
+    line-height: 34px !important;
     border-radius: 3px !important;
     border-bottom: none !important;
-    margin-left: 12px; align-self: center;
+    margin-left: 12px;
+    align-self: center;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.3px !important;
 }
 
-.nav-cta:hover { background: var(--forest-dark) !important; border-color: rgba(0,229,176,0.5) !important; }
+.nav-cta:hover {
+    background: var(--emerald) !important;
+    color: var(--text) !important;
+}
 
 .hamburger {
-    display: none; background: none; border: none;
-    cursor: pointer; flex-direction: column;
-    gap: 5px; padding: 5px;
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
 }
 
-.hamburger span { display: block; width: 24px; height: 2px; background: var(--off-white); }
+.hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--text-dim);
+}
 
-/* PAGE HERO */
+/* HERO */
 .page-hero {
-    padding-top: 64px;
-    background: var(--forest-dark);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    position: relative; overflow: hidden;
+    padding-top: 62px;
+    min-height: 76vh;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+    background: var(--dark);
 }
 
-.page-hero::before {
-    content: '';
-    position: absolute; top: 0; right: 0;
-    width: 45%; height: 100%;
-    background: url('https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=800') center/cover no-repeat;
-    opacity: 0.1; filter: saturate(0.2);
+.page-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to right, rgba(11,15,13,0.92) 34%, rgba(11,15,13,0.38) 100%),
+        url('https://png.pngtree.com/thumb_back/fh260/background/20230527/pngtree-in-the-style-of-dark-emerald-and-light-brown-image_2683518.jpg') center/cover no-repeat;
 }
 
-.page-hero-inner {
-    max-width: 1400px; margin: 0 auto;
-    padding: 90px 40px 85px;
-    position: relative; z-index: 1;
-    max-width: 820px;
+.page-hero-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(11,15,13,1) 0%,
+        rgba(11,15,13,0.2) 55%,
+        transparent 100%
+    );
+}
+
+.page-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 40px 80px;
 }
 
 .eyebrow {
-    display: flex; align-items: center; gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     margin-bottom: 22px;
 }
 
-.eyebrow-line { width: 24px; height: 1px; background: var(--amber); }
+.eyebrow-line {
+    width: 24px;
+    height: 1px;
+    background: var(--bronze);
+}
 
 .eyebrow span {
-    font-size: 0.68rem; font-weight: 700;
-    letter-spacing: 3px; text-transform: uppercase;
-    color: var(--amber);
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--bronze);
 }
 
 .page-hero h1 {
     font-family: 'Libre Baskerville', serif;
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    font-weight: 700; line-height: 1.1;
-    letter-spacing: -0.5px; margin-bottom: 28px;
-    color: var(--off-white);
+    font-size: clamp(2.6rem, 5vw, 4.7rem);
+    font-weight: 700;
+    line-height: 1.08;
+    max-width: 760px;
+    margin-bottom: 24px;
+    letter-spacing: -0.7px;
 }
 
-.page-hero h1 em { font-style: italic; color: var(--green); }
+.page-hero h1 em {
+    font-style: italic;
+    color: var(--emerald-light);
+}
 
 .page-hero p {
-    color: var(--light-gray); font-size: 1.05rem;
-    line-height: 1.8; font-weight: 300; max-width: 540px;
+    max-width: 560px;
+    font-size: 0.98rem;
+    line-height: 1.85;
+    font-weight: 300;
+    color: var(--text-dim);
 }
 
-/* HR */
-hr { border: none; border-top: 1px solid rgba(255,255,255,0.05); }
+/* SECTION BASE */
+.section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 40px;
+}
+
+.section-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.3px;
+    margin-bottom: 22px;
+}
+
+.section-title em {
+    font-style: italic;
+    color: var(--emerald-light);
+}
+
+.section-text {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    line-height: 1.9;
+    font-weight: 300;
+}
 
 /* OVERVIEW */
 .overview-section {
     background: var(--black);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .overview-header {
-    max-width: 1400px; margin: 0 auto;
-    padding: 90px 40px 55px;
-    display: flex; justify-content: space-between;
-    align-items: flex-end; gap: 50px; flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin-bottom: 54px;
 }
-
-.overview-header h2 {
-    font-family: 'Libre Baskerville', serif;
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    font-weight: 700; color: var(--off-white);
-    line-height: 1.2; letter-spacing: -0.3px;
-}
-
-.overview-header h2 em { font-style: italic; color: var(--green); }
 
 .overview-header p {
-    color: var(--light-gray); font-size: 0.9rem;
-    line-height: 1.75; max-width: 380px; font-weight: 300;
+    max-width: 420px;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    line-height: 1.78;
+    font-weight: 300;
 }
 
 .overview-grid {
-    max-width: 1400px; margin: 0 auto;
-    padding: 0 40px 90px;
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1px; background: rgba(255,255,255,0.04);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
 }
 
 .overview-card {
-    background: var(--black); padding: 42px 35px;
-    transition: 0.3s; position: relative; overflow: hidden;
+    background: var(--black);
+    padding: 36px 30px;
+    transition: 0.25s;
+    position: relative;
+}
+
+.overview-card:hover {
+    background: var(--dark);
 }
 
 .overview-card::after {
     content: '';
-    position: absolute; bottom: 0; left: 0;
-    width: 0; height: 2px;
-    background: linear-gradient(90deg, var(--green), var(--amber));
-    transition: 0.4s;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--emerald), var(--bronze));
+    transition: 0.35s;
 }
 
 .overview-card:hover::after { width: 100%; }
-.overview-card:hover { background: var(--dark); }
 
 .overview-num {
     font-family: 'Libre Baskerville', serif;
-    font-size: 2.5rem; font-weight: 700;
-    color: rgba(255,255,255,0.04); line-height: 1;
-    margin-bottom: 20px; transition: 0.3s;
+    font-size: 2.2rem;
+    line-height: 1;
+    margin-bottom: 16px;
+    color: rgba(166,124,82,0.18);
 }
-
-.overview-card:hover .overview-num { color: rgba(212,168,83,0.12); }
 
 .overview-card h3 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.08rem; font-weight: 700;
-    margin-bottom: 12px; line-height: 1.3;
-    color: var(--off-white);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text);
+    line-height: 1.3;
 }
 
 .overview-card p {
-    font-size: 0.83rem; color: var(--light-gray);
-    line-height: 1.75; font-weight: 300;
+    color: var(--text-dim);
+    font-size: 0.82rem;
+    line-height: 1.75;
+    font-weight: 300;
 }
 
-/* FEATURE DETAIL */
-.feature-detail {
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+/* FEATURE BLOCKS */
+.feature-block {
+    border-bottom: 1px solid var(--border);
 }
 
-.feature-detail:nth-child(odd) { background: var(--black); }
-.feature-detail:nth-child(even) { background: var(--dark); }
+.feature-block:nth-child(odd) { background: var(--dark); }
+.feature-block:nth-child(even) { background: var(--black); }
 
-.feature-detail-inner {
-    max-width: 1400px; margin: 0 auto;
+.feature-inner {
+    max-width: 1400px;
+    margin: 0 auto;
     padding: 100px 40px;
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 100px; align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px;
+    align-items: center;
 }
 
-.feature-detail-inner.reverse { direction: rtl; }
-.feature-detail-inner.reverse > * { direction: ltr; }
+.feature-inner.reverse {
+    direction: rtl;
+}
+
+.feature-inner.reverse > * {
+    direction: ltr;
+}
 
 .feature-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 0.68rem; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase;
-    color: var(--amber);
-    border: 1px solid rgba(212,168,83,0.25);
-    padding: 6px 14px; border-radius: 2px;
-    margin-bottom: 22px;
-}
-
-.feature-detail-text h2 {
-    font-family: 'Libre Baskerville', serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    font-weight: 700; line-height: 1.2;
-    margin-bottom: 22px; letter-spacing: -0.3px;
-    color: var(--off-white);
-}
-
-.feature-detail-text h2 em { font-style: italic; color: var(--green); }
-
-.feature-detail-text > p {
-    color: var(--light-gray); font-size: 0.92rem;
-    line-height: 1.85; font-weight: 300; margin-bottom: 35px;
-}
-
-.feature-checklist {
-    list-style: none; display: flex;
-    flex-direction: column; gap: 0; margin-bottom: 38px;
-}
-
-.feature-checklist li {
-    display: flex; align-items: flex-start;
-    gap: 16px; padding: 15px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    font-size: 0.87rem;
-    color: rgba(232,237,233,0.7);
-    font-weight: 400; transition: 0.2s;
-}
-
-.feature-checklist li:hover { color: var(--off-white); padding-left: 4px; }
-.feature-checklist li:last-child { border-bottom: none; }
-
-.check-mark {
-    width: 20px; height: 20px;
-    background: rgba(0,229,176,0.08);
-    border: 1px solid rgba(0,229,176,0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border: 1px solid rgba(166,124,82,0.22);
+    color: var(--bronze);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
     border-radius: 2px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; font-size: 0.6rem;
-    color: var(--green); margin-top: 1px;
+}
+
+.feature-copy h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(1.8rem, 3.4vw, 2.7rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.3px;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+.feature-copy h2 em {
+    font-style: italic;
+    color: var(--emerald-light);
+}
+
+.feature-copy > p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    line-height: 1.86;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 32px;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: rgba(234,231,225,0.76);
+    font-size: 0.84rem;
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+.feature-list li:last-child {
+    border-bottom: none;
+}
+
+.check {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border: 1px solid rgba(46,107,87,0.35);
+    background: rgba(46,107,87,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--emerald-light);
+    font-size: 0.62rem;
+    border-radius: 2px;
+    margin-top: 2px;
 }
 
 .btn-primary {
-    background: var(--green); color: var(--black);
-    padding: 14px 32px; font-weight: 700;
-    font-size: 0.85rem; letter-spacing: 0.5px;
-    text-decoration: none; border-radius: 3px;
-    transition: 0.2s; display: inline-block;
-}
-
-.btn-primary:hover { background: var(--green-dark); }
-
-/* VISUAL CARDS */
-.visual-card {
-    background: var(--forest-dark);
-    border: 1px solid rgba(255,255,255,0.05);
-    padding: 40px;
-}
-
-.visual-card-title {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 0.92rem; font-weight: 700;
-    color: var(--off-white); margin-bottom: 8px;
-}
-
-.visual-card-sub {
-    font-size: 0.75rem; color: var(--light-gray);
-    font-weight: 300; margin-bottom: 28px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-/* STEPS */
-.step-row {
-    display: flex; gap: 18px;
-    padding: 18px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    align-items: flex-start; transition: 0.2s;
-}
-
-.step-row:hover { padding-left: 6px; }
-.step-row:last-child { border-bottom: none; }
-
-.step-circle {
-    width: 34px; height: 34px;
-    background: var(--forest);
-    border: 1px solid rgba(0,229,176,0.15);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.72rem; font-weight: 700;
-    color: var(--green); flex-shrink: 0;
-    font-family: 'Libre Baskerville', serif;
-    margin-top: 1px;
-}
-
-.step-row h4 {
-    font-size: 0.87rem; font-weight: 600;
-    margin-bottom: 3px; color: var(--off-white);
-}
-
-.step-row p {
-    font-size: 0.77rem; color: var(--light-gray);
-    font-weight: 300; line-height: 1.5;
-}
-
-/* NETWORK ROWS */
-.network-row {
-    display: flex; align-items: center;
-    justify-content: space-between;
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    background: var(--emerald);
+    color: var(--text);
+    padding: 14px 28px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-decoration: none;
+    border-radius: 3px;
     transition: 0.2s;
+    display: inline-block;
 }
 
-.network-row:hover { padding-left: 6px; }
-.network-row:last-child { border-bottom: none; }
-
-.network-org {
-    display: flex; align-items: center; gap: 14px;
+.btn-primary:hover {
+    background: var(--emerald-light);
 }
 
-.network-icon {
-    width: 36px; height: 36px;
-    background: var(--forest);
-    border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 2px;
-    display: flex; align-items: center;
-    justify-content: center; font-size: 1rem;
-}
-
-.network-org h4 {
-    font-size: 0.83rem; font-weight: 600;
-    margin-bottom: 2px; color: var(--off-white);
-}
-
-.network-org p {
-    font-size: 0.72rem; color: var(--light-gray);
-    font-weight: 300; margin: 0;
-}
-
-.network-badge {
-    font-size: 0.62rem; font-weight: 700;
-    letter-spacing: 1px; text-transform: uppercase;
-    color: var(--green);
-    background: rgba(0,229,176,0.06);
-    border: 1px solid rgba(0,229,176,0.15);
-    padding: 3px 10px; border-radius: 2px;
-}
-
-.network-badge.soon {
-    color: var(--light-gray);
-    background: rgba(255,255,255,0.02);
-    border-color: rgba(255,255,255,0.06);
-}
-
-/* FUND BARS */
-.fund-row { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-.fund-row:last-child { border-bottom: none; }
-
-.fund-row-top {
-    display: flex; justify-content: space-between;
-    margin-bottom: 9px; font-size: 0.8rem;
-}
-
-.fund-row-top span:first-child { color: rgba(232,237,233,0.65); font-weight: 500; }
-.fund-row-top span:last-child { color: var(--amber); font-weight: 700; }
-
-.fund-bar { height: 2px; background: rgba(255,255,255,0.06); overflow: hidden; }
-
-.fund-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--green), var(--amber));
-    width: 0; transition: width 1.5s ease;
-}
-
-/* MARKET GRID */
-.market-preview {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 1px; background: rgba(255,255,255,0.04);
-}
-
-.market-item {
-    background: var(--forest-dark); padding: 28px 24px;
-    transition: 0.3s;
-}
-
-.market-item:hover { background: var(--forest); }
-
-.market-item-icon {
-    font-size: 2.2rem; display: block; margin-bottom: 14px;
-}
-
-.market-item h4 {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 0.92rem; font-weight: 700;
-    margin-bottom: 5px; color: var(--off-white);
-}
-
-.market-item p {
-    font-size: 0.75rem; color: var(--light-gray);
-    font-weight: 300; margin-bottom: 12px;
-}
-
-.market-item-price {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 1.1rem; font-weight: 700; color: var(--amber);
-}
-
-/* COMPARE */
-.compare-section {
+/* VISUAL */
+.feature-visual {
     background: var(--forest-dark);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    overflow: hidden;
 }
 
-.compare-inner {
-    max-width: 1400px; margin: 0 auto;
-    padding: 100px 40px;
+.feature-visual img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.56) saturate(0.65);
 }
 
-.compare-inner .eyebrow { margin-bottom: 22px; }
+.feature-visual-body {
+    padding: 26px 28px;
+}
 
-.compare-inner h2 {
+.feature-visual-body h3 {
     font-family: 'Libre Baskerville', serif;
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    font-weight: 700; color: var(--off-white);
-    line-height: 1.2; letter-spacing: -0.3px;
-    margin-bottom: 14px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text);
 }
 
-.compare-inner h2 em { font-style: italic; color: var(--amber); }
-
-.compare-inner > p {
-    color: var(--light-gray); font-size: 0.9rem;
-    font-weight: 300; line-height: 1.7;
-    max-width: 520px; margin-bottom: 50px;
+.feature-visual-body p {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    line-height: 1.72;
+    font-weight: 300;
 }
 
-.compare-table {
-    width: 100%; border-collapse: collapse;
-}
-
-.compare-table th {
-    padding: 18px 22px; text-align: left;
-    font-size: 0.7rem; font-weight: 700;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    color: rgba(232,237,233,0.3);
-    border-bottom: 2px solid rgba(255,255,255,0.05);
-}
-
-.compare-table th:first-child { width: 28%; }
-
-.compare-table th.hl {
-    color: var(--green);
-    border-bottom-color: var(--green);
-}
-
-.compare-table td {
-    padding: 16px 22px; font-size: 0.83rem;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    font-weight: 300; color: rgba(232,237,233,0.55);
-    vertical-align: middle;
-}
-
-.compare-table td:first-child { font-weight: 500; color: var(--off-white); }
-.compare-table tr:last-child td { border-bottom: none; }
-.compare-table tr:hover td { background: rgba(255,255,255,0.015); }
-
-.compare-table td.hl-col {
-    background: rgba(0,229,176,0.03);
-    border-left: 1px solid rgba(0,229,176,0.08);
-    border-right: 1px solid rgba(0,229,176,0.08);
-}
-
-.yes { color: var(--green); font-weight: 700; font-size: 1rem; }
-.no  { color: rgba(255,255,255,0.12); font-size: 1rem; }
-.partial {
-    color: rgba(212,168,83,0.6); font-size: 0.7rem;
-    font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
-}
-
-/* COMING SOON */
+/* COMING */
 .coming-section {
-    background: var(--dark2);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: var(--dark);
+    border-bottom: 1px solid var(--border);
 }
 
 .coming-inner {
-    max-width: 1400px; margin: 0 auto;
+    max-width: 1400px;
+    margin: 0 auto;
     padding: 65px 40px;
-    display: flex; align-items: center;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    gap: 30px; flex-wrap: wrap;
+    gap: 35px;
+    flex-wrap: wrap;
 }
 
 .coming-text h3 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.3rem; font-weight: 700;
-    color: var(--off-white); margin-bottom: 6px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
 }
 
-.coming-text p { color: var(--light-gray); font-size: 0.85rem; font-weight: 300; }
+.coming-text p {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 300;
+}
 
-.coming-tags { display: flex; gap: 10px; flex-wrap: wrap; }
+.coming-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
 
 .coming-tag {
-    padding: 11px 22px;
-    border: 1px solid rgba(255,255,255,0.07);
-    font-size: 0.78rem; font-weight: 600;
-    color: rgba(255,255,255,0.3);
-    display: flex; align-items: center; gap: 9px;
-    border-radius: 2px; text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid var(--border);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    border-radius: 2px;
+    text-decoration: none;
     transition: 0.2s;
 }
 
 .coming-tag:hover {
-    border-color: rgba(0,229,176,0.2);
-    color: rgba(232,237,233,0.6);
+    border-color: rgba(46,107,87,0.3);
+    color: var(--text-dim);
 }
 
 .tag-dot {
-    width: 5px; height: 5px;
-    border-radius: 50%; background: var(--green);
-    animation: pulse 2s ease-in-out infinite;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--emerald);
+    animation: pulse 2.5s ease-in-out infinite;
 }
 
 @keyframes pulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+    50% { opacity: 0.25; }
 }
 
-/* CTA BAND */
+/* CTA */
 .cta-band {
-    background: var(--forest); padding: 90px 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: var(--emerald-dark);
+    padding: 85px 40px;
+    border-bottom: 1px solid var(--border);
 }
 
 .cta-band-inner {
-    max-width: 1400px; margin: 0 auto;
-    display: flex; align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    gap: 40px; flex-wrap: wrap;
+    gap: 40px;
+    flex-wrap: wrap;
 }
-
-.cta-band-text .eyebrow { margin-bottom: 18px; }
 
 .cta-band h2 {
     font-family: 'Libre Baskerville', serif;
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 700; color: var(--off-white);
-    line-height: 1.2; max-width: 550px;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    max-width: 560px;
 }
 
-.cta-band h2 em { font-style: italic; color: var(--green); }
-.cta-band-actions { display: flex; gap: 14px; flex-wrap: wrap; flex-shrink: 0; }
-
-.btn-green {
-    background: var(--green); color: var(--black);
-    padding: 15px 30px; font-weight: 700;
-    font-size: 0.85rem; text-decoration: none;
-    border-radius: 3px; transition: 0.2s; display: inline-block;
+.cta-band h2 em {
+    font-style: italic;
+    color: var(--emerald-light);
 }
 
-.btn-green:hover { background: var(--green-dark); }
-
-.btn-amber {
-    background: var(--amber); color: var(--black);
-    padding: 15px 30px; font-weight: 700;
-    font-size: 0.85rem; text-decoration: none;
-    border-radius: 3px; transition: 0.2s; display: inline-block;
+.cta-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
-.btn-amber:hover { background: var(--amber-light); }
+.btn-light {
+    background: var(--text);
+    color: var(--black);
+    padding: 14px 28px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: 0.2s;
+    display: inline-block;
+}
+
+.btn-light:hover { background: var(--text-dim); }
+
+.btn-bronze {
+    background: var(--bronze);
+    color: var(--black);
+    padding: 14px 28px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: 0.2s;
+    display: inline-block;
+}
+
+.btn-bronze:hover { background: var(--bronze-light); }
 
 /* FOOTER */
-.footer { background: var(--forest-dark); border-top: 1px solid rgba(255,255,255,0.05); }
+.footer {
+    background: var(--dark);
+    border-top: 1px solid var(--border);
+}
 
 .footer-top {
-    max-width: 1400px; margin: 0 auto;
-    padding: 70px 40px 50px;
-    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 65px 40px 45px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 50px;
 }
 
 .footer-brand-mark {
-    display: flex; align-items: center; gap: 12px; margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
 }
 
 .footer-brand-icon {
-    width: 34px; height: 34px;
-    background: var(--forest);
-    border: 1px solid rgba(0,229,176,0.2);
+    width: 32px;
+    height: 32px;
+    background: var(--emerald-dark);
+    border: 1px solid rgba(46,107,87,0.35);
     border-radius: 3px;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 900; font-size: 0.75rem;
-    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 0.7rem;
+    color: var(--emerald-light);
     font-family: 'Libre Baskerville', serif;
 }
 
 .footer-brand-mark h3 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1rem; font-weight: 700; color: var(--off-white);
+    font-size: 0.95rem;
+    font-weight: 700;
 }
 
 .footer-brand p {
-    color: var(--light-gray); font-size: 0.82rem;
-    line-height: 1.75; max-width: 270px; font-weight: 300;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.75;
+    max-width: 260px;
+    font-weight: 300;
 }
 
 .footer-col h4 {
-    font-size: 0.68rem; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase;
-    color: rgba(232,237,233,0.25); margin-bottom: 18px;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    opacity: 0.5;
 }
 
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
 
 .footer-col ul li a {
-    color: var(--light-gray); text-decoration: none;
-    font-size: 0.83rem; transition: 0.2s; font-weight: 300;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: 0.2s;
+    font-weight: 300;
 }
 
-.footer-col ul li a:hover { color: var(--green); }
+.footer-col ul li a:hover { color: var(--emerald-light); }
 
 .footer-bottom-bar {
-    max-width: 1400px; margin: 0 auto;
-    padding: 20px 40px;
-    border-top: 1px solid rgba(255,255,255,0.04);
-    display: flex; justify-content: space-between;
-    align-items: center; gap: 20px; flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 18px 40px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-.footer-bottom-bar p { color: rgba(255,255,255,0.2); font-size: 0.75rem; }
-.footer-bottom-bar span { color: var(--amber); }
+.footer-bottom-bar p {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    opacity: 0.5;
+}
+
+.footer-bottom-bar span { color: var(--bronze); }
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
     .overview-grid { grid-template-columns: repeat(2, 1fr); }
-    .feature-detail-inner { grid-template-columns: 1fr; gap: 50px; }
-    .feature-detail-inner.reverse { direction: ltr; }
+    .feature-inner { grid-template-columns: 1fr; gap: 50px; }
+    .feature-inner.reverse { direction: ltr; }
     .footer-top { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 768px) {
     .nav-links { display: none; }
     .hamburger { display: flex; }
+
     .nav-links.open {
-        display: flex; flex-direction: column;
-        position: absolute; top: 64px; left: 0;
-        width: 100%; background: var(--black);
-        border-bottom: 1px solid rgba(255,255,255,0.06);
-        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 62px; left: 0;
+        width: 100%;
+        background: var(--black);
+        border-bottom: 1px solid var(--border);
+        padding: 18px 0;
     }
+
     .nav-links.open li a {
-        height: auto; line-height: 1; padding: 14px 28px;
-        border-bottom: none; border-left: 2px solid transparent;
+        height: auto;
+        line-height: 1;
+        padding: 13px 28px;
+        border-bottom: none;
+        border-left: 2px solid transparent;
     }
-    .nav-links.open li a:hover { border-left-color: var(--green); }
+
+    .nav-links.open li a:hover {
+        border-left-color: var(--emerald);
+    }
+
     .overview-grid { grid-template-columns: 1fr; }
-    .market-preview { grid-template-columns: 1fr; }
-    .compare-table { font-size: 0.72rem; }
-    .compare-table th, .compare-table td { padding: 12px 12px; }
     .footer-top { grid-template-columns: 1fr; }
     .coming-inner { flex-direction: column; align-items: flex-start; }
 }
@@ -738,7 +783,7 @@ hr { border: none; border-top: 1px solid rgba(255,255,255,0.05); }
             <li><a href="hakkimizda.html">Hakkımızda</a></li>
             <li><a href="ozellikler.html" class="active">Özellikler</a></li>
             <li><a href="iletisim.html">İletişim</a></li>
-            <li><a href="yakinda.html?page=bildir" class="nav-cta">Hayvan Bildir</a></li>
+            <li><a href="yakinda.html?page=ihbar" class="nav-cta">İhbar Merkezi</a></li>
         </ul>
         <button class="hamburger" onclick="toggleNav()">
             <span></span><span></span><span></span>
@@ -746,388 +791,259 @@ hr { border: none; border-top: 1px solid rgba(255,255,255,0.05); }
     </div>
 </nav>
 
-<!-- PAGE HERO -->
-<div class="page-hero">
-    <div class="page-hero-inner">
+<!-- HERO -->
+<section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-fade"></div>
+    <div class="page-hero-content">
         <div class="eyebrow">
             <div class="eyebrow-line"></div>
             <span>Platform Özellikleri</span>
         </div>
-        <h1>Vahşi Yaşam Koruma İçin<br><em>İhtiyacınız</em> Olan<br>Her Şey</h1>
-        <p>Yapay zeka, şeffaf bağış sistemi, küresel kuruluş ağı ve daha fazlası. Tek platformda, tek misyon için.</p>
+        <h1>Koruma Alanındaki<br>Süreçleri Tek Yapıda<br><em>Birleştiren</em> Modüller</h1>
+        <p>b0wl Community, ihbar yönetiminden bağış altyapısına, kuruluş koordinasyonundan gönüllülük mekanizmalarına kadar koruma alanındaki temel ihtiyaçlara karşılık veren bütünleşik bir platform olarak tasarlanmıştır.</p>
     </div>
-</div>
-
-<hr>
+</section>
 
 <!-- OVERVIEW -->
 <div class="overview-section">
-    <div class="overview-header">
-        <div>
-            <div class="eyebrow">
-                <div class="eyebrow-line"></div>
-                <span>Genel Bakış</span>
+    <div class="section">
+        <div class="overview-header">
+            <div>
+                <div class="eyebrow">
+                    <div class="eyebrow-line"></div>
+                    <span>Genel Çerçeve</span>
+                </div>
+                <h2 class="section-title">Altı Temel <em>Yapı</em></h2>
             </div>
-            <h2>Altı Temel <em>Modül</em></h2>
+            <p>Her modül, sahadaki gerçek ihtiyaçlara karşılık verecek şekilde düşünülmüş; birlikte çalıştığında anlam kazanan bir yapının parçasıdır.</p>
         </div>
-        <p>Her modül vahşi yaşam koruma ekosisteminin farklı bir ihtiyacına yanıt verecek şekilde tasarlandı.</p>
-    </div>
-    <div class="overview-grid">
-        <div class="overview-card">
-            <div class="overview-num">01</div>
-            <h3>Acil Hayvan Bildirimi</h3>
-            <p>Tehlikede hayvan gördüğünüzde fotoğraf çekin. Sistem türü tanır, konumu belirler ve en yakın kuruluşa ulaşır.</p>
-        </div>
-        <div class="overview-card">
-            <div class="overview-num">02</div>
-            <h3>Şeffaf Bağış Altyapısı</h3>
-            <p>%0 komisyon. Her bağış doğrudan ilgili fona. Paranızın nereye gittiğini gerçek zamanlı görün.</p>
-        </div>
-        <div class="overview-card">
-            <div class="overview-num">03</div>
-            <h3>Sosyal Etki Marketi</h3>
-            <p>Her satışın geliri vahşi yaşam fonlarına. Satıcılar bağış ispatı sunmak zorundadır.</p>
-        </div>
-        <div class="overview-card">
-            <div class="overview-num">04</div>
-            <h3>Küresel Kuruluş Ağı</h3>
-            <p>Dünyanın dört bir yanındaki koruma kuruluşları tek platformda. Koordinasyon güçlendiğinde etki katlanır.</p>
-        </div>
-        <div class="overview-card">
-            <div class="overview-num">05</div>
-            <h3>Eğitim ve Araştırma</h3>
-            <p>Makaleler, etkinlikler, kamp kayıtları ve burs programları. Bilgi ile bilinç oluşturuyoruz.</p>
-        </div>
-        <div class="overview-card">
-            <div class="overview-num">06</div>
-            <h3>Gönüllülük Programları</h3>
-            <p>Binlerce kuruluşun projesine tek yerden başvurun. Alan ve konum bazlı eşleştirme.</p>
+
+        <div class="overview-grid">
+            <div class="overview-card">
+                <div class="overview-num">01</div>
+                <h3>İhbar ve Durum Bildirimi</h3>
+                <p>Yaralı yaban hayvanı, yasadışı avcılık, kaçakçılık, habitat tahribatı ve benzeri koruma vakalarının ilgili kurumlara yönlendirilmesi.</p>
+            </div>
+            <div class="overview-card">
+                <div class="overview-num">02</div>
+                <h3>Şeffaf Bağış Altyapısı</h3>
+                <p>Kaynakların ilgili fonlara komisyonsuz ve izlenebilir biçimde aktarılması için kurgulanan güven tabanlı destek sistemi.</p>
+            </div>
+            <div class="overview-card">
+                <div class="overview-num">03</div>
+                <h3>Sosyal Etki Marketi</h3>
+                <p>Koruma alanına gelir oluşturmayı amaçlayan, bağış ispatı esasına dayalı ürün ve satıcı altyapısı.</p>
+            </div>
+            <div class="overview-card">
+                <div class="overview-num">04</div>
+                <h3>Kuruluşlar Arası Koordinasyon</h3>
+                <p>Kuruluşların iletişim kurabildiği, iş birliği geliştirebildiği ve kaynaklarını daha etkili kullanabildiği ağ yapısı.</p>
+            </div>
+            <div class="overview-card">
+                <div class="overview-num">05</div>
+                <h3>Eğitim, İçerik ve Araştırma</h3>
+                <p>Makaleler, araştırmalar, etkinlik duyuruları ve burs olanaklarıyla bilgi üretimi ve paylaşımını destekleyen alan.</p>
+            </div>
+            <div class="overview-card">
+                <div class="overview-num">06</div>
+                <h3>Gönüllülük ve Katılım Programları</h3>
+                <p>Koruma alanında aktif rol almak isteyen bireyleri ilgili projelerle eşleştiren katılım mekanizması.</p>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- FEATURE 1: BİLDİRİM -->
-<div class="feature-detail">
-    <div class="feature-detail-inner">
-        <div class="feature-detail-text">
-            <span class="feature-tag">⭐ Öne Çıkan</span>
-            <h2>Acil Hayvan<br><em>Bildirim</em><br>Sistemi</h2>
-            <p>Sokakta yaralı, aç veya tehlikede bir hayvan gördüğünüzde ne yaparsınız? Artık cevap çok net: Fotoğraf çekin ve b0wl'a yükleyin.</p>
-            <ul class="feature-checklist">
-                <li><span class="check-mark">✓</span> 300+ türü %90+ doğrulukla tanıyan AI modeli</li>
-                <li><span class="check-mark">✓</span> Hayvanın durumunu otomatik değerlendirir</li>
-                <li><span class="check-mark">✓</span> GPS ile en yakın kuruluşa otomatik bildirim</li>
-                <li><span class="check-mark">✓</span> IUCN Kırmızı Liste entegrasyonu</li>
-                <li><span class="check-mark">✓</span> Bildirimin takibi ve sonuç bildirimi</li>
-                <li><span class="check-mark">✓</span> 7/24 aktif — ortalama 30sn yanıt</li>
+<!-- FEATURE 1 -->
+<div class="feature-block">
+    <div class="feature-inner">
+        <div class="feature-copy">
+            <div class="feature-tag">01 — İhbar Merkezi</div>
+            <h2>İhbar ve<br><em>Durum Bildirimi</em></h2>
+            <p>Bu modül, yalnızca bir “yaralı hayvan bildirimi” aracı değildir. Koruma alanında müdahale gerektiren farklı vaka türlerini uygun kurumsal yapılara yönlendirmek için tasarlanmıştır.</p>
+            <ul class="feature-list">
+                <li><span class="check">✓</span> Yaralı veya risk altındaki yaban hayvanı vakalarının bildirilmesi</li>
+                <li><span class="check">✓</span> Kaçakçılık, yasadışı avcılık ve yasa dışı ticaret şüphelerinin iletilmesi</li>
+                <li><span class="check">✓</span> Habitat tahribatı ve acil koruma gerektiren saha olaylarının kaydı</li>
+                <li><span class="check">✓</span> İlgili kurum ve kuruluşlara yönlendirme mantığı</li>
+                <li><span class="check">✓</span> Vakaya dayalı kayıt, sınıflandırma ve takip yaklaşımı</li>
             </ul>
-            <a href="yakinda.html?page=bildir" class="btn-primary">Yakında Aktif</a>
+            <a href="yakinda.html?page=ihbar" class="btn-primary">Geliştirme Aşamasında</a>
         </div>
-        <div class="visual-card">
-            <div class="visual-card-title">Nasıl Çalışır?</div>
-            <div class="visual-card-sub">5 adımda acil bildirim süreci</div>
-            <div class="step-row">
-                <div class="step-circle">01</div>
-                <div><h4>Fotoğraf Çek ve Yükle</h4><p>Hayvanın net bir fotoğrafını çekin ve platforma yükleyin.</p></div>
-            </div>
-            <div class="step-row">
-                <div class="step-circle">02</div>
-                <div><h4>AI Analiz Eder</h4><p>Yapay zeka türü, durumu ve tehlike seviyesini tespit eder.</p></div>
-            </div>
-            <div class="step-row">
-                <div class="step-circle">03</div>
-                <div><h4>Konum Belirlenir</h4><p>GPS ile en yakın vahşi yaşam koruma kuruluşu bulunur.</p></div>
-            </div>
-            <div class="step-row">
-                <div class="step-circle">04</div>
-                <div><h4>Kuruluşa Bildirim Gider</h4><p>Otomatik bildirim ile müdahale süreci başlar.</p></div>
-            </div>
-            <div class="step-row">
-                <div class="step-circle">05</div>
-                <div><h4>Sonucu Takip Edin</h4><p>Müdahalenin sonucunu platform üzerinden öğrenin.</p></div>
+        <div class="feature-visual">
+            <img src="https://play-lh.googleusercontent.com/61qXEffk6QXytkYg7GIhobeIuVyQMyaxTDWE01wH6aLNF-x_UB7Maz9QUA8RfyTfFSjS1NltIW2XxFEdTzDR=w240-h480-rw" alt="İhbar ve durum bildirimi">
+            <div class="feature-visual-body">
+                <h3>Vaka Tabanlı İşleyiş</h3>
+                <p>Her bildirim, bir durum veya olay olarak ele alınır; ilgili bağlamı ile birlikte değerlendirilir ve yönlendirilir.</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- FEATURE 2: BAĞIŞ -->
-<div class="feature-detail">
-    <div class="feature-detail-inner reverse">
-        <div class="feature-detail-text">
-            <span class="feature-tag">💚 Bağış Sistemi</span>
-            <h2>Şeffaf ve<br><em>Komisyonsuz</em><br>Bağış</h2>
-            <p>Bağışçıların en büyük sorunu paranın gerçekten amacına ulaşıp ulaşmadığını bilememesidir. b0wl Community'de bu sorun yok.</p>
-            <ul class="feature-checklist">
-                <li><span class="check-mark">✓</span> %0 komisyon — tüm bağış fona gider</li>
-                <li><span class="check-mark">✓</span> Gerçek zamanlı bağış takibi</li>
-                <li><span class="check-mark">✓</span> Dilediğiniz kuruluşa doğrudan aktarım</li>
-                <li><span class="check-mark">✓</span> Otomatik dağıtım seçeneği</li>
-                <li><span class="check-mark">✓</span> Burs programı desteği</li>
-                <li><span class="check-mark">✓</span> Dijital bağış sertifikası</li>
+<!-- FEATURE 2 -->
+<div class="feature-block">
+    <div class="feature-inner reverse">
+        <div class="feature-copy">
+            <div class="feature-tag">02 — Kaynak Yönetimi</div>
+            <h2>Şeffaf<br><em>Bağış Altyapısı</em></h2>
+            <p>Bağış süreçlerindeki en büyük sorunlardan biri, desteğin gerçekten amacına ulaşıp ulaşmadığının görünür olmamasıdır. Bu modül, güven üretmeyi merkezine alır.</p>
+            <ul class="feature-list">
+                <li><span class="check">✓</span> Komisyonsuz bağış yönlendirme yaklaşımı</li>
+                <li><span class="check">✓</span> Kaynağın hangi fon veya kuruluşa aktarıldığının görünürlüğü</li>
+                <li><span class="check">✓</span> Bağışçı için daha güvenilir ve izlenebilir deneyim</li>
+                <li><span class="check">✓</span> Burs ve eğitim desteği gibi hedefli destek modelleri</li>
+                <li><span class="check">✓</span> Uzun vadeli kaynak sürdürülebilirliğini destekleyen yapı</li>
             </ul>
-            <a href="yakinda.html?page=bagis" class="btn-primary">Yakında Aktif</a>
+            <a href="yakinda.html?page=bagis" class="btn-primary">Geliştirme Aşamasında</a>
         </div>
-        <div class="visual-card" id="donateVisual">
-            <div class="visual-card-title">Bağışların Ulaşma Oranı</div>
-            <div class="visual-card-sub">Hiçbir kesintiyle, doğrudan fona</div>
-            <div class="fund-row">
-                <div class="fund-row-top"><span>Afrika Fil Koruma Fonu</span><span>%100</span></div>
-                <div class="fund-bar"><div class="fund-bar-fill" data-width="100"></div></div>
-            </div>
-            <div class="fund-row">
-                <div class="fund-row-top"><span>Okyanus Yaşamı Fonu</span><span>%100</span></div>
-                <div class="fund-bar"><div class="fund-bar-fill" data-width="100"></div></div>
-            </div>
-            <div class="fund-row">
-                <div class="fund-row-top"><span>Orman Koruma Fonu</span><span>%100</span></div>
-                <div class="fund-bar"><div class="fund-bar-fill" data-width="100"></div></div>
-            </div>
-            <div class="fund-row">
-                <div class="fund-row-top"><span>Kaplan Koruma Fonu</span><span>%100</span></div>
-                <div class="fund-bar"><div class="fund-bar-fill" data-width="100"></div></div>
-            </div>
-            <div class="fund-row">
-                <div class="fund-row-top"><span>Genel Vahşi Yaşam Fonu</span><span>%100</span></div>
-                <div class="fund-bar"><div class="fund-bar-fill" data-width="100"></div></div>
-            </div>
-            <div style="margin-top:28px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.05);">
-                <p style="font-size:0.68rem; color:var(--light-gray); text-transform:uppercase; letter-spacing:1.5px; font-weight:600; margin-bottom:6px;">Platform Komisyonu</p>
-                <p style="font-family:'Libre Baskerville',serif; font-size:2.2rem; font-weight:700; color:var(--green);">%0</p>
+        <div class="feature-visual">
+            <img src="https://maarifder.com/bisensei/img/bagislar/maarif-dernegi-bagis.jpg" alt="Bağış altyapısı">
+            <div class="feature-visual-body">
+                <h3>Güven Tabanlı Destek Modeli</h3>
+                <p>Bağış süreçlerinin sade, anlaşılır ve izlenebilir şekilde kurgulanması kullanıcı güveninin temelidir.</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- FEATURE 3: KURULUŞ -->
-<div class="feature-detail">
-    <div class="feature-detail-inner">
-        <div class="feature-detail-text">
-            <span class="feature-tag">🌐 Kuruluş Ağı</span>
-            <h2>Küresel<br><em>Koordinasyon</em><br>Ağı</h2>
-            <p>Dünyanın dört bir yanındaki vahşi yaşam koruma kuruluşları tek platformda buluşuyor. Koordinasyon güçlenince etki katlanır.</p>
-            <ul class="feature-checklist">
-                <li><span class="check-mark">✓</span> Kuruluş profilleri ve proje sayfaları</li>
-                <li><span class="check-mark">✓</span> Kuruluşlar arası doğrudan iletişim</li>
-                <li><span class="check-mark">✓</span> Kaynak ve bağış koordinasyonu</li>
-                <li><span class="check-mark">✓</span> Gönüllü eşleştirme sistemi</li>
-                <li><span class="check-mark">✓</span> Şeffaf etki raporları</li>
-                <li><span class="check-mark">✓</span> İlk 12 ayda 25+ kuruluş hedefi</li>
+<!-- FEATURE 3 -->
+<div class="feature-block">
+    <div class="feature-inner">
+        <div class="feature-copy">
+            <div class="feature-tag">03 — Gelir ve Etki</div>
+            <h2>Sosyal Etki<br><em>Marketi</em></h2>
+            <p>Koruma fonlarına sürdürülebilir gelir oluşturmanın yollarından biri, etki odaklı ticareti güvenli ve şeffaf biçimde kurgulamaktır.</p>
+            <ul class="feature-list">
+                <li><span class="check">✓</span> Koruma amaçlı ürün satışına açık pazar yapısı</li>
+                <li><span class="check">✓</span> Satıcılardan bağış ispatı talep eden dengeleyici model</li>
+                <li><span class="check">✓</span> Platform sürdürülebilirliği için komisyon esaslı yapı</li>
+                <li><span class="check">✓</span> Kullanıcıya “alışveriş yoluyla destek” imkânı</li>
+                <li><span class="check">✓</span> b0wl koleksiyonu ve üçüncü taraf satıcı entegrasyonu</li>
             </ul>
-            <a href="iletisim.html" class="btn-primary">Kuruluş Başvurusu</a>
+            <a href="yakinda.html?page=market" class="btn-primary">Geliştirme Aşamasında</a>
         </div>
-        <div class="visual-card">
-            <div class="visual-card-title">Kuruluş Ağı</div>
-            <div class="visual-card-sub">Görüşmeler ve ortaklık süreçleri devam ediyor</div>
-            <div class="network-row">
-                <div class="network-org">
-                    <div class="network-icon">🐼</div>
-                    <div><h4>WWF Türkiye</h4><p>Doğa ve vahşi yaşam koruma</p></div>
-                </div>
-                <span class="network-badge">Hedef</span>
-            </div>
-            <div class="network-row">
-                <div class="network-org">
-                    <div class="network-icon">🦁</div>
-                    <div><h4>HAYTAP</h4><p>Hayvan hakları federasyonu</p></div>
-                </div>
-                <span class="network-badge">Hedef</span>
-            </div>
-            <div class="network-row">
-                <div class="network-org">
-                    <div class="network-icon">🌊</div>
-                    <div><h4>Deniz Temiz Derneği</h4><p>Okyanus koruma</p></div>
-                </div>
-                <span class="network-badge">Hedef</span>
-            </div>
-            <div class="network-row">
-                <div class="network-org">
-                    <div class="network-icon">🐘</div>
-                    <div><h4>Save the Elephants</h4><p>Afrika fil koruma</p></div>
-                </div>
-                <span class="network-badge">Hedef</span>
-            </div>
-            <div class="network-row">
-                <div class="network-org">
-                    <div class="network-icon">🌿</div>
-                    <div><h4>Doğa Derneği</h4><p>Biyolojik çeşitlilik</p></div>
-                </div>
-                <span class="network-badge">Hedef</span>
-            </div>
-            <div class="network-row">
-                <div class="network-org">
-                    <div class="network-icon">➕</div>
-                    <div><h4>20+ Kuruluş Daha</h4><p>Görüşmeler sürüyor</p></div>
-                </div>
-                <span class="network-badge soon">Yakında</span>
+        <div class="feature-visual">
+            <img src="https://www.cevtasmuhendislik.com.tr/uploads/6-63760f8ae7bfd.png" alt="Sosyal etki marketi">
+            <div class="feature-visual-body">
+                <h3>Ticaretin Koruma ile Kesiştiği Alan</h3>
+                <p>Her ürün yalnızca bir satış nesnesi değil, aynı zamanda belirli bir koruma hedefinin finansman aracıdır.</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- FEATURE 4: MARKET -->
-<div class="feature-detail">
-    <div class="feature-detail-inner reverse">
-        <div class="feature-detail-text">
-            <span class="feature-tag">🛒 Market</span>
-            <h2>Alışveriş ile<br><em>Fark</em><br>Yarat</h2>
-            <p>Her satın aldığınız ürünün geliri vahşi yaşam koruma fonlarına aktarılır. Satıcılar bağış ispatı sunmak zorunda — şeffaflık standarttır.</p>
-            <ul class="feature-checklist">
-                <li><span class="check-mark">✓</span> Bağış amaçlı ürün satışı</li>
-                <li><span class="check-mark">✓</span> Satıcılardan bağış ispat zorunluluğu</li>
-                <li><span class="check-mark">✓</span> %10 platform komisyonu</li>
-                <li><span class="check-mark">✓</span> Güvenli ödeme altyapısı</li>
-                <li><span class="check-mark">✓</span> b0wl koleksiyonu — vahşi yaşam temalı ürünler</li>
+<!-- FEATURE 4 -->
+<div class="feature-block">
+    <div class="feature-inner reverse">
+        <div class="feature-copy">
+            <div class="feature-tag">04 — Ağ ve Koordinasyon</div>
+            <h2>Kuruluşlar Arası<br><em>Koordinasyon</em></h2>
+            <p>Koruma alanında çalışan yapıların birbiriyle daha kolay iletişim kurabildiği, kaynak ve ihtiyaç paylaşımı yapabildiği bir dijital alan tasarlıyoruz.</p>
+            <ul class="feature-list">
+                <li><span class="check">✓</span> Kuruluş profilleri ve görünürlük alanları</li>
+                <li><span class="check">✓</span> İletişim ve yönlendirme kolaylığı</li>
+                <li><span class="check">✓</span> Gönüllü ve destekçi akışının daha verimli dağılımı</li>
+                <li><span class="check">✓</span> Aynı amaca çalışan yapılar arasında iş birliği zemini</li>
+                <li><span class="check">✓</span> Yerel ile küresel ölçekte ölçeklenebilir ağ mantığı</li>
             </ul>
-            <a href="yakinda.html?page=market" class="btn-primary">Yakında Aktif</a>
+            <a href="iletisim.html" class="btn-primary">Ortaklık İletişimi</a>
         </div>
-        <div class="visual-card" style="padding:0; overflow:hidden; border:none;">
-            <div class="market-preview">
-                <div class="market-item">
-                    <span class="market-item-icon">🐘</span>
-                    <h4>Fil Temalı Tişört</h4>
-                    <p>Geliri Afrika Fil Koruma Fonuna</p>
-                    <span class="market-item-price">₺249</span>
-                </div>
-                <div class="market-item">
-                    <span class="market-item-icon">🐅</span>
-                    <h4>Kaplan Temalı Tişört</h4>
-                    <p>Geliri Kaplan Koruma Fonuna</p>
-                    <span class="market-item-price">₺249</span>
-                </div>
-                <div class="market-item">
-                    <span class="market-item-icon">🐻‍❄️</span>
-                    <h4>Kutup Ayısı Tişört</h4>
-                    <p>Geliri İklim Koruma Fonuna</p>
-                    <span class="market-item-price">₺249</span>
-                </div>
-                <div class="market-item">
-                    <span class="market-item-icon">🐢</span>
-                    <h4>Kaplumbağa Tişört</h4>
-                    <p>Geliri Okyanus Koruma Fonuna</p>
-                    <span class="market-item-price">₺249</span>
-                </div>
+        <div class="feature-visual">
+            <img src="https://st2.depositphotos.com/16950388/43324/i/450/depositphotos_433244000-stock-photo-global-network-connection-concept-big.jpg" alt="Kuruluş ağı">
+            <div class="feature-visual-body">
+                <h3>Parçalı Yapılar Arasında Ortak Zemin</h3>
+                <p>Koordinasyon, koruma alanındaki kaynakların daha doğru kullanılmasını ve müdahale hızının artmasını sağlar.</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- COMPARE -->
-<div class="compare-section">
-    <div class="compare-inner">
-        <div class="eyebrow">
-            <div class="eyebrow-line"></div>
-            <span>Rekabet Analizi</span>
+<!-- FEATURE 5 -->
+<div class="feature-block">
+    <div class="feature-inner">
+        <div class="feature-copy">
+            <div class="feature-tag">05 — Bilgi ve Bilinç</div>
+            <h2>Eğitim, İçerik<br><em>ve Araştırma</em></h2>
+            <p>Koruma alanında kalıcı etki yalnızca müdahale ile değil, bilgi üretimi ve bilginin dolaşımı ile mümkündür. Bu modül o ihtiyaca cevap verir.</p>
+            <ul class="feature-list">
+                <li><span class="check">✓</span> Makale, araştırma ve saha çıktılarının paylaşımı</li>
+                <li><span class="check">✓</span> Etkinlik ve kamp duyurularının yayınlanması</li>
+                <li><span class="check">✓</span> Öğrenciler için burs ve akademik destek alanları</li>
+                <li><span class="check">✓</span> Uzman içeriklerinin daha görünür hale gelmesi</li>
+                <li><span class="check">✓</span> Koruma bilincinin yaygınlaştırılmasına katkı</li>
+            </ul>
+            <a href="iletisim.html" class="btn-primary">İçerik ve İş Birliği</a>
         </div>
-        <h2>Neden <em>b0wl?</em></h2>
-        <p>Mevcut platformlarla karşılaştırıldığında b0wl Community'nin sunduğu kapsam.</p>
-        <div style="overflow-x:auto;">
-            <table class="compare-table">
-                <thead>
-                    <tr>
-                        <th>Özellik</th>
-                        <th>WWF</th>
-                        <th>iNaturalist</th>
-                        <th>GoFundMe</th>
-                        <th class="hl">b0wl Community</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>AI Tür Tanıma</td>
-                        <td><span class="no">—</span></td>
-                        <td><span class="partial">Kısmi</span></td>
-                        <td><span class="no">—</span></td>
-                        <td class="hl-col"><span class="yes">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td>Acil Bildirim Sistemi</td>
-                        <td><span class="no">—</span></td>
-                        <td><span class="no">—</span></td>
-                        <td><span class="no">—</span></td>
-                        <td class="hl-col"><span class="yes">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td>Şeffaf Bağış (%0 Komisyon)</td>
-                        <td><span class="no">—</span></td>
-                        <td><span class="no">—</span></td>
-                        <td><span class="partial">Kısmi</span></td>
-                        <td class="hl-col"><span class="yes">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td>Kuruluş Koordinasyon Ağı</td>
-                        <td><span class="no">—</span></td>
-                        <td><span class="no">—</span></td>
-                        <td><span class="no">—</span></td>
-                        <td class="hl-col"><span class="yes">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td>Sosyal Etki Marketi</td>
-                        <td><span class="partial">Kısmi</span></td>
-                        <td><span class="no">—</span></td>
-                        <td><span class="no">—</span></td>
-                        <td class="hl-col"><span class="yes">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td>Eğitim ve İçerik Platformu</td>
-                        <td><span class="partial">Kısmi</span></td>
-                        <td><span class="yes">✓</span></td>
-                        <td><span class="no">—</span></td>
-                        <td class="hl-col"><span class="yes">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td>Gönüllülük Yönetimi</td>
-                        <td><span class="partial">Kısmi</span></td>
-                        <td><span class="no">—</span></td>
-                        <td><span class="no">—</span></td>
-                        <td class="hl-col"><span class="yes">✓</span></td>
-                    </tr>
-                    <tr>
-                        <td>IUCN Kırmızı Liste Entegrasyonu</td>
-                        <td><span class="no">—</span></td>
-                        <td><span class="partial">Kısmi</span></td>
-                        <td><span class="no">—</span></td>
-                        <td class="hl-col"><span class="yes">✓</span></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="feature-visual">
+            <img src="https://kriterdergi.com/images/news/2019/09/02/ismet-kesen.jpg" alt="Eğitim ve araştırma">
+            <div class="feature-visual-body">
+                <h3>Bilginin Dolaşımı Etkiyi Güçlendirir</h3>
+                <p>Koruma alanındaki uzmanlık ve araştırma çıktıları görünür oldukça daha güçlü bir ortak zemin oluşur.</p>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- COMING SOON -->
+<!-- FEATURE 6 -->
+<div class="feature-block">
+    <div class="feature-inner reverse">
+        <div class="feature-copy">
+            <div class="feature-tag">06 — Katılım Mekanizması</div>
+            <h2>Gönüllülük ve<br><em>Katılım Programları</em></h2>
+            <p>Koruma çalışmalarına destek vermek isteyen bireylerin doğru alanlara yönlendirilmesi, yalnızca niyet değil yapı meselesidir. Bu modül o yapıyı kurmayı hedefler.</p>
+            <ul class="feature-list">
+                <li><span class="check">✓</span> Gönüllülük programlarına merkezi erişim</li>
+                <li><span class="check">✓</span> İlgi alanı ve konuma göre eşleşme mantığı</li>
+                <li><span class="check">✓</span> Katılım süreçlerinin takibi</li>
+                <li><span class="check">✓</span> Kuruluşların daha doğru gönüllü profiline ulaşabilmesi</li>
+                <li><span class="check">✓</span> Topluluk tabanlı büyüme ve aidiyet yapısı</li>
+            </ul>
+            <a href="iletisim.html" class="btn-primary">Gönüllülük Bilgisi</a>
+        </div>
+        <div class="feature-visual">
+            <img src="https://cdn.hbrturkiye.com/r/1000x0/var/uploads/content/1539342471-gonullu-olun-ve-bir-lider-olarak-buyuyun-jpg.jpg" alt="Gönüllülük programları">
+            <div class="feature-visual-body">
+                <h3>Katılımı Yapılandırmak</h3>
+                <p>Doğru insanın doğru projeye yönlendirilmesi, hem gönüllü deneyimini hem de kurumların etki kapasitesini artırır.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- COMING -->
 <div class="coming-section">
     <div class="coming-inner">
         <div class="coming-text">
-            <h3>Çok Yakında</h3>
-            <p>Aşağıdaki modüller geliştirme aşamasında.</p>
+            <h3>Geliştirme Aşamasındaki Alanlar</h3>
+            <p>Aşağıdaki modüller öncelikli ürün geliştirme planı kapsamındadır.</p>
         </div>
         <div class="coming-tags">
-            <a href="yakinda.html?page=bildir" class="coming-tag">
-                <span class="tag-dot"></span> Hayvan Bildir
+            <a href="yakinda.html?page=ihbar" class="coming-tag">
+                <span class="tag-dot"></span> İhbar Merkezi
             </a>
             <a href="yakinda.html?page=bagis" class="coming-tag">
-                <span class="tag-dot"></span> Bağış Yap
+                <span class="tag-dot"></span> Bağış Sistemi
             </a>
             <a href="yakinda.html?page=market" class="coming-tag">
-                <span class="tag-dot"></span> Market
+                <span class="tag-dot"></span> Sosyal Etki Marketi
             </a>
         </div>
     </div>
 </div>
 
-<!-- CTA BAND -->
+<!-- CTA -->
 <div class="cta-band">
     <div class="cta-band-inner">
-        <div class="cta-band-text">
+        <div>
             <div class="eyebrow">
                 <div class="eyebrow-line"></div>
-                <span>Harekete Geç</span>
+                <span>Sonraki Adım</span>
             </div>
-            <h2>Platformu Denemeye<br><em>Hazır</em> Mısınız?</h2>
+            <h2>Platformun Yapısına<br>Daha Yakından Bakmak<br><em>İsterseniz Bizimle İletişime Geçin.</em></h2>
         </div>
-        <div class="cta-band-actions">
-            <a href="iletisim.html" class="btn-green">İletişime Geç</a>
-            <a href="hakkimizda.html" class="btn-amber">Hakkımızda</a>
+        <div class="cta-actions">
+            <a href="hakkimizda.html" class="btn-light">Hakkımızda</a>
+            <a href="iletisim.html" class="btn-bronze">İletişim</a>
         </div>
     </div>
 </div>
@@ -1140,17 +1056,19 @@ hr { border: none; border-top: 1px solid rgba(255,255,255,0.05); }
                 <div class="footer-brand-icon">b0</div>
                 <h3>b0wl Community</h3>
             </div>
-            <p>Vahşi yaşamı korumak için kuruluşları, bireyleri ve teknolojiyi bir araya getiren küresel koordinasyon platformu.</p>
+            <p>Vahşi yaşam koruma alanında ihbar, koordinasyon, kaynak toplama ve topluluk etkileşimini tek dijital altyapıda birleştiren platform.</p>
         </div>
+
         <div class="footer-col">
             <h4>Platform</h4>
             <ul>
                 <li><a href="ozellikler.html">Özellikler</a></li>
-                <li><a href="yakinda.html?page=bildir">Hayvan Bildir</a></li>
-                <li><a href="yakinda.html?page=bagis">Bağış Yap</a></li>
-                <li><a href="yakinda.html?page=market">Market</a></li>
+                <li><a href="yakinda.html?page=ihbar">İhbar Merkezi</a></li>
+                <li><a href="yakinda.html?page=bagis">Bağış Sistemi</a></li>
+                <li><a href="yakinda.html?page=market">Sosyal Etki Marketi</a></li>
             </ul>
         </div>
+
         <div class="footer-col">
             <h4>Kurumsal</h4>
             <ul>
@@ -1160,6 +1078,7 @@ hr { border: none; border-top: 1px solid rgba(255,255,255,0.05); }
                 <li><a href="iletisim.html">Basın</a></li>
             </ul>
         </div>
+
         <div class="footer-col">
             <h4>İletişim</h4>
             <ul>
@@ -1170,9 +1089,10 @@ hr { border: none; border-top: 1px solid rgba(255,255,255,0.05); }
             </ul>
         </div>
     </div>
+
     <div class="footer-bottom-bar">
         <p>© 2026 b0wl Community — Tüm Hakları Saklıdır</p>
-        <p>Doğanın Sesi Ol <span>🌍</span></p>
+        <p><span>🌍</span></p>
     </div>
 </footer>
 
@@ -1180,19 +1100,6 @@ hr { border: none; border-top: 1px solid rgba(255,255,255,0.05); }
 function toggleNav() {
     document.getElementById('navLinks').classList.toggle('open');
 }
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.fund-bar-fill').forEach(bar => {
-                bar.style.width = bar.getAttribute('data-width') + '%';
-            });
-        }
-    });
-}, { threshold: 0.3 });
-
-const dv = document.getElementById('donateVisual');
-if (dv) observer.observe(dv);
 </script>
 
 </body>
