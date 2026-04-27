@@ -3,47 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>b0wl Community - Doğanın Sesi Ol</title>
+<title>b0wl Community — Vahşi Yaşam Koruma Platformu</title>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 
 :root {
-    --green: #00e5b0;
-    --green-dark: #00b389;
-    --forest: #1a3a2a;
-    --forest-dark: #0f2318;
-    --amber: #d4a853;
-    --amber-light: #e8c47a;
-    --black: #080c09;
-    --dark: #0f1a12;
-    --dark2: #162012;
-    --dark3: #1e2d1e;
-    --light-gray: #7a8f7e;
-    --off-white: #e8ede9;
-    --white: #ffffff;
+    --emerald: #2E6B57;
+    --emerald-dark: #1F4D3D;
+    --emerald-light: #3A8A6E;
+    --bronze: #A67C52;
+    --bronze-light: #C49B6F;
+    --black: #0B0F0D;
+    --dark: #132019;
+    --dark2: #1A2A20;
+    --dark3: #223228;
+    --text: #EAE7E1;
+    --text-dim: #A8ACA6;
+    --text-muted: #6B7269;
+    --border: rgba(234,231,225,0.06);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
     background: var(--black);
-    color: var(--white);
+    color: var(--text);
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* ── NAVBAR ── */
 nav {
     position: fixed; top: 0; left: 0;
     width: 100%; z-index: 1000;
-    background: rgba(8,12,9,0.96);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    backdrop-filter: blur(12px);
+    background: rgba(11,15,13,0.97);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(14px);
 }
 
 .nav-inner {
     max-width: 1400px; margin: 0 auto;
-    padding: 0 40px; height: 64px;
+    padding: 0 40px; height: 62px;
     display: flex; align-items: center;
     justify-content: space-between;
 }
@@ -54,21 +55,21 @@ nav {
 }
 
 .nav-logo-mark {
-    width: 38px; height: 38px;
-    background: var(--forest);
-    border: 1px solid rgba(0,229,176,0.3);
+    width: 36px; height: 36px;
+    background: var(--emerald-dark);
+    border: 1px solid rgba(46,107,87,0.5);
     border-radius: 3px;
     display: flex; align-items: center; justify-content: center;
-    font-weight: 900; font-size: 0.82rem;
-    color: var(--green);
+    font-weight: 900; font-size: 0.78rem;
+    color: var(--emerald-light);
     font-family: 'Libre Baskerville', serif;
     letter-spacing: -0.5px;
 }
 
 .nav-logo-text {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1rem; color: var(--off-white);
-    font-weight: 700; letter-spacing: 0.3px;
+    font-size: 0.95rem; color: var(--text);
+    font-weight: 700; letter-spacing: 0.2px;
 }
 
 .nav-links {
@@ -78,42 +79,43 @@ nav {
 
 .nav-links li a {
     display: block; padding: 0 16px;
-    height: 64px; line-height: 64px;
-    color: rgba(232,237,233,0.5);
-    text-decoration: none; font-size: 0.82rem;
+    height: 62px; line-height: 62px;
+    color: var(--text-muted);
+    text-decoration: none; font-size: 0.8rem;
     font-weight: 500; transition: 0.2s;
     border-bottom: 2px solid transparent;
     letter-spacing: 0.2px;
 }
 
 .nav-links li a:hover {
-    color: var(--off-white);
-    border-bottom-color: var(--amber);
+    color: var(--text);
+    border-bottom-color: var(--bronze);
 }
 
 .nav-links li a.active {
-    color: var(--off-white);
-    border-bottom-color: var(--green);
+    color: var(--text);
+    border-bottom-color: var(--emerald);
 }
 
 .nav-cta {
-    background: var(--forest) !important;
-    border: 1px solid rgba(0,229,176,0.25) !important;
-    color: var(--green) !important;
+    background: var(--emerald-dark) !important;
+    border: 1px solid rgba(46,107,87,0.4) !important;
+    color: var(--emerald-light) !important;
     font-weight: 700 !important;
-    padding: 0 20px !important;
-    height: 36px !important;
-    line-height: 36px !important;
+    padding: 0 18px !important;
+    height: 34px !important;
+    line-height: 34px !important;
     border-radius: 3px !important;
     border-bottom: none !important;
     margin-left: 12px;
     align-self: center;
-    transition: 0.2s !important;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.3px !important;
 }
 
 .nav-cta:hover {
-    background: var(--forest-dark) !important;
-    border-color: rgba(0,229,176,0.5) !important;
+    background: var(--emerald) !important;
+    color: var(--text) !important;
 }
 
 .hamburger {
@@ -123,13 +125,13 @@ nav {
 }
 
 .hamburger span {
-    display: block; width: 24px; height: 2px;
-    background: var(--off-white);
+    display: block; width: 22px; height: 1.5px;
+    background: var(--text-dim);
 }
 
 /* ── HERO ── */
 .hero {
-    height: 100vh; min-height: 700px;
+    height: 100vh; min-height: 680px;
     position: relative;
     display: flex; align-items: flex-end;
     overflow: hidden;
@@ -138,16 +140,16 @@ nav {
 .hero-bg {
     position: absolute; inset: 0;
     background:
-        linear-gradient(to right, rgba(8,12,9,0.92) 40%, rgba(8,12,9,0.3) 100%),
-        url('https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=1920') center/cover no-repeat;
+        linear-gradient(to right, rgba(11,15,13,0.94) 38%, rgba(11,15,13,0.35) 100%),
+        url('https://web-cdnprod.aa.com.tr/uploads/PhotoGallery/2013/03/28/thumbs_b2_49d33d69dadcaba11f6a82c21b0e9251.jpg') center/cover no-repeat;
 }
 
-.hero-overlay {
+.hero-fade {
     position: absolute; inset: 0;
     background: linear-gradient(
         to top,
-        rgba(8,12,9,1) 0%,
-        rgba(8,12,9,0.4) 50%,
+        rgba(11,15,13,1) 0%,
+        rgba(11,15,13,0.3) 55%,
         transparent 100%
     );
 }
@@ -155,75 +157,74 @@ nav {
 .hero-content {
     position: relative; z-index: 2;
     max-width: 1400px; margin: 0 auto;
-    padding: 0 40px 90px; width: 100%;
+    padding: 0 40px 85px; width: 100%;
 }
 
 .hero-eyebrow {
     display: flex; align-items: center; gap: 14px;
-    margin-bottom: 28px;
+    margin-bottom: 26px;
 }
 
 .hero-eyebrow-line {
-    width: 32px; height: 1px;
-    background: var(--amber);
+    width: 28px; height: 1px;
+    background: var(--bronze);
 }
 
 .hero-eyebrow span {
-    font-size: 0.7rem; font-weight: 700;
+    font-size: 0.65rem; font-weight: 700;
     letter-spacing: 3px; text-transform: uppercase;
-    color: var(--amber);
+    color: var(--bronze);
 }
 
 .hero h1 {
     font-family: 'Libre Baskerville', serif;
-    font-size: clamp(3rem, 6vw, 5.8rem);
+    font-size: clamp(2.8rem, 5.5vw, 5.2rem);
     font-weight: 700; line-height: 1.08;
-    max-width: 750px; margin-bottom: 30px;
-    letter-spacing: -1px;
-    color: var(--off-white);
+    max-width: 680px; margin-bottom: 28px;
+    letter-spacing: -0.8px;
 }
 
 .hero h1 em {
     font-style: italic;
-    color: var(--green);
+    color: var(--emerald-light);
 }
 
 .hero-desc {
-    font-size: 1.05rem;
-    color: rgba(232,237,233,0.55);
-    max-width: 480px; line-height: 1.8;
-    margin-bottom: 45px; font-weight: 300;
+    font-size: 1rem;
+    color: var(--text-dim);
+    max-width: 460px; line-height: 1.85;
+    margin-bottom: 42px; font-weight: 300;
 }
 
 .hero-actions {
     display: flex; align-items: center;
-    gap: 16px; flex-wrap: wrap;
+    gap: 14px; flex-wrap: wrap;
 }
 
 .btn-primary {
-    background: var(--green); color: var(--black);
-    padding: 15px 34px; font-weight: 700;
-    font-size: 0.85rem; letter-spacing: 0.5px;
+    background: var(--emerald); color: var(--text);
+    padding: 14px 30px; font-weight: 700;
+    font-size: 0.82rem; letter-spacing: 0.4px;
     text-decoration: none; border-radius: 3px;
     transition: 0.2s; display: inline-block;
 }
 
-.btn-primary:hover { background: var(--green-dark); }
+.btn-primary:hover { background: var(--emerald-light); }
 
 .btn-ghost {
-    color: var(--off-white); padding: 15px 34px;
-    font-weight: 600; font-size: 0.85rem;
+    color: var(--text-dim); padding: 14px 30px;
+    font-weight: 600; font-size: 0.82rem;
     text-decoration: none; border-radius: 3px;
     transition: 0.2s; display: inline-block;
-    border: 1px solid rgba(232,237,233,0.18);
+    border: 1px solid var(--border);
 }
 
-.btn-ghost:hover { border-color: rgba(232,237,233,0.4); background: rgba(232,237,233,0.04); }
+.btn-ghost:hover { color: var(--text); border-color: rgba(234,231,225,0.2); }
 
-/* ── STATS BAR ── */
+/* ── STATS ── */
 .stats-bar {
-    background: var(--forest-dark);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: var(--dark);
+    border-bottom: 1px solid var(--border);
 }
 
 .stats-bar-inner {
@@ -233,8 +234,8 @@ nav {
 }
 
 .stat-item {
-    padding: 42px 0;
-    border-right: 1px solid rgba(255,255,255,0.05);
+    padding: 40px 0;
+    border-right: 1px solid var(--border);
     text-align: center;
 }
 
@@ -242,304 +243,301 @@ nav {
 
 .stat-number {
     font-family: 'Libre Baskerville', serif;
-    font-size: 2.6rem; font-weight: 700;
-    color: var(--amber); display: block;
+    font-size: 2.4rem; font-weight: 700;
+    color: var(--bronze); display: block;
     line-height: 1; margin-bottom: 8px;
 }
 
 .stat-label {
-    font-size: 0.72rem; color: var(--light-gray);
+    font-size: 0.68rem; color: var(--text-muted);
     letter-spacing: 1.5px; text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 600;
 }
 
-/* ── INTRO SPLIT ── */
+/* ── INTRO ── */
 .intro-section {
-    background: var(--dark);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: var(--black);
+    border-bottom: 1px solid var(--border);
 }
 
 .intro-inner {
     max-width: 1400px; margin: 0 auto;
     padding: 100px 40px;
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 100px; align-items: center;
+    gap: 90px; align-items: center;
 }
 
-.intro-text .eyebrow {
+.eyebrow {
     display: flex; align-items: center; gap: 12px;
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 }
 
-.eyebrow-line {
-    width: 24px; height: 1px;
-    background: var(--amber);
-}
+.eyebrow-line { width: 22px; height: 1px; background: var(--bronze); }
 
 .eyebrow span {
-    font-size: 0.68rem; font-weight: 700;
+    font-size: 0.64rem; font-weight: 700;
     letter-spacing: 3px; text-transform: uppercase;
-    color: var(--amber);
+    color: var(--bronze);
 }
 
 .intro-text h2 {
     font-family: 'Libre Baskerville', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
     font-weight: 700; line-height: 1.2;
-    margin-bottom: 24px; letter-spacing: -0.3px;
-    color: var(--off-white);
+    margin-bottom: 22px; letter-spacing: -0.3px;
 }
 
-.intro-text h2 em { font-style: italic; color: var(--green); }
+.intro-text h2 em { font-style: italic; color: var(--emerald-light); }
 
 .intro-text p {
-    color: var(--light-gray); font-size: 0.95rem;
+    color: var(--text-dim); font-size: 0.9rem;
     line-height: 1.9; font-weight: 300;
     margin-bottom: 18px;
 }
 
-.intro-text p:last-of-type { margin-bottom: 35px; }
+.intro-visual { position: relative; }
 
-.intro-visual {
-    position: relative;
+.intro-img {
+    width: 100%; height: 480px;
+    overflow: hidden;
+    border: 1px solid var(--border);
 }
 
-.intro-img-wrap {
-    position: relative; overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.06);
-}
-
-.intro-img-wrap img {
-    width: 100%; height: 520px;
+.intro-img img {
+    width: 100%; height: 100%;
     object-fit: cover; display: block;
-    filter: brightness(0.55) saturate(0.7);
-}
-
-.intro-img-caption {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 20px 24px;
-    background: linear-gradient(0deg, rgba(8,12,9,0.95), transparent);
-    font-size: 0.72rem; font-style: italic;
-    color: rgba(232,237,233,0.4);
+    filter: brightness(0.6) saturate(0.65);
 }
 
 .intro-accent {
     position: absolute;
-    top: -12px; right: -12px;
-    width: 80px; height: 80px;
-    background: var(--forest);
-    border: 1px solid rgba(0,229,176,0.2);
+    top: -10px; right: -10px;
+    width: 72px; height: 72px;
+    background: var(--emerald-dark);
+    border: 1px solid rgba(46,107,87,0.35);
     display: flex; align-items: center;
     justify-content: center;
-    flex-direction: column; gap: 4px;
-    padding: 16px;
+    flex-direction: column; gap: 3px;
 }
 
 .intro-accent span {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.4rem; font-weight: 700;
-    color: var(--green); line-height: 1;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--emerald-light); line-height: 1;
 }
 
 .intro-accent small {
-    font-size: 0.6rem; font-weight: 700;
-    letter-spacing: 1px; text-transform: uppercase;
-    color: var(--light-gray); text-align: center;
+    font-size: 0.55rem; font-weight: 700;
+    letter-spacing: 0.8px; text-transform: uppercase;
+    color: var(--text-muted); text-align: center;
     line-height: 1.3;
 }
 
 /* ── FEATURES ── */
 .features-section {
-    background: var(--black);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: var(--dark);
+    border-bottom: 1px solid var(--border);
 }
 
 .features-header {
     max-width: 1400px; margin: 0 auto;
-    padding: 90px 40px 50px;
+    padding: 85px 40px 50px;
     display: flex; justify-content: space-between;
     align-items: flex-end; gap: 40px; flex-wrap: wrap;
 }
 
-.features-header-left .eyebrow { margin-bottom: 18px; }
-
-.features-header-left h2 {
+.features-header h2 {
     font-family: 'Libre Baskerville', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
     font-weight: 700; line-height: 1.2;
-    color: var(--off-white); letter-spacing: -0.3px;
+    letter-spacing: -0.3px;
 }
 
-.features-header-left h2 em { font-style: italic; color: var(--green); }
+.features-header h2 em { font-style: italic; color: var(--emerald-light); }
 
-.features-header-right p {
-    color: var(--light-gray); font-size: 0.92rem;
-    line-height: 1.75; max-width: 400px; font-weight: 300;
+.features-header p {
+    color: var(--text-dim); font-size: 0.88rem;
+    line-height: 1.75; max-width: 380px; font-weight: 300;
 }
 
 .features-grid {
     max-width: 1400px; margin: 0 auto;
-    padding: 0 40px 90px;
+    padding: 0 40px 85px;
     display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1px; background: rgba(255,255,255,0.04);
+    gap: 1px; background: var(--border);
 }
 
 .feature-card {
-    background: var(--black);
-    padding: 45px 38px;
+    background: var(--dark);
     transition: 0.3s; position: relative;
     overflow: hidden; text-decoration: none;
-    color: var(--white); display: block;
+    color: var(--text); display: block;
 }
 
-.feature-card::after {
+.feature-card:hover { background: var(--dark2); }
+
+.feature-card-img {
+    width: 100%; height: 180px;
+    overflow: hidden;
+}
+
+.feature-card-img img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    filter: brightness(0.45) saturate(0.5);
+    transition: 0.5s;
+}
+
+.feature-card:hover .feature-card-img img {
+    filter: brightness(0.55) saturate(0.65);
+    transform: scale(1.03);
+}
+
+.feature-card-body {
+    padding: 30px 28px;
+    position: relative;
+}
+
+.feature-card-body::before {
     content: '';
     position: absolute;
-    bottom: 0; left: 0;
+    top: 0; left: 0;
     width: 0; height: 2px;
-    background: linear-gradient(90deg, var(--green), var(--amber));
+    background: linear-gradient(90deg, var(--emerald), var(--bronze));
     transition: 0.4s;
 }
 
-.feature-card:hover::after { width: 100%; }
-.feature-card:hover { background: var(--dark); }
+.feature-card:hover .feature-card-body::before { width: 100%; }
 
-.feature-num {
+.feature-card-num {
     font-family: 'Libre Baskerville', serif;
-    font-size: 2.8rem; font-weight: 700;
-    color: rgba(255,255,255,0.04);
-    line-height: 1; margin-bottom: 22px;
-    transition: 0.3s;
-}
-
-.feature-card:hover .feature-num {
-    color: rgba(0,229,176,0.12);
+    font-size: 0.72rem; font-weight: 700;
+    color: var(--bronze); margin-bottom: 14px;
+    letter-spacing: 1px;
 }
 
 .feature-card h3 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.15rem; font-weight: 700;
-    margin-bottom: 13px; line-height: 1.3;
-    color: var(--off-white);
+    font-size: 1.05rem; font-weight: 700;
+    margin-bottom: 10px; line-height: 1.3;
 }
 
 .feature-card p {
-    font-size: 0.84rem; color: var(--light-gray);
+    font-size: 0.82rem; color: var(--text-dim);
     line-height: 1.75; font-weight: 300;
 }
 
-/* ── PROBLEM SECTION ── */
+/* ── PROBLEM ── */
 .problem-section {
-    background: var(--forest-dark);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: var(--dark2);
+    border-bottom: 1px solid var(--border);
 }
 
 .problem-inner {
     max-width: 1400px; margin: 0 auto;
     padding: 100px 40px;
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 100px; align-items: start;
+    gap: 90px; align-items: start;
 }
-
-.problem-text .eyebrow { margin-bottom: 22px; }
 
 .problem-text h2 {
     font-family: 'Libre Baskerville', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
     font-weight: 700; line-height: 1.2;
-    margin-bottom: 25px;
-    color: var(--off-white); letter-spacing: -0.3px;
+    margin-bottom: 22px; letter-spacing: -0.3px;
 }
 
-.problem-text h2 em { font-style: italic; color: var(--amber); }
+.problem-text h2 em { font-style: italic; color: var(--bronze); }
 
 .problem-text p {
-    color: rgba(232,237,233,0.5); font-size: 0.92rem;
+    color: var(--text-dim); font-size: 0.9rem;
     line-height: 1.85; font-weight: 300;
 }
 
 .problem-list {
     list-style: none;
-    display: flex; flex-direction: column;
-    border-top: 1px solid rgba(255,255,255,0.06);
+    border-top: 1px solid var(--border);
     margin-top: 10px;
 }
 
 .problem-item {
-    padding: 28px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    display: grid; grid-template-columns: 28px 1fr;
-    gap: 20px; align-items: start;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--border);
+    display: grid; grid-template-columns: 24px 1fr;
+    gap: 18px; align-items: start;
     transition: 0.2s;
 }
 
-.problem-item:hover { padding-left: 8px; }
+.problem-item:hover { padding-left: 6px; }
 
 .problem-num {
     font-family: 'Libre Baskerville', serif;
-    font-size: 0.75rem; font-weight: 700;
-    color: var(--amber); padding-top: 3px;
+    font-size: 0.72rem; font-weight: 700;
+    color: var(--bronze); padding-top: 2px;
 }
 
 .problem-item h4 {
-    font-size: 0.95rem; font-weight: 700;
-    margin-bottom: 5px; color: var(--off-white);
+    font-size: 0.9rem; font-weight: 700;
+    margin-bottom: 5px;
 }
 
 .problem-item p {
-    font-size: 0.82rem; color: var(--light-gray);
+    font-size: 0.8rem; color: var(--text-dim);
     line-height: 1.65; font-weight: 300;
 }
 
-/* ── COMING SOON ── */
+/* ── COMING ── */
 .coming-section {
-    background: var(--dark2);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: var(--dark);
+    border-bottom: 1px solid var(--border);
 }
 
 .coming-inner {
     max-width: 1400px; margin: 0 auto;
-    padding: 70px 40px;
+    padding: 65px 40px;
     display: flex; align-items: center;
     justify-content: space-between;
-    gap: 40px; flex-wrap: wrap;
+    gap: 35px; flex-wrap: wrap;
 }
 
 .coming-text h3 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.3rem; font-weight: 700;
-    margin-bottom: 6px; color: var(--off-white);
+    font-size: 1.2rem; font-weight: 700;
+    margin-bottom: 5px;
 }
 
-.coming-text p { color: var(--light-gray); font-size: 0.85rem; font-weight: 300; }
+.coming-text p { color: var(--text-muted); font-size: 0.82rem; font-weight: 300; }
 
 .coming-tags { display: flex; gap: 10px; flex-wrap: wrap; }
 
 .coming-tag {
-    padding: 11px 22px;
-    border: 1px solid rgba(255,255,255,0.08);
-    font-size: 0.78rem; font-weight: 600;
-    color: rgba(255,255,255,0.35);
+    padding: 10px 20px;
+    border: 1px solid var(--border);
+    font-size: 0.75rem; font-weight: 600;
+    color: var(--text-muted);
     display: flex; align-items: center; gap: 9px;
-    border-radius: 2px;
+    border-radius: 2px; text-decoration: none;
+    transition: 0.2s;
 }
+
+.coming-tag:hover { border-color: rgba(46,107,87,0.3); color: var(--text-dim); }
 
 .tag-dot {
     width: 5px; height: 5px;
-    border-radius: 50%; background: var(--green);
-    animation: pulse 2s ease-in-out infinite;
+    border-radius: 50%; background: var(--emerald);
+    animation: pulse 2.5s ease-in-out infinite;
 }
 
 @keyframes pulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+    50% { opacity: 0.25; }
 }
 
-/* ── CTA BAND ── */
+/* ── CTA ── */
 .cta-band {
-    padding: 90px 40px;
-    background: var(--forest);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: var(--emerald-dark);
+    padding: 85px 40px;
+    border-bottom: 1px solid var(--border);
 }
 
 .cta-band-inner {
@@ -549,48 +547,46 @@ nav {
     gap: 40px; flex-wrap: wrap;
 }
 
-.cta-band-text .eyebrow { margin-bottom: 18px; }
-
 .cta-band h2 {
     font-family: 'Libre Baskerville', serif;
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 700; color: var(--off-white);
-    line-height: 1.2; max-width: 550px;
+    font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+    font-weight: 700; line-height: 1.2;
+    max-width: 520px;
 }
 
-.cta-band h2 em { font-style: italic; color: var(--green); }
+.cta-band h2 em { font-style: italic; color: var(--emerald-light); }
 
-.cta-band-actions { display: flex; gap: 14px; flex-wrap: wrap; flex-shrink: 0; }
+.cta-band-actions { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
 
-.btn-green {
-    background: var(--green); color: var(--black);
-    padding: 15px 30px; font-weight: 700;
-    font-size: 0.85rem; text-decoration: none;
+.btn-light {
+    background: var(--text); color: var(--black);
+    padding: 14px 28px; font-weight: 700;
+    font-size: 0.82rem; text-decoration: none;
     border-radius: 3px; transition: 0.2s;
     display: inline-block;
 }
 
-.btn-green:hover { background: var(--green-dark); }
+.btn-light:hover { background: var(--text-dim); }
 
-.btn-amber {
-    background: var(--amber); color: var(--black);
-    padding: 15px 30px; font-weight: 700;
-    font-size: 0.85rem; text-decoration: none;
+.btn-bronze {
+    background: var(--bronze); color: var(--black);
+    padding: 14px 28px; font-weight: 700;
+    font-size: 0.82rem; text-decoration: none;
     border-radius: 3px; transition: 0.2s;
     display: inline-block;
 }
 
-.btn-amber:hover { background: var(--amber-light); }
+.btn-bronze:hover { background: var(--bronze-light); }
 
 /* ── FOOTER ── */
 .footer {
-    background: var(--forest-dark);
-    border-top: 1px solid rgba(255,255,255,0.05);
+    background: var(--dark);
+    border-top: 1px solid var(--border);
 }
 
 .footer-top {
     max-width: 1400px; margin: 0 auto;
-    padding: 70px 40px 50px;
+    padding: 65px 40px 45px;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 50px;
@@ -598,57 +594,56 @@ nav {
 
 .footer-brand-mark {
     display: flex; align-items: center; gap: 12px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 }
 
 .footer-brand-icon {
-    width: 34px; height: 34px;
-    background: var(--forest);
-    border: 1px solid rgba(0,229,176,0.2);
+    width: 32px; height: 32px;
+    background: var(--emerald-dark);
+    border: 1px solid rgba(46,107,87,0.35);
     border-radius: 3px;
     display: flex; align-items: center; justify-content: center;
-    font-weight: 900; font-size: 0.75rem;
-    color: var(--green);
+    font-weight: 900; font-size: 0.7rem;
+    color: var(--emerald-light);
     font-family: 'Libre Baskerville', serif;
 }
 
 .footer-brand-mark h3 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1rem; font-weight: 700;
-    color: var(--off-white);
+    font-size: 0.95rem; font-weight: 700;
 }
 
 .footer-brand p {
-    color: var(--light-gray); font-size: 0.82rem;
-    line-height: 1.75; max-width: 270px; font-weight: 300;
-    margin-bottom: 20px;
+    color: var(--text-muted); font-size: 0.8rem;
+    line-height: 1.75; max-width: 260px; font-weight: 300;
 }
 
 .footer-col h4 {
-    font-size: 0.68rem; font-weight: 700;
+    font-size: 0.62rem; font-weight: 700;
     letter-spacing: 2px; text-transform: uppercase;
-    color: rgba(232,237,233,0.25); margin-bottom: 18px;
+    color: var(--text-muted); margin-bottom: 16px;
+    opacity: 0.5;
 }
 
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
 
 .footer-col ul li a {
-    color: var(--light-gray); text-decoration: none;
-    font-size: 0.83rem; transition: 0.2s; font-weight: 300;
+    color: var(--text-dim); text-decoration: none;
+    font-size: 0.8rem; transition: 0.2s; font-weight: 300;
 }
 
-.footer-col ul li a:hover { color: var(--green); }
+.footer-col ul li a:hover { color: var(--emerald-light); }
 
 .footer-bottom-bar {
     max-width: 1400px; margin: 0 auto;
-    padding: 20px 40px;
-    border-top: 1px solid rgba(255,255,255,0.04);
+    padding: 18px 40px;
+    border-top: 1px solid var(--border);
     display: flex; justify-content: space-between;
     align-items: center; gap: 20px; flex-wrap: wrap;
 }
 
-.footer-bottom-bar p { color: rgba(255,255,255,0.2); font-size: 0.75rem; }
-.footer-bottom-bar span { color: var(--amber); }
+.footer-bottom-bar p { color: var(--text-muted); font-size: 0.72rem; opacity: 0.5; }
+.footer-bottom-bar span { color: var(--bronze); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
@@ -664,19 +659,18 @@ nav {
     .hamburger { display: flex; }
     .nav-links.open {
         display: flex; flex-direction: column;
-        position: absolute; top: 64px; left: 0;
+        position: absolute; top: 62px; left: 0;
         width: 100%; background: var(--black);
-        border-bottom: 1px solid rgba(255,255,255,0.06);
-        padding: 20px 0;
+        border-bottom: 1px solid var(--border);
+        padding: 18px 0;
     }
     .nav-links.open li a {
-        height: auto; line-height: 1; padding: 14px 28px;
+        height: auto; line-height: 1; padding: 13px 28px;
         border-bottom: none; border-left: 2px solid transparent;
     }
-    .nav-links.open li a:hover { border-left-color: var(--green); }
+    .nav-links.open li a:hover { border-left-color: var(--emerald); }
     .features-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 2.6rem; }
-    .section { padding: 70px 24px; }
+    .hero h1 { font-size: 2.4rem; }
     .footer-top { grid-template-columns: 1fr; }
     .coming-inner { flex-direction: column; align-items: flex-start; }
 }
@@ -686,7 +680,7 @@ nav {
 <body>
 
 <!-- NAVBAR -->
-<nav id="navbar">
+<nav>
     <div class="nav-inner">
         <a href="index.html" class="nav-logo">
             <div class="nav-logo-mark">b0</div>
@@ -697,7 +691,7 @@ nav {
             <li><a href="hakkimizda.html">Hakkımızda</a></li>
             <li><a href="ozellikler.html">Özellikler</a></li>
             <li><a href="iletisim.html">İletişim</a></li>
-            <li><a href="yakinda.html?page=bildir" class="nav-cta">Hayvan Bildir</a></li>
+            <li><a href="yakinda.html?page=ihbar" class="nav-cta">İhbar Merkezi</a></li>
         </ul>
         <button class="hamburger" onclick="toggleNav()">
             <span></span><span></span><span></span>
@@ -708,22 +702,22 @@ nav {
 <!-- HERO -->
 <section class="hero">
     <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
+    <div class="hero-fade"></div>
     <div class="hero-content">
         <div class="hero-eyebrow">
             <div class="hero-eyebrow-line"></div>
-            <span>Vahşi Yaşam Koruma Platformu</span>
+            <span>Vahşi Yaşam Koruma Altyapısı</span>
         </div>
-        <h1>Doğanın<br><em>Sesi</em><br>Ol.</h1>
-        <p class="hero-desc">Türlerin yok oluşunu durdurmak için kuruluşları, bireyleri ve teknolojiyi tek çatı altında buluşturan ekosistem.</p>
+        <h1>Koruma,<br>Koordinasyon,<br><em>Eylem.</em></h1>
+        <p class="hero-desc">Kuruluşları, bireyleri ve kaynakları tek bir dijital altyapıda buluşturarak vahşi yaşam korumada koordinasyonu güçlendiriyoruz.</p>
         <div class="hero-actions">
-            <a href="ozellikler.html" class="btn-primary">Platformu Keşfet</a>
+            <a href="ozellikler.html" class="btn-primary">Platformu İncele</a>
             <a href="hakkimizda.html" class="btn-ghost">Hikayemiz →</a>
         </div>
     </div>
 </section>
 
-<!-- STATS BAR -->
+<!-- STATS -->
 <div class="stats-bar">
     <div class="stats-bar-inner">
         <div class="stat-item">
@@ -732,15 +726,15 @@ nav {
         </div>
         <div class="stat-item">
             <span class="stat-number">%68</span>
-            <span class="stat-label">Popülasyon Azalması</span>
+            <span class="stat-label">Popülasyon Kaybı</span>
         </div>
         <div class="stat-item">
             <span class="stat-number">150+</span>
-            <span class="stat-label">Günlük Yok Olan Tür</span>
+            <span class="stat-label">Günlük Tür Kaybı</span>
         </div>
         <div class="stat-item">
             <span class="stat-number">$15B</span>
-            <span class="stat-label">Global Koruma Pazarı</span>
+            <span class="stat-label">Küresel Koruma Pazarı</span>
         </div>
     </div>
 </div>
@@ -751,21 +745,20 @@ nav {
         <div class="intro-text">
             <div class="eyebrow">
                 <div class="eyebrow-line"></div>
-                <span>Biz Kimiz?</span>
+                <span>Platformun Amacı</span>
             </div>
-            <h2>Vahşi Yaşam Koruma<br>Parçalı Bir Yapıdan<br><em>Kurtarılmalı</em></h2>
-            <p>Kuruluşlar birbirinden kopuk çalışıyor. Bireyler ne yapacağını bilmiyor. Bağışların nereye gittiği takip edilemiyor. Gönüllüler doğru projeye ulaşamıyor.</p>
-            <p>b0wl Community, bu dağınık yapıyı bir araya getiren koordinasyon platformudur. Tek misyon: Vahşi yaşamı birlikte korumak.</p>
-            <a href="hakkimizda.html" class="btn-primary">Daha Fazla Okuyun</a>
+            <h2>Dağınık Yapıdan<br><em>Koordineli</em> Bir<br>Ekosisteme</h2>
+            <p>Vahşi yaşam koruma alanında kuruluşlar birbirinden kopuk çalışıyor. Bireyler müdahale mekanizmalarına erişemiyor. Bağışların akıbeti takip edilemiyor. Gönüllüler doğru projelere ulaşamıyor.</p>
+            <p>b0wl Community, bu parçalı yapıyı tek bir dijital altyapıda birleştiren koordinasyon platformudur. Misyonumuz net: koruma çabalarını güçlendirmek, erişimi kolaylaştırmak, etkiyi büyütmek.</p>
+            <a href="hakkimizda.html" class="btn-primary" style="margin-top:18px;">Detaylı Okuyun</a>
         </div>
         <div class="intro-visual">
-            <div class="intro-img-wrap">
-                <img src="https://images.unsplash.com/photo-1474511320723-9a56873571b7?w=900" alt="Vahşi Yaşam">
-                <div class="intro-img-caption">Her gün 150'den fazla tür dünyadan siliniyor. — IUCN 2024</div>
+            <div class="intro-img">
+                <img src="https://bunny-wp-pullzone-nfqzsydbnl.b-cdn.net/wp-content/uploads/2024/11/afrika-serengeti.jpg" alt="Serengeti">
             </div>
             <div class="intro-accent">
                 <span>6</span>
-                <small>Platform<br>Modülü</small>
+                <small>Temel<br>Modül</small>
             </div>
         </div>
     </div>
@@ -774,48 +767,83 @@ nav {
 <!-- FEATURES -->
 <div class="features-section">
     <div class="features-header">
-        <div class="features-header-left">
+        <div>
             <div class="eyebrow">
                 <div class="eyebrow-line"></div>
-                <span>Platform Özellikleri</span>
+                <span>Platform Modülleri</span>
             </div>
-            <h2>Her Şey <em>Tek</em><br>Çatı Altında</h2>
+            <h2>Tek Altyapı,<br><em>Altı</em> Temel Alan</h2>
         </div>
-        <div class="features-header-right">
-            <p>Vahşi yaşam koruma için ihtiyaç duyulan tüm araçlar, tek bir ekosistemde bir araya getirildi.</p>
-        </div>
+        <p>Her modül, vahşi yaşam koruma ekosisteminin farklı bir ihtiyacını karşılamak üzere tasarlandı.</p>
     </div>
     <div class="features-grid">
+
         <a href="ozellikler.html" class="feature-card">
-            <div class="feature-num">01</div>
-            <h3>Acil Hayvan Bildirimi</h3>
-            <p>Tehlikede olan bir hayvan gördüğünüzde fotoğrafını çekin. Sistem türü tanır, konumu belirler ve en yakın kuruluşa ulaşır.</p>
+            <div class="feature-card-img">
+                <img src="https://play-lh.googleusercontent.com/61qXEffk6QXytkYg7GIhobeIuVyQMyaxTDWE01wH6aLNF-x_UB7Maz9QUA8RfyTfFSjS1NltIW2XxFEdTzDR=w240-h480-rw" alt="İhbar">
+            </div>
+            <div class="feature-card-body">
+                <div class="feature-card-num">01</div>
+                <h3>İhbar ve Durum Bildirimi</h3>
+                <p>Yaralı yaban hayvanı, kaçakçılık şüphesi, yasadışı avcılık veya habitat tahribatı gibi vakaları ilgili kuruluşlara doğrudan iletin.</p>
+            </div>
         </a>
+
         <a href="ozellikler.html" class="feature-card">
-            <div class="feature-num">02</div>
-            <h3>Şeffaf Bağış Altyapısı</h3>
-            <p>%0 komisyon. Her bağış doğrudan ilgili fona iletilir. Paranızın nereye gittiğini gerçek zamanlı olarak görün.</p>
+            <div class="feature-card-img">
+                <img src="https://maarifder.com/bisensei/img/bagislar/maarif-dernegi-bagis.jpg" alt="Bağış">
+            </div>
+            <div class="feature-card-body">
+                <div class="feature-card-num">02</div>
+                <h3>Şeffaf Bağış Altyapısı</h3>
+                <p>Komisyonsuz bağış sistemi ile kaynaklar doğrudan ilgili fonlara ulaşır. Her bağışın akıbeti gerçek zamanlı izlenebilir.</p>
+            </div>
         </a>
+
         <a href="ozellikler.html" class="feature-card">
-            <div class="feature-num">03</div>
-            <h3>Sosyal Etki Marketi</h3>
-            <p>Her satışın geliri vahşi yaşam fonlarına aktarılır. Satıcılar bağış ispatı sunmak zorundadır; şeffaflık standarttır.</p>
+            <div class="feature-card-img">
+                <img src="https://www.cevtasmuhendislik.com.tr/uploads/6-63760f8ae7bfd.png" alt="Sosyal Etki">
+            </div>
+            <div class="feature-card-body">
+                <div class="feature-card-num">03</div>
+                <h3>Sosyal Etki Marketi</h3>
+                <p>Koruma fonlarına gelir sağlamak amacıyla ürünlerin satıldığı pazar yeri. Satıcılar bağış ispatı sunmakla yükümlüdür.</p>
+            </div>
         </a>
+
         <a href="ozellikler.html" class="feature-card">
-            <div class="feature-num">04</div>
-            <h3>Küresel Kuruluş Ağı</h3>
-            <p>Dünyanın dört bir yanındaki koruma kuruluşları tek platformda. Koordinasyon güçlendiğinde etki katlanır.</p>
+            <div class="feature-card-img">
+                <img src="https://st2.depositphotos.com/16950388/43324/i/450/depositphotos_433244000-stock-photo-global-network-connection-concept-big.jpg" alt="Kuruluş Ağı">
+            </div>
+            <div class="feature-card-body">
+                <div class="feature-card-num">04</div>
+                <h3>Kuruluşlar Arası Koordinasyon</h3>
+                <p>Dünya genelindeki koruma kuruluşlarının iletişim kurabildiği, kaynak paylaşabildiği ve ortak proje yürütebileceği ağ.</p>
+            </div>
         </a>
+
         <a href="ozellikler.html" class="feature-card">
-            <div class="feature-num">05</div>
-            <h3>Eğitim ve Araştırma</h3>
-            <p>Makaleler, etkinlikler, kamp kayıtları ve burs programları. Bilgi ile bilinç oluşturuyoruz.</p>
+            <div class="feature-card-img">
+                <img src="https://kriterdergi.com/images/news/2019/09/02/ismet-kesen.jpg" alt="Eğitim">
+            </div>
+            <div class="feature-card-body">
+                <div class="feature-card-num">05</div>
+                <h3>Eğitim, İçerik ve Araştırma</h3>
+                <p>Makale, araştırma, etkinlik duyurusu ve burs programlarıyla vahşi yaşam koruma bilincinin yaygınlaştırılması.</p>
+            </div>
         </a>
+
         <a href="ozellikler.html" class="feature-card">
-            <div class="feature-num">06</div>
-            <h3>Gönüllülük Programları</h3>
-            <p>Binlerce kuruluşun projesine tek platformdan başvurun. Alan ve konum bazlı eşleştirme ile doğru projeye ulaşın.</p>
+            <div class="feature-card-img">
+                <img src="https://cdn.hbrturkiye.com/r/1000x0/var/uploads/content/1539342471-gonullu-olun-ve-bir-lider-olarak-buyuyun-jpg.jpg" alt="Gönüllülük">
+            </div>
+            <div class="feature-card-body">
+                <div class="feature-card-num">06</div>
+                <h3>Gönüllülük ve Katılım</h3>
+                <p>Koruma projelerine gönüllü başvurusu, alan ve konum bazlı eşleştirme, süreç takibi ve katılım sertifikası.</p>
+            </div>
         </a>
+
     </div>
 </div>
 
@@ -825,38 +853,38 @@ nav {
         <div class="problem-text">
             <div class="eyebrow">
                 <div class="eyebrow-line"></div>
-                <span>Neden Acil?</span>
+                <span>Çözülmesi Gereken Sorunlar</span>
             </div>
             <h2>Mevcut Sistem<br>Neden <em>Yetersiz?</em></h2>
-            <p>Vahşi yaşam koruması bugün dört temel sorunla boğuşuyor. b0wl Community her birine sistematik bir yanıt üretiyor.</p>
+            <p>Vahşi yaşam korumasında dört temel yapısal sorun var. b0wl Community her birine sistematik bir yanıt üretiyor.</p>
         </div>
         <ul class="problem-list">
             <li class="problem-item">
                 <span class="problem-num">01</span>
                 <div>
                     <h4>Koordinasyon Eksikliği</h4>
-                    <p>Kuruluşlar birbirinden bağımsız hareket ediyor. Kaynaklar çakışıyor, bilgi paylaşılmıyor, fırsatlar kaçırılıyor.</p>
+                    <p>Kuruluşlar birbirinden bağımsız hareket ediyor. Kaynaklar çakışıyor, bilgi paylaşılmıyor, potansiyel iş birlikleri kaçırılıyor.</p>
                 </div>
             </li>
             <li class="problem-item">
                 <span class="problem-num">02</span>
                 <div>
                     <h4>Bireysel Müdahale Boşluğu</h4>
-                    <p>Tehlikede hayvan gören bireylerin başvurabileceği etkili bir sistem yok. Kritik dakikalar boşa gidiyor.</p>
+                    <p>Kaçakçılık, yasadışı avcılık veya yaralı bir yaban hayvanıyla karşılaşan bireylerin başvurabileceği etkili bir ihbar mekanizması yok.</p>
                 </div>
             </li>
             <li class="problem-item">
                 <span class="problem-num">03</span>
                 <div>
-                    <h4>Şeffaflık Sorunu</h4>
-                    <p>Bağışların akıbeti bilinmiyor. Güvensizlik bireyleri hareketten alıkoyuyor.</p>
+                    <h4>Kaynak Şeffaflığı Sorunu</h4>
+                    <p>Bağışların akıbeti takip edilemiyor. Güvensizlik ortamı bireyleri hareketten alıkoyuyor, potansiyel katkılar gerçekleşmiyor.</p>
                 </div>
             </li>
             <li class="problem-item">
                 <span class="problem-num">04</span>
                 <div>
                     <h4>Dağınık Erişim</h4>
-                    <p>Gönüllü olmak, bağış yapmak veya kuruluş bulmak onlarca farklı platforma dağılmış durumda.</p>
+                    <p>İhbar, bağış, gönüllülük ve kuruluş erişimi onlarca farklı platforma dağılmış durumda. Bütünleşik bir çözüm bulunmuyor.</p>
                 </div>
             </li>
         </ul>
@@ -867,36 +895,36 @@ nav {
 <div class="coming-section">
     <div class="coming-inner">
         <div class="coming-text">
-            <h3>Çok Yakında</h3>
-            <p>Platformumuzun aşağıdaki modülleri geliştirme aşamasında.</p>
+            <h3>Geliştirme Aşamasında</h3>
+            <p>Aşağıdaki modüller üzerinde aktif çalışma yürütülmektedir.</p>
         </div>
         <div class="coming-tags">
-            <a href="yakinda.html?page=bildir" class="coming-tag">
-                <span class="tag-dot"></span> Hayvan Bildir
+            <a href="yakinda.html?page=ihbar" class="coming-tag">
+                <span class="tag-dot"></span> İhbar Merkezi
             </a>
-            <a href="yakinda.html?page=bagis" class="coming-tag" style="text-decoration:none; color:inherit;">
-                <span class="tag-dot"></span> Bağış Yap
+            <a href="yakinda.html?page=bagis" class="coming-tag">
+                <span class="tag-dot"></span> Bağış Sistemi
             </a>
-            <a href="yakinda.html?page=market" class="coming-tag" style="text-decoration:none; color:inherit;">
-                <span class="tag-dot"></span> Market
+            <a href="yakinda.html?page=market" class="coming-tag">
+                <span class="tag-dot"></span> Sosyal Etki Marketi
             </a>
         </div>
     </div>
 </div>
 
-<!-- CTA BAND -->
+<!-- CTA -->
 <div class="cta-band">
     <div class="cta-band-inner">
-        <div class="cta-band-text">
+        <div>
             <div class="eyebrow">
                 <div class="eyebrow-line"></div>
-                <span>Harekete Geç</span>
+                <span>İletişim</span>
             </div>
-            <h2>Doğanın Sesine<br>Kulak Ver.<br><em>Katıl.</em></h2>
+            <h2>Koruma Çalışmalarına<br>Katkı Sağlamak İçin<br><em>İletişime Geçin.</em></h2>
         </div>
         <div class="cta-band-actions">
-            <a href="ozellikler.html" class="btn-green">Platformu Keşfet</a>
-            <a href="iletisim.html" class="btn-amber">İletişime Geç</a>
+            <a href="ozellikler.html" class="btn-light">Platformu İncele</a>
+            <a href="iletisim.html" class="btn-bronze">İletişim</a>
         </div>
     </div>
 </div>
@@ -909,15 +937,15 @@ nav {
                 <div class="footer-brand-icon">b0</div>
                 <h3>b0wl Community</h3>
             </div>
-            <p>Vahşi yaşamı korumak için kuruluşları, bireyleri ve teknolojiyi bir araya getiren küresel koordinasyon platformu.</p>
+            <p>Vahşi yaşam koruma alanında ihbar, koordinasyon, kaynak toplama ve topluluk etkileşimini tek dijital altyapıda birleştiren platform.</p>
         </div>
         <div class="footer-col">
             <h4>Platform</h4>
             <ul>
                 <li><a href="ozellikler.html">Özellikler</a></li>
-                <li><a href="yakinda.html?page=bildir">Hayvan Bildir</a></li>
-                <li><a href="yakinda.html?page=bagis">Bağış Yap</a></li>
-                <li><a href="yakinda.html?page=market">Market</a></li>
+                <li><a href="yakinda.html?page=ihbar">İhbar Merkezi</a></li>
+                <li><a href="yakinda.html?page=bagis">Bağış Sistemi</a></li>
+                <li><a href="yakinda.html?page=market">Sosyal Etki Marketi</a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -941,7 +969,7 @@ nav {
     </div>
     <div class="footer-bottom-bar">
         <p>© 2026 b0wl Community — Tüm Hakları Saklıdır</p>
-        <p>Doğanın Sesi Ol <span>🌍</span></p>
+        <p><span>🌍</span></p>
     </div>
 </footer>
 
